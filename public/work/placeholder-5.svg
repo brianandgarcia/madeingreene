@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Project screenshot placeholder">
+  <rect width="800" height="600" fill="#e4dfd6"/>
+  <rect x="40" y="40" width="720" height="80" rx="12" fill="#f8f4ed"/>
+  <rect x="60" y="72" width="200" height="16" rx="4" fill="#544f47"/>
+  <rect x="580" y="64" width="160" height="32" rx="8" fill="#b45309"/>
+  <rect x="40" y="160" width="720" height="260" rx="12" fill="#d1cbc0"/>
+  <rect x="40" y="440" width="350" height="120" rx="12" fill="#f8f4ed"/>
+  <rect x="410" y="440" width="350" height="120" rx="12" fill="#f8f4ed"/>
+  <text x="400" y="300" font-family="system-ui, sans-serif" font-size="20" fill="#544f47" text-anchor="middle">Drop a homepage screenshot here</text>
+</svg>

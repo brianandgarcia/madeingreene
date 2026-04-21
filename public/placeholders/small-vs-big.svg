@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Small shop vs large chain placeholder">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8f4ed"/>
+      <stop offset="1" stop-color="#e4dfd6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg3)"/>
+  <polygon points="60,420 220,420 220,280 140,220 60,280" fill="#4a7c0f"/>
+  <rect x="125" y="340" width="30" height="80" fill="#365314"/>
+  <rect x="85" y="310" width="25" height="25" fill="#f8f4ed"/>
+  <rect x="170" y="310" width="25" height="25" fill="#f8f4ed"/>
+  <rect x="280" y="180" width="440" height="240" fill="#544f47"/>
+  <rect x="310" y="220" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="390" y="220" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="470" y="220" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="550" y="220" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="630" y="220" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="310" y="310" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="390" y="310" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="470" y="310" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="550" y="310" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="630" y="310" width="60" height="60" fill="#f8f4ed"/>
+  <rect x="0" y="420" width="800" height="180" fill="#d1cbc0"/>
+  <text x="400" y="545" font-family="system-ui, sans-serif" font-size="18" fill="#756f65" text-anchor="middle">Placeholder — small shop, big presence</text>
+</svg>

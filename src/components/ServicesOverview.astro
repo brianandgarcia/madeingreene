@@ -1,0 +1,73 @@
+---
+const services = [
+  {
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+    title: "Your site loads before they give up.",
+    description: "Visitors leave in under three seconds if a site is slow. Ours load in under one — custom-coded on a modern stack instead of the bloated templates GoDaddy and WordPress use. You win the page before competitors even load.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+    title: "You show up when they Google you.",
+    description: "SEO done right, plus Moz Local listings pushed to Google, Bing, and Apple Maps so your hours, address, and phone number are consistent everywhere. When someone searches your trade or your town, you're the first result — not the last.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`,
+    title: "You look as professional as the big guys.",
+    description: "A consistent logo, brand identity, and business cards to match your site. Your one-truck operation reads like an established company. Customers take the leap and call.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" /></svg>`,
+    title: "Your email matches your business.",
+    description: "you@yourbusiness.com, set up on Google Workspace or Microsoft 365 — the same tools the national chains use. No more answering inquiries from a personal Gmail. Customers trust what they see.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>`,
+    title: "You can run it yourself in 30 minutes.",
+    description: "We walk you through the whole thing at handoff — changing hours, swapping photos, posting updates. Most folks are comfortable by the end of one sit-down. Extra sessions available when a new employee comes on.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`,
+    title: "One number to call when something breaks.",
+    description: "Optional care plan covers hosting, security patches, and real hours of changes every month. Hosting is free for most small business sites — we only charge when we're actually doing work for you. No 1-800 numbers, no tickets.",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-cream" id="services">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16" data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">What Changes</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+        More calls. Better first impression. Less headache.
+      </h2>
+      <p class="text-warm-500 max-w-2xl mx-auto">
+        Here's what a website from us actually does for your business — not just what we build,
+        but what changes once it's live.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
+      {services.map((service, i) => (
+        <div class="group" data-reveal style={`--reveal-delay: ${(i % 3) * 100}ms`}>
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center text-primary mb-5 bg-primary/10 group-hover:bg-primary group-hover:text-white transition-colors">
+            <Fragment set:html={service.icon} />
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-3 leading-snug">{service.title}</h3>
+          <p class="text-warm-600 text-sm leading-relaxed">{service.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12" data-reveal>
+      <a
+        href="/services"
+        class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors"
+      >
+        See pricing & packages
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

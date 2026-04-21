@@ -1,0 +1,92 @@
+---
+const reasons = [
+  {
+    number: "01",
+    stat: "First stop",
+    title: "Customers check you out before they call.",
+    description:
+      "They're searching your name, looking for reviews, checking your hours. A clean, fast site turns that check into a phone call. A slow one — or none at all — sends them to your competitor.",
+    image: "/placeholders/phone-search.svg",
+    alt: "A customer searching for a business on their phone",
+  },
+  {
+    number: "02",
+    stat: "Only goes so far",
+    title: "A Facebook page only gets you so far.",
+    description:
+      "Social is great at what it does, but it doesn't show up consistently in Google searches, and you don't own it. A website does show up, and you control every word on it — permanently.",
+    image: "/placeholders/facebook-vs-website.svg",
+    alt: "A rented social media page next to an owned website",
+  },
+  {
+    number: "03",
+    stat: "Level field",
+    title: "Compete with anyone — without the agency budget.",
+    description:
+      "A clean, fast website makes a two-person shop look as professional as a national chain. You don't need a marketing team. You need a site doing the work while you do yours.",
+    image: "/placeholders/small-vs-big.svg",
+    alt: "A small shop holding its own next to a big chain",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-warm-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-3xl mb-16 md:mb-24" data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Why It Matters</span>
+      <h2 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-4">
+        What a good website actually does for you.
+      </h2>
+      <p class="text-warm-500 text-lg leading-relaxed">
+        More calls. Better first impressions. Customers who find you before they find the next guy.
+        Here's what changes when you've got a site built right.
+      </p>
+    </div>
+
+    <div class="space-y-20 md:space-y-28">
+      {reasons.map((reason, i) => {
+        const imageFirst = i % 2 === 0;
+        return (
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
+            <div
+              class:list={[
+                "md:col-span-6 aspect-[4/3] rounded-2xl overflow-hidden bg-warm-200",
+                imageFirst ? "md:order-1" : "md:order-2",
+              ]}
+              data-reveal={imageFirst ? "left" : "right"}
+            >
+              <img
+                src={reason.image}
+                alt={reason.alt}
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              class:list={[
+                "md:col-span-6",
+                imageFirst ? "md:order-2" : "md:order-1",
+              ]}
+              data-reveal={imageFirst ? "right" : "left"}
+            >
+              <div class="flex items-baseline gap-4 mb-4">
+                <span class="text-5xl md:text-6xl font-extrabold text-primary leading-none">
+                  {reason.number}
+                </span>
+                <span class="text-xs uppercase tracking-[0.2em] text-warm-500 font-bold">
+                  {reason.stat}
+                </span>
+              </div>
+              <h3 class="text-2xl md:text-4xl font-bold text-dark mb-4 leading-tight">
+                {reason.title}
+              </h3>
+              <p class="text-warm-600 leading-relaxed text-base md:text-lg">
+                {reason.description}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

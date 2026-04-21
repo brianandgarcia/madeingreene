@@ -1,0 +1,78 @@
+---
+const specs = [
+  {
+    spec: "Timeline",
+    value: "2–4 weeks",
+    title: "Live in 2 to 4 weeks.",
+    description:
+      "We kick off with a conversation, design within the first week, build in the second, and review with you before anything goes live. Starter sites are usually up inside 14 days.",
+  },
+  {
+    spec: "Ownership",
+    value: "100% yours",
+    title: "It's yours to keep.",
+    description:
+      "Your website, your content, your domain name — all in your name. If you ever want to take it to another developer, it goes with you. No hostage situations, no export fees.",
+  },
+  {
+    spec: "Revisions",
+    value: "Included",
+    title: "Revisions baked in.",
+    description:
+      "1 round on Starter, 2 rounds on Growth, unlimited on Premium. We'd rather get it right before launch than argue about it after. Changes after launch go through the care plan or billed hourly — no surprise invoices.",
+  },
+  {
+    spec: "Support",
+    value: "Same-day",
+    title: "Call, text, or email us.",
+    description:
+      "Not a ticket queue, not a chatbot — our direct phone number. Same-day response on weekdays, next-day on weekends. Care plans get priority, but everyone gets answered.",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-cream">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="mb-16 max-w-3xl" data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">The Specifics</span>
+      <h2 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-4">
+        What you actually get, spelled out.
+      </h2>
+      <p class="text-warm-500 text-lg leading-relaxed">
+        Enough with the trust talk. Here are the details most web shops won't put on their
+        homepage — timeline, ownership, revisions, and how to reach us when you need to.
+      </p>
+    </div>
+
+    <div class="border-t-2 border-dark">
+      {specs.map((item, i) => (
+        <div
+          class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 md:py-10 border-b border-warm-300"
+          data-reveal
+          style={`--reveal-delay: ${i * 80}ms`}
+        >
+          <div class="md:col-span-4">
+            <div class="text-[10px] uppercase tracking-[0.2em] text-warm-500 font-bold mb-2">
+              {item.spec}
+            </div>
+            <div class="text-2xl md:text-3xl font-bold text-primary">
+              {item.value}
+            </div>
+          </div>
+          <div class="md:col-span-8">
+            <h3 class="text-xl md:text-2xl font-bold text-dark mb-3 leading-tight">
+              {item.title}
+            </h3>
+            <p class="text-warm-600 leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-xs text-warm-400 mt-6">
+      Hosting is free for most small business sites. We'll tell you upfront if yours would need more.
+    </p>
+  </div>
+</section>

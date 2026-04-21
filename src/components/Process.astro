@@ -1,0 +1,51 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "We Talk",
+    description: "Tell us about your business — what you do, who your customers are, and what you need. No tech talk, just a straight conversation over coffee or a phone call.",
+  },
+  {
+    number: "02",
+    title: "We Build It",
+    description: "We design and build your site from scratch. You'll see it take shape along the way and have a chance to say 'change this' before anything goes live.",
+  },
+  {
+    number: "03",
+    title: "We Hand You the Keys",
+    description: "Your site is ready. We walk you through how to update it yourself — it's simpler than you think. You're in control from day one.",
+  },
+  {
+    number: "04",
+    title: "You Grow. We've Got Your Back.",
+    description: "Your site is live and bringing in customers. We stick around for hosting, updates, and support. You focus on what you do best.",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-cream">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">How It Works</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+        No runaround. No fine print.
+      </h2>
+      <p class="text-warm-500 max-w-2xl mx-auto">
+        Four steps. That's it. We keep the process as straightforward as the people we serve.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {steps.map((step, index) => (
+        <div class="relative">
+          {index < steps.length - 1 && (
+            <div class="hidden lg:block absolute top-8 left-full w-full h-px bg-warm-200 -translate-x-4"></div>
+          )}
+          <div class="text-5xl font-extrabold text-accent/20 mb-4">{step.number}</div>
+          <h3 class="text-lg font-semibold text-dark mb-2">{step.title}</h3>
+          <p class="text-warm-500 text-sm leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

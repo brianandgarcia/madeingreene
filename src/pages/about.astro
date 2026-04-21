@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
+
+const values = [
+  {
+    title: "Built to Last",
+    description: "We don't do quick fixes or band-aids. Every site is built with solid technology that won't need replacing in two years. Same way you'd build a barn — do it right or don't do it.",
+  },
+  {
+    title: "Keep It Simple",
+    description: "Your website shouldn't be complicated to run. We pick tools that make sense for a five-person shop, not a Fortune 500. If you can post on Facebook, you can update your website.",
+  },
+  {
+    title: "Straight Talk, Fair Price",
+    description: "We tell you what it costs before we start. No hidden fees, no change orders, no surprises on the invoice. What we quote is what you pay.",
+  },
+  {
+    title: "Right Down the Road",
+    description: "We're not a faceless agency in Nashville or Atlanta. We live here. We shop at the same stores, eat at the same places. When you need us, we're a phone call away — not a support ticket.",
+  },
+];
+---
+
+<Layout title="About" description="MadeinGreene is a web development and branding shop in Greene County, TN. We build fast, affordable websites for the businesses that make this community run.">
+  <section class="py-20 md:py-28 bg-warm-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">About Us</span>
+        <h1 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-6">
+          We're from here. We build for here.
+        </h1>
+        <p class="text-lg text-warm-500 leading-relaxed mb-6">
+          MadeinGreene started because we were tired of watching good local businesses get sold bad websites.
+          Overpriced WordPress sites that run slow, break constantly, and cost a fortune to maintain.
+          A farmer shouldn't need a $300/month website any more than they need a gold-plated tractor.
+        </p>
+        <p class="text-lg text-warm-500 leading-relaxed">
+          Greene County runs on hardworking people — the feed stores, the family farms, the contractors,
+          the restaurants, the folks who get up early and do the work. Those businesses deserve a website
+          that's as dependable as they are. That's what we build.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">How We Work</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+          What we stand on.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {values.map((value) => (
+          <div class="p-8 rounded-2xl bg-white border border-warm-200">
+            <h3 class="text-xl font-semibold text-dark mb-3">{value.title}</h3>
+            <p class="text-warm-500 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-warm-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">The Tools We Use</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+          Modern tools. Old-fashioned work ethic.
+        </h2>
+        <p class="text-warm-500 max-w-2xl mx-auto">
+          We don't use WordPress. Here's what we use instead — and why you'll be glad we do.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 border border-warm-200">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-dark mb-2">Lightning-Fast Framework</h3>
+          <p class="text-warm-500 text-sm leading-relaxed">
+            We use technology that sends only what your visitor needs — no extra junk slowing things down. Your site loads before they can blink.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 border border-warm-200">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-dark mb-2">Simple Content Editor</h3>
+          <p class="text-warm-500 text-sm leading-relaxed">
+            A clean dashboard where you can change text, swap photos, and update your hours. If you can use email, you can use this. No code, no headaches.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 border border-warm-200">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-dark mb-2">Rock-Solid Hosting</h3>
+          <p class="text-warm-500 text-sm leading-relaxed">
+            Your site gets served from the closest server to each visitor. Fast everywhere, secure by default, and 99.99% uptime. It just stays up.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</Layout>

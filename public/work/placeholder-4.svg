@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Project screenshot placeholder">
+  <rect width="800" height="600" fill="#f8f4ed"/>
+  <rect x="40" y="40" width="720" height="60" rx="10" fill="#e4dfd6"/>
+  <rect x="40" y="130" width="720" height="180" rx="12" fill="#4a7c0f" opacity="0.15"/>
+  <rect x="60" y="160" width="340" height="24" rx="4" fill="#1c1917"/>
+  <rect x="60" y="200" width="280" height="14" rx="4" fill="#544f47"/>
+  <rect x="60" y="252" width="160" height="40" rx="8" fill="#4a7c0f"/>
+  <rect x="40" y="340" width="230" height="220" rx="12" fill="#e4dfd6"/>
+  <rect x="285" y="340" width="230" height="220" rx="12" fill="#e4dfd6"/>
+  <rect x="530" y="340" width="230" height="220" rx="12" fill="#e4dfd6"/>
+  <text x="400" y="460" font-family="system-ui, sans-serif" font-size="16" fill="#756f65" text-anchor="middle">Services page placeholder</text>
+</svg>

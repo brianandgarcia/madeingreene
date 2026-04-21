@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
+import { projects } from "../data/projects";
+---
+
+<Layout
+  title="Our Work"
+  description="A look at some of the websites we've built for small businesses in Greene County, Tennessee."
+>
+  <section class="py-20 md:py-28 bg-warm-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Work</span>
+        <h1 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-6">
+          Real businesses. Real websites.
+        </h1>
+        <p class="text-lg text-warm-500 leading-relaxed">
+          We don't design in a vacuum. Every site below was built for a neighbor — a farm, a shop, a trade.
+          Take a look at what we've put together.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-6 space-y-20 md:space-y-28">
+      {projects.map((project, index) => (
+        <article
+          class:list={[
+            "grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center",
+            index % 2 === 1 && "lg:[&>div:first-child]:order-2",
+          ]}
+        >
+          <div>
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider">
+              {project.category}
+            </span>
+            <h2 class="text-2xl md:text-4xl font-bold text-dark mt-3 mb-5">
+              {project.name}
+            </h2>
+            <p class="text-warm-500 leading-relaxed mb-6">
+              {project.description}
+            </p>
+            <ul class="space-y-3">
+              {project.highlights.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-sm text-warm-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class:list={[
+            "grid gap-4",
+            project.images.length > 1 ? "grid-cols-2" : "grid-cols-1",
+          ]}>
+            {project.images.map((image) => (
+              <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-warm-200 border border-warm-200">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-16 bg-warm-100 border-y border-warm-200">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-warm-500 leading-relaxed">
+        Want to see something specific, or have a project in mind? We're happy to walk you
+        through more examples and talk through what'd work for your business.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center mt-6 text-primary font-semibold hover:text-primary-dark transition-colors"
+      >
+        Start a conversation
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <CTA />
+</Layout>
