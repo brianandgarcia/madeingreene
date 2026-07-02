@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Thank You"
+  description="Thanks for reaching out to Made in Greene. We'll get back to you within 1 business day."
+>
+  <section class="relative bg-dark overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_40%,rgba(70,137,32,0.22)_0%,transparent_72%)]"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-6 pt-40 md:pt-48 pb-24 md:pb-32 text-center">
+      <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary-light mb-6">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight mb-5">
+        Thanks — we got it.
+      </h1>
+      <p class="text-lg text-white/80 leading-relaxed mb-10">
+        We'll read through your note and send a no-pressure quote within 1 business day.
+        In the meantime, feel free to look around.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-semibold rounded-xl hover:bg-accent-dark transition-all"
+        >
+          Back to home
+        </a>
+        <a
+          href="/services"
+          class="inline-flex items-center justify-center px-8 py-4 border border-white/40 bg-white/5 backdrop-blur-sm text-white font-semibold rounded-xl hover:border-white hover:bg-white/10 transition-all"
+        >
+          View website packages
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
