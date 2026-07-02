@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  /* Field green — like crops in summer */
-  --color-primary: #4a7c0f;
-  --color-primary-light: #65a30d;
-  --color-primary-dark: #365314;
+  /* Brand greens — Greene Leaf primary, County Green light, Deep Pine dark */
+  --color-primary: #468920;       /* Greene Leaf */
+  --color-primary-light: #8eaf3e; /* County Green */
+  --color-primary-dark: #174932;  /* Deep Pine */
 
-  /* Rich soil */
-  --color-dark: #1c1917;
-  --color-dark-light: #292524;
+  /* Ink Black */
+  --color-dark: #0c0c0c;
+  --color-dark-light: #1a1a1a;
 
-  /* Harvest amber & golden wheat */
-  --color-accent: #b45309;
-  --color-accent-light: #d97706;
+  /* Heritage Gold */
+  --color-accent: #e6af2e;
+  --color-accent-light: #f0c457;
+  --color-accent-dark: #d79c1e;
 
-  /* Warm earth neutrals */
+  /* Warm earth neutrals (UI / borders / muted text) */
   --color-warm-50: #faf8f5;
   --color-warm-100: #f3efe8;
   --color-warm-200: #e4dfd6;
@@ -26,26 +27,29 @@
   --color-warm-800: #292524;
   --color-warm-900: #1c1917;
 
-  /* Unbleached cotton / natural paper */
-  --color-cream: #f8f4ed;
+  /* Warm Field — page background */
+  --color-cream: #f7f6f1;
 
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Roboto Slab", "Rockwell", Georgia, serif;
+  --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-accent: "Cormorant Garamond", Georgia, serif;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: 100%; /* 16px base */
 }
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-warm-800);
+  color: #141210; /* a step darker than warm-900, still warm */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
+  font-optical-sizing: auto;
   letter-spacing: -0.015em;
 }
 

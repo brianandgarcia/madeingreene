@@ -1,0 +1,126 @@
+---
+const plans = [
+  {
+    name: "Local Landing Page",
+    price: "$1,250",
+    description: "One page for brand-new businesses, solo operators, pop-ups, tiny farms, and side businesses.",
+    features: ["One-page custom design", "Fast delivery", "Contact form or click-to-call", "Basic SEO setup"],
+    highlight: false,
+    cta: "Get a free quote",
+  },
+  {
+    name: "Business Website",
+    price: "$3,000",
+    description: "A clean, professional presence for small local businesses that need to look established.",
+    features: ["Up to 5 pages", "Custom design (not a template)", "We write your copy", "In-person training + photo session"],
+    highlight: false,
+    cta: "Get a free quote",
+  },
+  {
+    name: "Growth Website",
+    price: "$4,500",
+    description: "For growing businesses that want more content, lead-gen tools, and a stronger presence.",
+    features: ["Up to 10 pages", "Blog / News / Projects setup", "Enhanced SEO + lead-gen layouts", "Extended photo session + 20 images"],
+    highlight: true,
+    cta: "Get a free quote",
+  },
+  {
+    name: "Ecommerce Website",
+    price: "$5,500+",
+    description: "Sell online — for shops, farms, makers, and service businesses ready to take orders.",
+    features: ["Everything in Business", "Shopify store (up to 10 products)", "Payment, shipping & tax setup", "Store training"],
+    highlight: false,
+    cta: "Let's talk",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-cream relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-32 -left-32 w-[36rem] h-[36rem] bg-primary-light/15 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -right-32 w-[36rem] h-[36rem] bg-accent/15 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14" data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Pricing</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-warm-900 mt-3 mb-4">
+        Clear prices. No surprises.
+      </h2>
+      <p class="text-warm-600 max-w-2xl mx-auto">
+        One-time build fee. No monthly fee required. Every package shows exactly what you pay for — and what you don't.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      {plans.map((plan, i) => (
+        <div
+          class:list={[
+            "rounded-2xl p-6 flex flex-col relative transition-transform",
+            plan.highlight
+              ? "bg-primary shadow-2xl shadow-primary/25 lg:-translate-y-3"
+              : "bg-white border border-warm-200 shadow-sm",
+          ]}
+          data-reveal
+          style={`--reveal-delay: ${i * 100}ms`}
+        >
+          {plan.highlight && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-warm-900 text-xs font-bold rounded-full shadow-md">
+              Most Popular
+            </div>
+          )}
+
+          <div class="mb-6">
+            <h3 class:list={["text-lg font-bold mb-1", plan.highlight ? "text-white" : "text-warm-900"]}>
+              {plan.name}
+            </h3>
+            <div class="flex items-baseline gap-1.5 mb-3">
+              <span class:list={["text-4xl font-extrabold", plan.highlight ? "text-white" : "text-warm-900"]}>
+                {plan.price}
+              </span>
+              <span class:list={["text-sm", plan.highlight ? "text-white/70" : "text-warm-500"]}>
+                one-time
+              </span>
+            </div>
+            <p class:list={["text-sm leading-relaxed", plan.highlight ? "text-white/80" : "text-warm-600"]}>
+              {plan.description}
+            </p>
+          </div>
+
+          <ul class="space-y-2.5 mb-8 flex-1">
+            {plan.features.map((f) => (
+              <li class="flex items-center gap-2.5 text-sm">
+                <svg
+                  class:list={["w-4 h-4 shrink-0", plan.highlight ? "text-accent-light" : "text-primary"]}
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class:list={[plan.highlight ? "text-white/90" : "text-warm-700"]}>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="/contact"
+            class:list={[
+              "block text-center px-6 py-3 rounded-xl font-semibold text-sm transition-all",
+              plan.highlight
+                ? "bg-white text-primary hover:bg-warm-100"
+                : "bg-warm-900 text-white hover:bg-primary",
+            ]}
+          >
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-sm text-warm-600">
+      No monthly fee required. Optional care plans from $99/mo.{" "}
+      <a href="/services" class="text-primary font-semibold hover:text-primary-dark transition-colors">
+        See full pricing & what's included →
+      </a>
+    </p>
+  </div>
+</section>

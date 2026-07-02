@@ -1,109 +1,89 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
 import CTA from "../components/CTA.astro";
 
 const comparisonRows = [
   {
-    category: "Headline price",
-    godaddy: "From $10.99/mo (intro rate)",
-    us: "$1,500 one-time (Starter)",
-    winner: "us",
+    category: "Pricing model",
+    godaddy: "Lower upfront cost with ongoing subscription pricing and add-ons",
+    us: "One-time build with optional care plan",
   },
   {
-    category: "Renewal after first term",
-    godaddy: "Jumps to ~$20+/mo after promo year",
-    us: "Nothing. It's already paid.",
-    winner: "us",
+    category: "How it gets built",
+    godaddy: "DIY website builder with templates",
+    us: "Custom site built for your business",
   },
   {
-    category: "Domain name",
-    godaddy: "$12 first year, ~$22/yr after",
-    us: "You buy it yourself — we never hold it",
-    winner: "us",
+    category: "Ownership",
+    godaddy: "Your domain can be yours, but the builder experience stays tied to the platform",
+    us: "You own your domain and site files",
   },
   {
-    category: "Email at your domain",
-    godaddy: "$5.99+/user/mo extra",
-    us: "One-time $150 setup, then free with most domain registrars",
-    winner: "us",
+    category: "Editing after launch",
+    godaddy: "You handle edits inside the builder",
+    us: "Edit it yourself or have us help",
   },
   {
-    category: "SSL certificate (the little padlock)",
-    godaddy: "Free on some plans, $60–100/yr on others",
-    us: "Free. Always. Built in.",
-    winner: "us",
-  },
-  {
-    category: "\"Website security\" upsell",
-    godaddy: "$6–20/mo add-on",
-    us: "Included with care plan",
-    winner: "us",
-  },
-  {
-    category: "Design",
-    godaddy: "Template you drag-and-drop",
-    us: "Custom-built for your business",
-    winner: "us",
-  },
-  {
-    category: "Load time",
-    godaddy: "2–5 seconds typical",
-    us: "< 1 second",
-    winner: "us",
-  },
-  {
-    category: "Who owns your site?",
-    godaddy: "You rent it. Stop paying → it disappears.",
-    us: "You own every file. Take it anywhere.",
-    winner: "us",
+    category: "Local search setup",
+    godaddy: "DIY tools and paid add-ons",
+    us: "Done-for-you setup as part of the build",
   },
   {
     category: "Support",
-    godaddy: "1-800 number, overseas call center",
-    us: "A neighbor. A phone number. A real person.",
-    winner: "us",
+    godaddy: "Large support organization",
+    us: "Direct local support",
+  },
+  {
+    category: "Best fit",
+    godaddy: "Good for fast DIY launches",
+    us: "Good for businesses that want it built for them",
+  },
+  {
+    category: "Design flexibility",
+    godaddy: "Template-based",
+    us: "Built around your brand and goals",
   },
 ];
 
-const fiveYearGoDaddy = [
-  { label: "Website builder — year 1 (promo rate)", amount: 132 },
-  { label: "Website builder — years 2–5 ($20/mo)", amount: 960 },
-  { label: "Domain renewal ($22/yr × 5)", amount: 110 },
-  { label: "Business email ($6/mo × 1 user × 60 mo)", amount: 360 },
-  { label: "Website security upsell ($10/mo × 60)", amount: 600 },
-  { label: "Advanced SEO tool ($10/mo × 60)", amount: 600 },
+const comparisonPaths = [
+  {
+    label: "Option A",
+    title: "DIY builder route",
+    intro:
+      "Best when you need something online quickly and you are comfortable building it, editing it, and managing the tradeoffs yourself.",
+    bullets: [
+      "Lower entry cost",
+      "Template-based design",
+      "You do most of the setup and ongoing changes",
+      "Good for simple DIY launches",
+    ],
+  },
+  {
+    label: "Option B",
+    title: "Done-for-you local route",
+    intro:
+      "Best when you want a site that feels professional, fits your business, and comes with a local person to talk to if you need help.",
+    bullets: [
+      "Custom build around your business",
+      "Clear upfront pricing",
+      "Local search setup handled with you",
+      "Direct support after launch if you want it",
+    ],
+  },
 ];
-const goDaddyTotal = fiveYearGoDaddy.reduce((sum, r) => sum + r.amount, 0);
-
-const fiveYearUs = [
-  { label: "Starter website (one-time)", amount: 1500 },
-  { label: "Domain (~$15/yr × 5, paid direct to registrar)", amount: 75 },
-  { label: "Hosting — free tier", amount: 0 },
-  { label: "Essential care plan ($75/mo × 60, optional)", amount: 4500 },
-];
-const usTotal = fiveYearUs.reduce((sum, r) => sum + r.amount, 0);
-const usNoCare = fiveYearUs.filter(r => !r.label.includes("care plan")).reduce((sum, r) => sum + r.amount, 0);
 ---
 
 <Layout
   title="Why Not GoDaddy"
   description="A plain-English comparison of GoDaddy's website builder vs a custom site from MadeinGreene. Real numbers, no marketing spin."
 >
-  <section class="py-20 md:py-28 bg-warm-100">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">The Comparison</span>
-        <h1 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-6">
-          Why not just use GoDaddy?
-        </h1>
-        <p class="text-lg text-warm-500 leading-relaxed max-w-2xl mx-auto">
-          It's a fair question. They're everywhere. Their ads are loud. And that
-          <span class="font-semibold text-dark">"$10.99/month"</span> looks great
-          until the second invoice shows up.
-        </p>
-      </div>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="The Comparison"
+    title="Why not just use GoDaddy?"
+    subtitle="It's a fair question. Entry-level DIY builder pricing can sound great until renewals, add-ons, and limitations show up. That does not make it bad — it just makes it a different choice."
+    image="/03-trust-signal.png"
+  />
 
   <section class="py-16 bg-cream border-y border-warm-200">
     <div class="max-w-3xl mx-auto px-6">
@@ -111,15 +91,14 @@ const usNoCare = fiveYearUs.filter(r => !r.label.includes("care plan")).reduce((
         What they sell you. What they don't.
       </h2>
       <p class="text-warm-600 leading-relaxed mb-4">
-        GoDaddy's business model is subscriptions. The $10.99/month you see on their homepage
-        is a promotional rate for the first year. After that, it renews higher — sometimes
-        double. Then come the add-ons: email accounts, SSL certificates, "premium security,"
-        SEO tools, marketing bundles. Each one reasonable. Added up, they're not.
+        GoDaddy's website builder is a subscription product. For some businesses, that is a fine
+        fit. You trade a lower upfront cost for a more DIY setup, a platform-based workflow, and a
+        stack of add-ons or upgrades if your needs grow.
       </p>
       <p class="text-warm-600 leading-relaxed">
-        None of this is illegal. A lot of it is even useful. But small businesses deserve to
-        see the whole bill before they sign — not find out about it line by line on next year's
-        credit card statement.
+        Hiring a local shop like us is a different model. You are paying for a site to be planned,
+        written, designed, and built around your business instead of assembled by you inside a
+        template builder.
       </p>
     </div>
   </section>
@@ -158,8 +137,8 @@ const usNoCare = fiveYearUs.filter(r => !r.label.includes("care plan")).reduce((
       </div>
 
       <p class="text-xs text-warm-400 mt-4 text-center max-w-2xl mx-auto">
-        Prices reflect GoDaddy's public rates at time of writing. They adjust pricing frequently —
-        we encourage you to check current rates yourself. That's kind of the point.
+        Platform features and pricing change often, so it is worth checking current details
+        directly before you compare.
       </p>
     </div>
   </section>
@@ -167,81 +146,60 @@ const usNoCare = fiveYearUs.filter(r => !r.label.includes("care plan")).reduce((
   <section class="py-20 md:py-28 bg-cream">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-12">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">5-Year Total Cost</span>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Two Paths Online</span>
         <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
-          Let's do the math.
+          What you're really choosing between.
         </h2>
         <p class="text-warm-500 max-w-2xl mx-auto">
-          Typical small business website over 5 years — with the add-ons most companies end up
-          needing. Rounded conservatively in GoDaddy's favor.
+          This is less about one company being good or bad, and more about which setup fits how you
+          want to work.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl border-2 border-warm-300 overflow-hidden">
-          <div class="bg-warm-200 px-6 py-4">
-            <div class="text-xs uppercase tracking-widest text-warm-600 mb-1">Option A</div>
-            <h3 class="text-xl font-bold text-dark">GoDaddy Website Builder</h3>
-          </div>
-          <div class="px-6 py-5">
-            <dl class="space-y-3">
-              {fiveYearGoDaddy.map((row) => (
-                <div class="flex justify-between text-sm border-b border-warm-100 pb-2">
-                  <dt class="text-warm-600">{row.label}</dt>
-                  <dd class="font-semibold text-dark tabular-nums">${row.amount.toLocaleString()}</dd>
-                </div>
-              ))}
-            </dl>
-            <div class="mt-6 pt-4 border-t-2 border-dark">
-              <div class="flex justify-between items-baseline">
-                <span class="text-sm font-bold text-dark uppercase tracking-wider">5-year total</span>
-                <span class="text-3xl font-extrabold text-dark tabular-nums">${goDaddyTotal.toLocaleString()}</span>
+        {comparisonPaths.map((path, index) => (
+          <div
+            class:list={[
+              "bg-white rounded-2xl overflow-hidden",
+              index === 0
+                ? "border-2 border-warm-300"
+                : "border-2 border-primary shadow-xl shadow-primary/10",
+            ]}
+          >
+            <div class:list={[
+              "px-6 py-4",
+              index === 0 ? "bg-warm-200" : "bg-primary",
+            ]}>
+              <div class:list={[
+                "text-xs uppercase tracking-widest mb-1",
+                index === 0 ? "text-warm-600" : "text-white/80",
+              ]}>
+                {path.label}
               </div>
-              <p class="text-xs text-warm-500 mt-2">
-                And at the end? You've got a template site on rented land. Stop paying, it's gone.
+              <h3 class:list={[
+                "text-xl font-bold",
+                index === 0 ? "text-dark" : "text-white",
+              ]}>
+                {path.title}
+              </h3>
+            </div>
+            <div class="px-6 py-5">
+              <p class="text-warm-600 leading-relaxed mb-5">
+                {path.intro}
               </p>
+              <ul class="space-y-3">
+                {path.bullets.map((bullet) => (
+                  <li class="flex items-start gap-3 text-sm text-warm-600">
+                    <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
-
-        <div class="bg-white rounded-2xl border-2 border-primary overflow-hidden shadow-xl shadow-primary/10">
-          <div class="bg-primary px-6 py-4">
-            <div class="text-xs uppercase tracking-widest text-white/80 mb-1">Option B</div>
-            <h3 class="text-xl font-bold text-white">MadeinGreene Starter + Care</h3>
-          </div>
-          <div class="px-6 py-5">
-            <dl class="space-y-3">
-              {fiveYearUs.map((row) => (
-                <div class="flex justify-between text-sm border-b border-warm-100 pb-2">
-                  <dt class="text-warm-600">{row.label}</dt>
-                  <dd class="font-semibold text-dark tabular-nums">${row.amount.toLocaleString()}</dd>
-                </div>
-              ))}
-            </dl>
-            <div class="mt-6 pt-4 border-t-2 border-primary">
-              <div class="flex justify-between items-baseline mb-1">
-                <span class="text-sm font-bold text-dark uppercase tracking-wider">5-year total</span>
-                <span class="text-3xl font-extrabold text-primary tabular-nums">${usTotal.toLocaleString()}</span>
-              </div>
-              <p class="text-xs text-warm-500 mb-3">
-                Without the optional care plan: <span class="font-semibold text-dark">${usNoCare.toLocaleString()}</span>
-              </p>
-              <p class="text-xs text-warm-600 mt-2 font-medium">
-                And you own it. Take it anywhere. We don't hold a thing hostage.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-10 p-6 bg-primary/5 border border-primary/20 rounded-2xl text-center">
-        <p class="text-dark">
-          <span class="font-bold">The gap:</span> roughly
-          <span class="text-primary font-bold text-xl">${(goDaddyTotal - usTotal).toLocaleString()}</span>
-          over 5 years with the care plan —
-          <span class="text-primary font-bold text-xl">${(goDaddyTotal - usNoCare).toLocaleString()}</span>
-          without. That's real money to put back into the business.
-        </p>
+        ))}
       </div>
     </div>
   </section>

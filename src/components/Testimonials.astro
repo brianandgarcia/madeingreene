@@ -1,0 +1,48 @@
+---
+const testimonials = [
+  {
+    quote: "Brian at Made in Greene elevated our brand with a new logo and website. Not only did he go above and beyond but he provided numerous tips and strategies to help the farm's digital presense. I can tell that he really cares about his clients and isn't just out their for pure profits.",
+    name: "Tammy M.",
+    business: "The Funny Farm, Chuckey TN",
+    initials: "TM",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-primary-dark">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12" data-reveal>
+      <span class="text-primary-light font-semibold text-sm uppercase tracking-wider">What Clients Say</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+        From Greene County business owners.
+      </h2>
+      <p class="text-white/70 max-w-xl mx-auto">
+        Real feedback from local businesses we've worked with.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 max-w-3xl mx-auto">
+      {testimonials.map((t, i) => (
+        <div
+          class="bg-white rounded-2xl p-8 border border-warm-200 flex flex-col"
+          data-reveal
+          style={`--reveal-delay: ${i * 100}ms`}
+        >
+          <svg class="w-8 h-8 text-primary/25 mb-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          </svg>
+          <p class="text-warm-700 leading-relaxed text-sm mb-6 flex-1">"{t.quote}"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm shrink-0">
+              {t.initials}
+            </div>
+            <div>
+              <div class="font-semibold text-dark text-sm">{t.name}</div>
+              <div class="text-warm-500 text-xs">{t.business}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

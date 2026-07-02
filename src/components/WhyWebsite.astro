@@ -2,91 +2,81 @@
 const reasons = [
   {
     number: "01",
-    stat: "First stop",
-    title: "Customers check you out before they call.",
+    title: "Word of mouth still ends in a Google search.",
     description:
-      "They're searching your name, looking for reviews, checking your hours. A clean, fast site turns that check into a phone call. A slow one — or none at all — sends them to your competitor.",
-    image: "/placeholders/phone-search.svg",
-    alt: "A customer searching for a business on their phone",
+      "Even the best referral gets looked up. When someone hears your name, the first thing they do is search — and if nothing comes up, or just an old Facebook page, that warm lead cools off fast. A website turns referrals into booked work.",
+    image: "/01-quick-check.png",
   },
   {
     number: "02",
-    stat: "Only goes so far",
-    title: "A Facebook page only gets you so far.",
+    title: "A Facebook page isn't enough.",
     description:
-      "Social is great at what it does, but it doesn't show up consistently in Google searches, and you don't own it. A website does show up, and you control every word on it — permanently.",
-    image: "/placeholders/facebook-vs-website.svg",
-    alt: "A rented social media page next to an owned website",
+      "Facebook is great for staying in touch, but you don't own it, the algorithm decides who sees you, and plenty of customers aren't on it. Your website is the one place you control — services, hours, and contact info, always in one spot.",
+    image: "/02-home-base.png",
   },
   {
     number: "03",
-    stat: "Level field",
-    title: "Compete with anyone — without the agency budget.",
+    title: "A real website makes you look ready.",
     description:
-      "A clean, fast website makes a two-person shop look as professional as a national chain. You don't need a marketing team. You need a site doing the work while you do yours.",
-    image: "/placeholders/small-vs-big.svg",
-    alt: "A small shop holding its own next to a big chain",
+      "You don't need a big marketing budget to look established. A clean, fast site signals you're a real, trustworthy business — often the deciding factor when someone's choosing between you and a competitor with no presence.",
+    image: "/03-trust-signal.png",
   },
 ];
 ---
 
-<section class="py-20 md:py-28 bg-warm-100">
+<section class="py-20 md:py-28 bg-warm-100 overflow-hidden">
+
   <div class="max-w-6xl mx-auto px-6">
-    <div class="max-w-3xl mb-16 md:mb-24" data-reveal>
-      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Why It Matters</span>
-      <h2 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-4">
-        What a good website actually does for you.
+    <div class="max-w-3xl mb-14 md:mb-16" data-reveal>
+      <h2 class="text-3xl md:text-5xl font-bold text-dark">
+        A website creates instant credibility for your business, letting customers know you're serious.
       </h2>
-      <p class="text-warm-500 text-lg leading-relaxed">
-        More calls. Better first impressions. Customers who find you before they find the next guy.
-        Here's what changes when you've got a site built right.
-      </p>
     </div>
 
-    <div class="space-y-20 md:space-y-28">
-      {reasons.map((reason, i) => {
-        const imageFirst = i % 2 === 0;
-        return (
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
-            <div
-              class:list={[
-                "md:col-span-6 aspect-[4/3] rounded-2xl overflow-hidden bg-warm-200",
-                imageFirst ? "md:order-1" : "md:order-2",
-              ]}
-              data-reveal={imageFirst ? "left" : "right"}
-            >
-              <img
-                src={reason.image}
-                alt={reason.alt}
-                loading="lazy"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              class:list={[
-                "md:col-span-6",
-                imageFirst ? "md:order-2" : "md:order-1",
-              ]}
-              data-reveal={imageFirst ? "right" : "left"}
-            >
-              <div class="flex items-baseline gap-4 mb-4">
-                <span class="text-5xl md:text-6xl font-extrabold text-primary leading-none">
-                  {reason.number}
-                </span>
-                <span class="text-xs uppercase tracking-[0.2em] text-warm-500 font-bold">
-                  {reason.stat}
-                </span>
-              </div>
-              <h3 class="text-2xl md:text-4xl font-bold text-dark mb-4 leading-tight">
-                {reason.title}
-              </h3>
-              <p class="text-warm-600 leading-relaxed text-base md:text-lg">
-                {reason.description}
-              </p>
-            </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 border-y border-warm-300">
+      {reasons.map((reason, i) => (
+        <div
+          class:list={[
+            "relative py-9 md:py-10",
+            i > 0 && "border-t md:border-t-0 md:border-l border-warm-300",
+            i === 0 ? "md:pr-8" : "md:px-8",
+          ]}
+          data-reveal
+          style={`--reveal-delay: ${i * 100}ms`}
+        >
+          <img
+            src={reason.image}
+            alt=""
+            class="w-full aspect-[4/3] object-cover rounded-2xl mb-6"
+            loading="lazy"
+          />
+          <div class="mb-8">
+            <span class="text-5xl md:text-6xl font-extrabold text-primary leading-none">
+              {reason.number}
+            </span>
           </div>
-        );
-      })}
+          <h3 class="text-2xl md:text-3xl font-bold text-dark mb-4 leading-tight">
+            {reason.title}
+          </h3>
+          <p class="text-warm-600 leading-relaxed text-base">
+            {reason.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-14 md:mt-16" data-reveal>
+      <a
+        href="/services"
+        class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+      >
+        View Website Packages
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
     </div>
   </div>
+
 </section>
+

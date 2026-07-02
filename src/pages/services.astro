@@ -1,114 +1,161 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import PricingCalculator from "../components/PricingCalculator.astro";
 import CTA from "../components/CTA.astro";
 
 const packages = [
   {
-    name: "Starter",
-    oneTime: "$1,500",
-    monthly: "$0 required",
-    careRange: "Optional care plan: $75–150/mo",
+    name: "Local Landing Page",
+    oneTime: "$1,250",
+    pages: "1 page",
     description:
-      "Just getting started or need a simple, solid presence online. Perfect for a farm stand, trade business, or new shop.",
-    specs: [
-      { label: "Pages", value: "1–3" },
-      { label: "Load time", value: "< 1s" },
-      { label: "Mobile-ready", value: "Yes" },
-      { label: "Hosting", value: "Included*" },
-      { label: "Uptime target", value: "99.99%" },
-      { label: "Revisions", value: "1 round" },
-    ],
+      "For brand-new businesses, solo operators, pop-ups, tiny farms, and side businesses. Grows into a full Business Website as you scale.",
     included: [
-      "Custom-designed site (not a template)",
-      "Contact form so customers can reach you",
-      "Google Maps embed",
-      "Basic Google search setup",
-      "Simple content editor you control",
-      "Handoff walkthrough (30 min)",
-    ],
-    notIncluded: [
-      { label: "Domain name", note: "~$12–20/yr, paid to registrar — not us" },
-      { label: "Stock photos", note: "Free options provided. Premium ~$10–100 each if you want them" },
-      { label: "Logo design", note: "$500–1,000 add-on (see below)" },
-      { label: "Extra training sessions", note: "$150/hr (see add-ons)" },
+      "One-page custom landing page — fast delivery",
+      "Mobile-friendly design + basic copy",
+      "Contact form or click-to-call button",
+      "Business info + services/products sections",
+      "Social media + Google Maps links",
+      "Basic SEO setup + 30-minute handoff call",
     ],
     highlight: false,
     cta: "Get Started",
   },
   {
-    name: "Growth",
-    oneTime: "$3,500",
-    monthly: "$0 required",
-    careRange: "Optional care plan: $75–150/mo",
+    name: "Business Website",
+    oneTime: "$3,000",
+    pages: "Up to 5 pages",
     description:
-      "Ready to get serious about bringing in customers. A full site with everything you need to grow.",
-    specs: [
-      { label: "Pages", value: "5–10" },
-      { label: "Load time", value: "< 1s" },
-      { label: "Mobile-ready", value: "Yes" },
-      { label: "Hosting", value: "Included*" },
-      { label: "Uptime target", value: "99.99%" },
-      { label: "Revisions", value: "2 rounds" },
-    ],
+      "Best for small local businesses that need a clean, professional online presence.",
     included: [
-      "Custom-designed site (5–10 pages)",
-      "Blog or news section",
-      "Full Google search optimization",
-      "Analytics — see who's visiting",
-      "Social media links",
-      "Content editor + 1-hour training session",
+      "Custom design + development for your business",
+      "We write your copy for up to 5 pages",
+      "Home, About, Services, Contact + form, +1 more",
+      "In-person meetings + 1-hour training session",
+      "Accessibility-friendly build + basic SEO",
+      "1 local photo/video session, up to 60 min",
     ],
-    notIncluded: [
-      { label: "Domain name", note: "~$12–20/yr, paid to registrar — not us" },
-      { label: "Stock photos beyond free tier", note: "~$10–100 each if you want premium" },
-      { label: "Logo design", note: "$500–1,000 add-on (see below)" },
-      { label: "Online store / booking", note: "Upgrade to Premium" },
+    highlight: false,
+    cta: "Get Started",
+  },
+  {
+    name: "Growth Website",
+    oneTime: "$4,500",
+    pages: "Up to 10 pages",
+    description:
+      "Best for growing businesses that want a stronger presence, more content, and tools to attract and convert customers.",
+    included: [
+      "Everything in the Business Website, plus:",
+      "Copy + design for up to 10 pages",
+      "Blog / News / Projects section setup",
+      "Enhanced SEO + content structure guidance",
+      "Lead-gen layouts, CTAs, and inquiry forms",
+      "Extended photo/video session (up to 2 hrs) + 20 edited images",
+      "Priority project scheduling",
     ],
     highlight: true,
     cta: "Most Popular",
   },
   {
-    name: "Premium",
-    oneTime: "$5,000+",
-    monthly: "$0 required",
-    careRange: "Optional care plan: $75–150/mo",
+    name: "Ecommerce Website",
+    oneTime: "$5,500+",
+    pages: "Business + store",
     description:
-      "The whole package. Online store, booking system, or custom features — whatever your business needs to run.",
-    specs: [
-      { label: "Pages", value: "10+" },
-      { label: "Load time", value: "< 1s" },
-      { label: "Mobile-ready", value: "Yes" },
-      { label: "Hosting", value: "Included*" },
-      { label: "Uptime target", value: "99.99%" },
-      { label: "Revisions", value: "Unlimited" },
-    ],
+      "Best for shops, farms, makers, and service businesses ready to sell online.",
     included: [
-      "Custom design, 10+ pages",
-      "Online store or booking system",
-      "Logo & brand identity",
-      "Priority search optimization",
-      "Performance monitoring",
-      "Full training + written how-to guide",
-    ],
-    notIncluded: [
-      { label: "Domain name", note: "~$12–20/yr, paid to registrar — not us" },
-      { label: "Payment processing fees", note: "If you sell online, Stripe/Square charge ~2.9% + 30¢" },
-      { label: "Stock photos beyond free tier", note: "~$10–100 each if you want premium" },
-      { label: "Professional photography", note: "Quoted separately" },
+      "Everything in the Business Website package",
+      "Shopify setup with up to 10 products",
+      "Product and category setup",
+      "Payment, shipping & tax configuration guidance",
+      "Store training to manage orders confidently",
     ],
     highlight: false,
     cta: "Let's Talk",
   },
 ];
 
-const addons = [
-  { name: "Logo & Brand Identity", price: "$500–1,000" },
-  { name: "Google Business Profile Setup", price: "$200" },
-  { name: "Social Media Starter Kit", price: "$300" },
-  { name: "Professional Photography", price: "Quote" },
-  { name: "Email Setup (Your Own Domain)", price: "$150" },
-  { name: "Extra Training Session (1 hr)", price: "$150" },
-  { name: "Monthly Care Plan", price: "$75–150/mo" },
+const sharedNotIncluded = [
+  { label: "Domain name", note: "~$12–20/yr, paid to your registrar so it stays in your name." },
+  { label: "Hosting & platform subscriptions", note: "Covered for most brochure sites; paid plans are shown up front." },
+  { label: "Logo & brand design", note: "Brand Starter Package from $750 as an add-on if you need one." },
+  { label: "Premium photography", note: "Free stock provided; website photo sessions from $299." },
+  { label: "Additional pages", note: "$200 per page beyond what your package includes." },
+  { label: "Online selling fees", note: "Shopify plan + processing (~2.9% + 30¢), billed by the provider." },
+];
+
+const addonGroups = [
+  {
+    title: "Website Add-Ons",
+    items: [
+      { name: "Additional pages (per page)", price: "$200" },
+      { name: "Blog / News / Projects setup", note: "+ up to 2 initial posts", price: "$500" },
+      { name: "Online Store / Shopify", note: "up to 10 products", price: "$1,500" },
+    ],
+  },
+  {
+    title: "Design & Brand",
+    items: [
+      { name: "Brand Starter Package", note: "logo, alternate, palette, font pairing, files", price: "from $750" },
+      { name: "Website Photography Session", note: "local mini brand / photo session", price: "from $299" },
+    ],
+  },
+  {
+    title: "Marketing & Visibility",
+    items: [
+      { name: "Digital Presence Setup", note: "Google Business Profile, domain + email guidance", price: "$199" },
+      { name: "Social Media Starter Kit", price: "$199" },
+      { name: "Email / SMS Capture Setup", price: "$350" },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: "Do I need to have all my content ready before I reach out?",
+    answer:
+      "No. If you know what your business does and what you want the site to help with, that is enough to start. We can help you organize the rest.",
+  },
+  {
+    question: "Is hosting included?",
+    answer:
+      "For most brochure-style small business sites, yes. If your site needs paid hosting or third-party software, we show that cost before work starts.",
+  },
+  {
+    question: "Is the domain name included?",
+    answer:
+      "No. We recommend you buy the domain directly so it stays in your name. We can help you choose it and get it connected.",
+  },
+  {
+    question: "Can I edit the site myself?",
+    answer:
+      "Yes. Every build includes a handoff session and editor access for routine updates like hours, photos, and text.",
+  },
+  {
+    question: "Do you write the page content?",
+    answer:
+      "Yes — we write all of it. You tell us what you do, who your customers are, and what makes you different. We turn that into clear, professional copy. You review it and we make it right. No blank pages, no guessing.",
+  },
+  {
+    question: "Can you take photos of my business?",
+    answer:
+      "Yes. Brian is a photographer and offers website photography sessions for Greene County clients from $299. Real photos of your space, your team, and your work connect with local customers far better than stock images.",
+  },
+  {
+    question: "Is this WordPress?",
+    answer:
+      "Not by default. We use a leaner setup designed to stay fast, easier to manage, and less dependent on plugins.",
+  },
+  {
+    question: "Are you actually based in Greene County?",
+    answer:
+      "Yes — we live and work here. We're not an agency in Columbus or a freelancer overseas. That means we know the area, we're reachable by phone, and we're not going anywhere.",
+  },
+  {
+    question: "Can we meet in person?",
+    answer:
+      "Absolutely. We're happy to meet at your business, a coffee shop in Greeneville, or wherever is easiest. A lot of our best projects start with a 30-minute conversation.",
+  },
 ];
 ---
 
@@ -116,181 +163,193 @@ const addons = [
   title="Services & Pricing"
   description="Honest pricing for custom websites built for small businesses in Greene County, TN. Every package shows exactly what you pay for — and what you don't."
 >
-  <section class="py-20 md:py-28 bg-warm-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-6">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Services & Pricing</span>
-        <h1 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-4">
-          Honest pricing. No fine print.
-        </h1>
-        <p class="text-warm-500 max-w-2xl mx-auto">
-          Every package comes with a plain-English breakdown of what you pay,
-          what's included, and what's not. Inspired by the FCC's broadband pricing labels —
-          because you deserve the same transparency when buying a website.
-        </p>
-      </div>
+  <PageHero
+    eyebrow="Services & Pricing"
+    title="Honest pricing. No fine print."
+    subtitle="Every package shows exactly what you pay, what's included, and what isn't. No hidden fees, no surprise renewals."
+    video="/hero.mp4"
+  />
 
-      <div class="text-center mb-16">
-        <a href="#why-labels" class="inline-flex items-center text-primary text-sm font-semibold hover:text-primary-dark transition-colors">
-          Why we show pricing this way
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+  <section class="pt-14 md:pt-16 pb-20 md:pb-28 bg-warm-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-14 text-sm border-y border-warm-200 py-5">
+        <div class="flex items-center gap-2 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
-        </a>
+          <span>Based in Greene County, TN</span>
+        </div>
+        <div class="flex items-center gap-2 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          <span>Real person picks up the phone</span>
+        </div>
+        <div class="flex items-center gap-2 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span>We meet in person — Greeneville, Mosheim, Tusculum & beyond</span>
+        </div>
+        <div class="flex items-center gap-2 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Quote back within 1 business day</span>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
         {packages.map((pkg) => (
           <div
             class:list={[
-              "bg-white rounded-xl overflow-hidden flex flex-col relative",
+              "bg-white rounded-2xl flex flex-col relative p-7",
               pkg.highlight
                 ? "ring-2 ring-primary shadow-xl shadow-primary/10"
-                : "border-2 border-dark",
+                : "border border-warm-200 shadow-sm",
             ]}
           >
             {pkg.highlight && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-white text-xs font-semibold rounded-full z-10">
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-warm-900 text-[10px] font-bold uppercase tracking-wider rounded-full shadow-md">
                 Most Popular
-              </div>
+              </span>
             )}
 
-            <div class="bg-dark text-white px-6 py-4 border-b-4 border-dark">
-              <div class="text-[10px] uppercase tracking-widest text-warm-400 mb-1">
-                Website Facts
-              </div>
-              <div class="text-2xl font-extrabold">{pkg.name} Plan</div>
-            </div>
+            <h3 class="text-lg font-bold text-dark">{pkg.name}</h3>
+            <span class="text-xs font-semibold text-primary uppercase tracking-wider">{pkg.pages}</span>
 
-            <div class="px-6 py-5 border-b border-warm-200">
-              <div class="flex items-baseline justify-between mb-2">
-                <span class="text-sm font-semibold text-dark uppercase tracking-wider">One-time build</span>
-                <span class="text-3xl font-extrabold text-dark">{pkg.oneTime}</span>
-              </div>
-              <div class="flex items-baseline justify-between mb-1">
-                <span class="text-sm font-semibold text-warm-600 uppercase tracking-wider">Monthly required</span>
-                <span class="text-lg font-bold text-primary">{pkg.monthly}</span>
-              </div>
-              <p class="text-xs text-warm-500 mt-2">{pkg.careRange}</p>
+            <div class="flex items-baseline gap-1.5 mt-3">
+              <span class="text-4xl font-extrabold text-dark">{pkg.oneTime}</span>
+              <span class="text-sm text-warm-500">one-time</span>
             </div>
+            <p class="text-xs text-warm-500 mt-1">No monthly fee required · optional care $99–199/mo</p>
 
-            <div class="px-6 py-4 border-b border-warm-200">
-              <div class="text-xs font-bold text-dark uppercase tracking-widest mb-3">
-                Specs
-              </div>
-              <dl class="space-y-1.5">
-                {pkg.specs.map((spec) => (
-                  <div class="flex justify-between text-sm">
-                    <dt class="text-warm-600">{spec.label}</dt>
-                    <dd class="font-semibold text-dark">{spec.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+            <p class="text-sm text-warm-600 leading-relaxed mt-4">{pkg.description}</p>
 
-            <div class="px-6 py-4 border-b border-warm-200">
-              <div class="text-xs font-bold text-dark uppercase tracking-widest mb-3">
-                What's included (no extra charge)
-              </div>
-              <ul class="space-y-2">
-                {pkg.included.map((item) => (
-                  <li class="flex items-start gap-2 text-sm text-warm-700">
-                    <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul class="space-y-2.5 mt-5 mb-6 flex-1">
+              {pkg.included.map((item) => (
+                <li class="flex items-start gap-2.5 text-sm text-warm-700">
+                  <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
 
-            <div class="px-6 py-4 border-b border-warm-200 bg-warm-50">
-              <div class="text-xs font-bold text-dark uppercase tracking-widest mb-1">
-                Not included — you pay separately
-              </div>
-              <p class="text-[11px] text-warm-500 mb-3">
-                We want you to know up front.
-              </p>
-              <ul class="space-y-3">
-                {pkg.notIncluded.map((item) => (
-                  <li class="text-sm">
-                    <div class="flex items-start gap-2">
-                      <svg class="w-4 h-4 text-warm-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                      <span class="font-medium text-dark">{item.label}</span>
-                    </div>
-                    <p class="text-xs text-warm-500 ml-6 mt-0.5">{item.note}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div class="px-6 py-4 bg-primary/5 border-b border-warm-200">
-              <div class="flex items-start gap-2">
-                <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <div>
-                  <div class="text-xs font-bold text-primary uppercase tracking-widest">3-Year Guarantee</div>
-                  <p class="text-xs text-warm-600 mt-0.5">
-                    We won't force a rebuild for 3 years. <a href="#guarantee" class="text-primary underline hover:text-primary-dark">See details</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="px-6 py-5 bg-white flex-1 flex flex-col justify-end">
-              <p class="text-xs text-warm-500 mb-4 leading-relaxed">
-                {pkg.description}
-              </p>
-              <a
-                href="/contact"
-                class:list={[
-                  "block text-center px-6 py-3 rounded-xl font-semibold transition-all",
-                  pkg.highlight
-                    ? "bg-primary text-white hover:bg-primary-dark"
-                    : "bg-dark text-white hover:bg-primary",
-                ]}
-              >
-                {pkg.cta}
-              </a>
-            </div>
+            <a
+              href="/contact"
+              class:list={[
+                "block text-center px-6 py-3 rounded-xl font-semibold text-sm transition-all mt-auto",
+                pkg.highlight
+                  ? "bg-primary text-white hover:bg-primary-dark"
+                  : "bg-dark text-white hover:bg-primary",
+              ]}
+            >
+              {pkg.cta}
+            </a>
           </div>
         ))}
       </div>
 
-      <p class="text-center text-xs text-warm-400 mt-8 max-w-2xl mx-auto">
-        * Most small business sites run on our free hosting tier. If yours would exceed it
-        (heavy traffic, large media libraries), we tell you up front and show you the numbers.
-      </p>
+      <div class="mt-10 bg-cream border border-warm-200 rounded-2xl p-6 md:p-8">
+        <div class="mb-6">
+          <div class="text-xs font-bold text-dark uppercase tracking-widest mb-1">
+            Not included in any package
+          </div>
+          <p class="text-sm text-warm-500">
+            A few things you pay separately — we tell you up front, so there are no surprise charges or renewals.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+          {sharedNotIncluded.map((item) => (
+            <div class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-warm-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <div>
+                <span class="font-medium text-dark text-sm">{item.label}</span>
+                <p class="text-xs text-warm-500 mt-0.5 leading-relaxed">{item.note}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-warm-400 mt-6">
+          * Hosting for most brochure-style small business sites is covered by our setup. If your project
+          needs paid hosting or third-party services, we show the cost before work starts.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section id="why-labels" class="py-16 bg-cream border-y border-warm-200">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">
-        Why we show pricing this way
-      </h2>
-      <p class="text-warm-600 leading-relaxed mb-4">
-        In 2024, the FCC started requiring internet providers to show a "broadband facts" label —
-        a plain-English breakdown of what a customer actually pays, not just the headline number.
-        The goal was simple: stop hiding fees.
-      </p>
-      <p class="text-warm-600 leading-relaxed mb-4">
-        Buying a website should work the same way. Too many web companies quote a low price and
-        then hit you with monthly fees, plugin charges, "premium" features, and renewal price hikes.
-        By the end of year two, you're paying triple what you were told.
-      </p>
-      <p class="text-warm-600 leading-relaxed">
-        So we copied the idea. Every package above shows you the one-time cost, any required
-        monthly fee (there isn't one), what's included, and what you'd pay separately — from a
-        $15 domain name to stock photos. No fine print. No surprises.
-      </p>
+  <section class="py-16 bg-cream border-y border-warm-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Built into every package</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-dark mt-3">
+          No upsells. These come standard.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-dark mb-1">SEO Built In</h3>
+            <p class="text-warm-500 text-sm leading-relaxed">
+              Every page ships with proper meta tags, structured data markup, and a Google-ready sitemap. Not an afterthought — baked in from the first line of code.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-dark mb-1">Accessibility Ready</h3>
+            <p class="text-warm-500 text-sm leading-relaxed">
+              WCAG-friendly markup, semantic HTML, and proper contrast ratios so your site works for everyone — and holds up under screen readers and audits.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-dark mb-1">We Write the Content</h3>
+            <p class="text-warm-500 text-sm leading-relaxed">
+              You tell us what you do, we turn it into clear, professional copy that speaks to your customers. No blank pages for you to stare at — we handle the writing.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 p-5 rounded-2xl bg-primary/5 border border-primary/15 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-dark">Need photos? Brian is a photographer.</p>
+          <p class="text-sm text-warm-500 mt-0.5">
+            As a local business owner himself, Brian offers website photography sessions for Greene County clients — from $299. Real photos of your space, team, and work perform significantly better than stock.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="py-20 md:py-28 bg-warm-100">
+  <PricingCalculator />
+
+  <section id="add-ons" class="py-20 md:py-28 bg-warm-100 scroll-mt-24">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-12">
         <span class="text-primary font-semibold text-sm uppercase tracking-wider">Add-Ons</span>
@@ -302,11 +361,21 @@ const addons = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {addons.map((addon) => (
-          <div class="flex items-center justify-between p-5 rounded-xl bg-white border border-warm-200 hover:border-primary/30 transition-colors">
-            <span class="font-medium text-dark">{addon.name}</span>
-            <span class="text-primary font-semibold text-sm">{addon.price}</span>
+      <div class="space-y-10">
+        {addonGroups.map((group) => (
+          <div>
+            <h3 class="text-sm font-bold text-dark uppercase tracking-widest mb-4">{group.title}</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {group.items.map((addon) => (
+                <div class="flex items-center justify-between gap-4 p-5 rounded-xl bg-white border border-warm-200 hover:border-primary/30 transition-colors">
+                  <div>
+                    <span class="font-medium text-dark">{addon.name}</span>
+                    {addon.note && <span class="block text-xs text-warm-500 mt-0.5">{addon.note}</span>}
+                  </div>
+                  <span class="text-primary font-semibold text-sm shrink-0">{addon.price}</span>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -328,7 +397,7 @@ const addons = [
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white rounded-2xl p-6 border border-warm-200">
-          <div class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Starter</div>
+          <div class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Local Landing Page</div>
           <h3 class="text-lg font-semibold text-dark mb-2">30-min handoff</h3>
           <p class="text-warm-500 text-sm leading-relaxed">
             A walkthrough of your site and editor. How to change hours, swap a photo, update a page.
@@ -336,81 +405,22 @@ const addons = [
           </p>
         </div>
         <div class="bg-white rounded-2xl p-6 border-2 border-primary">
-          <div class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Growth & Premium</div>
+          <div class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Business, Growth & Ecommerce</div>
           <h3 class="text-lg font-semibold text-dark mb-2">1-hour training</h3>
           <p class="text-warm-500 text-sm leading-relaxed">
-            In-depth session covering the editor, blog posts, image optimization, and basic SEO.
-            Bring questions — we'll record it if you want to revisit.
+            An in-person, in-depth session covering the editor, content updates, and basic SEO.
+            Ecommerce includes store training so you can manage orders confidently.
           </p>
         </div>
         <div class="bg-white rounded-2xl p-6 border border-warm-200">
           <div class="text-xs font-bold text-accent uppercase tracking-widest mb-2">Add-on</div>
-          <h3 class="text-lg font-semibold text-dark mb-2">Extra session — $150/hr</h3>
+          <h3 class="text-lg font-semibold text-dark mb-2">Extra time — $125/hr</h3>
           <p class="text-warm-500 text-sm leading-relaxed">
-            Bring on a new employee? Forgot how something works? Book another hour whenever you need
+            Bring on a new employee? Forgot how something works? Book more time whenever you need
             it — no monthly commitment.
           </p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="guarantee" class="py-20 md:py-28 bg-dark relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
-    </div>
-    <div class="relative max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <span class="text-primary-light font-semibold text-sm uppercase tracking-wider">The Guarantee</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
-          3 years. No forced rebuild.
-        </h2>
-        <p class="text-warm-400 max-w-2xl mx-auto leading-relaxed">
-          Most web companies build you a site that'll look dated and run slow within two years — then
-          charge you for a rebuild. Not here.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-dark-light rounded-2xl p-6 border border-warm-700">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
-              <svg class="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 class="text-white font-semibold">What we cover</h3>
-          </div>
-          <ul class="space-y-2 text-sm text-warm-300">
-            <li>• Security patches & dependency updates</li>
-            <li>• Framework & hosting compatibility fixes</li>
-            <li>• Broken-link, broken-form, broken-feature repairs</li>
-            <li>• If the site needs a full rebuild within 3 years to keep working, we do it — free.</li>
-          </ul>
-        </div>
-
-        <div class="bg-dark-light rounded-2xl p-6 border border-warm-700">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center">
-              <svg class="w-5 h-5 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-white font-semibold">What it doesn't cover</h3>
-          </div>
-          <ul class="space-y-2 text-sm text-warm-300">
-            <li>• A new redesign because you want a different look</li>
-            <li>• New features or pages beyond the original scope</li>
-            <li>• A business pivot that changes what the site needs to do</li>
-            <li>• Third-party services outside our control (payment processors, domains)</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="text-center text-warm-400 text-sm mt-8 max-w-2xl mx-auto">
-        Guarantee requires an active care plan for security patching. If you don't want the care plan,
-        you still own your site — you just handle updates yourself.
-      </p>
     </div>
   </section>
 
@@ -421,68 +431,125 @@ const addons = [
         <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
           We keep it running. You keep growing.
         </h2>
+        <p class="text-warm-500 max-w-2xl mx-auto">
+          Recommended on every website — care plans keep your site secure, online, and current, and
+          give you a real person to call. Save two months when you pay annually. No plan starts
+          automatically; you choose it, and cancel anytime with 30 days' notice.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-white rounded-2xl p-8 border border-warm-200">
-          <h3 class="text-xl font-bold text-dark mb-2">Essential</h3>
+          <h3 class="text-xl font-bold text-dark mb-2">Essential Care</h3>
           <div class="mb-4">
-            <span class="text-3xl font-extrabold text-dark">$75</span>
+            <span class="text-3xl font-extrabold text-dark">$99</span>
             <span class="text-warm-500 text-sm">/month</span>
+            <span class="text-warm-400 text-sm"> · $990/yr</span>
           </div>
           <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Hosting & security included
+            <li class="flex items-start gap-3 text-sm text-warm-600">
+              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Hosting and technical monitoring — we keep the site up
             </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Monthly checkup
+            <li class="flex items-start gap-3 text-sm text-warm-600">
+              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Platform, plugin, and security updates as applicable
             </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Up to 30 min of changes/month
-            </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Email support
-            </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Keeps your 3-year guarantee active
+            <li class="flex items-start gap-3 text-sm text-warm-600">
+              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Up to 30 minutes/month of minor text, image, or content updates
             </li>
           </ul>
         </div>
 
         <div class="bg-white rounded-2xl p-8 border border-warm-200">
-          <h3 class="text-xl font-bold text-dark mb-2">Growth</h3>
+          <h3 class="text-xl font-bold text-dark mb-2">Growth Care</h3>
           <div class="mb-4">
-            <span class="text-3xl font-extrabold text-dark">$150</span>
+            <span class="text-3xl font-extrabold text-dark">$199</span>
             <span class="text-warm-500 text-sm">/month</span>
+            <span class="text-warm-400 text-sm"> · $1,990/yr</span>
           </div>
           <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Everything in Essential
+            <li class="flex items-start gap-3 text-sm text-warm-600">
+              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Everything in Essential Care
             </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Up to 2 hours of changes/month
+            <li class="flex items-start gap-3 text-sm text-warm-600">
+              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Up to 60 minutes/month for updates, promotions, events, or content support
             </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Monthly search ranking report
-            </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Priority support — we pick up the phone
-            </li>
-            <li class="flex items-center gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              See your visitor numbers anytime
+            <li class="flex items-start gap-3 text-sm text-warm-600">
+              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Priority turnaround on requests
             </li>
           </ul>
         </div>
+      </div>
+
+      <p class="text-center text-xs text-warm-400 mt-6 max-w-2xl mx-auto">
+        Time doesn't roll over month to month. Work beyond your included time is billed at the
+        standard $125/hr rate.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-cream border-t border-warm-200">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">How We Work</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+          Simple terms, written down.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="bg-white rounded-2xl p-6 border border-warm-200 text-center">
+          <div class="text-2xl font-extrabold text-dark mb-1">50% upfront</div>
+          <p class="text-warm-500 text-sm">Deposit to reserve your spot and begin work</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-warm-200 text-center">
+          <div class="text-2xl font-extrabold text-dark mb-1">50% at launch</div>
+          <p class="text-warm-500 text-sm">Balance due before your site goes live</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-warm-200 text-center">
+          <div class="text-2xl font-extrabold text-dark mb-1">$125/hr</div>
+          <p class="text-warm-500 text-sm">Out-of-scope or hourly work beyond the agreed project</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-warm-200 space-y-3 text-sm text-warm-600">
+        <p>
+          <span class="font-semibold text-dark">Every project includes 30 days of post-launch support.</span>
+          Pay once and own it — we build, train, and hand over the keys — or add an optional care plan so we handle hosting, updates, and changes.
+        </p>
+        <p>
+          <span class="font-semibold text-dark">What "Basic SEO" includes:</span>
+          page titles and meta descriptions, clean page structure and headings, image alt text, an XML sitemap, and Google Search Console submission. Ongoing local search work is available as an add-on.
+        </p>
+        <p>
+          <span class="font-semibold text-dark">Not included unless stated:</span>
+          domain fees, hosting or platform subscriptions, business email, Shopify subscription, payment processing fees, third-party apps, and platform subscriptions. These are billed directly to you by the provider.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-warm-100 border-t border-warm-200">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">FAQ</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+          The questions most people ask before they reach out.
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-2xl border border-warm-200 p-6">
+            <h3 class="text-lg font-semibold text-dark mb-2">{faq.question}</h3>
+            <p class="text-warm-600 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

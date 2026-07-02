@@ -1,0 +1,454 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { networkMembers } from "../data/network";
+
+const categories = [
+  "Farm & Agriculture",
+  "Farms & Food",
+  "Local Shops",
+  "Family Activities",
+  "Home Services",
+  "Creative Services",
+  "Events & Tourism",
+  "Nonprofits",
+  "Wellness",
+  "Restaurants & Cafes",
+  "Professional Services",
+  "Other",
+];
+
+const benefits = [
+  "Free listing on the Made in Greene Partner Network page",
+  "Optional website badge and footer credit",
+  "Opportunities for local cross-promotion",
+  "Access to shared QR code cards and counter displays",
+  "Social media spotlight opportunities",
+  "Local referral opportunities when a trusted business is needed",
+];
+---
+
+<Layout
+  title="Made in Greene Partner Network"
+  description="A free local business network helping Greene County businesses promote each other through shared visibility, referrals, QR cards, and community-first marketing."
+>
+  <!-- Hero -->
+  <section class="relative bg-dark overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-primary rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-[32rem] h-[32rem] bg-accent rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+      <span class="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary-light text-xs font-bold uppercase tracking-widest mb-6">
+        Made in Greene Partner Network
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        Local websites, local exposure,<br class="hidden sm:block" /> and neighbors helping neighbors.
+      </h1>
+      <p class="text-warm-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+        A free network of Greene County businesses designed to help local farms, shops,
+        makers, restaurants, service providers, and organizations get discovered online and
+        in person.
+      </p>
+      <a
+        href="#join"
+        class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors"
+      >
+        Join the network for free
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">How it works</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3">
+          A simple way to share local visibility.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4" data-reveal style="--reveal-delay: 0ms">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-dark mb-1">Get listed for free</h3>
+            <p class="text-warm-500 text-sm leading-relaxed">
+              Eligible Greene County businesses can join at no cost. We review each submission,
+              confirm the details, and add approved listings to the network.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4" data-reveal style="--reveal-delay: 100ms">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-dark mb-1">Get found online</h3>
+            <p class="text-warm-500 text-sm leading-relaxed">
+              Each listing can include your business name, category, short description, location,
+              website, social link, and a Made in Greene badge when applicable.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4" data-reveal style="--reveal-delay: 200ms">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-dark mb-1">Promote each other</h3>
+            <p class="text-warm-500 text-sm leading-relaxed">
+              Partners can share the network through tasteful website links, QR code cards,
+              counter displays, and local recommendations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 bg-warm-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
+        <div data-reveal>
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Included at No Cost</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-5">
+            More than a listing. A small local ecosystem.
+          </h2>
+          <p class="text-warm-500 leading-relaxed">
+            When you work with Made in Greene, you can become part of a local business network
+            designed to help Greene County businesses promote each other online and in person.
+            Participation is optional and free for eligible local businesses.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {benefits.map((benefit, i) => (
+            <div class="bg-white rounded-2xl p-5 border border-warm-200 flex items-start gap-3" data-reveal style={`--reveal-delay: ${i * 60}ms`}>
+              <div class="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p class="text-sm text-warm-600 leading-relaxed">{benefit}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross Promotion -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Online and In Person</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3">
+          Built for real-world local discovery.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-8 border border-warm-200" data-reveal>
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3v6h6" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-3">Tasteful website placement</h3>
+          <p class="text-warm-500 text-sm leading-relaxed mb-5">
+            Made in Greene clients can include an optional footer note or badge that links back to
+            this network. We keep it subtle so your website still feels like your website.
+          </p>
+          <div class="rounded-2xl bg-warm-100 border border-warm-200 p-5">
+            <p class="text-sm font-semibold text-dark">Built locally by Made in Greene.</p>
+            <p class="text-sm text-warm-500 mt-1">
+              Part of the Made in Greene Partner Network supporting local businesses across Greene County, TN.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 border border-warm-200" data-reveal style="--reveal-delay: 100ms">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6h.01M10 6h.01M14 6h.01M18 6h.01M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M10 14h.01M14 14h.01M18 14h.01M6 18h.01M10 18h.01M14 18h.01M18 18h.01" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-3">Shared QR cards and displays</h3>
+          <p class="text-warm-500 text-sm leading-relaxed mb-5">
+            Physical locations can use a simple counter card or QR display that sends customers to
+            the network page, making it easy to discover other local businesses.
+          </p>
+          <div class="rounded-2xl bg-dark border border-warm-800 p-5">
+            <p class="text-sm font-semibold text-white">Explore Greene County Local Businesses</p>
+            <p class="text-sm text-warm-400 mt-1">
+              Farms. Shops. Services. Events. Makers. A local network powered by Made in Greene.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Member Grid -->
+  <section class="py-20 bg-warm-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Member Businesses</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3">
+          Greene County businesses worth knowing.
+        </h2>
+      </div>
+
+      {networkMembers.length === 0 ? (
+        <div class="max-w-xl mx-auto text-center py-16 px-8 rounded-3xl border-2 border-dashed border-warm-300 bg-white" data-reveal>
+          <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-3">Greene County's best-kept secret could be yours.</h3>
+          <p class="text-warm-500 text-sm leading-relaxed mb-8">
+            No businesses listed yet. Be one of the first local partners customers see as this network grows.
+          </p>
+          <a
+            href="#join"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors text-sm"
+          >
+            Join for free
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {networkMembers.map((member, i) => (
+            <div
+              class="bg-white rounded-2xl p-6 border border-warm-200 hover:border-primary/30 hover:shadow-md transition-all flex flex-col gap-4"
+              data-reveal
+              style={`--reveal-delay: ${i * 75}ms`}
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-2">
+                    {member.category}
+                  </span>
+                  <h3 class="text-lg font-bold text-dark leading-snug">{member.name}</h3>
+                </div>
+              </div>
+              <p class="text-warm-500 text-sm leading-relaxed flex-1">{member.tagline}</p>
+              <div class="flex items-center justify-between gap-3 pt-2 border-t border-warm-100">
+                <span class="text-xs text-warm-400 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  {member.location}
+                </span>
+                {member.website && (
+                  <a
+                    href={member.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs text-primary font-semibold hover:text-primary-dark transition-colors flex items-center gap-1"
+                  >
+                    Visit site
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Join Form -->
+  <section id="join" class="py-20 md:py-28 bg-dark">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="text-center mb-12" data-reveal>
+        <span class="text-primary-light font-semibold text-sm uppercase tracking-wider">Join the Network</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+          Join the Partner Network. Free.
+        </h2>
+        <p class="text-warm-400">
+          No cost, no recurring fees, and no paid tiers. We review each submission to keep the network local, useful, and trustworthy.
+        </p>
+      </div>
+
+      <form
+        name="network-join"
+        method="POST"
+        data-netlify="true"
+        class="space-y-5"
+        data-reveal
+      >
+        <input type="hidden" name="form-name" value="network-join" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="business-name" class="block text-sm font-semibold text-warm-300 mb-1.5">
+              Business Name <span class="text-accent-light">*</span>
+            </label>
+            <input
+              type="text"
+              id="business-name"
+              name="business-name"
+              required
+              placeholder="Greene Valley Hardware"
+              class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white placeholder-warm-600 text-sm focus:outline-none focus:border-primary transition-colors"
+            />
+          </div>
+          <div>
+            <label for="contact-name" class="block text-sm font-semibold text-warm-300 mb-1.5">
+              Your Name <span class="text-accent-light">*</span>
+            </label>
+            <input
+              type="text"
+              id="contact-name"
+              name="contact-name"
+              required
+              placeholder="Sarah Miller"
+              class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white placeholder-warm-600 text-sm focus:outline-none focus:border-primary transition-colors"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="category" class="block text-sm font-semibold text-warm-300 mb-1.5">
+            Business Category <span class="text-accent-light">*</span>
+          </label>
+          <select
+            id="category"
+            name="category"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white text-sm focus:outline-none focus:border-primary transition-colors appearance-none"
+          >
+            <option value="" disabled selected>Select a category…</option>
+            {categories.map((cat) => (
+              <option value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-semibold text-warm-300 mb-1.5">
+            Email Address <span class="text-accent-light">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="sarah@example.com"
+            class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white placeholder-warm-600 text-sm focus:outline-none focus:border-primary transition-colors"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="website" class="block text-sm font-semibold text-warm-300 mb-1.5">
+              Website <span class="text-warm-600 font-normal">(optional)</span>
+            </label>
+            <input
+              type="url"
+              id="website"
+              name="website"
+              placeholder="https://yoursite.com"
+              class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white placeholder-warm-600 text-sm focus:outline-none focus:border-primary transition-colors"
+            />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-semibold text-warm-300 mb-1.5">
+              Phone <span class="text-warm-600 font-normal">(optional)</span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="(423) 555-0100"
+              class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white placeholder-warm-600 text-sm focus:outline-none focus:border-primary transition-colors"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="social" class="block text-sm font-semibold text-warm-300 mb-1.5">
+            Social Link <span class="text-warm-600 font-normal">(optional)</span>
+          </label>
+          <input
+            type="url"
+            id="social"
+            name="social"
+            placeholder="https://facebook.com/yourbusiness"
+            class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white placeholder-warm-600 text-sm focus:outline-none focus:border-primary transition-colors"
+          />
+        </div>
+
+        <div>
+          <label for="description" class="block text-sm font-semibold text-warm-300 mb-1.5">
+            Tell us about your business <span class="text-warm-600 font-normal">(optional)</span>
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            rows="3"
+            placeholder="What do you do, who do you serve, where are you located?"
+            class="w-full px-4 py-3 rounded-xl bg-dark-light border border-warm-700 text-white placeholder-warm-600 text-sm focus:outline-none focus:border-primary transition-colors resize-none"
+          ></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <label class="flex items-start gap-3 rounded-xl bg-dark-light border border-warm-700 p-4">
+            <input
+              type="checkbox"
+              name="permission-logo"
+              value="yes"
+              class="mt-1 h-4 w-4 rounded border-warm-700 bg-dark text-primary focus:ring-primary"
+            />
+            <span class="text-sm text-warm-300 leading-relaxed">
+              You may contact me for our logo, listing details, and approval before publishing.
+            </span>
+          </label>
+          <label class="flex items-start gap-3 rounded-xl bg-dark-light border border-warm-700 p-4">
+            <input
+              type="checkbox"
+              name="interested-display"
+              value="yes"
+              class="mt-1 h-4 w-4 rounded border-warm-700 bg-dark text-primary focus:ring-primary"
+            />
+            <span class="text-sm text-warm-300 leading-relaxed">
+              I am interested in a free QR card or counter display for my location.
+            </span>
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors text-sm"
+        >
+          Apply to Join for Free
+        </button>
+
+        <p class="text-center text-xs text-warm-600">
+          Participation is optional and does not guarantee traffic or sales. It is designed to increase local visibility and encourage community support.
+        </p>
+      </form>
+    </div>
+  </section>
+</Layout>

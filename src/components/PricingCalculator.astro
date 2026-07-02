@@ -1,0 +1,521 @@
+---
+const categories = [
+  {
+    id: "foundation",
+    label: "Start with a package",
+    description: "Choose your base — everything else builds on this.",
+    type: "radio",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+    items: [
+      {
+        id: "landing",
+        name: "Local Landing Page",
+        price: 1250,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "One page for new businesses, solo operators, pop-ups, and tiny farms. Grows into a Business Website later.",
+      },
+      {
+        id: "business",
+        name: "Business Website",
+        price: 3000,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "Up to 5 pages. Custom design, copy, in-person training, and a local photo/video session.",
+      },
+      {
+        id: "growth",
+        name: "Growth Website",
+        price: 4500,
+        monthly: 0,
+        from: false,
+        tag: "Most Popular",
+        description: "Up to 10 pages, a blog, enhanced SEO, lead-gen layouts, and an extended photo session.",
+      },
+      {
+        id: "ecommerce",
+        name: "Ecommerce Website",
+        price: 5500,
+        monthly: 0,
+        from: true,
+        tag: null,
+        description: "Everything in Business plus a Shopify store with up to 10 products and store training.",
+      },
+    ],
+  },
+  {
+    id: "website-addons",
+    label: "Website Add-Ons",
+    description: "Extend your site with the features your business actually needs.",
+    type: "checkbox",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>`,
+    items: [
+      {
+        id: "extra-page",
+        name: "Additional Page",
+        price: 200,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "Add another page to your site. $200 per page.",
+      },
+      {
+        id: "blog",
+        name: "Blog / News / Projects",
+        price: 500,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "Setup plus up to 2 initial posts so you can keep customers updated.",
+      },
+      {
+        id: "store",
+        name: "Online Store / Shopify",
+        price: 1500,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "Shopify store setup for up to 10 products, with category and checkout config.",
+      },
+    ],
+  },
+  {
+    id: "design",
+    label: "Design & Brand",
+    description: "Make your business look the part everywhere customers find you.",
+    type: "checkbox",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>`,
+    items: [
+      {
+        id: "brand-starter",
+        name: "Brand Starter Package",
+        price: 750,
+        monthly: 0,
+        from: true,
+        tag: null,
+        description: "Primary logo, an alternate, a color palette, font pairing, and print + web files.",
+      },
+      {
+        id: "photography",
+        name: "Website Photography Session",
+        price: 299,
+        monthly: 0,
+        from: true,
+        tag: null,
+        description: "Local mini brand / photo session for your website and social media.",
+      },
+    ],
+  },
+  {
+    id: "marketing",
+    label: "Marketing & Visibility",
+    description: "Get found, build trust, and start collecting leads.",
+    type: "checkbox",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>`,
+    items: [
+      {
+        id: "digital-presence",
+        name: "Digital Presence Setup",
+        price: 199,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "Google Business Profile, plus domain and business email setup guidance.",
+      },
+      {
+        id: "social-kit",
+        name: "Social Media Starter Kit",
+        price: 199,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "Branded profile + cover design, a short bio, a first post, and content direction.",
+      },
+      {
+        id: "email-sms",
+        name: "Email / SMS Capture Setup",
+        price: 350,
+        monthly: 0,
+        from: false,
+        tag: null,
+        description: "Signup forms, placement on key pages, list connection, and consent language.",
+      },
+    ],
+  },
+  {
+    id: "ongoing",
+    label: "Ongoing Care Plans",
+    description: "Keep your site secure, online, and current — with a real person to call.",
+    type: "checkbox",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>`,
+    items: [
+      {
+        id: "care-essential",
+        name: "Essential Care Plan",
+        price: 0,
+        monthly: 99,
+        from: false,
+        tag: null,
+        description: "Hosting, monitoring, security updates, and up to 30 min of content edits/month.",
+      },
+      {
+        id: "care-growth",
+        name: "Growth Care Plan",
+        price: 0,
+        monthly: 199,
+        from: false,
+        tag: null,
+        description: "Everything in Essential plus up to 60 min/month and priority turnaround on requests.",
+      },
+    ],
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-cream" id="quote-builder">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="max-w-2xl mb-16" data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Add-On Estimator</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-dark mt-3 mb-4">
+        Want to estimate add-ons?
+      </h2>
+      <p class="text-warm-500 text-lg leading-relaxed">
+        Start with a base package, then try the extras your business might need.
+        This gives you a useful ballpark before we send a final quote. Items marked
+        “from” are starting prices and may go up with scope.
+      </p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start">
+
+      <!-- Left: service categories -->
+      <div class="flex-1 min-w-0 space-y-16">
+        {categories.map((cat) => (
+          <div data-reveal>
+            <div class="flex items-center gap-3 mb-1">
+              <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                <Fragment set:html={cat.icon} />
+              </div>
+              <h2 class="text-xl font-bold text-dark">{cat.label}</h2>
+            </div>
+            <p class="text-warm-500 text-sm mb-6 pl-12">{cat.description}</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              {cat.items.map((item) => (
+                <button
+                  class="service-card"
+                  data-id={item.id}
+                  data-name={item.name}
+                  data-price={String(item.price)}
+                  data-monthly={String(item.monthly)}
+                  data-type={cat.type}
+                  data-group={cat.id}
+                  aria-pressed="false"
+                >
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="card-check" aria-hidden="true">
+                      <svg class="check-icon w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    {item.tag && (
+                      <span class="text-xs font-semibold text-primary bg-primary/10 px-2.5 py-1 rounded-full leading-none">
+                        {item.tag}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="text-left flex-1 mb-4">
+                    <div class="font-bold text-dark text-base leading-snug mb-1.5">{item.name}</div>
+                    <p class="text-warm-500 text-xs leading-relaxed">{item.description}</p>
+                  </div>
+
+                  <div class="card-price text-left">
+                    {item.price > 0 && (
+                      <span class="text-xl font-extrabold text-dark">
+                        {item.from && <span class="text-sm font-semibold text-warm-500">from </span>}${item.price.toLocaleString()}
+                      </span>
+                    )}
+                    {item.monthly > 0 && (
+                      <span class="text-xl font-extrabold text-dark">
+                        ${item.monthly}<span class="text-sm font-semibold text-warm-500">/mo</span>
+                      </span>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Right: sticky summary sidebar -->
+      <div class="w-full lg:w-72 xl:w-80 shrink-0 lg:sticky lg:top-28">
+        <div class="bg-dark rounded-2xl overflow-hidden shadow-2xl shadow-dark/30">
+
+          <div class="px-6 py-5 border-b border-warm-800 flex items-center justify-between">
+            <h3 class="text-white font-bold">Your Estimate</h3>
+            <span class="text-warm-500 text-xs tabular-nums" id="selection-count">0 items</span>
+          </div>
+
+          <div class="px-6 py-4" id="selected-items-container">
+            <p class="text-warm-500 text-sm leading-relaxed" id="empty-state">
+              Pick a package above to get started.
+            </p>
+            <div id="selected-items-list" class="divide-y divide-warm-800"></div>
+          </div>
+
+          <div class="mx-6 border-t border-warm-800"></div>
+
+          <div class="px-6 py-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-warm-400 text-sm">One-time total</span>
+              <span class="text-white font-extrabold text-2xl tabular-nums" id="one-time-total">—</span>
+            </div>
+            <div class="flex items-center justify-between monthly-row-hidden" id="monthly-row">
+              <span class="text-warm-400 text-sm">+ monthly</span>
+              <span class="text-primary-light font-bold text-lg tabular-nums" id="monthly-total">—</span>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-1">
+            <a
+              href="/contact"
+              id="get-quote-btn"
+              class="block text-center px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25 text-sm"
+            >
+              Get this quote →
+            </a>
+            <p class="text-warm-700 text-xs text-center mt-3">
+              Free. No commitment. Back within 1 business day.
+            </p>
+          </div>
+        </div>
+
+        <button
+          id="reset-btn"
+          class="mt-3 text-xs text-warm-400 hover:text-warm-600 transition-colors w-full text-center monthly-row-hidden"
+        >
+          Clear all selections
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    padding: 1.25rem;
+    border-radius: 0.875rem;
+    background: white;
+    border: 2px solid var(--color-warm-200);
+    cursor: pointer;
+    transition:
+      border-color 0.18s ease,
+      box-shadow 0.18s ease,
+      background-color 0.18s ease,
+      transform 0.15s ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: 0 4px 20px rgba(70, 137, 32, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .service-card.is-selected {
+    border-color: var(--color-primary);
+    background-color: rgba(70, 137, 32, 0.04);
+    box-shadow:
+      0 0 0 1px var(--color-primary),
+      0 6px 24px rgba(70, 137, 32, 0.14);
+    transform: translateY(-2px);
+  }
+
+  .card-check {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-warm-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .service-card.is-selected .card-check {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .check-icon {
+    opacity: 0;
+    transform: scale(0.3);
+    transition: opacity 0.15s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .service-card.is-selected .check-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .card-price .text-dark {
+    transition: color 0.15s ease;
+  }
+
+  .service-card.is-selected .card-price .text-dark {
+    color: var(--color-primary-dark);
+  }
+
+  .monthly-row-hidden {
+    display: none;
+  }
+
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .summary-item {
+    animation: slide-down 0.2s ease forwards;
+  }
+
+  @keyframes pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  .price-pop {
+    animation: pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+</style>
+
+<script>
+  const selected = new Map<string, { name: string; price: number; monthly: number }>();
+
+  const oneTimeEl    = document.getElementById("one-time-total")!;
+  const monthlyEl    = document.getElementById("monthly-total")!;
+  const monthlyRow   = document.getElementById("monthly-row")!;
+  const itemsList    = document.getElementById("selected-items-list")!;
+  const emptyState   = document.getElementById("empty-state")!;
+  const countEl      = document.getElementById("selection-count")!;
+  const resetBtn     = document.getElementById("reset-btn")!;
+
+  let animOT = 0;
+  let animMO = 0;
+
+  function animateTo(el: HTMLElement, from: number, to: number, format: (n: number) => string) {
+    const duration = 380;
+    const start = performance.now();
+    function tick(now: number) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = to === 0 ? "—" : format(Math.round(from + (to - from) * ease));
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function popEl(el: HTMLElement) {
+    el.classList.remove("price-pop");
+    void (el as HTMLElement).offsetWidth;
+    el.classList.add("price-pop");
+  }
+
+  function updateUI() {
+    const items = Array.from(selected.values());
+    const oneTime = items.reduce((s, i) => s + i.price, 0);
+    const monthly  = items.reduce((s, i) => s + i.monthly, 0);
+
+    if (oneTime !== animOT) {
+      animateTo(oneTimeEl, animOT, oneTime, (n) => "$" + n.toLocaleString());
+      if (oneTime !== 0) popEl(oneTimeEl);
+      animOT = oneTime;
+    }
+    if (monthly !== animMO) {
+      animateTo(monthlyEl, animMO, monthly, (n) => "$" + n + "/mo");
+      animMO = monthly;
+    }
+
+    monthlyRow.classList.toggle("monthly-row-hidden", monthly === 0);
+    resetBtn.classList.toggle("monthly-row-hidden", items.length === 0);
+
+    countEl.textContent = items.length === 0
+      ? "0 items"
+      : `${items.length} item${items.length === 1 ? "" : "s"}`;
+
+    if (items.length === 0) {
+      emptyState.style.display = "block";
+      itemsList.innerHTML = "";
+      return;
+    }
+    emptyState.style.display = "none";
+    itemsList.innerHTML = items
+      .map(
+        (item) => `
+          <div class="summary-item flex items-center justify-between gap-3 py-2.5">
+            <span class="text-warm-300 text-xs leading-snug">${item.name}</span>
+            <span class="text-white text-xs font-semibold shrink-0 tabular-nums">
+              ${item.price > 0 ? "$" + item.price.toLocaleString() : ""}${item.monthly > 0 ? "$" + item.monthly + "/mo" : ""}
+            </span>
+          </div>`
+      )
+      .join("");
+  }
+
+  document.querySelectorAll<HTMLButtonElement>(".service-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const { id, name, price, monthly, type, group } = card.dataset;
+      if (!id || !name) return;
+
+      const priceN   = parseInt(price   ?? "0", 10);
+      const monthlyN = parseInt(monthly ?? "0", 10);
+
+      if (type === "radio") {
+        document.querySelectorAll<HTMLButtonElement>(`[data-group="${group}"]`).forEach((c) => {
+          c.classList.remove("is-selected");
+          c.setAttribute("aria-pressed", "false");
+          selected.delete(c.dataset.id!);
+        });
+        card.classList.add("is-selected");
+        card.setAttribute("aria-pressed", "true");
+        selected.set(id, { name, price: priceN, monthly: monthlyN });
+      } else {
+        if (selected.has(id)) {
+          selected.delete(id);
+          card.classList.remove("is-selected");
+          card.setAttribute("aria-pressed", "false");
+        } else {
+          selected.set(id, { name, price: priceN, monthly: monthlyN });
+          card.classList.add("is-selected");
+          card.setAttribute("aria-pressed", "true");
+        }
+      }
+
+      updateUI();
+    });
+  });
+
+  resetBtn.addEventListener("click", () => {
+    selected.clear();
+    document.querySelectorAll<HTMLButtonElement>(".service-card").forEach((c) => {
+      c.classList.remove("is-selected");
+      c.setAttribute("aria-pressed", "false");
+    });
+    animOT = 0;
+    animMO = 0;
+    updateUI();
+  });
+
+  updateUI();
+</script>

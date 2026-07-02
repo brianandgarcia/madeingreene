@@ -2,19 +2,24 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import WhyWebsite from "../components/WhyWebsite.astro";
+import GreeneQuote from "../components/GreeneQuote.astro";
 import ServicesOverview from "../components/ServicesOverview.astro";
+import PricingPreview from "../components/PricingPreview.astro";
 import FeaturedWork from "../components/FeaturedWork.astro";
-import WhyUs from "../components/WhyUs.astro";
-import Guarantee from "../components/Guarantee.astro";
+import Testimonials from "../components/Testimonials.astro";
 import CTA from "../components/CTA.astro";
 ---
 
-<Layout title="Fast Websites for Small Businesses">
+<Layout
+  title="Affordable Websites for Greene County Businesses"
+  description="MadeinGreene builds affordable websites for Greene County businesses with clear pricing and local support."
+>
   <Hero />
   <WhyWebsite />
+  <GreeneQuote />
   <ServicesOverview />
   <FeaturedWork />
-  <WhyUs />
-  <Guarantee />
+  <Testimonials />
+  <PricingPreview />
   <CTA />
 </Layout>

@@ -1,50 +1,105 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
 import CTA from "../components/CTA.astro";
 
 const values = [
   {
-    title: "Built to Last",
-    description: "We don't do quick fixes or band-aids. Every site is built with solid technology that won't need replacing in two years. Same way you'd build a barn — do it right or don't do it.",
+    title: "Family-Operated",
+    description: "When you work with Made in Greene, you are working with a local family that cares about your business, your reputation, and the community we share.",
   },
   {
-    title: "Keep It Simple",
-    description: "Your website shouldn't be complicated to run. We pick tools that make sense for a five-person shop, not a Fortune 500. If you can post on Facebook, you can update your website.",
+    title: "Affordable Without Cutting Corners",
+    description: "We keep rates realistic for small businesses while still delivering clean design, solid development, and thoughtful service.",
   },
   {
-    title: "Straight Talk, Fair Price",
-    description: "We tell you what it costs before we start. No hidden fees, no change orders, no surprises on the invoice. What we quote is what you pay.",
+    title: "Built for Small Business",
+    description: "Small businesses are the backbone of our towns and our country. We build websites that help them look established, get found, and grow with confidence.",
   },
   {
-    title: "Right Down the Road",
-    description: "We're not a faceless agency in Nashville or Atlanta. We live here. We shop at the same stores, eat at the same places. When you need us, we're a phone call away — not a support ticket.",
+    title: "Tennessee First",
+    description: "Made in Greene believes in keeping good work close to home and supporting the people who keep Tennessee moving.",
   },
 ];
 ---
 
-<Layout title="About" description="MadeinGreene is a web development and branding shop in Greene County, TN. We build fast, affordable websites for the businesses that make this community run.">
+<Layout title="About" description="Meet the family behind Made in Greene, a family-operated website agency in Greeneville, Tennessee.">
+  <PageHero
+    eyebrow="About Us"
+    title="A family-operated agency built for Greeneville and beyond."
+    subtitle="Local roots, practical service, and a heart for small business."
+    image="/02-home-base.png"
+  />
+
   <section class="py-20 md:py-28 bg-warm-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">About Us</span>
-        <h1 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-6">
-          We're from here. We build for here.
-        </h1>
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Story</span>
+        <h2 class="text-2xl md:text-4xl font-bold text-dark mt-3 mb-6">
+          Meet the family behind Made in Greene.
+        </h2>
         <p class="text-lg text-warm-500 leading-relaxed mb-6">
-          MadeinGreene started because we were tired of watching good local businesses get sold bad websites.
-          Overpriced WordPress sites that run slow, break constantly, and cost a fortune to maintain.
-          A farmer shouldn't need a $300/month website any more than they need a gold-plated tractor.
+          Made in Greene is a family-operated website agency in Greeneville, Tennessee. Brian
+          is the owner and operator, bringing more than 15 years of professional experience
+          designing and developing websites for organizations that need dependable, thoughtful
+          digital work.
         </p>
         <p class="text-lg text-warm-500 leading-relaxed">
-          Greene County runs on hardworking people — the feed stores, the family farms, the contractors,
-          the restaurants, the folks who get up early and do the work. Those businesses deserve a website
-          that's as dependable as they are. That's what we build.
+          Brian also works in higher-education technology while running Made in Greene part-time.
+          That balance shapes the way we serve local businesses: practical advice, affordable rates,
+          clear communication, and a finished product we would be proud to put our family name on.
         </p>
+      </div>
+
+      <div class="relative">
+        <img
+          src="/about-garcia.jpg"
+          alt="The family behind Made in Greene"
+          class="w-full aspect-[4/5] object-cover rounded-2xl border border-warm-200 shadow-xl"
+          loading="eager"
+        />
+        <div class="absolute -bottom-6 left-6 right-6 bg-white border border-warm-200 rounded-2xl p-5 shadow-lg">
+          <p class="text-sm font-semibold text-dark">The Family Behind Made in Greene</p>
+          <p class="text-sm text-warm-500 mt-1">
+            Brian, Domenique, and Mason - local roots, practical service, and a heart for small business.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
+        <div>
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Story</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+            Local service, real experience, and a family name behind the work.
+          </h2>
+        </div>
+
+        <div class="space-y-6 text-lg text-warm-500 leading-relaxed">
+          <p>
+            Brian believes small businesses are part of what makes this country work. The goal of
+            Made in Greene is simple: give business owners access to high-quality websites and
+            honest guidance without pricing them like a national corporation.
+          </p>
+          <p>
+            Domenique brings more than 10 years of experience supporting C-suite executives at
+            Verizon's corporate headquarters. Today she spends her time homeschooling our son,
+            Mason, spreading the word about Made in Greene, helping manage projects, and answering
+            questions from the businesses we serve.
+          </p>
+          <p>
+            And Mason? He is our future mayor. For now, he is a daily reminder of why local matters:
+            the work we do should help build the kind of place families are proud to call home.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-warm-100">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm uppercase tracking-wider">How We Work</span>
@@ -64,7 +119,7 @@ const values = [
     </div>
   </section>
 
-  <section class="py-20 md:py-28 bg-warm-100">
+  <section class="py-20 md:py-28 bg-cream">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm uppercase tracking-wider">The Tools We Use</span>
@@ -72,7 +127,8 @@ const values = [
           Modern tools. Old-fashioned work ethic.
         </h2>
         <p class="text-warm-500 max-w-2xl mx-auto">
-          We don't use WordPress. Here's what we use instead — and why you'll be glad we do.
+          We use a lean modern setup instead of plugin-heavy builders, so your site stays easier to
+          manage and easier to trust.
         </p>
       </div>
 
@@ -83,9 +139,9 @@ const values = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-dark mb-2">Lightning-Fast Framework</h3>
+          <h3 class="text-lg font-semibold text-dark mb-2">Performance-First Build</h3>
           <p class="text-warm-500 text-sm leading-relaxed">
-            We use technology that sends only what your visitor needs — no extra junk slowing things down. Your site loads before they can blink.
+            A lightweight setup focused on speed, clarity, and reliability on real phones and real connections.
           </p>
         </div>
 
@@ -107,9 +163,9 @@ const values = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-dark mb-2">Rock-Solid Hosting</h3>
+          <h3 class="text-lg font-semibold text-dark mb-2">Reliable Hosting Setup</h3>
           <p class="text-warm-500 text-sm leading-relaxed">
-            Your site gets served from the closest server to each visitor. Fast everywhere, secure by default, and 99.99% uptime. It just stays up.
+            Secure hosting for most brochure-style sites, plus ongoing updates available if you want us handling the technical side.
           </p>
         </div>
       </div>

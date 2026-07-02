@@ -10,53 +10,70 @@ export interface Project {
   highlights: string[];
   images: ProjectImage[];
   featured?: boolean;
+  url?: string;
 }
 
 export const projects: Project[] = [
   {
-    name: "Project Name",
-    category: "Farm & Agriculture",
+    name: "The Funny Farm",
+    category: "Local Agritourism Farm",
     description:
-      "A short paragraph describing what this business does, what they needed, and what we built for them. Keep it plainspoken — who they are, what problem they had, and how the new site helps them.",
+      "An agritourism destination in Chuckey, TN that offers experiences like feeding calves, riding a miniature pony and horse, petting donkeys, playing with goats & chickens, and seeing Scottish Highland cows. Field trips & parties too!",
     highlights: [
-      "Custom-built, loads in under a second",
-      "Online ordering for fresh produce",
-      "Owner updates hours and specials herself",
+      "Hours, location, and directions front and center",
+      "Events and “What We Offer” sections to help plan a visit",
+      "Mobile-friendly for visitors on the go",
     ],
     images: [
-      { src: "/work/placeholder-1.svg", alt: "Homepage screenshot" },
-      { src: "/work/placeholder-2.svg", alt: "Product page screenshot" },
+      { src: "/the-funny-farm.jpg", alt: "The Funny Farm homepage — an agritourism farm in Chuckey, Tennessee" },
     ],
     featured: true,
+    url: "https://thefunnyfarmtn.com",
   },
   {
-    name: "Project Name",
+    name: "FreedomForTate.org",
+    category: "Non-profit & Advocacy",
+    description:
+      "A donation-friendly advocacy site built to raise awareness and support for a local cause, with clear calls to action and a simple path to get involved.",
+    highlights: [
+      "Donation and contact forms front and center",
+      "Mobile-friendly for supporters on the go",
+      "Fully owned by the organization",
+    ],
+    images: [
+      { src: "/freedom-for-tate.jpg", alt: "FreedomForTate.org homepage screenshot" },
+    ],
+    featured: true,
+    url: "https://freedomfortate.org",
+  },
+  {
+    name: "Trade Services Sample Concept",
     category: "Trades & Contracting",
     description:
-      "Another short paragraph. What do they do, who do they serve, what was wrong with what they had before (or did they have nothing?), and what did the new site change for them.",
+      "A sample site for a local contractor who needs to look established online, explain services clearly, and make quote requests easy from a phone.",
     highlights: [
-      "Quote form that actually gets answered",
-      "Shows up on Google for local searches",
-      "Mobile-first — 70% of visitors on phones",
+      "Clear quote request form",
+      "Service-area and trust-building details up front",
+      "Mobile-first layout for customers on the go",
     ],
     images: [
-      { src: "/work/placeholder-3.svg", alt: "Homepage screenshot" },
-      { src: "/work/placeholder-4.svg", alt: "Services page screenshot" },
+      { src: "/work/placeholder-3.svg", alt: "Trade services sample homepage" },
+      { src: "/work/placeholder-4.svg", alt: "Trade services sample services page" },
     ],
     featured: true,
   },
   {
-    name: "Project Name",
+    name: "Restaurant Sample Concept",
     category: "Food & Hospitality",
     description:
-      "Third example. Swap these placeholder images and copy with real work as it's ready. Each project can show 1–3 images — homepage, a detail page, or a phone mockup work best.",
+      "A sample site for a local restaurant that needs menu updates, clear directions, and a better first impression than an outdated builder site.",
     highlights: [
-      "Menu updates in under a minute",
-      "Google Maps + directions built in",
-      "Took over from a broken WordPress site",
+      "Easy menu and hours updates",
+      "Directions, contact info, and call button front and center",
+      "Built to replace an outdated DIY site",
     ],
     images: [
-      { src: "/work/placeholder-5.svg", alt: "Homepage screenshot" },
+      { src: "/work/placeholder-5.svg", alt: "Restaurant sample homepage" },
     ],
     featured: true,
   },
