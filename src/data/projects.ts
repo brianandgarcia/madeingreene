@@ -10,7 +10,10 @@ export interface Project {
   highlights: string[];
   images: ProjectImage[];
   featured?: boolean;
+  /** Domain shown on the card (display text). */
   url?: string;
+  /** Actual link target — falls back to `url` when omitted. Use to point a not-yet-live domain at a temporary URL. */
+  href?: string;
 }
 
 export const projects: Project[] = [
@@ -29,6 +32,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     url: "https://thefunnyfarmtn.com",
+    href: "https://the-funny-farm.pages.dev/",
   },
   {
     name: "FreedomForTate.org",

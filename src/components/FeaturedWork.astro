@@ -37,7 +37,7 @@ function domainFrom(url?: string) {
         const external = Boolean(project.url);
         return (
           <a
-            href={project.url ?? "/work"}
+            href={project.href ?? project.url ?? "/work"}
             target={external ? "_blank" : undefined}
             rel={external ? "noopener noreferrer" : undefined}
             class="group flex flex-col"
