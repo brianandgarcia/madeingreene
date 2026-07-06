@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PricingCalculator from "../components/PricingCalculator.astro";
+---
+
+<Layout title="Project Estimator" description="Internal project estimator for Made in Greene.">
+  <section class="pt-40 md:pt-44 pb-2 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Internal Tool</span>
+      <h1 class="text-3xl md:text-4xl font-bold text-dark mt-2">Project estimator</h1>
+      <p class="text-warm-500 mt-2 max-w-2xl">
+        Pick a base package and add-ons to ballpark a project total. Not linked in the site
+        navigation — for quoting and internal use.
+      </p>
+    </div>
+  </section>
+
+  <PricingCalculator />
+</Layout>

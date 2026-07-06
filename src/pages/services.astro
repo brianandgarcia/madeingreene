@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
-import PricingCalculator from "../components/PricingCalculator.astro";
 import CTA from "../components/CTA.astro";
 
 const packages = [
@@ -79,7 +78,6 @@ const sharedNotIncluded = [
   { label: "Domain name", note: "~$12–20/yr, paid to your registrar so it stays in your name." },
   { label: "Hosting & platform subscriptions", note: "Covered for most brochure sites; paid plans are shown up front." },
   { label: "Logo & brand design", note: "Brand Starter Package from $750 as an add-on if you need one." },
-  { label: "Premium photography", note: "Free stock provided; website photo sessions from $299." },
   { label: "Additional pages", note: "$200 per page beyond what your package includes." },
   { label: "Online selling fees", note: "Shopify plan + processing (~2.9% + 30¢), billed by the provider." },
 ];
@@ -137,9 +135,9 @@ const faqs = [
       "Yes — we write all of it. You tell us what you do, who your customers are, and what makes you different. We turn that into clear, professional copy. You review it and we make it right. No blank pages, no guessing.",
   },
   {
-    question: "Can you take photos of my business?",
+    question: "Is photography included?",
     answer:
-      "Yes. Brian is a photographer and offers website photography sessions for Greene County clients from $299. Real photos of your space, your team, and your work connect with local customers far better than stock images.",
+      "For most packages, yes. Business, Growth, and Ecommerce include a local photo/video session — Growth includes an extended 2-hour session plus 20 edited images. The Landing Page can add a session from $299. Brian shoots it himself, so you get real photos of your space, team, and work — which connect with local customers far better than stock.",
   },
   {
     question: "Is this WordPress?",
@@ -338,16 +336,14 @@ const faqs = [
           </svg>
         </div>
         <div>
-          <p class="text-sm font-semibold text-dark">Need photos? Brian is a photographer.</p>
+          <p class="text-sm font-semibold text-dark">Photography is included with most packages.</p>
           <p class="text-sm text-warm-500 mt-0.5">
-            As a local business owner himself, Brian offers website photography sessions for Greene County clients — from $299. Real photos of your space, team, and work perform significantly better than stock.
+            Business, Growth, and Ecommerce include a local photo/video session — Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, right here in Greene County. On the Landing Page, a session can be added from $299.
           </p>
         </div>
       </div>
     </div>
   </section>
-
-  <PricingCalculator />
 
   <section id="add-ons" class="py-20 md:py-28 bg-warm-100 scroll-mt-24">
     <div class="max-w-4xl mx-auto px-6">
