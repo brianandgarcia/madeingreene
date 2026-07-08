@@ -54,7 +54,7 @@ const packages = [
       "Priority project scheduling",
     ],
     highlight: true,
-    cta: "Most Popular",
+    cta: "Get Started",
   },
   {
     name: "Ecommerce Website",
@@ -213,16 +213,18 @@ const faqs = [
               </span>
             )}
 
-            <h3 class="text-lg font-bold text-dark">{pkg.name}</h3>
-            <span class="text-xs font-semibold text-primary uppercase tracking-wider">{pkg.pages}</span>
+            <div class="text-center">
+              <h3 class="text-lg font-bold text-dark">{pkg.name}</h3>
+              <span class="block text-xs font-semibold text-primary uppercase tracking-wider mt-1">{pkg.pages}</span>
 
-            <div class="flex items-baseline gap-1.5 mt-3">
-              <span class="text-4xl font-extrabold text-dark">{pkg.oneTime}</span>
-              <span class="text-sm text-warm-500">one-time</span>
+              <div class="flex items-baseline justify-center gap-1.5 mt-3">
+                <span class="text-4xl font-extrabold text-dark">{pkg.oneTime}</span>
+                <span class="text-sm text-warm-500">one-time</span>
+              </div>
+              <p class="text-xs text-warm-500 mt-1">No monthly fee required · optional care $99–199/mo</p>
+
+              <p class="text-sm text-warm-600 leading-relaxed mt-4">{pkg.description}</p>
             </div>
-            <p class="text-xs text-warm-500 mt-1">No monthly fee required · optional care $99–199/mo</p>
-
-            <p class="text-sm text-warm-600 leading-relaxed mt-4">{pkg.description}</p>
 
             <ul class="space-y-2.5 mt-5 mb-6 flex-1">
               {pkg.included.map((item) => (
