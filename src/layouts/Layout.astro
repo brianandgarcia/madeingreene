@@ -6,17 +6,45 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = "Made in Greene builds affordable websites for local businesses in Greene County, TN. Clear pricing. Local support. No runaround.",
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://madeingreene.com");
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const ogImage = new URL("/og-image.png", siteUrl).href;
 const pageTitle = `${title} | Made in Greene`;
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${siteUrl.origin}/#business`,
+  name: "Made in Greene",
+  description:
+    "Affordable, custom websites for local businesses, farms, shops, and organizations in and around Greene County, Tennessee.",
+  url: siteUrl.origin,
+  telephone: "+1-423-292-7294",
+  email: "brian@madeingreene.com",
+  image: ogImage,
+  logo: new URL("/apple-touch-icon.png", siteUrl).href,
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Greeneville",
+    addressRegion: "TN",
+    addressCountry: "US",
+  },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Greene County, Tennessee",
+  },
+  sameAs: ["https://www.facebook.com/profile.php?id=61573254556580"],
+};
 ---
 
 <!doctype html>
@@ -28,6 +56,7 @@ const pageTitle = `${title} | Made in Greene`;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <meta name="generator" content={Astro.generator} />
 
@@ -54,6 +83,11 @@ const pageTitle = `${title} | Made in Greene`;
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
+
+    <!-- Structured data: local business -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(businessSchema)} />
+    <!-- Page-specific structured data / head extras -->
+    <slot name="head" />
   </head>
   <body class="bg-cream">
     <Header />

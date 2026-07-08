@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const links = [
+  { href: "/services", label: "Website Packages" },
+  { href: "/work", label: "Our Work" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<Layout
+  title="Page Not Found"
+  description="That page could not be found. Head back home or explore what Made in Greene offers."
+  noindex
+>
+  <section class="relative bg-dark overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_40%,rgba(70,137,32,0.22)_0%,transparent_72%)]"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-6 pt-40 md:pt-48 pb-24 md:pb-32 text-center">
+      <p class="text-7xl md:text-8xl font-extrabold text-primary-light leading-none [text-shadow:0_4px_24px_rgba(0,0,0,0.4)]">
+        404
+      </p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight mt-5 mb-4">
+        We couldn't find that page.
+      </h1>
+      <p class="text-lg text-white/80 leading-relaxed mb-10">
+        The link may be old or the page may have moved. Let's get you back on track.
+      </p>
+
+      <a
+        href="/"
+        class="inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-semibold rounded-xl hover:bg-accent-dark transition-all mb-10"
+      >
+        Back to home
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+        {links.map((link) => (
+          <a href={link.href} class="text-white/70 hover:text-white font-medium transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
