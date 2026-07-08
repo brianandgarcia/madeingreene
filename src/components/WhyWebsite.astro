@@ -37,9 +37,8 @@ const reasons = [
       {reasons.map((reason, i) => (
         <div
           class:list={[
-            "relative py-9 md:py-10",
+            "relative py-9 md:py-10 md:px-8",
             i > 0 && "border-t md:border-t-0 md:border-l border-warm-300",
-            i === 0 ? "md:pr-8" : "md:px-8",
           ]}
           data-reveal
           style={`--reveal-delay: ${i * 100}ms`}
