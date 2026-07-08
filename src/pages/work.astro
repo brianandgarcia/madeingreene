@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
 import CTA from "../components/CTA.astro";
 import { projects } from "../data/projects";
 ---
@@ -8,20 +9,12 @@ import { projects } from "../data/projects";
   title="Our Work"
   description="Recent websites built by Made in Greene for local businesses and organizations in and around Greene County, TN."
 >
-  <section class="py-20 md:py-28 bg-warm-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Work</span>
-        <h1 class="text-3xl md:text-5xl font-bold text-dark mt-3 mb-6">
-          Recent website projects.
-        </h1>
-        <p class="text-lg text-warm-500 leading-relaxed">
-          Real websites we've built for local businesses and organizations in and around
-          Greene County. More on the way as new projects launch.
-        </p>
-      </div>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Our Work"
+    title="Recent website projects."
+    subtitle="Real websites we've built for local businesses and organizations in and around Greene County. More on the way as new projects launch."
+    image="/02-home-base.png"
+  />
 
   <section class="py-20 md:py-28 bg-cream">
     <div class="max-w-6xl mx-auto px-6 space-y-20 md:space-y-28">
