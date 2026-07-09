@@ -1,20 +1,14 @@
 ---
-const videoSrc = "/hero.mp4";
 ---
 
 <section class="relative min-h-[360px] md:min-h-[440px] flex items-center overflow-hidden bg-dark">
   <div class="absolute inset-0 z-0">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
+    <img
+      src="/home-greene-quote-bg.jpg"
+      alt=""
       class="w-full h-full object-cover"
-      aria-hidden="true"
-    >
-      <source src={videoSrc} type="video/mp4" />
-    </video>
+      loading="lazy"
+    />
   </div>
 
   <div class="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(12,12,12,0.88)_0%,rgba(12,12,12,0.68)_48%,rgba(12,12,12,0.82)_100%)]"></div>
