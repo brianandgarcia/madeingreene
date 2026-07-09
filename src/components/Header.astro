@@ -1,5 +1,6 @@
 ---
-const currentPath = Astro.url.pathname;
+// Normalize trailing slash so "/about/" matches a nav href of "/about".
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
 // Top announcement bar — edit or set `show: false` to hide.
 const announcement = {
