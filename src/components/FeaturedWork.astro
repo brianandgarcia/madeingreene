@@ -24,7 +24,7 @@ function domainFrom(url?: string) {
         href="/work"
         class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors shrink-0"
       >
-        See all our work
+        See All Our Work
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
@@ -34,12 +34,17 @@ function domainFrom(url?: string) {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
       {showcase.map((project, i) => {
         const domain = domainFrom(project.url);
-        const external = Boolean(project.url);
+        const isLive = Boolean(project.url);
+        const hasCaseStudy = Boolean(project.slug);
+        const cardHref = hasCaseStudy
+          ? `/work/${project.slug}`
+          : (project.href ?? project.url ?? "/work");
+        const openExternal = !hasCaseStudy && isLive;
         return (
           <a
-            href={project.href ?? project.url ?? "/work"}
-            target={external ? "_blank" : undefined}
-            rel={external ? "noopener noreferrer" : undefined}
+            href={cardHref}
+            target={openExternal ? "_blank" : undefined}
+            rel={openExternal ? "noopener noreferrer" : undefined}
             class="group flex flex-col"
             data-reveal
             style={`--reveal-delay: ${i * 100}ms`}
@@ -68,7 +73,7 @@ function domainFrom(url?: string) {
                 <span class="text-xs font-semibold text-primary uppercase tracking-wider">
                   {project.category}
                 </span>
-                {external && (
+                {isLive && (
                   <span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-semibold text-primary-dark uppercase tracking-wide">
                     Live site
                   </span>
@@ -79,7 +84,7 @@ function domainFrom(url?: string) {
               </h3>
               <p class="text-warm-500 text-base leading-relaxed line-clamp-2">{project.description}</p>
               <span class="inline-flex items-center mt-3 text-primary text-sm font-semibold">
-                {external ? `Visit ${domain}` : "View project"}
+                {hasCaseStudy ? "View Case Study" : (isLive ? `Visit ${domain}` : "View Project")}
                 <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

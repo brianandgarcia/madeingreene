@@ -9,9 +9,11 @@ interface Props {
   video?: string;
   /** Optional poster image for the video while it loads. */
   poster?: string;
+  /** Tailwind object-position class(es) for the background image (e.g. "object-[30%_center] sm:object-center"). Defaults to centered. */
+  imagePosition?: string;
 }
 
-const { eyebrow, title, subtitle, image, video, poster } = Astro.props;
+const { eyebrow, title, subtitle, image, video, poster, imagePosition = "object-center" } = Astro.props;
 ---
 
 <section class="relative overflow-hidden bg-dark">
@@ -31,7 +33,7 @@ const { eyebrow, title, subtitle, image, video, poster } = Astro.props;
         <source src={video} type="video/mp4" />
       </video>
     ) : image ? (
-      <img src={image} alt="" class="w-full h-full object-cover" loading="eager" />
+      <img src={image} alt="" class:list={["w-full h-full object-cover", imagePosition]} loading="eager" />
     ) : null}
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70"></div>
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_center,rgba(70,137,32,0.18)_0%,transparent_70%)]"></div>
