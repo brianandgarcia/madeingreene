@@ -2,27 +2,27 @@
 const plans = [
   {
     name: "Local Landing Page",
-    price: "$1,250",
+    price: "$950",
     description: "One page for brand-new businesses, solo operators, pop-ups, tiny farms, and side businesses.",
-    features: ["One-page custom design", "Fast delivery", "Contact form or click-to-call", "Basic SEO setup"],
+    features: ["One-page custom design", "Quick 30-min photo session", "Basic SEO setup", "We handle your content edits"],
     highlight: false,
-    cta: "Get a Free Quote",
+    cta: "See What's Included",
   },
   {
     name: "Business Website",
     price: "$3,000",
     description: "A clean, professional presence for small local businesses that need to look established.",
-    features: ["Up to 5 pages", "Custom design (not a template)", "We write your copy", "In-person training + photo session"],
-    highlight: false,
-    cta: "Get a Free Quote",
+    features: ["Up to 5 pages", "In-person training + photo session", "Custom design (not a template)", "We write your copy"],
+    highlight: true,
+    cta: "See What's Included",
   },
   {
     name: "Growth Website",
     price: "$4,500",
     description: "For growing businesses that want more content, lead-gen tools, and a stronger presence.",
-    features: ["Up to 10 pages", "Blog / News / Projects setup", "Enhanced SEO + lead-gen layouts", "Extended photo session + 20 images"],
-    highlight: true,
-    cta: "Get a Free Quote",
+    features: ["Up to 10 pages", "Extended photo session + 20 images", "Blog / News / Projects setup", "Enhanced SEO + lead-gen layouts"],
+    highlight: false,
+    cta: "See What's Included",
   },
   {
     name: "Ecommerce Website",
@@ -30,7 +30,7 @@ const plans = [
     description: "Sell online — for shops, farms, makers, and service businesses ready to take orders.",
     features: ["Everything in Business", "Shopify store (up to 10 products)", "Payment, shipping & tax setup", "Store training"],
     highlight: false,
-    cta: "Let's Talk",
+    cta: "See What's Included",
   },
 ];
 ---
@@ -102,7 +102,7 @@ const plans = [
           </ul>
 
           <a
-            href="/contact"
+            href="/services"
             class:list={[
               "block text-center px-6 py-3 rounded-xl font-semibold text-sm transition-all",
               plan.highlight

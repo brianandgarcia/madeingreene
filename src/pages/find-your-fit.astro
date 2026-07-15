@@ -1,0 +1,341 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<Layout
+  title="Find Your Fit — Which Website Is Right for You?"
+  description="Answer four quick questions and we'll recommend the website package that fits your Greene County business. No email required to see your result."
+>
+  <PageHero
+    eyebrow="No jargon, no pressure"
+    title="Which website is right for you?"
+    subtitle="Not sure which package fits? Answer four quick questions and we'll point you to the right one. Takes about 30 seconds, and you don't need an email to see your result."
+    image="/home-greene-quote-bg.jpg"
+  />
+
+  <section class="py-16 md:py-24 bg-warm-100">
+    <div class="max-w-2xl mx-auto px-6">
+      <!-- QUIZ -->
+      <div id="quiz">
+        <div class="mb-8">
+          <div class="flex items-center justify-between text-sm text-warm-500 mb-3">
+            <span id="progress-label">Question 1 of 6</span>
+          </div>
+          <div class="h-2 rounded-full bg-warm-200 overflow-hidden">
+            <div id="progress-bar" class="h-full bg-primary transition-all duration-300" style="width:16.66%"></div>
+          </div>
+        </div>
+
+        <div id="question-container"></div>
+
+        <div class="mt-8 flex items-center justify-between">
+          <button id="back-btn" type="button" class="text-warm-500 font-medium hover:text-dark transition-colors">
+            &larr; Back
+          </button>
+          <span class="text-xs text-warm-400">No email needed to see your result.</span>
+        </div>
+
+        <noscript>
+          <div class="mt-8 rounded-xl bg-white border border-warm-200 p-6 text-center">
+            <p class="text-warm-600 mb-4">This quick picker needs JavaScript. No problem — you can browse the packages or just reach out and we'll help you choose.</p>
+            <a href="/services" class="text-primary font-semibold">See all packages &rarr;</a>
+          </div>
+        </noscript>
+      </div>
+
+      <!-- RESULT (kept in the static HTML so the form is detected at build time) -->
+      <div id="result" class="hidden">
+        <div class="text-center mb-8">
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Your recommended fit</span>
+          <h2 id="result-name" class="text-3xl md:text-4xl font-bold text-dark mt-3"></h2>
+          <div class="flex items-baseline justify-center gap-2 mt-3">
+            <span id="result-price" class="text-4xl font-extrabold text-dark"></span>
+            <span class="text-warm-500 text-sm">one-time</span>
+          </div>
+          <p id="result-tagline" class="text-warm-600 mt-4 max-w-md mx-auto leading-relaxed"></p>
+          <p class="text-xs text-warm-400 mt-3">No monthly fee required. Nothing's locked in — we confirm the best fit with you before anything starts.</p>
+        </div>
+
+        <div class="rounded-2xl bg-white border border-warm-200 shadow-sm p-6 md:p-8 mb-6">
+          <p class="text-sm font-semibold uppercase tracking-wider text-warm-500 mb-4">What you told us</p>
+          <ul id="result-summary" class="space-y-2.5 text-sm text-warm-700"></ul>
+        </div>
+
+        <form
+          name="quiz"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/thank-you/"
+          class="rounded-2xl bg-white border border-warm-200 shadow-sm p-6 md:p-8"
+        >
+          <input type="hidden" name="form-name" value="quiz" />
+          <p class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+          <input type="hidden" name="recommended_package" id="field-package" />
+          <input type="hidden" name="quiz_answers" id="field-answers" />
+
+          <h3 class="text-xl font-bold text-dark mb-2">Get your free quote</h3>
+          <p class="text-warm-600 text-sm mb-6">
+            We'll confirm your fit and send a no-pressure quote within 1 business day.
+          </p>
+
+          <div class="space-y-5">
+            <div>
+              <label for="quiz-name" class="block text-sm font-medium text-dark mb-2">Name</label>
+              <input type="text" id="quiz-name" name="name" required
+                class="w-full px-4 py-3 rounded-xl border border-warm-300 text-dark placeholder-warm-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="Your name" />
+            </div>
+            <div>
+              <label for="quiz-email" class="block text-sm font-medium text-dark mb-2">Email</label>
+              <input type="email" id="quiz-email" name="email" required
+                class="w-full px-4 py-3 rounded-xl border border-warm-300 text-dark placeholder-warm-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="you@example.com" />
+            </div>
+            <div>
+              <label for="quiz-business" class="block text-sm font-medium text-dark mb-2">Business Name</label>
+              <input type="text" id="quiz-business" name="business"
+                class="w-full px-4 py-3 rounded-xl border border-warm-300 text-dark placeholder-warm-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="Your business name" />
+            </div>
+            <div>
+              <label for="quiz-message" class="block text-sm font-medium text-dark mb-2">Anything else? (optional)</label>
+              <textarea id="quiz-message" name="message" rows="3"
+                class="w-full px-4 py-3 rounded-xl border border-warm-300 text-dark placeholder-warm-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+                placeholder="Tell us a bit about your business."></textarea>
+            </div>
+
+            <button type="submit"
+              class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25">
+              Send My Free Quote
+            </button>
+            <p class="text-xs text-warm-400 text-center">
+              Free quote. No pressure. You do not need all your content ready yet.
+            </p>
+          </div>
+        </form>
+
+        <div class="text-center mt-6">
+          <button id="restart-btn" type="button" class="text-warm-500 text-sm hover:text-primary transition-colors">Start over</button>
+          <span class="text-warm-300 mx-2">&middot;</span>
+          <a href="/services" class="text-primary text-sm font-semibold hover:text-primary-dark transition-colors">See all packages &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const QUESTIONS = [
+    {
+      id: "industry",
+      title: "First, what kind of business are you?",
+      help: "So we can speak your language, not tech jargon.",
+      options: [
+        { value: "trades", label: "Trades or contractor", desc: "Plumbing, electrical, HVAC, construction, landscaping, roofing, and the like.", scores: {} },
+        { value: "shop", label: "Shop or retail", desc: "A storefront, boutique, or local shop with products.", scores: {} },
+        { value: "food", label: "Food, farm, or maker", desc: "Farm stand, restaurant, cafe, food truck, or a handmade goods business.", scores: {} },
+        { value: "service", label: "Service or professional", desc: "Salon, cleaning, consulting, real estate, health, and similar.", scores: {} },
+        { value: "org", label: "Church or nonprofit", desc: "A ministry, community group, school, or cause.", scores: {} },
+        { value: "other", label: "Something else", desc: "Not sure it fits a box, we'll figure it out together.", scores: {} },
+      ],
+    },
+    {
+      id: "situation",
+      title: "What do you have online right now?",
+      help: "There's no wrong answer here.",
+      options: [
+        { value: "nothing", label: "Nothing yet", desc: "Starting from scratch. We'll set the whole thing up for you.", scores: {} },
+        { value: "facebook", label: "Just a Facebook page", desc: "Social only, no real website that shows up on Google.", scores: {} },
+        { value: "old_site", label: "An old site that needs replacing", desc: "It's outdated, slow, or a pain to update.", scores: {} },
+        { value: "unhappy", label: "A site I'm just not happy with", desc: "It works, but it doesn't represent my business well.", scores: {} },
+      ],
+    },
+    {
+      id: "job",
+      title: "What's the main job for your website?",
+      help: "Pick the one that matters most right now.",
+      options: [
+        { value: "get_found", label: "Look legit and get found on Google", desc: "When someone hears my name, I want them to find a real, professional site, not an empty search.", scores: { landing: 2, business: 1 } },
+        { value: "explain", label: "Explain my services and bring in calls", desc: "Show what I do, build trust, and make it dead simple for people to contact me.", scores: { business: 2, growth: 1 } },
+        { value: "content", label: "Share updates, menus, or events", desc: "Keep my hours, specials, menu, blog, or a calendar current for regulars.", scores: { growth: 2, business: 1 } },
+        { value: "sell", label: "Sell my products online", desc: "Let customers browse and buy right from my site.", scores: { ecommerce: 3 } },
+        { value: "bookings", label: "Take bookings or appointments", desc: "Let customers schedule, and maybe pay for, time with me.", scores: { ecommerce: 2, growth: 1 } },
+      ],
+    },
+    {
+      id: "size",
+      title: "How big does it need to be?",
+      help: "A rough guess is perfect, we'll refine it together.",
+      options: [
+        { value: "one_page", label: "Just one page", desc: "Everything on a single scroll: who I am, what I do, and how to reach me.", scores: { landing: 3 } },
+        { value: "few_pages", label: "A few pages", desc: "Something like Home, About, Services, and Contact.", scores: { business: 2 } },
+        { value: "full_site", label: "A full site", desc: "Lots of pages, plus a blog, projects, or a photo gallery.", scores: { growth: 2, business: 1 } },
+        { value: "store", label: "A site plus an online store", desc: "Regular pages, plus a shop to sell or take orders through.", scores: { ecommerce: 2, growth: 1 } },
+      ],
+    },
+    {
+      id: "sell",
+      title: "Do you need to take money or bookings online?",
+      help: "This is the biggest thing that shapes your price.",
+      options: [
+        { value: "no", label: "No, just calls and messages", desc: "I close the sale in person or over the phone.", scores: {} },
+        { value: "later", label: "Not yet, but maybe down the road", desc: "Keep the door open to add it later.", scores: { business: 1 } },
+        { value: "products", label: "Yes, sell products", desc: "A real store with checkout, shipping, and inventory.", scores: { ecommerce: 3 } },
+        { value: "bookings", label: "Yes, take bookings or deposits", desc: "Let people schedule and pay online.", scores: { ecommerce: 2 } },
+      ],
+    },
+    {
+      id: "timeline",
+      title: "When are you hoping to launch?",
+      help: "It just helps us plan, no pressure either way.",
+      options: [
+        { value: "asap", label: "As soon as possible", desc: "I'm ready to move on this now.", scores: {} },
+        { value: "soon", label: "In the next month or two", desc: "Planning ahead a little.", scores: {} },
+        { value: "exploring", label: "Just exploring for now", desc: "Gathering info and ideas before I commit.", scores: {} },
+      ],
+    },
+  ];
+
+  const PACKAGES = {
+    landing: { name: "Local Landing Page", price: "$950", tagline: "One clean, professional page that makes you look real and easy to reach. We handle your edits, and you can add self-editing anytime. Perfect to start with, and it grows into a full site later." },
+    business: { name: "Business Website", price: "$3,000", tagline: "A handful of professional pages that explain what you do and make it easy for customers to call. The right fit for most local businesses." },
+    growth: { name: "Growth Website", price: "$4,500", tagline: "A fuller site with more content, a blog, and lead-gen tools to attract and convert more customers as you grow." },
+    ecommerce: { name: "Ecommerce Website", price: "$5,500+", tagline: "A full online store so you can sell products or take orders directly through your site, with payment and shipping handled." },
+  };
+
+  let step = 0;
+  /** @type {Record<string, string>} */
+  const answers = {};
+
+  const qc = document.getElementById("question-container");
+  const progressBar = document.getElementById("progress-bar");
+  const progressLabel = document.getElementById("progress-label");
+  const backBtn = document.getElementById("back-btn");
+  const quizEl = document.getElementById("quiz");
+  const resultEl = document.getElementById("result");
+
+  function renderQuestion() {
+    const q = QUESTIONS[step];
+    progressLabel.textContent = `Question ${step + 1} of ${QUESTIONS.length}`;
+    progressBar.style.width = `${((step + 1) / QUESTIONS.length) * 100}%`;
+    backBtn.style.visibility = step === 0 ? "hidden" : "visible";
+
+    qc.innerHTML = `
+      <h2 class="text-2xl md:text-3xl font-bold text-dark mb-2">${q.title}</h2>
+      ${q.help ? `<p class="text-warm-500 mb-6">${q.help}</p>` : `<div class="mb-6"></div>`}
+      <div class="space-y-3">
+        ${q.options.map((o) => {
+          const selected = answers[q.id] === o.value;
+          return `
+          <button type="button" data-value="${o.value}"
+            class="quiz-opt group w-full flex items-center gap-4 text-left rounded-2xl border p-5 shadow-sm transition-all ${
+              selected
+                ? "border-primary ring-2 ring-primary/20 bg-primary/[0.04]"
+                : "border-warm-200 bg-white hover:border-primary/50 hover:shadow-md hover:-translate-y-0.5"
+            }">
+            <span class="w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center transition-colors ${
+              selected ? "border-primary bg-primary" : "border-warm-300 group-hover:border-primary/60"
+            }">
+              <svg class="w-3.5 h-3.5 text-white ${selected ? "" : "hidden"}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-semibold text-dark">${o.label}</span>
+              <span class="block text-sm text-warm-500 mt-0.5">${o.desc}</span>
+            </span>
+            <svg class="w-5 h-5 shrink-0 text-warm-300 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>`;
+        }).join("")}
+      </div>
+    `;
+
+    qc.querySelectorAll(".quiz-opt").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        answers[q.id] = btn.getAttribute("data-value");
+        renderQuestion();
+        setTimeout(() => {
+          if (step < QUESTIONS.length - 1) {
+            step++;
+            renderQuestion();
+          } else {
+            showResult();
+          }
+        }, 180);
+      });
+    });
+  }
+
+  backBtn.addEventListener("click", () => {
+    if (step > 0) {
+      step--;
+      renderQuestion();
+    }
+  });
+
+  function recommend() {
+    const totals = { landing: 0, business: 0, growth: 0, ecommerce: 0 };
+    QUESTIONS.forEach((q) => {
+      const opt = q.options.find((o) => o.value === answers[q.id]);
+      if (opt) for (const k in opt.scores) totals[k] += opt.scores[k];
+    });
+    const wantsSell =
+      ["products", "bookings"].includes(answers.sell) ||
+      ["sell", "bookings"].includes(answers.job) ||
+      answers.size === "store";
+    if (!wantsSell) totals.ecommerce = 0;
+    const order = ["business", "growth", "landing", "ecommerce"];
+    let best = "business";
+    order.forEach((k) => {
+      if (totals[k] > totals[best]) best = k;
+    });
+    return best;
+  }
+
+  function showResult() {
+    const best = recommend();
+    const pkg = PACKAGES[best];
+
+    document.getElementById("result-name").textContent = pkg.name;
+    document.getElementById("result-price").textContent = pkg.price;
+    document.getElementById("result-tagline").textContent = pkg.tagline;
+
+    const summary = document.getElementById("result-summary");
+    summary.innerHTML = QUESTIONS.map((q) => {
+      const o = q.options.find((op) => op.value === answers[q.id]);
+      return `<li class="flex items-start gap-2.5"><span class="text-primary mt-0.5">&#10003;</span><span>${o ? o.label : ""}</span></li>`;
+    }).join("");
+
+    document.getElementById("field-package").value = `${pkg.name} (${pkg.price})`;
+    document.getElementById("field-answers").value = QUESTIONS.map((q) => {
+      const o = q.options.find((op) => op.value === answers[q.id]);
+      return `${q.title} -> ${o ? o.label : ""}`;
+    }).join(" | ");
+
+    const msg = document.getElementById("quiz-message");
+    if (msg && !msg.value) msg.value = `I'm interested in the ${pkg.name}. `;
+
+    quizEl.classList.add("hidden");
+    resultEl.classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function restart() {
+    step = 0;
+    Object.keys(answers).forEach((k) => delete answers[k]);
+    resultEl.classList.add("hidden");
+    quizEl.classList.remove("hidden");
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.getElementById("restart-btn")?.addEventListener("click", restart);
+
+  renderQuestion();
+</script>

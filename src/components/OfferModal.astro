@@ -1,0 +1,148 @@
+---
+// ── Edit your offer here ──────────────────────────────────────────────
+const offer = {
+  eyebrow: "For Greene County farm stands & small shops",
+  heading: "Get your stand online.",
+  body: "A simple one-page website — your hours, your location, and what's fresh this week. Built local, priced small.",
+  price: "$650",
+  priceNote: "one-time · farm stand special",
+  bullets: [
+    "One clean page, made for phones",
+    "Hours, map, and what's in season",
+    "We build it — just tell us about your stand",
+    "Quick local photo session included",
+  ],
+  ctaLabel: "Claim the Farm Stand Special",
+  ctaHref: "/contact",
+  dismiss: "Maybe later",
+};
+// Seconds to wait before it appears (once per visitor)
+const delaySeconds = 12;
+// ──────────────────────────────────────────────────────────────────────
+---
+
+<div
+  id="offer-modal"
+  class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4"
+  data-delay={delaySeconds}
+>
+  <div id="offer-backdrop" class="absolute inset-0 bg-dark/60 backdrop-blur-sm"></div>
+
+  <div
+    id="offer-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="offer-heading"
+    class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden"
+  >
+    <div class="h-1.5 bg-primary"></div>
+
+    <button
+      id="offer-close"
+      type="button"
+      aria-label="Close"
+      class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full flex items-center justify-center text-warm-400 hover:text-dark hover:bg-warm-100 transition-colors"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="p-7 md:p-8">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-wider mb-3">
+        {offer.eyebrow}
+      </span>
+      <h2 id="offer-heading" class="text-2xl md:text-3xl font-bold text-dark mb-2">
+        {offer.heading}
+      </h2>
+      <p class="text-warm-600 leading-relaxed mb-5">{offer.body}</p>
+
+      <div class="flex items-baseline gap-2 mb-5">
+        <span class="text-4xl font-extrabold text-dark">{offer.price}</span>
+        <span class="text-sm text-warm-500">{offer.priceNote}</span>
+      </div>
+
+      <ul class="space-y-2.5 mb-6">
+        {offer.bullets.map((b) => (
+          <li class="flex items-start gap-2.5 text-sm text-warm-700">
+            <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        id="offer-cta"
+        href={offer.ctaHref}
+        class="block text-center px-6 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25"
+      >
+        {offer.ctaLabel}
+      </a>
+      <button
+        id="offer-dismiss"
+        type="button"
+        class="block w-full text-center text-sm text-warm-400 hover:text-warm-600 mt-3 transition-colors"
+      >
+        {offer.dismiss}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const KEY = "mig-offer-dismissed";
+  const modal = document.getElementById("offer-modal");
+
+  if (modal) {
+    const panel = document.getElementById("offer-panel");
+    const closeBtn = document.getElementById("offer-close");
+
+    const open = () => {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => modal.classList.add("is-open"));
+      closeBtn?.focus();
+    };
+
+    const close = () => {
+      modal.classList.remove("is-open");
+      document.body.style.overflow = "";
+      try { localStorage.setItem(KEY, "1"); } catch (e) {}
+      setTimeout(() => modal.classList.add("hidden"), 250);
+    };
+
+    closeBtn?.addEventListener("click", close);
+    document.getElementById("offer-backdrop")?.addEventListener("click", close);
+    document.getElementById("offer-dismiss")?.addEventListener("click", close);
+    // Clicking through to the offer also stops it from nagging next visit
+    document.getElementById("offer-cta")?.addEventListener("click", () => {
+      try { localStorage.setItem(KEY, "1"); } catch (e) {}
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) close();
+    });
+
+    let seen = false;
+    try { seen = localStorage.getItem(KEY) === "1"; } catch (e) {}
+    if (!seen) {
+      const delay = Number(modal.getAttribute("data-delay") || "12") * 1000;
+      setTimeout(open, delay);
+    }
+  }
+</script>
+
+<style>
+  #offer-modal { opacity: 0; transition: opacity 0.25s ease; }
+  #offer-modal.is-open { opacity: 1; }
+  #offer-panel {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  #offer-modal.is-open #offer-panel { opacity: 1; transform: translateY(0) scale(1); }
+  @media (prefers-reduced-motion: reduce) {
+    #offer-modal, #offer-panel { transition: none; }
+  }
+</style>

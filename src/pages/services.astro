@@ -6,17 +6,18 @@ import CTA from "../components/CTA.astro";
 const packages = [
   {
     name: "Local Landing Page",
-    oneTime: "$1,250",
+    oneTime: "$950",
     pages: "1 page",
     description:
       "For brand-new businesses, solo operators, pop-ups, tiny farms, and side businesses. Grows into a full Business Website as you scale.",
     included: [
-      "One-page custom landing page — fast delivery",
+      "One-page custom design, built fast",
+      "Quick 30-min local photo session included",
       "Mobile-friendly design + basic copy",
-      "Contact form or click-to-call button",
       "Business info + services/products sections",
       "Social media + Google Maps links",
       "Basic SEO setup + 30-minute handoff call",
+      "We make your content changes for you",
     ],
     highlight: false,
     cta: "Get Started",
@@ -29,13 +30,14 @@ const packages = [
       "Best for small local businesses that need a clean, professional online presence.",
     included: [
       "Custom design + development for your business",
+      "1 local photo/video session, up to 60 min",
       "We write your copy for up to 5 pages",
       "Home, About, Services, Contact + form, +1 more",
+      "Edit it yourself anytime, no developer needed",
       "In-person meetings + 1-hour training session",
       "Accessibility-friendly build + basic SEO",
-      "1 local photo/video session, up to 60 min",
     ],
-    highlight: false,
+    highlight: true,
     cta: "Get Started",
   },
   {
@@ -46,14 +48,14 @@ const packages = [
       "Best for growing businesses that want a stronger presence, more content, and tools to attract and convert customers.",
     included: [
       "Everything in the Business Website, plus:",
+      "Extended photo/video session (up to 2 hrs) + 20 edited images",
       "Copy + design for up to 10 pages",
       "Blog / News / Projects section setup",
       "Enhanced SEO + content structure guidance",
       "Lead-gen layouts, CTAs, and inquiry forms",
-      "Extended photo/video session (up to 2 hrs) + 20 edited images",
       "Priority project scheduling",
     ],
-    highlight: true,
+    highlight: false,
     cta: "Get Started",
   },
   {
@@ -64,6 +66,7 @@ const packages = [
       "Best for shops, farms, makers, and service businesses ready to sell online.",
     included: [
       "Everything in the Business Website package",
+      "Local photo/video session for your products",
       "Shopify setup with up to 10 products",
       "Product and category setup",
       "Payment, shipping & tax configuration guidance",
@@ -86,6 +89,7 @@ const addonGroups = [
   {
     title: "Website Add-Ons",
     items: [
+      { name: "Self-editing (CMS) setup", note: "edit your own content anytime; included on Business and up", price: "$300" },
       { name: "Additional pages (per page)", price: "$200" },
       { name: "Blog / News / Projects setup", note: "+ up to 2 initial posts", price: "$500" },
       { name: "Online Store / Shopify", note: "up to 10 products", price: "$1,500" },
@@ -127,7 +131,7 @@ const faqs = [
   {
     question: "Can I edit the site myself?",
     answer:
-      "Yes. Every build includes a handoff session and editor access for routine updates like hours, photos, and text.",
+      "On Business, Growth, and Ecommerce, yes. Self-editing is built in, with a training session so you can update hours, photos, and text whenever you like. The Local Landing Page keeps it simple: we make your changes for you, and you can add self-editing anytime for $300.",
   },
   {
     question: "Do you write the page content?",
@@ -137,7 +141,7 @@ const faqs = [
   {
     question: "Is photography included?",
     answer:
-      "For most packages, yes. Business, Growth, and Ecommerce include a local photo/video session — Growth includes an extended 2-hour session plus 20 edited images. The Landing Page can add a session from $299. Brian shoots it himself, so you get real photos of your space, team, and work — which connect with local customers far better than stock.",
+      "Yes, every package includes photography. The Local Landing Page includes a quick 30-minute session while we meet in person. Business, Growth, and Ecommerce include a fuller local photo/video session, and Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, so you get real photos of your space, team, and work, which connect with local customers far better than stock. Need more? A dedicated session can be added from $299.",
   },
   {
     question: "Is this WordPress?",
@@ -221,8 +225,6 @@ const faqs = [
                 <span class="text-4xl font-extrabold text-dark">{pkg.oneTime}</span>
                 <span class="text-sm text-warm-500">one-time</span>
               </div>
-              <p class="text-xs text-warm-500 mt-1">No monthly fee required · optional care $99–199/mo</p>
-
               <p class="text-sm text-warm-600 leading-relaxed mt-4">{pkg.description}</p>
             </div>
 
@@ -338,9 +340,9 @@ const faqs = [
           </svg>
         </div>
         <div>
-          <p class="text-sm font-semibold text-dark">Photography is included with most packages.</p>
+          <p class="text-sm font-semibold text-dark">Photography is included with every package.</p>
           <p class="text-sm text-warm-500 mt-0.5">
-            Business, Growth, and Ecommerce include a local photo/video session — Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, right here in Greene County. On the Landing Page, a session can be added from $299.
+            The Local Landing Page includes a quick 30-minute session while we meet in person. Business, Growth, and Ecommerce include a fuller local photo/video session, and Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, right here in Greene County.
           </p>
         </div>
       </div>
@@ -388,8 +390,8 @@ const faqs = [
           We teach you how to run it.
         </h2>
         <p class="text-warm-500 max-w-2xl mx-auto">
-          Every site we build comes with training — not a 40-page PDF, but a real sit-down where
-          we walk through everything you can update yourself. If you want more, we're happy to help.
+          Every site we build comes with a real handoff, not a 40-page PDF. If your plan includes
+          self-editing, we walk through everything you can update yourself. If you want more, we're happy to help.
         </p>
       </div>
 
@@ -398,8 +400,8 @@ const faqs = [
           <div class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Local Landing Page</div>
           <h3 class="text-lg font-semibold text-dark mb-2">You get a 30-minute handoff.</h3>
           <p class="text-warm-500 text-sm leading-relaxed">
-            A walkthrough of your site and editor. How to change hours, swap a photo, update a page.
-            Included at no extra charge.
+            A walkthrough of your finished site, and how to send us any change you need. We make your
+            edits for you. Want to update it yourself? Add self-editing for $300.
           </p>
         </div>
         <div class="bg-white rounded-2xl p-6 border-2 border-primary">

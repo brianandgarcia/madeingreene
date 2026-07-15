@@ -1,0 +1,78 @@
+---
+const cantDo = [
+  {
+    title: "Show up when someone Googles you",
+    body: "When people need a local business, most search Google — not Facebook. No website usually means you're not even in the running.",
+  },
+  {
+    title: "Reach people who aren't on Facebook",
+    body: "Plenty of your customers don't use it, or never see your posts. A website reaches everyone, whether they're on social media or not.",
+  },
+  {
+    title: "Actually belong to you",
+    body: "Facebook owns the page, decides who sees your posts, and can change the rules or lock the account overnight. Your website is yours to keep.",
+  },
+  {
+    title: "Make you look established",
+    body: "A clean, fast site signals you're a real business that's here to stay — in a way a profile page next to everyone's vacation photos never will.",
+  },
+  {
+    title: "Do the real work",
+    body: "Take quote requests, lay out your full services, book jobs, sell online — on a page you control, not a feed that buries you between posts.",
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-cream">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-12" data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">A fair question</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-5 leading-tight">
+        "I already have a Facebook page. Do I really need a website?"
+      </h2>
+      <p class="text-warm-600 text-lg leading-relaxed max-w-2xl mx-auto">
+        Honest answer: keep the Facebook page. It's great for regulars and quick updates.
+        But it was never built to be your home base — and it quietly costs you customers
+        you'll never hear about. Here's the difference.
+      </p>
+    </div>
+
+    <div class="rounded-2xl bg-white border border-warm-200 shadow-sm p-6 md:p-8" data-reveal>
+      <p class="text-sm font-semibold uppercase tracking-wider text-warm-500 mb-6">
+        What a Facebook page can't do for you
+      </p>
+      <ul class="space-y-5">
+        {cantDo.map((item) => (
+          <li class="flex items-start gap-4">
+            <span class="w-6 h-6 shrink-0 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
+              <svg class="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="font-bold text-dark">{item.title}</h3>
+              <p class="text-warm-600 leading-relaxed text-[15px] mt-1">{item.body}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="text-center text-warm-700 text-lg leading-relaxed max-w-2xl mx-auto mt-12" data-reveal>
+      You don't have to choose. The businesses that win locally use both — Facebook to
+      stay in touch, a website to get found and close the deal.
+    </p>
+
+    <div class="text-center mt-8" data-reveal>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+      >
+        Get a Free Quote
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
