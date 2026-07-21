@@ -3,17 +3,18 @@
 const offer = {
   eyebrow: "For Greene County farm stands & small shops",
   heading: "Get your stand online.",
-  body: "A simple one-page website — your hours, your location, and what's fresh this week. Built local, priced small.",
-  price: "$650",
-  priceNote: "one-time · farm stand special",
+  body: "A simple one-page website with your menu, your hours, and a map to your stand. Built local, priced small.",
+  price: "$150",
+  priceNote: "down to start · or own it for $850",
   bullets: [
     "One clean page, made for phones",
-    "Hours, map, and what's in season",
-    "We build it — just tell us about your stand",
+    "Your menu, hours, and a map to your stand",
+    "Fresh-batch text and email alerts",
     "Quick local photo session included",
+    "Pay monthly or own it, your call",
   ],
-  ctaLabel: "Claim the Farm Stand Special",
-  ctaHref: "/contact",
+  ctaLabel: "See the Farm Stand Special",
+  ctaHref: "/farm-stands",
   dismiss: "Maybe later",
 };
 // Seconds to wait before it appears (once per visitor)
@@ -96,7 +97,6 @@ const delaySeconds = 12;
   const modal = document.getElementById("offer-modal");
 
   if (modal) {
-    const panel = document.getElementById("offer-panel");
     const closeBtn = document.getElementById("offer-close");
 
     const open = () => {
