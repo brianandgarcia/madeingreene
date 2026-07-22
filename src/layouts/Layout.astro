@@ -8,12 +8,14 @@ interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  hideOffer?: boolean;
 }
 
 const {
   title,
   description = "Made in Greene builds affordable websites for local businesses in Greene County, TN. Clear pricing. Local support. No runaround.",
   noindex = false,
+  hideOffer = false,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://madeingreene.com");
@@ -106,7 +108,7 @@ const businessSchema = {
       <slot />
     </main>
     <Footer />
-    <OfferModal />
+    {!hideOffer && <OfferModal />}
 
     <script>
       const revealElements = document.querySelectorAll<HTMLElement>("[data-reveal]");
