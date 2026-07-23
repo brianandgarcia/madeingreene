@@ -28,110 +28,116 @@ const stats = [
 ];
 ---
 
-<section class="relative bg-dark">
-  <!-- Video background -->
-  <div class="absolute inset-0 z-0">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      class="w-full h-full object-cover"
-      aria-hidden="true"
-    >
-      <source src="/hero.mp4" type="video/mp4" />
-    </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-primary-dark/60 to-dark"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_72%_62%_at_50%_40%,rgba(9,38,25,0.5)_0%,transparent_72%)]"></div>
+<!-- Hero + work showcase + stats, all on one dark section -->
+<section class="relative overflow-hidden bg-dark">
+  <!-- layered gradient backdrop -->
+  <div class="pointer-events-none absolute inset-0 hero-mesh"></div>
+  <div class="pointer-events-none absolute inset-0 hero-grid"></div>
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="hero-orb hero-orb-1 absolute -top-32 -right-24 w-[38rem] h-[38rem] rounded-full bg-primary/25 blur-3xl"></div>
+    <div class="hero-orb hero-orb-2 absolute top-1/3 -left-40 w-[32rem] h-[32rem] rounded-full bg-primary-dark/40 blur-3xl"></div>
+    <div class="hero-orb hero-orb-3 absolute -bottom-48 right-1/4 w-[30rem] h-[30rem] rounded-full bg-accent/10 blur-3xl"></div>
   </div>
+  <!-- fade the mesh out at the bottom so it meets the next section cleanly -->
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-dark"></div>
 
-  <!-- Hero text -->
-  <div class="relative z-10 flex flex-col items-center text-center px-6 pt-40 md:pt-44 pb-[11rem] sm:pb-[12rem] md:pb-[13rem]">
-    <span class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-white/10 backdrop-blur-sm ring-1 ring-white/25 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white">
-      <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-light"></span>
-      Proudly based in Greeneville, Tennessee
-    </span>
+  <div class="relative max-w-6xl mx-auto px-6 pt-28 md:pt-36 pb-20 md:pb-24">
+    <!-- Copy left, image right -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="hero-delayed-fade">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-white/10 ring-1 ring-white/25 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-light"></span>
+          Proudly based in Greeneville, Tennessee
+        </span>
 
-    <h1 class="max-w-5xl text-4xl sm:text-6xl md:text-7xl font-extrabold text-white leading-[1.03] tracking-tight mb-6 text-balance [text-shadow:0_3px_24px_rgba(0,0,0,0.55)]">
-      <span id="rotating-adjective" class="bg-gradient-to-r from-[#d7ef75] via-[#a9d958] to-[#5fbf34] bg-clip-text text-transparent [-webkit-background-clip:text] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]" style="transition: opacity 0.3s ease;">Dependable</span>
-      websites built for
-      <span class="block">
-        Greene County's
-        <span id="rotating-industry" class="bg-gradient-to-r from-[#d7ef75] via-[#a9d958] to-[#5fbf34] bg-clip-text text-transparent [-webkit-background-clip:text] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]" style="transition: opacity 0.3s ease;">contractors.</span>
-      </span>
-    </h1>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-[1.05] tracking-tight mb-6 text-balance">
+          <span id="rotating-adjective" class="text-primary-light" style="transition: opacity 0.3s ease;">Dependable</span>
+          websites built for
+          <span class="block">
+            Greene County's
+            <span id="rotating-industry" class="text-primary-light" style="transition: opacity 0.3s ease;">contractors.</span>
+          </span>
+        </h1>
 
-    <p class="hero-delayed-fade max-w-2xl font-bold text-lg md:text-xl text-white/90 leading-relaxed mb-8 [text-shadow:0_2px_14px_rgba(0,0,0,0.75)]">
-      Made in Greene builds professional, mobile-friendly websites for local businesses, farms, shops,
-      makers, and organizations in and around Greene County, Tennessee.
-    </p>
+        <p class="max-w-xl text-lg md:text-xl text-warm-300 leading-relaxed mb-8">
+          Made in Greene builds professional, mobile-friendly websites for local businesses, farms, shops,
+          makers, and organizations in and around Greene County, Tennessee.
+        </p>
 
-    <div class="hero-delayed-fade hero-delayed-fade-buttons flex flex-col sm:flex-row gap-3 justify-center">
-      <a
-        href="/services"
-        class="inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-semibold rounded-xl hover:bg-accent-dark transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
-      >
-        View Website Packages
-        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-      <a
-        href="/contact"
-        class="inline-flex items-center justify-center px-8 py-4 border border-white/40 bg-white/5 backdrop-blur-sm text-white font-semibold rounded-xl hover:border-white hover:bg-white/10 transition-all"
-      >
-        Start a Project
-      </a>
-    </div>
-  </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="/services"
+            class="inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-semibold rounded-xl hover:bg-accent-dark transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
+          >
+            View Website Packages
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 border border-white/40 bg-white/5 backdrop-blur-sm text-white font-semibold rounded-xl hover:border-white hover:bg-white/10 transition-all"
+          >
+            Start a Project
+          </a>
+        </div>
+      </div>
 
-  <!-- Floating showcase cards (straddle hero + dark strip below) -->
-  <div class="absolute z-20 inset-x-0 bottom-0 translate-y-1/2">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-7 items-end">
-        {cards.map((card) => (
-          <div class:list={["card-fade", card.position]}>
-            <div class="rounded-xl overflow-hidden bg-white ring-1 ring-black/10 shadow-2xl shadow-black/40">
-              <div class="flex items-center gap-1.5 px-3 py-2.5 bg-warm-100 border-b border-warm-200">
-                <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
-                <span class="ml-3 text-[11px] text-warm-500 truncate">{card.label}</span>
-              </div>
-              {card.placeholder ? (
-                <div class="w-full aspect-[16/11] bg-primary/5 flex flex-col items-center justify-center text-center px-4">
-                  <span class="w-11 h-11 rounded-full bg-primary/15 text-primary flex items-center justify-center mb-3">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                    </svg>
-                  </span>
-                  <span class="font-bold text-dark text-base">Your site could be next</span>
-                  <span class="text-warm-500 text-xs mt-1">Let's build something local.</span>
-                </div>
-              ) : (
-                <img
-                  src={card.img}
-                  alt={card.alt}
-                  loading="lazy"
-                  class="w-full aspect-[16/11] object-cover object-top"
-                />
-              )}
-            </div>
-          </div>
-        ))}
+      <div class="hero-delayed-fade hero-delayed-fade-buttons">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
+          <img
+            src="/home-hero-bg.jpg"
+            alt="Greeneville Town Hall in Greene County, Tennessee"
+            class="w-full aspect-[4/3] object-cover object-[58%_center]"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <p class="mt-3 text-center text-xs md:text-sm text-warm-400">
+          Greeneville Town Hall — Taken by Made in Greene
+        </p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Dark trust + stats strip (receives the floating cards) -->
-<section class="bg-dark pt-[10rem] sm:pt-[11rem] md:pt-[12rem] pb-20 md:pb-24">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <p class="text-primary-light font-semibold text-base md:text-lg mb-12">
+    <!-- Work showcase -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-7 items-end mt-20 md:mt-28">
+      {cards.map((card) => (
+        <div class:list={["card-fade", card.position]}>
+          <div class="rounded-xl overflow-hidden bg-white ring-1 ring-black/10 shadow-2xl shadow-black/40">
+            <div class="flex items-center gap-1.5 px-3 py-2.5 bg-warm-100 border-b border-warm-200">
+              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+              <span class="ml-3 text-[11px] text-warm-500 truncate">{card.label}</span>
+            </div>
+            {card.placeholder ? (
+              <div class="w-full aspect-[16/11] bg-primary/5 flex flex-col items-center justify-center text-center px-4">
+                <span class="w-11 h-11 rounded-full bg-primary/15 text-primary flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                </span>
+                <span class="font-bold text-dark text-base">Your site could be next</span>
+                <span class="text-warm-500 text-xs mt-1">Let's build something local.</span>
+              </div>
+            ) : (
+              <img
+                src={card.img}
+                alt={card.alt}
+                loading="lazy"
+                class="w-full aspect-[16/11] object-cover object-top"
+              />
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-primary-light font-semibold text-base md:text-lg mt-16 mb-12">
       Built for the businesses that keep Greene County running.
     </p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
       {stats.map((stat) => (
         <div>
           <div class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">{stat.value}</div>
@@ -168,6 +174,51 @@ const stats = [
 </script>
 
 <style>
+  /* Radial "mesh" of brand greens over the dark base */
+  .hero-mesh {
+    background:
+      radial-gradient(60% 55% at 78% 12%, rgba(70, 137, 32, 0.32), transparent 60%),
+      radial-gradient(55% 50% at 8% 42%, rgba(23, 73, 50, 0.55), transparent 62%),
+      radial-gradient(45% 45% at 55% 100%, rgba(142, 175, 62, 0.14), transparent 60%);
+  }
+
+  /* Faint grid to give the dark space some structure */
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(75% 65% at 50% 30%, #000 45%, transparent 100%);
+    mask-image: radial-gradient(75% 65% at 50% 30%, #000 45%, transparent 100%);
+  }
+
+  /* Slow drifting glow orbs */
+  .hero-orb {
+    will-change: transform;
+  }
+  .hero-orb-1 {
+    animation: orbDrift1 18s ease-in-out infinite;
+  }
+  .hero-orb-2 {
+    animation: orbDrift2 22s ease-in-out infinite;
+  }
+  .hero-orb-3 {
+    animation: orbDrift3 26s ease-in-out infinite;
+  }
+
+  @keyframes orbDrift1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-3rem, 2.5rem) scale(1.08); }
+  }
+  @keyframes orbDrift2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(3rem, -2rem) scale(1.06); }
+  }
+  @keyframes orbDrift3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(2rem, -2.5rem) scale(1.1); }
+  }
+
   .hero-delayed-fade {
     opacity: 0;
     transform: translateY(18px);
@@ -185,7 +236,6 @@ const stats = [
     }
   }
 
-  /* opacity-only fade so the cards keep their rotate/translate */
   .card-fade {
     opacity: 0;
     animation: cardFade 0.5s ease-out 0.4s forwards;
@@ -198,13 +248,15 @@ const stats = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-delayed-fade {
+    .hero-delayed-fade,
+    .card-fade {
       opacity: 1;
       transform: none;
       animation: none;
     }
-    .card-fade {
-      opacity: 1;
+    .hero-orb-1,
+    .hero-orb-2,
+    .hero-orb-3 {
       animation: none;
     }
   }
