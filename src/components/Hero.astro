@@ -149,8 +149,12 @@ const stats = [
 </section>
 
 <script>
-  const adjectives = ['Dependable', 'Reliable', 'Affordable', 'Modern'];
-  const industries = ['contractors', 'plumbers', 'electricians', 'shops', 'farms', 'churches'];
+  // Different list lengths on purpose: 7 x 12 = 84 unique headlines before it repeats.
+  const adjectives = ['Dependable', 'Reliable', 'Affordable', 'Modern', 'Fast', 'Hard-working', 'Professional'];
+  const industries = [
+    'contractors', 'plumbers', 'electricians', 'roofers', 'landscapers', 'mechanics',
+    'farms', 'farm stands', 'shops', 'restaurants', 'churches', 'nonprofits',
+  ];
 
   const adjEl = document.getElementById('rotating-adjective');
   const indEl = document.getElementById('rotating-industry');
