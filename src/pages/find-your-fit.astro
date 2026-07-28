@@ -33,7 +33,7 @@ import PageHero from "../components/PageHero.astro";
           <button id="back-btn" type="button" class="text-warm-500 font-medium hover:text-dark transition-colors">
             &larr; Back
           </button>
-          <span class="text-xs text-warm-400">No email needed to see your result.</span>
+          <span class="text-xs text-warm-500">No email needed to see your result.</span>
         </div>
 
         <noscript>
@@ -54,7 +54,7 @@ import PageHero from "../components/PageHero.astro";
             <span class="text-warm-500 text-sm">one-time</span>
           </div>
           <p id="result-tagline" class="text-warm-600 mt-4 max-w-md mx-auto leading-relaxed"></p>
-          <p class="text-xs text-warm-400 mt-3">No monthly fee required. Nothing's locked in — we confirm the best fit with you before anything starts.</p>
+          <p class="text-xs text-warm-500 mt-3">No monthly fee required. Nothing's locked in — we confirm the best fit with you before anything starts.</p>
         </div>
 
         <div class="rounded-2xl bg-white border border-warm-200 shadow-sm p-6 md:p-8 mb-6">
@@ -96,6 +96,12 @@ import PageHero from "../components/PageHero.astro";
                 placeholder="you@example.com" />
             </div>
             <div>
+              <label for="quiz-phone" class="block text-sm font-medium text-dark mb-2">Phone</label>
+              <input type="tel" id="quiz-phone" name="phone" required
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="(423) 555-0100" />
+            </div>
+            <div>
               <label for="quiz-business" class="block text-sm font-medium text-dark mb-2">Business Name</label>
               <input type="text" id="quiz-business" name="business"
                 class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
@@ -112,7 +118,7 @@ import PageHero from "../components/PageHero.astro";
               class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25">
               Send My Free Quote
             </button>
-            <p class="text-xs text-warm-400 text-center">
+            <p class="text-xs text-warm-500 text-center">
               Free quote. No pressure. You do not need all your content ready yet.
             </p>
           </div>

@@ -1,0 +1,307 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const steps = [
+  {
+    n: "01",
+    title: "Tell me about your business",
+    body: "Fill out the short form below. The more you share, the better the demo, but don't stress about having everything perfect.",
+  },
+  {
+    n: "02",
+    title: "I build your demo",
+    body: "Within 1 to 2 days, I send you a real, working web page with your actual business on it: your name, your services, your photos.",
+  },
+  {
+    n: "03",
+    title: "You decide",
+    body: "Love it? We finish it and get you online. Not for you? You owe nothing, keep the demo, and we part as friends.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Is it really free?",
+    a: "Yes. No charge and no obligation to build the demo. You only pay if you decide to move forward and launch your site.",
+  },
+  {
+    q: "What's the catch?",
+    a: "There isn't one. I'd rather show you real work than talk you into anything. If it's not a fit, you keep the demo and we part as friends.",
+  },
+  {
+    q: "How long does it take?",
+    a: "I'll have a working demo back to you within 1 to 2 days of getting your details.",
+  },
+  {
+    q: "Do I need my photos and wording ready?",
+    a: "No. Send what you have and I'll fill in the rest. Nothing in the demo is final, so we can swap and adjust everything together.",
+  },
+];
+---
+
+<Layout
+  title="Free Website Demo — See It Before You Pay"
+  description="I'll build you a free, working demo of your website before you pay a dime. Greene County based. No charge, no obligation. Get yours in 1 to 2 days."
+  hideOffer
+>
+  <PageHero
+    eyebrow="Free demo · Greene County based"
+    title="See Your Website Before You Pay"
+    subtitle="Tell me about your business and I'll build you a real, working demo, free. If you love it, we finish it. If you don't, you owe nothing and keep the demo."
+    image="/home-hero-bg.jpg"
+  >
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+      <a
+        href="#start"
+        class="inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-semibold rounded-xl hover:bg-accent-dark transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
+      >
+        Get My Free Demo
+      </a>
+      <a
+        href="#how"
+        class="inline-flex items-center justify-center px-8 py-4 border border-white/40 bg-white/5 backdrop-blur-sm text-white font-semibold rounded-xl hover:border-white hover:bg-white/10 transition-all"
+      >
+        How it works
+      </a>
+    </div>
+    <p class="mt-5 text-sm text-white/75">No charge · No obligation · No catch</p>
+  </PageHero>
+
+  <!-- Note from Brian -->
+  <section class="py-20 md:py-28 bg-warm-100">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="relative rounded-2xl bg-white border border-warm-200 shadow-sm p-8 md:p-10" data-reveal>
+        <div class="absolute left-0 top-8 bottom-8 w-1.5 bg-primary rounded-r"></div>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">A note from Brian</span>
+        <div class="mt-5 space-y-5 text-lg text-warm-700 leading-relaxed">
+          <p>
+            I'll build you a free demo of your new website. No charge, no obligation, no catch.
+          </p>
+          <p>
+            You'll see your actual business, your name, your photos, your services, on a real page
+            before you decide anything. If you like it, we finish it. If you don't, you keep the demo
+            and we shake hands.
+          </p>
+          <p>
+            I'm based here in Greene County and I've done this for farms, contractors, shops, and
+            one-person operations all over the area.
+          </p>
+        </div>
+        <p class="mt-7 font-display text-2xl text-dark">Brian</p>
+        <p class="text-sm text-warm-500">Made in Greene · Greeneville, TN</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real local work + membership -->
+  <section class="py-20 md:py-28 bg-white border-t border-warm-200">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div data-reveal>
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Real local work</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">I've already done this for your neighbors.</h2>
+          <p class="text-warm-600 text-lg leading-relaxed mb-6">
+            I built and launched <span class="font-semibold text-dark">funnyfarmtn.com</span> for The Funny Farm,
+            a working family farm in Chuckey, plus sites for contractors, shops, and one-person operations all
+            over Greene County.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3 text-warm-700">
+              <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span>Proud member of the <span class="font-semibold text-dark">Greene County Partnership</span></span>
+            </li>
+            <li class="flex items-start gap-3 text-warm-700">
+              <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span>Based right here in Greeneville, TN</span>
+            </li>
+            <li class="flex items-start gap-3 text-warm-700">
+              <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span>Real photos and real businesses, never a template</span>
+            </li>
+          </ul>
+          <a href="/work" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors">
+            See more of our work
+            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+        </div>
+
+        <figure data-reveal>
+          <div class="rounded-2xl overflow-hidden bg-white ring-1 ring-warm-200 shadow-xl">
+            <div class="flex items-center gap-1.5 px-3 py-2.5 bg-warm-100 border-b border-warm-200">
+              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+              <span class="ml-3 text-[11px] text-warm-600 truncate">funnyfarmtn.com</span>
+            </div>
+            <img src="/the-funny-farm.jpg" alt="The Funny Farm website, built by Made in Greene" class="w-full h-auto" loading="lazy" />
+          </div>
+          <figcaption class="text-center text-sm text-warm-500 mt-3">The Funny Farm — a real Made in Greene build.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="py-20 md:py-28 bg-cream border-t border-warm-200 scroll-mt-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">How it works</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">Three steps. No pressure.</h2>
+        <p class="text-warm-600 max-w-2xl mx-auto text-lg">See real work first, then decide. That's the whole idea.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {steps.map((step) => (
+          <div class="bg-white rounded-2xl p-7 border border-warm-200 shadow-sm" data-reveal>
+            <div class="text-4xl font-extrabold text-primary/25 mb-3">{step.n}</div>
+            <h3 class="text-xl font-bold text-dark mb-2">{step.title}</h3>
+            <p class="text-warm-600 leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nothing is set in stone -->
+  <section class="py-20 md:py-28 bg-warm-100 border-t border-warm-200">
+    <div class="max-w-3xl mx-auto px-6 text-center" data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Good to know</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-5">It's a starting point, not a final answer.</h2>
+      <p class="text-lg md:text-xl text-warm-700 leading-relaxed">
+        The demo is just <span class="font-semibold text-dark">one version</span> of what your site
+        could look like. Every bit of it, the words, the photos, the colors, the layout, can be
+        changed. Think of it as a conversation starter. We shape it together until it feels like you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section id="start" class="py-20 md:py-28 bg-cream border-t border-warm-200 scroll-mt-20">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="text-center mb-10" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Let's do it</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">Tell me about your business.</h2>
+        <p class="text-warm-600 max-w-xl mx-auto text-lg">
+          The more you tell me, the more your demo will feel like you. Not sure about something?
+          Leave it blank and we'll figure it out together.
+        </p>
+      </div>
+
+      <form
+        name="free-demo"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/thank-you/"
+        enctype="multipart/form-data"
+        class="bg-white rounded-2xl p-8 border border-warm-200 shadow-sm"
+        data-reveal
+      >
+        <input type="hidden" name="form-name" value="free-demo" />
+        <input type="hidden" name="offer" value="Free Website Demo" />
+        <p class="hidden">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
+        <div class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="fd-name" class="block text-sm font-medium text-dark mb-2">Your name</label>
+              <input type="text" id="fd-name" name="name" required
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="Your name" />
+            </div>
+            <div>
+              <label for="fd-business" class="block text-sm font-medium text-dark mb-2">Business name</label>
+              <input type="text" id="fd-business" name="business" required
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="Your business name" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="fd-email" class="block text-sm font-medium text-dark mb-2">Email</label>
+              <input type="email" id="fd-email" name="email" required
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="you@example.com" />
+            </div>
+            <div>
+              <label for="fd-phone" class="block text-sm font-medium text-dark mb-2">Phone</label>
+              <input type="tel" id="fd-phone" name="phone" required
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="(423) 555-0100" />
+            </div>
+          </div>
+
+          <div>
+            <label for="fd-type" class="block text-sm font-medium text-dark mb-2">What kind of business are you?</label>
+            <input type="text" id="fd-type" name="business_type"
+              class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+              placeholder="e.g. plumber, farm stand, boutique, church" />
+          </div>
+
+          <div>
+            <label for="fd-services" class="block text-sm font-medium text-dark mb-2">What does your business do?</label>
+            <textarea id="fd-services" name="services" rows="3" required
+              class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+              placeholder="Tell me what you offer, in your own words. What should customers know?"></textarea>
+          </div>
+
+          <div>
+            <label for="fd-location" class="block text-sm font-medium text-dark mb-2">Where are you located, or what area do you serve? (optional)</label>
+            <input type="text" id="fd-location" name="location"
+              class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+              placeholder="Greeneville, TN and surrounding area" />
+          </div>
+
+          <div>
+            <label for="fd-links" class="block text-sm font-medium text-dark mb-2">Facebook page or current website (optional)</label>
+            <input type="text" id="fd-links" name="links"
+              class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+              placeholder="So I can grab your photos and details" />
+          </div>
+
+          <div>
+            <label for="fd-goal" class="block text-sm font-medium text-dark mb-2">What would you love your website to do? (optional)</label>
+            <textarea id="fd-goal" name="goal" rows="2"
+              class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+              placeholder="Get more calls, show my menu, look professional, take orders..."></textarea>
+          </div>
+
+          <div>
+            <label for="fd-logo" class="block text-sm font-medium text-dark mb-2">Have a logo? Attach it (optional)</label>
+            <input type="file" id="fd-logo" name="logo" accept="image/*"
+              class="w-full text-sm text-warm-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:bg-primary/10 file:text-primary file:font-semibold hover:file:bg-primary/20 file:cursor-pointer" />
+          </div>
+
+          <button type="submit"
+            class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25">
+            Get My Free Demo
+          </button>
+          <p class="text-xs text-warm-500 text-center leading-relaxed">
+            No charge, no obligation. I'll reply within 1 to 2 days with a real demo. Nothing you send is final, we adjust everything together.
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-28 bg-warm-100 border-t border-warm-200">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Questions</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3">The stuff people ask.</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-2xl border border-warm-200 p-6" data-reveal>
+            <h3 class="text-lg font-semibold text-dark mb-2">{faq.q}</h3>
+            <p class="text-warm-600 leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

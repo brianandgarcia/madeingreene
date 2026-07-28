@@ -158,6 +158,11 @@ const faqs = [
     answer:
       "Absolutely. We're happy to meet at your business, a coffee shop in Greeneville, or wherever is easiest. A lot of our best projects start with a 30-minute conversation.",
   },
+  {
+    question: "What if something breaks after launch?",
+    answer:
+      "That's what the 1-Year Bug-Free Guarantee is for. If anything we built stops working, we fix it free for a full year. New pages, features, and content changes aren't bugs, but a care plan covers those too, and keeps your guarantee active for as long as you're with us.",
+  },
 ];
 ---
 
@@ -198,6 +203,12 @@ const faqs = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <span>Quote back within 1 business day.</span>
+        </div>
+        <div class="flex items-center gap-2 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          <span>Every build backed by a 1-year bug-free guarantee.</span>
         </div>
       </div>
 
@@ -349,6 +360,53 @@ const faqs = [
     </div>
   </section>
 
+  <!-- 1-Year Bug-Free Guarantee -->
+  <section class="py-20 md:py-28 bg-primary-dark text-white relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/30 blur-3xl pointer-events-none"></div>
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
+      <div class="w-16 h-16 rounded-2xl bg-white/10 ring-1 ring-white/20 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      </div>
+      <span class="text-primary-light font-semibold text-sm uppercase tracking-wider">Our promise</span>
+      <h2 class="text-3xl md:text-5xl font-bold mt-3 mb-4">The 1-Year Bug-Free Guarantee.</h2>
+      <p class="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mx-auto">
+        Every website we build is covered for a full year. If something we built stops working,
+        we fix it, free. No fine print, no runaround.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto mt-10">
+        <div class="rounded-2xl bg-white/10 ring-1 ring-white/15 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+            <span class="font-bold">What's covered</span>
+          </div>
+          <p class="text-white/80 text-sm leading-relaxed">
+            Anything we built that stops working the way it did at launch: a broken contact form, dead
+            links, a section not displaying right, or something that breaks after a phone or browser update.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <svg class="w-5 h-5 text-white/50 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+            <span class="font-bold">What's not</span>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed">
+            New pages or features, content and photo changes, or problems from things outside our build,
+            like your hosting, an app you add, an expired domain, or edits you make yourself. Those are
+            normal work, and a care plan can cover them too.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-white/85 mt-8 max-w-2xl mx-auto">
+        Want it to never expire? Stay on a <span class="font-semibold text-white">Care Plan</span> and we
+        keep it guaranteed for as long as you're with us.
+      </p>
+    </div>
+  </section>
+
   <section id="add-ons" class="py-20 md:py-28 bg-warm-100 scroll-mt-24">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-12">
@@ -444,7 +502,7 @@ const faqs = [
           <div class="mb-4">
             <span class="text-3xl font-extrabold text-dark">$99</span>
             <span class="text-warm-500 text-sm">/month</span>
-            <span class="text-warm-400 text-sm"> · $990/yr</span>
+            <span class="text-warm-500 text-sm"> · $990/yr</span>
           </div>
           <ul class="space-y-3">
             <li class="flex items-start gap-3 text-sm text-warm-600">
@@ -467,7 +525,7 @@ const faqs = [
           <div class="mb-4">
             <span class="text-3xl font-extrabold text-dark">$199</span>
             <span class="text-warm-500 text-sm">/month</span>
-            <span class="text-warm-400 text-sm"> · $1,990/yr</span>
+            <span class="text-warm-500 text-sm"> · $1,990/yr</span>
           </div>
           <ul class="space-y-3">
             <li class="flex items-start gap-3 text-sm text-warm-600">
@@ -486,7 +544,7 @@ const faqs = [
         </div>
       </div>
 
-      <p class="text-center text-xs text-warm-400 mt-6 max-w-2xl mx-auto">
+      <p class="text-center text-xs text-warm-500 mt-6 max-w-2xl mx-auto">
         Time doesn't roll over month to month. Work beyond your included time is billed at the
         standard $125/hr rate.
       </p>
@@ -519,8 +577,8 @@ const faqs = [
 
       <div class="bg-white rounded-2xl p-6 border border-warm-200 space-y-3 text-sm text-warm-600">
         <p>
-          <span class="font-semibold text-dark">Every project includes 30 days of post-launch support.</span>
-          Pay once and own it — we build, train, and hand over the keys — or add an optional care plan so we handle hosting, updates, and changes.
+          <span class="font-semibold text-dark">Every project includes 30 days of hands-on support and a 1-year bug-free guarantee.</span>
+          Support is help and small tweaks after launch; the guarantee means if anything we built breaks, we fix it free for a full year. Pay once and own it, we build, train, and hand over the keys, or add an optional care plan so we handle hosting, updates, and changes.
         </p>
         <p>
           <span class="font-semibold text-dark">What "Basic SEO" includes:</span>

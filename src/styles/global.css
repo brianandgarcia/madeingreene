@@ -2,7 +2,7 @@
 
 @theme {
   /* Brand greens — Greene Leaf primary, County Green light, Deep Pine dark */
-  --color-primary: #468920;       /* Greene Leaf */
+  --color-primary: #3d7a1c;       /* Greene Leaf, tuned darker so white text and green-on-light both clear WCAG AA */
   --color-primary-light: #8eaf3e; /* County Green */
   --color-primary-dark: #174932;  /* Deep Pine */
 
@@ -33,6 +33,13 @@
   --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
   --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
   --font-accent: "Cormorant Garamond", Georgia, serif;
+
+  /* Slightly larger body type scale, sitewide, for readability */
+  --text-xs: 0.8125rem;   /* 13px (was 12) */
+  --text-sm: 0.9375rem;   /* 15px (was 14) */
+  --text-base: 1.0625rem; /* 17px (was 16) */
+  --text-lg: 1.1875rem;   /* 19px (was 18) */
+  --text-xl: 1.3125rem;   /* 21px (was 20) */
 }
 
 html {
@@ -42,6 +49,7 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-size: 1.0625rem; /* 17px base, so text without an explicit size grows too */
   color: #141210; /* a step darker than warm-900, still warm */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
