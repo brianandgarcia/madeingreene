@@ -1,0 +1,112 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTA from "../../components/CTA.astro";
+import { publishedPosts, formatPostDate, readingTime } from "../../data/posts";
+
+const [featured, ...rest] = publishedPosts;
+---
+
+<Layout
+  title="The Blog"
+  description="News and notes from Made in Greene: company updates, a look at how we build, and honest advice for local businesses getting online."
+>
+  <PageHero
+    eyebrow="News & Notes"
+    title="The latest from Made in Greene"
+    subtitle="Company news, a look at how we build, and honest advice for local businesses getting online. No jargon, no sales fluff."
+  />
+
+  {publishedPosts.length === 0 ? (
+    <section class="py-24 bg-cream">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <p class="text-warm-500 text-lg">New posts are on the way. Check back soon.</p>
+      </div>
+    </section>
+  ) : (
+    <>
+      <!-- Featured (latest) post -->
+      <section class="py-16 md:py-20 bg-cream">
+        <div class="max-w-5xl mx-auto px-6">
+          <a
+            href={`/blog/${featured.slug}`}
+            class="group block bg-white rounded-3xl overflow-hidden border border-warm-200 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              {featured.cover && (
+                <div class="relative aspect-[16/10] md:aspect-auto md:min-h-[22rem] overflow-hidden bg-warm-100">
+                  <img
+                    src={featured.cover}
+                    alt=""
+                    loading="eager"
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                </div>
+              )}
+              <div class:list={["p-8 md:p-10 flex flex-col justify-center", !featured.cover && "md:col-span-2 max-w-2xl"]}>
+                <div class="flex items-center gap-3 mb-4 text-xs">
+                  <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary-dark uppercase tracking-wide">
+                    {featured.category}
+                  </span>
+                  <span class="text-warm-500">Latest post</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-dark leading-tight mb-3 group-hover:text-primary transition-colors">
+                  {featured.title}
+                </h2>
+                <p class="text-warm-600 leading-relaxed mb-6">{featured.excerpt}</p>
+                <div class="flex items-center gap-3 text-sm text-warm-500">
+                  <span>{formatPostDate(featured.date)}</span>
+                  <span class="w-1 h-1 rounded-full bg-warm-300"></span>
+                  <span>{readingTime(featured)} min read</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- The rest -->
+      {rest.length > 0 && (
+        <section class="pb-20 md:pb-28 bg-cream">
+          <div class="max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {rest.map((post) => (
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="group flex flex-col bg-white rounded-2xl overflow-hidden border border-warm-200 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all"
+                >
+                  {post.cover && (
+                    <div class="relative aspect-[16/9] overflow-hidden bg-warm-100">
+                      <img
+                        src={post.cover}
+                        alt=""
+                        loading="lazy"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <div class="p-6 flex flex-col flex-1">
+                    <span class="inline-flex self-start items-center rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary-dark uppercase tracking-wide mb-3">
+                      {post.category}
+                    </span>
+                    <h3 class="text-lg font-bold text-dark leading-snug mb-2 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p class="text-warm-600 text-sm leading-relaxed mb-5 flex-1">{post.excerpt}</p>
+                    <div class="flex items-center gap-3 text-xs text-warm-500 mt-auto">
+                      <span>{formatPostDate(post.date)}</span>
+                      <span class="w-1 h-1 rounded-full bg-warm-300"></span>
+                      <span>{readingTime(post)} min read</span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  )}
+
+  <CTA />
+</Layout>

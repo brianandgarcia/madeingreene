@@ -111,7 +111,7 @@ export const projects: Project[] = [
     ],
     testimonial: {
       quote:
-        "Brian at Made in Greene elevated our brand with a new logo and website. Not only did he go above and beyond but he provided numerous tips and strategies to help the farm's digital presence. I can tell that he really cares about his clients and isn't just out there for pure profits.",
+        "Huge thank you to Made in Greene for the creation and revamp of The Funny Farm's website. He made my life so much easier and the website is fantastic. He is local and not some guy over the phone! He came out multiple times to make sure we were on the same page about our offers. I highly recommend!",
       name: "Tammy M.",
       role: "The Funny Farm · Chuckey, TN",
     },

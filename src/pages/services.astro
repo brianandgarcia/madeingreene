@@ -179,88 +179,109 @@ const faqs = [
 
   <section class="pt-14 md:pt-16 pb-20 md:pb-28 bg-warm-100">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-14 text-sm border-y border-warm-200 py-5">
-        <div class="flex items-center gap-2 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:items-center sm:gap-x-8 sm:gap-y-3 max-w-md mx-auto sm:max-w-none mb-14 text-sm border-y border-warm-200 py-5">
+        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
           <span>Based in Greene County, TN.</span>
         </div>
-        <div class="flex items-center gap-2 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
           </svg>
           <span>Real person picks up the phone.</span>
         </div>
-        <div class="flex items-center gap-2 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
-          <span>We meet in person — Greeneville, Mosheim, Tusculum & beyond.</span>
+          <span>We meet in person: Greeneville, Mosheim, Tusculum & beyond.</span>
         </div>
-        <div class="flex items-center gap-2 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <span>Quote back within 1 business day.</span>
         </div>
-        <div class="flex items-center gap-2 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
+          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
           </svg>
           <span>Every build backed by a 1-year bug-free guarantee.</span>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
         {packages.map((pkg) => (
           <div
             class:list={[
-              "bg-white rounded-2xl flex flex-col relative p-7",
+              "group relative flex flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1.5",
               pkg.highlight
-                ? "ring-2 ring-primary shadow-xl shadow-primary/10"
-                : "border border-warm-200 shadow-sm",
+                ? "bg-[#edf4e6] ring-2 ring-primary shadow-xl shadow-primary/20"
+                : "bg-white border border-warm-200 shadow-sm hover:shadow-xl hover:border-primary/30",
             ]}
           >
             {pkg.highlight && (
-              <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-warm-900 text-[10px] font-bold uppercase tracking-wider rounded-full shadow-md">
+              <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-4 py-1.5 bg-accent text-warm-900 text-[10px] font-bold uppercase tracking-wider rounded-full shadow-md whitespace-nowrap">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.956a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.956c.3.922-.755 1.688-1.54 1.118l-3.367-2.446a1 1 0 00-1.176 0l-3.367 2.446c-.784.57-1.838-.196-1.539-1.118l1.287-3.956a1 1 0 00-.364-1.118L2.98 9.383c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.956z" />
+                </svg>
                 Most Popular
               </span>
             )}
 
-            <div class="text-center">
-              <h3 class="text-lg font-bold text-dark">{pkg.name}</h3>
-              <span class="block text-xs font-semibold text-primary uppercase tracking-wider mt-1">{pkg.pages}</span>
+            <div class="p-7 pb-5 text-center">
+              <h3 class="text-xl font-bold text-dark leading-snug">{pkg.name}</h3>
+              <span class:list={[
+                "inline-block mt-2 px-3 py-1 rounded-full text-[11px] font-semibold text-primary-dark uppercase tracking-wider",
+                pkg.highlight ? "bg-white ring-1 ring-primary/20" : "bg-warm-100",
+              ]}>{pkg.pages}</span>
 
-              <div class="flex items-baseline justify-center gap-1.5 mt-3">
-                <span class="text-4xl font-extrabold text-dark">{pkg.oneTime}</span>
+              <div class="flex items-baseline justify-center gap-1.5 mt-5">
+                <span class="text-4xl font-extrabold text-dark tracking-tight leading-none">{pkg.oneTime}</span>
                 <span class="text-sm text-warm-500">one-time</span>
               </div>
               <p class="text-sm text-warm-600 leading-relaxed mt-4">{pkg.description}</p>
             </div>
 
-            <ul class="space-y-2.5 mt-5 mb-6 flex-1">
+            <div class="px-7">
+              <div class="flex items-center gap-3">
+                <span class="text-[11px] font-bold uppercase tracking-widest text-primary whitespace-nowrap">What's included</span>
+                <span class="h-px flex-1 bg-warm-300"></span>
+              </div>
+            </div>
+
+            <ul class="space-y-3 px-7 pt-5 pb-6 flex-1">
               {pkg.included.map((item) => (
-                <li class="flex items-start gap-2.5 text-sm text-warm-700">
-                  <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>{item}</span>
-                </li>
+                item.startsWith("Everything") ? (
+                  <li class="text-sm font-bold text-dark">{item}</li>
+                ) : (
+                  <li class="flex items-start gap-2.5 text-sm text-warm-700">
+                    <span class="shrink-0 mt-0.5 w-[18px] h-[18px] rounded-full bg-primary/10 flex items-center justify-center">
+                      <svg class="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                )
               ))}
             </ul>
 
-            <a
-              href="/contact"
-              class:list={[
-                "block text-center px-6 py-3 rounded-xl font-semibold text-sm transition-all mt-auto",
-                pkg.highlight
-                  ? "bg-primary text-white hover:bg-primary-dark"
-                  : "bg-dark text-white hover:bg-primary",
-              ]}
-            >
-              {pkg.cta}
-            </a>
+            <div class="p-7 pt-0">
+              <a
+                href="/contact"
+                class:list={[
+                  "block text-center px-6 py-3.5 rounded-xl font-semibold text-sm transition-all",
+                  pkg.highlight
+                    ? "bg-primary text-white hover:bg-primary-dark shadow-lg shadow-primary/25"
+                    : "bg-dark text-white hover:bg-primary",
+                ]}
+              >
+                {pkg.cta}
+              </a>
+            </div>
           </div>
         ))}
       </div>
@@ -471,11 +492,11 @@ const faqs = [
           </p>
         </div>
         <div class="bg-white rounded-2xl p-6 border border-warm-200">
-          <div class="text-xs font-bold text-accent uppercase tracking-widest mb-2">Add-on</div>
+          <span class="inline-block text-[11px] font-bold text-warm-900 bg-accent uppercase tracking-widest mb-3 px-2.5 py-1 rounded-md">Add-on</span>
           <h3 class="text-lg font-semibold text-dark mb-2">Extra time is $125/hr.</h3>
-          <p class="text-warm-500 text-sm leading-relaxed">
+          <p class="text-warm-600 text-sm leading-relaxed">
             Bring on a new employee? Forgot how something works? Book more time whenever you need
-            it — no monthly commitment.
+            it, with no monthly commitment.
           </p>
         </div>
       </div>
