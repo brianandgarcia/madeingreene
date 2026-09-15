@@ -2,7 +2,6 @@
 const plans = [
   {
     name: "Local Landing Page",
-    price: "$950",
     description: "One page for brand-new businesses, solo operators, pop-ups, tiny farms, and side businesses.",
     features: ["One-page custom design", "Quick 30-min photo session", "Basic SEO setup", "We handle your content edits"],
     highlight: false,
@@ -10,7 +9,6 @@ const plans = [
   },
   {
     name: "Business Website",
-    price: "$3,000",
     description: "A clean, professional presence for small local businesses that need to look established.",
     features: ["Up to 5 pages", "In-person training + photo session", "Custom design (not a template)", "We write your copy"],
     highlight: true,
@@ -18,7 +16,6 @@ const plans = [
   },
   {
     name: "Growth Website",
-    price: "$4,500",
     description: "For growing businesses that want more content, lead-gen tools, and a stronger presence.",
     features: ["Up to 10 pages", "Extended photo session + 20 images", "Blog / News / Projects setup", "Enhanced SEO + lead-gen layouts"],
     highlight: false,
@@ -26,7 +23,6 @@ const plans = [
   },
   {
     name: "Ecommerce Website",
-    price: "$5,500+",
     description: "Sell online — for shops, farms, makers, and service businesses ready to take orders.",
     features: ["Everything in Business", "Shopify store (up to 10 products)", "Payment, shipping & tax setup", "Store training"],
     highlight: false,
@@ -45,10 +41,11 @@ const plans = [
     <div class="text-center mb-14" data-reveal>
       <span class="text-primary font-semibold text-sm uppercase tracking-wider">Pricing</span>
       <h2 class="text-3xl md:text-4xl font-bold text-warm-900 mt-3 mb-4">
-        Clear prices. No surprises.
+        Fair pricing. Same for everybody.
       </h2>
       <p class="text-warm-600 max-w-2xl mx-auto">
-        One-time build fee. No monthly fee required. Every package shows exactly what you pay for — and what you don't.
+        No sizing you up, no “it depends.” Projects start at $950 — pay once and own it, or go monthly.
+        Ask for the pricing sheet and we'll send it over.
       </p>
     </div>
 
@@ -74,15 +71,7 @@ const plans = [
             <h3 class:list={["text-lg font-bold mb-1", plan.highlight ? "text-white" : "text-warm-900"]}>
               {plan.name}
             </h3>
-            <div class="flex items-baseline gap-1.5 mb-3">
-              <span class:list={["text-4xl font-extrabold", plan.highlight ? "text-white" : "text-warm-900"]}>
-                {plan.price}
-              </span>
-              <span class:list={["text-sm", plan.highlight ? "text-white/70" : "text-warm-500"]}>
-                one-time
-              </span>
-            </div>
-            <p class:list={["text-sm leading-relaxed", plan.highlight ? "text-white/80" : "text-warm-600"]}>
+            <p class:list={["text-sm leading-relaxed mt-3", plan.highlight ? "text-white/80" : "text-warm-600"]}>
               {plan.description}
             </p>
           </div>
@@ -126,9 +115,9 @@ const plans = [
     </div>
 
     <p class="text-center text-sm text-warm-600">
-      No monthly fee required. Optional care plans from $99/mo.{" "}
+      Own it outright or go monthly — your call. Care plans are optional either way.{" "}
       <a href="/services" class="text-primary font-semibold hover:text-primary-dark transition-colors">
-        See Full Pricing & What's Included →
+        See What's Included in Each Package →
       </a>
     </p>
     <p class="text-center text-sm text-warm-500 mt-2">

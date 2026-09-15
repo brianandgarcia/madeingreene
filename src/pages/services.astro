@@ -6,7 +6,6 @@ import CTA from "../components/CTA.astro";
 const packages = [
   {
     name: "Local Landing Page",
-    oneTime: "$950",
     pages: "1 page",
     description:
       "For brand-new businesses, solo operators, pop-ups, tiny farms, and side businesses. Grows into a full Business Website as you scale.",
@@ -24,7 +23,6 @@ const packages = [
   },
   {
     name: "Business Website",
-    oneTime: "$3,000",
     pages: "Up to 5 pages",
     description:
       "Best for small local businesses that need a clean, professional online presence.",
@@ -42,7 +40,6 @@ const packages = [
   },
   {
     name: "Growth Website",
-    oneTime: "$4,500",
     pages: "Up to 10 pages",
     description:
       "Best for growing businesses that want a stronger presence, more content, and tools to attract and convert customers.",
@@ -60,7 +57,6 @@ const packages = [
   },
   {
     name: "Ecommerce Website",
-    oneTime: "$5,500+",
     pages: "Business + store",
     description:
       "Best for shops, farms, makers, and service businesses ready to sell online.",
@@ -80,8 +76,8 @@ const packages = [
 const sharedNotIncluded = [
   { label: "Domain name", note: "~$12–20/yr, paid to your registrar so it stays in your name." },
   { label: "Hosting & platform subscriptions", note: "Covered for most brochure sites; paid plans are shown up front." },
-  { label: "Logo & brand design", note: "Brand Starter Package from $750 as an add-on if you need one." },
-  { label: "Additional pages", note: "$200 per page beyond what your package includes." },
+  { label: "Logo & brand design", note: "Available as an add-on if you need one — it's on the pricing sheet." },
+  { label: "Additional pages", note: "Priced per page beyond what your package includes — same rate for everybody, on the pricing sheet." },
   { label: "Online selling fees", note: "Shopify plan + processing (~2.9% + 30¢), billed by the provider." },
 ];
 
@@ -89,30 +85,46 @@ const addonGroups = [
   {
     title: "Website Add-Ons",
     items: [
-      { name: "Self-editing (CMS) setup", note: "edit your own content anytime; included on Business and up", price: "$300" },
-      { name: "Additional pages (per page)", price: "$200" },
-      { name: "Blog / News / Projects setup", note: "+ up to 2 initial posts", price: "$500" },
-      { name: "Online Store / Shopify", note: "up to 10 products", price: "$1,500" },
+      { name: "Self-editing (CMS) setup", note: "edit your own content anytime; included on Business and up" },
+      { name: "Additional pages", note: "priced per page" },
+      { name: "Blog / News / Projects setup", note: "+ up to 2 initial posts" },
+      { name: "Online Store / Shopify", note: "up to 10 products" },
     ],
   },
   {
     title: "Design & Brand",
     items: [
-      { name: "Brand Starter Package", note: "logo, alternate, palette, font pairing, files", price: "from $750" },
-      { name: "Website Photography Session", note: "local mini brand / photo session", price: "from $299" },
+      { name: "Brand Starter Package", note: "logo, alternate, palette, font pairing, files" },
+      { name: "Website Photography Session", note: "local mini brand / photo session" },
     ],
   },
   {
     title: "Marketing & Visibility",
     items: [
-      { name: "Digital Presence Setup", note: "Google Business Profile, domain + email guidance", price: "$199" },
-      { name: "Social Media Starter Kit", price: "$199" },
-      { name: "Email / SMS Capture Setup", price: "$350" },
+      { name: "Digital Presence Setup", note: "Google Business Profile, domain + email guidance" },
+      { name: "Social Media Starter Kit" },
+      { name: "Email / SMS Capture Setup" },
     ],
   },
 ];
 
 const faqs = [
+  {
+    question: "Why aren't the prices listed on this page?",
+    answer:
+      "Because every package can now be paid two ways — once, or monthly — and one number on a page can't show both without misleading somebody. The pricing sheet shows everything side by side: every package, every add-on, both ways to pay. Ask for it and we'll send it over, no phone call required. Projects start at $950, and the rate is the same for everybody.",
+  },
+  {
+    question: "Can I pay monthly?",
+    answer:
+      "Yes. Own it outright with half to reserve your spot and half at launch, or spread the same site into a monthly plan. Both options are on the pricing sheet, and nothing is hidden in either one.",
+  },
+  {
+    question: "Can I see something before I commit?",
+    answer:
+      "Usually, yes. If it helps you decide, we'll put together a quick demo of your site — your name, your photos, your services on a real page — before you owe anything. Just ask when you reach out.",
+    link: { href: "/free-demo", label: "How the demo works" },
+  },
   {
     question: "Do I need to have all my content ready before I reach out?",
     answer:
@@ -131,7 +143,7 @@ const faqs = [
   {
     question: "Can I edit the site myself?",
     answer:
-      "On Business, Growth, and Ecommerce, yes. Self-editing is built in, with a training session so you can update hours, photos, and text whenever you like. The Local Landing Page keeps it simple: we make your changes for you, and you can add self-editing anytime for $300.",
+      "On Business, Growth, and Ecommerce, yes. Self-editing is built in, with a training session so you can update hours, photos, and text whenever you like. The Local Landing Page keeps it simple: we make your changes for you, and you can add self-editing anytime.",
   },
   {
     question: "Do you write the page content?",
@@ -141,7 +153,7 @@ const faqs = [
   {
     question: "Is photography included?",
     answer:
-      "Yes, every package includes photography. The Local Landing Page includes a quick 30-minute session while we meet in person. Business, Growth, and Ecommerce include a fuller local photo/video session, and Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, so you get real photos of your space, team, and work, which connect with local customers far better than stock. Need more? A dedicated session can be added from $299.",
+      "Yes, every package includes photography. The Local Landing Page includes a quick 30-minute session while we meet in person. Business, Growth, and Ecommerce include a fuller local photo/video session, and Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, so you get real photos of your space, team, and work, which connect with local customers far better than stock. Need more? A dedicated session can be added on.",
   },
   {
     question: "Is this WordPress?",
@@ -168,13 +180,14 @@ const faqs = [
 
 <Layout
   title="Website Packages & Pricing"
-  description="Honest pricing for custom websites built for small businesses in Greene County, TN. Every package shows exactly what you pay for — and what you don't."
+  description="Custom websites for Greene County small businesses. No templates or stock photos — real photography and copy written for you. From $950, pay once or monthly."
 >
   <PageHero
     eyebrow="Services & Pricing"
-    title="Honest pricing. No fine print."
-    subtitle="Every package shows exactly what you pay, what's included, and what isn't. No hidden fees, no surprise renewals."
-    video="/hero.mp4"
+    title="Local websites that work for you."
+    subtitle="No cookie-cutter templates, no stock photos, no AI-generated images — everything is built and photographed specifically for your business. We're local, right here in Greeneville."
+    image="/echo-station-photo-shoot.jpg"
+    imagePosition="object-[30%_center] md:object-center"
   />
 
   <section class="pt-14 md:pt-16 pb-20 md:pb-28 bg-warm-100">
@@ -202,7 +215,7 @@ const faqs = [
           <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          <span>Quote back within 1 business day.</span>
+          <span>Pricing sheet sent within 1 business day.</span>
         </div>
         <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
           <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,11 +251,7 @@ const faqs = [
                 pkg.highlight ? "bg-white ring-1 ring-primary/20" : "bg-warm-100",
               ]}>{pkg.pages}</span>
 
-              <div class="flex items-baseline justify-center gap-1.5 mt-5">
-                <span class="text-4xl font-extrabold text-dark tracking-tight leading-none">{pkg.oneTime}</span>
-                <span class="text-sm text-warm-500">one-time</span>
-              </div>
-              <p class="text-sm text-warm-600 leading-relaxed mt-4">{pkg.description}</p>
+              <p class="text-sm text-warm-600 leading-relaxed mt-5">{pkg.description}</p>
             </div>
 
             <div class="px-7">
@@ -284,6 +293,58 @@ const faqs = [
             </div>
           </div>
         ))}
+      </div>
+
+      <div class="mt-10 rounded-2xl bg-white ring-2 ring-primary/25 shadow-sm p-7 md:p-9">
+        <div class="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
+          <div>
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider">How pricing works</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-dark mt-3 mb-4 leading-snug">
+              Same fair price for everybody. Two ways to pay it.
+            </h2>
+            <p class="text-warm-600 leading-relaxed">
+              We charge the same rates whether you're a one-person shop or a full crew — nobody gets sized
+              up. The reason the numbers aren't printed here is simple: every package can now be paid once
+              or spread into a monthly plan, and a single figure on a page can't show both honestly. The
+              pricing sheet can. Ask for it and it's yours, no phone call required.
+            </p>
+            <p class="text-warm-600 leading-relaxed mt-4">
+              Projects start at <span class="font-semibold text-dark">$950</span> to own outright. And
+              before we build anything, we come by — we'd rather be a customer of yours first than sell you
+              something over the phone.
+            </p>
+            <a
+              href="/contact"
+              class="inline-flex items-center gap-2 mt-6 px-6 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25"
+            >
+              Ask for the pricing sheet
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+
+          <ul class="space-y-4">
+            {[
+              ["Same price for everybody.", "No sizing you up, no “it depends.” The sheet is the sheet."],
+              ["Pay once, or go monthly.", "Own it outright with half to start and half at launch, or spread it into a monthly plan."],
+              ["No hourly surprises.", "Anything outside your package is on the sheet and approved before anyone touches it."],
+              ["No hidden fees or surprise renewals.", "Anything billed by someone else is named below, before you commit."],
+            ].map(([title, note]) => (
+              <li class="flex items-start gap-3.5">
+                <span class="shrink-0 mt-0.5 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <div>
+                  <span class="font-semibold text-dark">{title}</span>
+                  <p class="text-sm text-warm-600 mt-0.5 leading-relaxed">{note}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div class="mt-10 bg-cream border border-warm-200 rounded-2xl p-6 md:p-8">
@@ -436,7 +497,7 @@ const faqs = [
           Need a little extra?
         </h2>
         <p class="text-warm-500">
-          Add any of these to your package. Just say the word.
+          Add any of these to your package. Every one is on the pricing sheet, so you'll know the cost before you commit.
         </p>
       </div>
 
@@ -446,12 +507,11 @@ const faqs = [
             <h3 class="text-sm font-bold text-dark uppercase tracking-widest mb-4">{group.title}</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {group.items.map((addon) => (
-                <div class="flex items-center justify-between gap-4 p-5 rounded-xl bg-white border border-warm-200 hover:border-primary/30 transition-colors">
+                <div class="flex items-center gap-4 p-5 rounded-xl bg-white border border-warm-200 hover:border-primary/30 transition-colors">
                   <div>
                     <span class="font-medium text-dark">{addon.name}</span>
                     {addon.note && <span class="block text-xs text-warm-500 mt-0.5">{addon.note}</span>}
                   </div>
-                  <span class="text-primary font-semibold text-sm shrink-0">{addon.price}</span>
                 </div>
               ))}
             </div>
@@ -480,7 +540,7 @@ const faqs = [
           <h3 class="text-lg font-semibold text-dark mb-2">You get a 30-minute handoff.</h3>
           <p class="text-warm-500 text-sm leading-relaxed">
             A walkthrough of your finished site, and how to send us any change you need. We make your
-            edits for you. Want to update it yourself? Add self-editing for $300.
+            edits for you. Want to update it yourself? Self-editing can be added anytime.
           </p>
         </div>
         <div class="bg-white rounded-2xl p-6 border-2 border-primary">
@@ -493,10 +553,10 @@ const faqs = [
         </div>
         <div class="bg-white rounded-2xl p-6 border border-warm-200">
           <span class="inline-block text-[11px] font-bold text-warm-900 bg-accent uppercase tracking-widest mb-3 px-2.5 py-1 rounded-md">Add-on</span>
-          <h3 class="text-lg font-semibold text-dark mb-2">Extra time is $125/hr.</h3>
+          <h3 class="text-lg font-semibold text-dark mb-2">Book extra time anytime.</h3>
           <p class="text-warm-600 text-sm leading-relaxed">
             Bring on a new employee? Forgot how something works? Book more time whenever you need
-            it, with no monthly commitment.
+            it, at our standard hourly rate, with no monthly commitment.
           </p>
         </div>
       </div>
@@ -512,7 +572,7 @@ const faqs = [
         </h2>
         <p class="text-warm-500 max-w-2xl mx-auto">
           Recommended on every website — care plans keep your site secure, online, and current, and
-          give you a real person to call. Save two months when you pay annually. No plan starts
+          give you a real person to call. Both are on the pricing sheet. No plan starts
           automatically; you choose it, and cancel anytime with 30 days' notice.
         </p>
       </div>
@@ -520,11 +580,7 @@ const faqs = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-white rounded-2xl p-8 border border-warm-200">
           <h3 class="text-xl font-bold text-dark mb-2">Essential Care</h3>
-          <div class="mb-4">
-            <span class="text-3xl font-extrabold text-dark">$99</span>
-            <span class="text-warm-500 text-sm">/month</span>
-            <span class="text-warm-500 text-sm"> · $990/yr</span>
-          </div>
+          <p class="text-sm text-warm-500 mb-4">Billed monthly, or annually for two months free.</p>
           <ul class="space-y-3">
             <li class="flex items-start gap-3 text-sm text-warm-600">
               <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -543,11 +599,7 @@ const faqs = [
 
         <div class="bg-white rounded-2xl p-8 border border-warm-200">
           <h3 class="text-xl font-bold text-dark mb-2">Growth Care</h3>
-          <div class="mb-4">
-            <span class="text-3xl font-extrabold text-dark">$199</span>
-            <span class="text-warm-500 text-sm">/month</span>
-            <span class="text-warm-500 text-sm"> · $1,990/yr</span>
-          </div>
+          <p class="text-sm text-warm-500 mb-4">Billed monthly, or annually for two months free.</p>
           <ul class="space-y-3">
             <li class="flex items-start gap-3 text-sm text-warm-600">
               <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -566,8 +618,8 @@ const faqs = [
       </div>
 
       <p class="text-center text-xs text-warm-500 mt-6 max-w-2xl mx-auto">
-        Time doesn't roll over month to month. Work beyond your included time is billed at the
-        standard $125/hr rate.
+        Time doesn't roll over month to month. Work beyond your included time is billed at our
+        standard hourly rate, quoted before we start.
       </p>
     </div>
   </section>
@@ -590,9 +642,9 @@ const faqs = [
           <div class="text-2xl font-extrabold text-dark mb-1">50% at launch</div>
           <p class="text-warm-500 text-sm">Balance due before your site goes live</p>
         </div>
-        <div class="bg-white rounded-2xl p-6 border border-warm-200 text-center">
-          <div class="text-2xl font-extrabold text-dark mb-1">$125/hr</div>
-          <p class="text-warm-500 text-sm">Out-of-scope or hourly work beyond the agreed project</p>
+        <div class="bg-white rounded-2xl p-6 border-2 border-primary text-center">
+          <div class="text-2xl font-extrabold text-dark mb-1">Or go monthly</div>
+          <p class="text-warm-500 text-sm">Every package has a monthly plan. It's on the pricing sheet.</p>
         </div>
       </div>
 
@@ -627,6 +679,12 @@ const faqs = [
           <div class="bg-white rounded-2xl border border-warm-200 p-6">
             <h3 class="text-lg font-semibold text-dark mb-2">{faq.question}</h3>
             <p class="text-warm-600 leading-relaxed">{faq.answer}</p>
+            {faq.link && (
+              <a href={faq.link.href} class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
+                {faq.link.label}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            )}
           </div>
         ))}
       </div>

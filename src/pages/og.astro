@@ -1,0 +1,67 @@
+---
+// TEMPORARY — renders the social share card at exactly 1200×630 so it can be
+// screenshotted once and saved as public/og-image.png. Delete this file and the
+// "/og/" entry in astro.config.mjs afterwards.
+import "../styles/global.css";
+
+const shots = [
+  { src: "/echo-station-desktop.jpg", domain: "echostationtn.com" },
+  { src: "/rebel-fork-kitchen-desktop.jpg", domain: "rebelforkkitchen.com" },
+  { src: "/the-funny-farm.jpg", domain: "funnyfarmtn.com" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>OG card — temporary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800;9..144,900&family=Figtree:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen bg-warm-200 p-10">
+    <p class="max-w-3xl mx-auto mb-6 text-sm text-warm-700 leading-relaxed">
+      <strong>Temporary page.</strong> In Chrome, open DevTools, right-click the <code>&lt;div id="card"&gt;</code>
+      element and choose <em>Capture node screenshot</em> — it saves at exactly 1200×630. Put it at
+      <code>public/og-image.png</code>, then delete <code>src/pages/og.astro</code> and the <code>/og/</code>
+      entry in <code>astro.config.mjs</code>.
+    </p>
+
+    <div id="card" class="relative w-[1200px] h-[630px] mx-auto overflow-hidden bg-dark text-white shadow-2xl">
+      <img src="/home-greene-quote-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/85"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_center,rgba(70,137,32,0.22)_0%,transparent_70%)]"></div>
+
+      <div class="relative h-full flex flex-col items-center px-16 pt-11">
+        <img src="/made-in-greene-logo.svg" alt="Made in Greene" class="h-14 w-auto brightness-0 invert" />
+
+        <h1 class="mt-7 font-display font-black text-[68px] leading-[0.98] tracking-tight text-center [text-shadow:0_3px_18px_rgba(0,0,0,0.5)]">
+          Every business has a <span class="text-primary-light">story.</span>
+        </h1>
+        <p class="mt-5 max-w-2xl text-center text-[23px] leading-snug text-white/85 [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]">
+          We build websites that tell it, for the hard-working people of Greene County, Tennessee.
+        </p>
+
+        <div class="mt-auto w-full grid grid-cols-3 gap-6 translate-y-6">
+          {shots.map((s) => (
+            <div class="rounded-xl overflow-hidden bg-white ring-1 ring-white/20 shadow-2xl">
+              <div class="flex items-center gap-1.5 px-3 py-2 bg-warm-100 border-b border-warm-200">
+                <span class="w-2 h-2 rounded-full bg-warm-300"></span>
+                <span class="w-2 h-2 rounded-full bg-warm-300"></span>
+                <span class="w-2 h-2 rounded-full bg-warm-300"></span>
+                <span class="ml-2 text-[11px] text-warm-600">{s.domain}</span>
+              </div>
+              <img src={s.src} alt="" class="w-full h-[150px] object-cover object-top" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

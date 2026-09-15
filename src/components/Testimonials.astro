@@ -6,6 +6,12 @@ const testimonials = [
     business: "The Funny Farm, Chuckey TN",
     initials: "TM",
   },
+  {
+    quote: "Brian made us at Rebel Fork Kitchen a great website. He was thorough, really captured our vision and was great to work with. We highly recommend.",
+    name: "Rachel Mitchem",
+    business: "Rebel Fork Kitchen, Chuckey TN",
+    initials: "RM",
+  },
 ];
 ---
 
@@ -21,7 +27,7 @@ const testimonials = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 max-w-3xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
       {testimonials.map((t, i) => (
         <div
           class="bg-white rounded-2xl p-8 border border-warm-200 flex flex-col"

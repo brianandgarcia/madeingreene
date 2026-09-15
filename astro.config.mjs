@@ -5,7 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 // Utility/internal pages kept out of the sitemap and search index.
-const EXCLUDE = ['/estimate/', '/thank-you/', '/quote/', '/vs-godaddy/'];
+const EXCLUDE = ['/estimate/', '/thank-you/', '/quote/', '/vs-godaddy/', '/find-your-fit/', '/og/'];
+
+// Client proposals live under /proposal/<slug>-<token> and are never indexed.
+const EXCLUDE_PREFIXES = ['/proposal/'];
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +20,9 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !EXCLUDE.some((path) => page.endsWith(path)),
+      filter: (page) =>
+        !EXCLUDE.some((path) => page.endsWith(path)) &&
+        !EXCLUDE_PREFIXES.some((prefix) => new URL(page).pathname.startsWith(prefix)),
     }),
   ],
   vite: {

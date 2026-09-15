@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 ---
 
-<Layout title="Contact — Free Website Quote" description="Get a free quote for a small business website from Made in Greene. Clear pricing and local support for Greene County businesses.">
+<Layout title="Contact — Let's Talk About Your Website" description="Tell Made in Greene about your business and get the pricing sheet within 1 business day. Fair pricing and local support for Greene County businesses.">
   <PageHero
     eyebrow="Get In Touch"
     title="Tell us about your business."
-    subtitle="Tell us what you do and what you want the site to help with — we'll recommend the best fit and send a no-pressure quote within 1 business day."
+    subtitle="Tell us what you do and what you want the site to help with — we'll recommend the best fit and send the pricing sheet within 1 business day."
     image="/home-greene-quote-bg.jpg"
   />
 
@@ -20,6 +20,29 @@ import PageHero from "../components/PageHero.astro";
           </h2>
 
           <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-dark">Book a Call</h3>
+                <p class="text-warm-600 text-sm">Pick a time that suits you and we'll call you.</p>
+                <a
+                  href="https://cal.com/made-in-greene/phone-call?overlayCalendar=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 mt-2.5 px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+                >
+                  Choose a time
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,8 +101,8 @@ import PageHero from "../components/PageHero.astro";
             <h3 class="text-lg font-semibold text-dark mb-3">What happens next:</h3>
             <ul class="space-y-2 text-sm text-warm-600 list-disc pl-5 marker:text-primary">
               <li>We read through your note and figure out what kind of site fits best.</li>
-              <li>We recommend a package or tell you if a custom quote makes more sense.</li>
-              <li>We send a free quote within 1 business day.</li>
+              <li>We send the pricing sheet and recommend a package, within 1 business day.</li>
+              <li>If you'd like, we come by and see the place before anything else happens.</li>
               <li>You do not need your photos, wording, or package picked out before reaching out.</li>
             </ul>
           </div>
@@ -154,10 +177,11 @@ import PageHero from "../components/PageHero.astro";
                   class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                 >
                   <option value="">Pick one...</option>
-                  <option value="landing">Local Landing Page ($950)</option>
-                  <option value="business">Business Website ($3,000)</option>
-                  <option value="growth">Growth Website ($4,500)</option>
-                  <option value="ecommerce">Ecommerce Website ($5,500+)</option>
+                  <option value="landing">Local Landing Page — one page</option>
+                  <option value="business">Business Website — up to 5 pages</option>
+                  <option value="growth">Growth Website — up to 10 pages</option>
+                  <option value="ecommerce">Ecommerce Website — sell online</option>
+                  <option value="pricing-sheet">Just send me the pricing sheet</option>
                   <option value="unsure">Not sure yet — just want to talk</option>
                 </select>
               </div>

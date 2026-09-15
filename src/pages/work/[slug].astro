@@ -12,11 +12,17 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 const domain = project.url?.replace(/^https?:\/\//, "").replace(/\/$/, "");
 const liveHref = project.href ?? project.url;
+
+// Features carrying a screenshot get a full-width band; the rest stay as cards.
+const featureBands = project.built?.filter((f) => f.image) ?? [];
+const featureCards = project.built?.filter((f) => !f.image) ?? [];
 ---
 
 <Layout
   title={`${project.name} — Case Study`}
   description={project.tagline ?? project.description}
+  ogImage={(project.ogImage ?? project.images[0]).src}
+  ogImageAlt={(project.ogImage ?? project.images[0]).alt}
 >
   <!-- Header -->
   <section class="pt-32 md:pt-40 pb-10 bg-warm-100">
@@ -95,11 +101,26 @@ const liveHref = project.href ?? project.url;
   <!-- The goal -->
   {project.goal && (
     <section class="py-16 md:py-24 bg-cream">
-      <div class="max-w-3xl mx-auto px-6">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">The goal</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-6">What they needed.</h2>
-        <div class="space-y-5 text-lg text-warm-600 leading-relaxed">
-          {project.goal.map((p) => <p>{p}</p>)}
+      <div class:list={["mx-auto px-6", project.goalImage ? "max-w-5xl" : "max-w-3xl"]}>
+        <div class:list={[project.goalImage && "grid md:grid-cols-2 gap-10 md:gap-14 items-center"]}>
+          <div>
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider">The goal</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-6">What they needed.</h2>
+            <div class="space-y-5 text-lg text-warm-600 leading-relaxed">
+              {project.goal.map((p) => <p>{p}</p>)}
+            </div>
+          </div>
+
+          {project.goalImage && (
+            <figure class="rounded-2xl overflow-hidden ring-1 ring-warm-200 shadow-sm">
+              <img
+                src={project.goalImage.src}
+                alt={project.goalImage.alt}
+                loading="lazy"
+                class="w-full"
+              />
+            </figure>
+          )}
         </div>
       </div>
     </section>
@@ -113,19 +134,44 @@ const liveHref = project.href ?? project.url;
           <span class="text-primary font-semibold text-sm uppercase tracking-wider">What we built</span>
           <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3">The work, piece by piece.</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {project.built.map((f) => (
-            <div class="bg-white rounded-2xl p-6 border border-warm-200">
-              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
+        <!-- Features with a screenshot get a full-width band, alternating sides. -->
+        {featureBands.length > 0 && (
+          <div class="space-y-14 md:space-y-20 mb-14 md:mb-20">
+            {featureBands.map((f, i) => (
+              <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class:list={[i % 2 === 1 && "md:order-2"]}>
+                  <h3 class="text-2xl md:text-3xl font-bold text-dark leading-snug">{f.title}</h3>
+                  <p class="mt-4 text-lg text-warm-600 leading-relaxed">{f.description}</p>
+                </div>
+                <figure
+                  class:list={[
+                    "rounded-2xl overflow-hidden ring-1 ring-warm-200 shadow-sm bg-white",
+                    i % 2 === 1 && "md:order-1",
+                  ]}
+                >
+                  <img src={f.image!.src} alt={f.image!.alt} loading="lazy" class="w-full" />
+                </figure>
               </div>
-              <h3 class="text-lg font-bold text-dark mb-2 leading-snug">{f.title}</h3>
-              <p class="text-warm-600 text-base leading-relaxed">{f.description}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
+
+        <!-- Everything else stays a compact card. -->
+        {featureCards.length > 0 && (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {featureCards.map((f) => (
+              <div class="bg-white rounded-2xl p-6 border border-warm-200">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 class="text-lg font-bold text-dark mb-2 leading-snug">{f.title}</h3>
+                <p class="text-warm-600 text-base leading-relaxed">{f.description}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )}
@@ -166,6 +212,48 @@ const liveHref = project.href ?? project.url;
   )}
 
   <!-- Gallery (only when there's more than the hero screenshot) -->
+  <!-- The finished site, in device frames -->
+  {project.showcase && (
+    <section class="py-16 md:py-24 bg-cream">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-2xl mb-12">
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">The finished site</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3">See it all together.</h2>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center md:items-end justify-center gap-8 md:gap-10">
+          {project.showcase.desktop && (
+            <figure class="w-full md:flex-1 rounded-2xl overflow-hidden ring-1 ring-warm-200 shadow-xl bg-white">
+              <!-- Browser chrome, so a flat screenshot reads as a live site. -->
+              <div class="flex items-center gap-1.5 px-4 py-3 bg-warm-100 border-b border-warm-200">
+                <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+              </div>
+              <img
+                src={project.showcase.desktop.src}
+                alt={project.showcase.desktop.alt}
+                loading="lazy"
+                class="w-full aspect-[16/11] object-cover object-top"
+              />
+            </figure>
+          )}
+
+          {project.showcase.mobile && (
+            <figure class="w-[min(15rem,70%)] md:w-56 shrink-0 rounded-[2rem] overflow-hidden ring-4 ring-dark shadow-xl bg-dark">
+              <img
+                src={project.showcase.mobile.src}
+                alt={project.showcase.mobile.alt}
+                loading="lazy"
+                class="w-full aspect-[9/17] object-cover object-top"
+              />
+            </figure>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
   {project.images.length > 1 && (
     <section class="py-16 md:py-24 bg-cream">
       <div class="max-w-5xl mx-auto px-6">
@@ -176,7 +264,15 @@ const liveHref = project.href ?? project.url;
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {project.images.slice(1).map((img) => (
             <div class="rounded-2xl overflow-hidden ring-1 ring-warm-200 shadow-sm">
-              <img src={img.src} alt={img.alt} loading="lazy" class="w-full" />
+              {/* Capped height: full-page screenshots run very tall (a phone
+                  capture can be 5x its width) and would otherwise dwarf the
+                  page. Cropping from the top keeps the useful part in view. */}
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                class="w-full max-h-[34rem] object-cover object-top"
+              />
             </div>
           ))}
         </div>

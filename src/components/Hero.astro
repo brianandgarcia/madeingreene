@@ -1,73 +1,149 @@
 ---
-const cards = [
+/*
+  Trust bar under the hero. Icons are single-path stroke icons so a new one is
+  just a `d` string — no extra markup.
+*/
+const heroStats = [
   {
-    img: "/the-funny-farm.jpg",
-    alt: "The Funny Farm website — an agritourism farm in Chuckey, Tennessee",
-    label: "funnyfarmtn.com",
-    position: "sm:rotate-[-5deg] sm:translate-y-6",
+    value: "$950",
+    label: "Starting price",
+    icon: "M7 7h.01M7 3h5a2 2 0 011.414.586l7 7a2 2 0 010 2.828l-5 5a2 2 0 01-2.828 0l-7-7A2 2 0 013 10V5a2 2 0 012-2z",
   },
   {
-    img: "/freedom-for-tate.jpg",
-    alt: "FreedomForTate.org — a local advocacy and awareness website",
-    label: "freedomfortate.org",
-    position: "hidden sm:block z-10",
+    value: "100%",
+    label: "Locally made & owned",
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
   },
   {
-    img: "",
-    alt: "",
-    label: "your-business.com",
-    position: "hidden sm:block rotate-[5deg] translate-y-6",
-    placeholder: true,
+    value: "4–6 weeks",
+    label: "Typical turnaround",
+    icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
   },
 ];
 
-const stats = [
-  { value: "$950", label: "Starting Price" },
-  { value: "100%", label: "Locally Made & Owned" },
-  { value: "4–6 Weeks", label: "Typical Turnaround" },
+/*
+  COLLAGE IMAGES — swap these placeholders for real photos.
+
+  How to fill one in:
+    1. Drop your photo in /public/hero/ (e.g. /public/hero/funny-farm.jpg)
+    2. Change that tile's `src` to "/hero/funny-farm.jpg"
+    3. Write a real `alt` describing the photo
+
+  Layout: on lg+ every tile is placed on a 100 × 100 grid with NO gap, so one
+  grid unit is one percent of the collage box and `area` reads as percentages.
+  The spacing between tiles is the empty units between them — do not add a
+  `gap` to the container, or every gutter doubles.
+
+    area = grid-area: row-start / col-start / row-end / col-end
+
+  So `2/13/21/39` means: starts 1% down and 12% across, ends 20% down and 38%
+  across. To nudge a tile, change its numbers; to keep the gutters even, leave
+  about 3 units between neighbouring tiles.
+
+  Below lg the grid is dropped for a 2-column masonry flow, where `ratio` (which
+  matches the tile's shape in the mosaic) decides each tile's height.
+*/
+const collage = [
+  {
+    src: "/echostation-2.jpg",
+    alt: "The bar at Echo Station, lit by a neon Drinks sign",
+    area: "lg:[grid-area:4/13/21/39]", // wide landscape
+    mobile: "top",
+    href: "/work/echo-station",
+    linkLabel: "Read the Echo Station case study",
+  },
+  {
+    src: "/echo-station-tile.jpg",
+    alt: "Lori and Brian, the owners of Echo Station, in front of the tap wall",
+    area: "lg:[grid-area:3/42/52/68]", // tall portrait
+    mobile: "bottom",
+    href: "/work/echo-station",
+    linkLabel: "Read the Echo Station case study",
+  },
+  {
+    src: "/rebel-fork-tile-2.jpg",
+    alt: "A loaded pizza fresh out of the oven at Rebel Fork Kitchen",
+    area: "lg:[grid-area:1/74/18/101]", // landscape
+    mobile: "bottom",
+    href: "/work/rebel-fork-kitchen",
+    linkLabel: "Read the Rebel Fork Kitchen case study",
+  },
+  {
+    src: "/rebel-fork-pizza.jpg",
+    alt: "A fresh pizza at Rebel Fork, a Greene County restaurant",
+    area: "lg:[grid-area:24/1/49/39]", // wide landscape
+    mobile: "top",
+    // Optional extras, available on any tile:
+    //   hoverSrc  — crossfades in on hover
+    //   href      — makes the whole tile clickable
+    //   linkLabel — what a screen reader announces for that link
+    hoverSrc: "/rebel-fork-pizza-2.jpg",
+    href: "/work/rebel-fork-kitchen",
+    linkLabel: "Read the Rebel Fork Kitchen case study",
+  },
+  {
+    src: "/brian-made-in-greene-tile.jpg",
+    alt: "Brian holding the Greene County Partnership membership plaque",
+    area: "lg:[grid-area:22/71/76/101]", // tall portrait
+    mobile: "bottom",
+    href: "/blog/we-joined-the-greene-county-partnership",
+    linkLabel: "Read our blog post about joining the Greene County Partnership",
+  },
+  {
+    src: "/the-funny-farm-tile.jpg",
+    alt: "A Scottish Highland calf at The Funny Farm",
+    area: "lg:[grid-area:55/3/71/22]", // small landscape
+    mobile: "top",
+    href: "/work/the-funny-farm",
+    linkLabel: "Read the Funny Farm case study",
+  },
+  {
+    src: "/the-funny-farm-thumb.jpg",
+    alt: "The Funny Farm, an agritourism farm in Chuckey, Tennessee",
+    area: "lg:[grid-area:55/25/101/65]", // square — the anchor tile
+    mobile: "none",
+    href: "/work/the-funny-farm",
+    linkLabel: "Read the Funny Farm case study",
+  },
+  {
+    src: "/hunger-first-tile.jpg",
+    alt: "Volunteers sorting donated food and clothing at Hunger First Greeneville",
+    area: "lg:[grid-area:74/3/101/22]", // portrait
+    mobile: "bottom",
+    href: "/work/hunger-first-greeneville",
+    linkLabel: "Read the Hunger First Greeneville case study",
+  },
+  {
+    src: "/made-in-greene-thumb.jpg",
+    alt: "Greeneville Town Hall, the seat of Greene County, Tennessee",
+    area: "lg:[grid-area:79/68/101/101]", // wide landscape
+    mobile: "bottom",
+    href: "/about",
+    linkLabel: "Read more about Made in Greene",
+  },
 ];
 ---
 
-<!-- Hero + work showcase + stats, all on one dark section -->
-<section class="relative overflow-hidden bg-dark">
-  <!-- layered gradient backdrop -->
-  <div class="pointer-events-none absolute inset-0 hero-mesh"></div>
-  <div class="pointer-events-none absolute inset-0 hero-grid"></div>
-  <div class="pointer-events-none absolute inset-0 overflow-hidden">
-    <div class="hero-orb hero-orb-1 absolute -top-32 -right-24 w-[38rem] h-[38rem] rounded-full bg-primary/25 blur-3xl"></div>
-    <div class="hero-orb hero-orb-2 absolute top-1/3 -left-40 w-[32rem] h-[32rem] rounded-full bg-primary-dark/40 blur-3xl"></div>
-    <div class="hero-orb hero-orb-3 absolute -bottom-48 right-1/4 w-[30rem] h-[30rem] rounded-full bg-accent/10 blur-3xl"></div>
-  </div>
-  <!-- fade the mesh out at the bottom so it meets the next section cleanly -->
-  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-dark"></div>
+<!-- White hero: message left, photo collage right -->
+<section class="relative bg-white text-dark overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 hero-glow"></div>
 
-  <div class="relative max-w-6xl mx-auto px-6 pt-28 md:pt-36 pb-20 md:pb-24">
-    <!-- Copy left, image right -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <div class="hero-delayed-fade">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-white/10 ring-1 ring-white/25 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-light"></span>
-          Proudly based in Greeneville, Tennessee
-        </span>
-
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-[1.05] tracking-tight mb-6 text-balance">
-          <span id="rotating-adjective" class="text-primary-light" style="transition: opacity 0.3s ease;">Dependable</span>
-          websites built for
-          <span class="block">
-            Greene County's
-            <span id="rotating-industry" class="text-primary-light" style="transition: opacity 0.3s ease;">contractors.</span>
-          </span>
+  <div class="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-28 lg:pt-36 pb-16 lg:pb-24">
+    <div class="hero-layout grid grid-cols-3 gap-3 items-start lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-14 xl:gap-20 lg:items-center">
+      <!-- Left: the message -->
+      <div class="hero-delayed-fade col-span-full order-2 py-8 max-w-xl lg:col-auto lg:order-none lg:py-0">
+        <h1 class="font-display font-black leading-[0.95] tracking-tight text-balance text-[clamp(2.75rem,5.2vw,5.25rem)]">
+          Every business has a <span class="text-primary">story.</span>
         </h1>
 
-        <p class="max-w-xl text-lg md:text-xl text-warm-300 leading-relaxed mb-8">
-          Made in Greene builds professional, mobile-friendly websites for local businesses, farms, shops,
-          makers, and organizations in and around Greene County, Tennessee.
+        <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-lg">
+          We build websites that tell it, for the hard-working people of Greene County, Tennessee.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-3">
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
           <a
             href="/services"
-            class="inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-semibold rounded-xl hover:bg-accent-dark transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
+            class="inline-flex items-center justify-center px-8 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-dark-light transition-all hover:shadow-xl hover:shadow-dark/20 hover:-translate-y-0.5"
           >
             View Website Packages
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,161 +152,124 @@ const stats = [
           </a>
           <a
             href="/contact"
-            class="inline-flex items-center justify-center px-8 py-4 border border-white/40 bg-white/5 backdrop-blur-sm text-white font-semibold rounded-xl hover:border-white hover:bg-white/10 transition-all"
+            class="inline-flex items-center justify-center px-8 py-4 border border-warm-300 bg-warm-50 text-dark font-semibold rounded-xl hover:border-dark hover:bg-warm-100 transition-all"
           >
             Start a Project
           </a>
         </div>
       </div>
 
-      <div class="hero-delayed-fade hero-delayed-fade-buttons">
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
-          <img
-            src="/home-hero-bg.jpg"
-            alt="Greeneville Town Hall in Greene County, Tennessee"
-            class="w-full aspect-[4/3] object-cover object-[58%_center]"
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-        <p class="mt-3 text-center text-xs md:text-sm text-warm-400">
-          Greeneville Town Hall — Taken by Made in Greene
-        </p>
+      <!--
+        The collage. At lg+ this is the mosaic grid: `aspect-[712/608]` locks its
+        proportions, and `gap-0` is deliberate — the tiles' spacing comes from the
+        empty grid units between them.
+
+        Below lg the wrapper is `display: contents`, so the tiles become direct
+        children of .hero-layout alongside the copy. That is what lets a strip of
+        them sit above the copy and another below it, from a single tile list —
+        no duplicated markup, no image downloaded twice.
+      -->
+      <div
+        class="hero-collage contents lg:grid lg:gap-0 lg:aspect-[712/608] lg:[grid-template-columns:repeat(100,1fr)] lg:[grid-template-rows:repeat(100,1fr)]"
+      >
+        {collage.map((tile, index) => (
+          <figure
+            class:list={["hero-tile group relative lg:h-auto", tile.area]}
+            data-mobile={tile.mobile ?? "bottom"}
+            style={`--tile-delay:${index * 70}ms`}
+          >
+            {/*
+              The tile's own box. The hover scale lives here rather than on the
+              <figure> because the figure's entrance animation is fill-forwards,
+              and an animated transform beats a hovered one on the same element.
+              Keeping them on separate elements lets both run.
+            */}
+            <div class="hero-tile__inner absolute inset-0 overflow-hidden rounded-2xl bg-warm-100 shadow-[0_10px_28px_-14px_rgba(12,12,12,0.20)]">
+            <img
+              src={tile.src}
+              alt={tile.alt}
+              class:list={[
+                "absolute inset-0 w-full h-full object-cover",
+                tile.hoverSrc && "transition-opacity duration-500 ease-out group-hover:opacity-0 group-focus-within:opacity-0",
+              ]}
+              loading={index < 4 ? "eager" : "lazy"}
+              decoding="async"
+            />
+
+            {tile.hoverSrc && (
+              <img
+                src={tile.hoverSrc}
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-focus-within:opacity-100"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+
+            {/* Full-bleed overlay link, so the whole tile is clickable and reachable by keyboard. */}
+            {tile.href && (
+              <a
+                href={tile.href}
+                class="absolute inset-0 z-10 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <span class="sr-only">{tile.linkLabel}</span>
+              </a>
+            )}
+            </div>
+          </figure>
+        ))}
       </div>
     </div>
 
-    <!-- Work showcase -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-7 items-end mt-20 md:mt-28">
-      {cards.map((card) => (
-        <div class:list={["card-fade", card.position]}>
-          <div class="rounded-xl overflow-hidden bg-white ring-1 ring-black/10 shadow-2xl shadow-black/40">
-            <div class="flex items-center gap-1.5 px-3 py-2.5 bg-warm-100 border-b border-warm-200">
-              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
-              <span class="ml-3 text-[11px] text-warm-600 truncate">{card.label}</span>
+    <!--
+      Trust bar: sits on the hero's own white background, so it reads as a
+      panel floating below the collage rather than a new band of colour.
+    -->
+    <div class="mt-14 lg:mt-20 hero-stats">
+      <dl
+        class="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary to-primary-dark ring-1 ring-white/10 shadow-[0_18px_44px_-20px_rgba(61,122,28,0.55)] px-6 sm:px-10 py-7 sm:py-8 flex flex-col items-start sm:flex-row sm:items-center justify-center gap-6 sm:gap-10 lg:gap-20"
+      >
+        {heroStats.map((stat) => (
+          <div class="flex items-center gap-3.5">
+            <svg
+              class="w-8 h-8 shrink-0 text-accent"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d={stat.icon} />
+            </svg>
+            <div class="leading-snug">
+              <dt class="text-base sm:text-lg font-bold text-white">{stat.value}</dt>
+              <dd class="text-sm sm:text-base text-white/85">{stat.label}</dd>
             </div>
-            {card.placeholder ? (
-              <div class="w-full aspect-[16/11] bg-primary/5 flex flex-col items-center justify-center text-center px-4">
-                <span class="w-11 h-11 rounded-full bg-primary/15 text-primary flex items-center justify-center mb-3">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                  </svg>
-                </span>
-                <span class="font-bold text-dark text-base">Your site could be next</span>
-                <span class="text-warm-500 text-xs mt-1">Let's build something local.</span>
-              </div>
-            ) : (
-              <img
-                src={card.img}
-                alt={card.alt}
-                loading="lazy"
-                class="w-full aspect-[16/11] object-cover object-top"
-              />
-            )}
           </div>
-        </div>
-      ))}
-    </div>
-
-    <p class="text-center text-primary-light font-semibold text-base md:text-lg mt-16 mb-12">
-      Built for the businesses that keep Greene County running.
-    </p>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
-      {stats.map((stat) => (
-        <div>
-          <div class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">{stat.value}</div>
-          <div class="mt-2 text-sm text-warm-400">{stat.label}</div>
-        </div>
-      ))}
+        ))}
+      </dl>
     </div>
   </div>
 </section>
 
-<script>
-  // Different list lengths on purpose: 7 x 12 = 84 unique headlines before it repeats.
-  const adjectives = ['Dependable', 'Reliable', 'Affordable', 'Modern', 'Fast', 'Hard-working', 'Professional'];
-  const industries = [
-    'contractors', 'plumbers', 'electricians', 'roofers', 'landscapers', 'mechanics',
-    'farms', 'farm stands', 'shops', 'restaurants', 'churches', 'nonprofits',
-  ];
-
-  const adjEl = document.getElementById('rotating-adjective');
-  const indEl = document.getElementById('rotating-industry');
-
-  if (adjEl && indEl) {
-    let adjIndex = 0;
-    let indIndex = 0;
-    setInterval(() => {
-      adjEl.style.opacity = '0';
-      indEl.style.opacity = '0';
-      setTimeout(() => {
-        adjIndex = (adjIndex + 1) % adjectives.length;
-        indIndex = (indIndex + 1) % industries.length;
-        adjEl.textContent = adjectives[adjIndex];
-        indEl.textContent = industries[indIndex] + '.';
-        adjEl.style.opacity = '1';
-        indEl.style.opacity = '1';
-      }, 300);
-    }, 4500);
-  }
-</script>
-
 <style>
-  /* Radial "mesh" of brand greens over the dark base */
-  .hero-mesh {
+  /* Very soft green/gold wash so the white page still feels warm, not blank. */
+  .hero-glow {
     background:
-      radial-gradient(60% 55% at 78% 12%, rgba(70, 137, 32, 0.32), transparent 60%),
-      radial-gradient(55% 50% at 8% 42%, rgba(23, 73, 50, 0.55), transparent 62%),
-      radial-gradient(45% 45% at 55% 100%, rgba(142, 175, 62, 0.14), transparent 60%);
-  }
-
-  /* Faint grid to give the dark space some structure */
-  .hero-grid {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(75% 65% at 50% 30%, #000 45%, transparent 100%);
-    mask-image: radial-gradient(75% 65% at 50% 30%, #000 45%, transparent 100%);
-  }
-
-  /* Slow drifting glow orbs */
-  .hero-orb {
-    will-change: transform;
-  }
-  .hero-orb-1 {
-    animation: orbDrift1 18s ease-in-out infinite;
-  }
-  .hero-orb-2 {
-    animation: orbDrift2 22s ease-in-out infinite;
-  }
-  .hero-orb-3 {
-    animation: orbDrift3 26s ease-in-out infinite;
-  }
-
-  @keyframes orbDrift1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-3rem, 2.5rem) scale(1.08); }
-  }
-  @keyframes orbDrift2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(3rem, -2rem) scale(1.06); }
-  }
-  @keyframes orbDrift3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(2rem, -2.5rem) scale(1.1); }
+      radial-gradient(60% 55% at 0% 0%, rgba(61, 122, 28, 0.07), transparent 62%),
+      radial-gradient(50% 50% at 100% 90%, rgba(230, 175, 46, 0.08), transparent 65%);
   }
 
   .hero-delayed-fade {
     opacity: 0;
     transform: translateY(18px);
-    animation: heroDelayedFade 0.45s ease-out 0.15s forwards;
+    animation: heroDelayedFade 0.5s ease-out 0.1s forwards;
   }
 
-  .hero-delayed-fade-buttons {
-    animation-delay: 0.3s;
+  .hero-tile {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    animation: heroTileIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) var(--tile-delay, 0ms) forwards;
   }
 
   @keyframes heroDelayedFade {
@@ -240,28 +279,81 @@ const stats = [
     }
   }
 
-  .card-fade {
-    opacity: 0;
-    animation: cardFade 0.5s ease-out 0.4s forwards;
-  }
-
-  @keyframes cardFade {
+  @keyframes heroTileIn {
     to {
       opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /*
+    Mobile: two strips of tiles with the copy between them. `mobile` on each
+    tile decides which strip it lands in, or "none" to sit the tile out — a
+    full mosaic is too much scrolling on a phone.
+  */
+  @media (max-width: 63.99rem) {
+    .hero-tile {
+      height: 7rem;
+    }
+
+    .hero-tile[data-mobile="top"] {
+      order: 1;
+    }
+
+    .hero-tile[data-mobile="bottom"] {
+      order: 3;
+      height: 8rem;
+    }
+
+    .hero-tile[data-mobile="none"] {
+      display: none;
+    }
+  }
+
+  .hero-stats {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroDelayedFade 0.5s ease-out 0.7s forwards;
+  }
+
+  /* Hover: the tile glows instead of growing, so neighbours never shift. */
+  .hero-tile__inner {
+    transition: box-shadow 350ms ease-out;
+  }
+
+  @media (hover: hover) {
+    /* Raise the hovered tile so its glow isn't clipped under a neighbour's box. */
+    .hero-tile {
+      z-index: 1;
+      transition: z-index 0s linear 350ms;
+    }
+
+    .hero-tile:hover,
+    .hero-tile:focus-within {
+      z-index: 20;
+      transition: z-index 0s;
+    }
+
+    .hero-tile:hover .hero-tile__inner,
+    .hero-tile:focus-within .hero-tile__inner {
+      box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 0 5px rgba(230, 175, 46, 0.55),
+        0 0 36px 8px rgba(230, 175, 46, 0.45);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .hero-delayed-fade,
-    .card-fade {
+    .hero-tile,
+    .hero-stats {
       opacity: 1;
       transform: none;
       animation: none;
     }
-    .hero-orb-1,
-    .hero-orb-2,
-    .hero-orb-3 {
-      animation: none;
+
+    .hero-tile__inner {
+      transition: box-shadow 200ms ease-out;
     }
   }
 </style>

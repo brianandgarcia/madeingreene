@@ -1,0 +1,52 @@
+---
+import ProposalLayout from "../../layouts/ProposalLayout.astro";
+import ProposalBlock from "../../components/ProposalBlock.astro";
+import { proposals } from "../../data/proposals";
+
+export function getStaticPaths() {
+  return proposals.map((proposal) => ({
+    params: { slug: proposal.slug },
+    props: { proposal },
+  }));
+}
+
+const { proposal } = Astro.props;
+
+// A section starts a new "part" when its label differs from the previous one —
+// that's where the big Part 1 / Part 2 / Acceptance divider is drawn.
+let previousPart: string | undefined;
+const sections = proposal.sections.map((section) => {
+  const startsPart = Boolean(section.part) && section.part !== previousPart;
+  previousPart = section.part;
+  return { section, startsPart };
+});
+---
+
+<ProposalLayout proposal={proposal}>
+  {sections.map(({ section, startsPart }, i) => (
+    <section
+      id={section.id}
+      class:list={[section.pageBreakBefore && i > 0 && "page-break", "scroll-mt-24"]}
+    >
+      {startsPart && (
+        <div class:list={["flex items-center gap-4", i > 0 ? "mt-16 mb-10" : "mb-10"]}>
+          <span class="text-xs uppercase tracking-[0.18em] font-semibold text-primary whitespace-nowrap">
+            {section.part}
+          </span>
+          <span class="h-px flex-1 bg-warm-200"></span>
+        </div>
+      )}
+
+      <h2
+        class:list={[
+          "font-display text-2xl md:text-3xl font-bold text-primary-dark mb-5",
+          !startsPart && "mt-14",
+        ]}
+      >
+        {section.title}
+      </h2>
+
+      {section.blocks.map((block) => <ProposalBlock block={block} />)}
+    </section>
+  ))}
+</ProposalLayout>

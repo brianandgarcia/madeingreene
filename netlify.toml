@@ -4,3 +4,28 @@
 
 [build.environment]
   NODE_VERSION = "22.18.0"
+
+# Retired pages. `force` is required because a static fallback page exists at each path.
+[[redirects]]
+  from = "/estimate"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/find-your-fit"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/quote"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vs-godaddy"
+  to = "/why-not-other-providers"
+  status = 301
+  force = true
