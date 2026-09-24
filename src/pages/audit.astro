@@ -1,0 +1,464 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Illustrative numbers for the sample report in the hero. Not a real business.
+const sampleScores = [
+  { label: "Google listing", value: 71 },
+  { label: "Reviews", value: 64 },
+  { label: "Website", value: 48 },
+  { label: "Technical", value: 39 },
+  { label: "Directories", value: 44 },
+  { label: "vs. competitors", value: 52 },
+];
+const tone = (v: number) => (v >= 60 ? "good" : v >= 45 ? "warn" : "crit");
+const meterColor = { good: "bg-primary", warn: "bg-accent", crit: "bg-[#c0533f]" };
+const valueColor = { good: "text-primary-dark", warn: "text-[#8a5a0a]", crit: "text-[#a63d2f]" };
+
+const sampleFindings = [
+  { pill: "Critical", cls: "bg-[#f5ddd8] text-[#a63d2f]", text: "Three different phone numbers in circulation. When listings disagree, Google discounts all of them." },
+  { pill: "Improve", cls: "bg-[#f6ebd1] text-[#8a5a0a]", text: "Hours set to “Open 24 hours.” Unless somebody answers at 3 a.m., that's a bad review waiting to happen." },
+  { pill: "Strength", cls: "bg-primary/10 text-primary-dark", text: "5.0 rating, reviews in the last three weeks, 60 photos. The hard part is already done." },
+];
+
+// Real findings from a recent audit, with the business and town removed.
+const reportSections = [
+  { n: "01", title: "The short version", body: "What's going on, in two paragraphs, plus the wins and the problems at a glance." },
+  { n: "02", title: "Your Google listing", body: "The single biggest local ranking asset, and whether it's being outworked." },
+  { n: "03", title: "Listings & directories", body: "Whether your name, phone, and address agree everywhere Google looks." },
+  { n: "04", title: "Website: technical", body: "What Google can actually read when it visits. Often less than you'd think." },
+  { n: "05", title: "Website: content", body: "Whether the pages say the things people search for, in the towns they search from." },
+  { n: "06", title: "Competitive position", body: "Who's in the map results for your searches, and how far ahead they are." },
+  { n: "07", title: "Prioritized action plan", body: "What to do first, second, and third, and what you can do without a developer." },
+];
+
+const realFindings = [
+  {
+    pill: "Critical",
+    stripe: "bg-[#a63d2f]",
+    cls: "bg-[#f5ddd8] text-[#a63d2f]",
+    text: "Three different phone numbers in circulation: one on the website and Google, another on the BBB and Yelp, and a typo of the first on Facebook. When listings disagree, Google discounts all of them.",
+  },
+  {
+    pill: "Critical",
+    stripe: "bg-[#a63d2f]",
+    cls: "bg-[#f5ddd8] text-[#a63d2f]",
+    text: "Google had indexed one page of the website, out of three. To a visitor the site looked fine. To Google it was close to empty.",
+  },
+  {
+    pill: "Improve",
+    stripe: "bg-accent",
+    cls: "bg-[#f6ebd1] text-[#8a5a0a]",
+    text: "Not in the map results for any of the three searches tested. The businesses that were had between 76 and 598 reviews. This one had nine, every one of them five stars.",
+  },
+  {
+    pill: "Improve",
+    stripe: "bg-accent",
+    cls: "bg-[#f6ebd1] text-[#8a5a0a]",
+    text: "Hours set to “Open 24 hours.” Unless somebody answers the phone at 3 a.m., that's a mismatch waiting to turn into a bad review.",
+  },
+  {
+    pill: "Strength",
+    stripe: "bg-primary",
+    cls: "bg-primary/10 text-primary-dark",
+    text: "A perfect 5.0 rating, reviews from the last three weeks, and 60 photos on the profile. The hard part was already done. What was missing was the boring infrastructure underneath it.",
+  },
+];
+
+const plan = [
+  {
+    when: "First 2 weeks",
+    why: "Stop the bleeding. No developer needed.",
+    items: ["Fix the listings that disagree with each other", "Set real hours, everywhere", "Start a review routine after every job"],
+  },
+  {
+    when: "Weeks 3–6",
+    why: "Rebuild the foundation.",
+    items: ["Make every page something Google can read", "Correct what the site tells Google about you", "Put your reviews and your story on the homepage"],
+  },
+  {
+    when: "Months 2–4",
+    why: "Build the moat.",
+    items: ["A page for each town you serve", "A page for each service people search for", "Earn the local links your competitors have"],
+  },
+];
+
+const whatsInside = [
+  {
+    title: "Where you show up — and where you don't.",
+    body: "How your business appears when people nearby search for what you do, and the places you're missing from entirely.",
+  },
+  {
+    title: "What's costing you calls.",
+    body: "The specific things holding you back, graded by how much they matter, so you know what's a real problem and what's noise.",
+  },
+  {
+    title: "How you stack up.",
+    body: "Who's winning those searches right now, and what they have that you don't. Some of it is closer than you'd think.",
+  },
+  {
+    title: "What to fix first.",
+    body: "An order of operations in plain English. A lot of the first fixes don't need a developer, or us.",
+  },
+];
+
+const steps = [
+  {
+    n: "01",
+    title: "Tell us who you are",
+    body: "Your business name, where you're located, and a website or Facebook page if you have one. That's it.",
+  },
+  {
+    n: "02",
+    title: "We go looking for you",
+    body: "We search for your business the way a customer would and look at what Google is actually showing them.",
+  },
+  {
+    n: "03",
+    title: "You get the report",
+    body: "A few days later it's in your inbox. Read it, keep it, use it. If you'd like to talk it through, we'll get on a call.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Is it really free?",
+    a: "Yes. No charge, nothing to cancel. It's the fastest way to show you what we'd actually do, and most of what we find you can start fixing that same week.",
+  },
+  {
+    q: "Do I need a website?",
+    a: "No. Plenty of businesses around here run on a Google listing and a Facebook page. We'll look at whatever you've got and tell you honestly whether a website would help.",
+  },
+  {
+    q: "What do you need from me?",
+    a: "Your business name and where you're located. A website or Facebook link helps. We do the rest — no logins, no passwords, nothing to install.",
+  },
+  {
+    q: "How long does it take?",
+    a: "A few days. Each one is done for one business at a time, so it depends on how many are ahead of you.",
+  },
+  {
+    q: "Are you going to try to sell me something?",
+    a: "We'll tell you what we found and what we'd do about it. If the fix is a website, we'll say so, because that's what we build. But the report is yours either way, and there's no follow-up you didn't ask for.",
+  },
+];
+---
+
+<Layout
+  title="Free Local Search Audit — Greene County"
+  description="See how your business shows up when people nearby search for what you do. A free report with a score, what's holding you back, and what to fix first."
+  hideOffer
+  headerOverlay="light"
+>
+  <!-- Hero: white ground with the homepage's soft green/gold wash. -->
+  <section class="relative bg-white text-dark overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(60% 55% at 0% 0%, rgba(61,122,28,0.07), transparent 62%), radial-gradient(50% 50% at 100% 90%, rgba(230,175,46,0.08), transparent 65%);"
+    ></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 pt-28 lg:pt-36 pb-16 lg:pb-24 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-primary/10 ring-1 ring-primary/20 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-primary-dark">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Free local search audit · Greene County
+        </span>
+
+        <h1 class="font-display font-black leading-[0.98] tracking-tight text-balance text-[clamp(2.5rem,5vw,4.25rem)]">
+          Find out why customers can't find <span class="text-primary">you.</span>
+        </h1>
+
+        <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-xl">
+          When someone nearby searches for what you do, Google decides who they see. We'll look at how
+          your business shows up — your Google listing, your reviews, your website — and send you a
+          report with a score, what's holding you back, and what to fix first.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href="#start"
+            class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5"
+          >
+            Get My Free Audit
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="#what"
+            class="inline-flex items-center justify-center px-8 py-4 border border-warm-300 bg-warm-50 text-dark font-semibold rounded-xl hover:border-dark hover:bg-warm-100 transition-all"
+          >
+            What's in it
+          </a>
+        </div>
+        <p class="mt-5 text-sm text-warm-500">No charge · No obligation · Yours to keep</p>
+      </div>
+
+      <!-- Sample report, with real (anonymized) findings. -->
+      <div class="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden="true">
+        <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl bg-primary/10"></div>
+        <div class="relative rounded-2xl overflow-hidden bg-white text-dark shadow-2xl shadow-dark/10 ring-1 ring-warm-200">
+          <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-accent text-dark text-[10px] font-bold uppercase tracking-wider">
+            Sample
+          </span>
+
+          <div class="bg-dark text-white px-6 pt-6 pb-7 border-b-4 border-primary">
+            <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-white/60">Local search audit</div>
+            <div class="flex items-end justify-between gap-6 mt-2">
+              <div>
+                <div class="font-display font-black text-2xl leading-tight">Your business here</div>
+                <div class="text-xs text-white/60 mt-1">Prepared by Made in Greene</div>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="font-display font-black text-5xl leading-none">62<span class="text-xl text-white/60">/100</span></div>
+                <div class="text-[10px] text-white/60 mt-1">Local visibility score</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 p-4 bg-warm-100 border-b border-warm-200">
+            {sampleScores.map((s) => {
+              const t = tone(s.value);
+              return (
+                <div class="rounded-lg bg-white border border-warm-200 px-3 py-2.5">
+                  <div class="text-[10px] font-medium text-warm-600 leading-tight">{s.label}</div>
+                  <div class:list={["font-display font-black text-xl leading-none mt-1", valueColor[t]]}>{s.value}</div>
+                  <div class="h-1.5 bg-warm-200 rounded-full mt-2 overflow-hidden">
+                    <div class:list={["h-full rounded-full", meterColor[t]]} style={`width:${s.value}%`}></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div class="p-4 space-y-2.5">
+            {sampleFindings.map((f) => (
+              <div class="flex items-start gap-3 rounded-lg border border-warm-200 p-3">
+                <span class:list={["shrink-0 px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider", f.cls]}>{f.pill}</span>
+                <span class="text-xs text-warm-700 leading-snug">{f.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's inside -->
+  <section id="what" class="py-20 md:py-28 bg-cream scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl mb-12" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">What's in the report</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
+          A score, a diagnosis, and a plan. Written for you, not a template.
+        </h2>
+        <p class="text-warm-600 text-lg leading-relaxed">
+          Every audit is done for one business. You get a score out of 100, six areas graded, a short
+          summary you can read in two minutes, and a fix list in the order that actually matters.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {whatsInside.map((item, i) => (
+          <div class="bg-white rounded-2xl p-7 border border-warm-200 shadow-sm" data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-dark mb-2 leading-snug">{item.title}</h3>
+            <p class="text-warm-600 leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Inside a real audit -->
+  <section class="py-20 md:py-28 bg-white border-t border-warm-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl mb-12" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Inside a real audit</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">Here's what one looks like.</h2>
+        <p class="text-warm-600 text-lg leading-relaxed">
+          Every report follows the same seven sections. The findings on the right are real, from a
+          recent audit of a local contractor, with the name and town taken out.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-start">
+        <ol data-reveal>
+          {reportSections.map((s) => (
+            <li class="flex items-start gap-4 py-3.5 border-b border-warm-200 last:border-0">
+              <span class="shrink-0 w-8 pt-0.5 font-display font-black text-lg leading-none text-primary/40">{s.n}</span>
+              <div>
+                <div class="font-semibold text-dark">{s.title}</div>
+                <div class="text-sm text-warm-600 mt-0.5 leading-relaxed">{s.body}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div class="space-y-3" data-reveal>
+          {realFindings.map((f) => (
+            <div class="grid grid-cols-[6px_1fr] rounded-xl overflow-hidden border border-warm-200 bg-cream">
+              <div class:list={["h-full", f.stripe]}></div>
+              <div class="p-5">
+                <span class:list={["inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider mb-2", f.cls]}>{f.pill}</span>
+                <p class="text-warm-700 leading-relaxed">{f.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-14 md:mt-16" data-reveal>
+        <h3 class="text-2xl font-bold text-dark mb-2">It ends with a plan, in order.</h3>
+        <p class="text-warm-600 mb-6 max-w-2xl leading-relaxed">
+          Sorted by impact per hour of effort. The first column is mostly account cleanup and never
+          touches the website.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {plan.map((p) => (
+            <div class="rounded-2xl border border-warm-200 bg-cream p-6">
+              <div class="font-display font-black text-2xl text-primary">{p.when}</div>
+              <div class="text-sm text-warm-500 mb-4">{p.why}</div>
+              <ul class="space-y-2.5">
+                {p.items.map((item) => (
+                  <li class="flex items-start gap-2.5 text-sm text-warm-700">
+                    <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-20 md:py-28 bg-warm-100 border-t border-warm-200">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">How it works</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">Three steps. Nothing to install.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {steps.map((step) => (
+          <div class="bg-white rounded-2xl p-7 border border-warm-200 shadow-sm" data-reveal>
+            <div class="text-4xl font-extrabold text-primary/25 mb-3">{step.n}</div>
+            <h3 class="text-xl font-bold text-dark mb-2">{step.title}</h3>
+            <p class="text-warm-600 leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section id="start" class="py-20 md:py-28 bg-cream border-t border-warm-200 scroll-mt-20">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="text-center mb-10" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Let's do it</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">Get your free audit.</h2>
+        <p class="text-warm-600 max-w-xl mx-auto text-lg">Six quick questions. We take it from there.</p>
+      </div>
+
+      <form
+        name="audit"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/thank-you/"
+        class="bg-white rounded-2xl p-8 border border-warm-200 shadow-sm"
+        data-reveal
+      >
+        <input type="hidden" name="form-name" value="audit" />
+        <input type="hidden" name="offer" value="Free Local Search Audit" />
+        <p class="hidden">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
+        <div class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="au-name" class="block text-sm font-medium text-dark mb-2">Your name</label>
+              <input type="text" id="au-name" name="name" required autocomplete="name"
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="Your name" />
+            </div>
+            <div>
+              <label for="au-business" class="block text-sm font-medium text-dark mb-2">Business name</label>
+              <input type="text" id="au-business" name="business" required autocomplete="organization"
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="Your business name" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="au-email" class="block text-sm font-medium text-dark mb-2">Email</label>
+              <input type="email" id="au-email" name="email" required autocomplete="email"
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="you@example.com" />
+            </div>
+            <div>
+              <label for="au-phone" class="block text-sm font-medium text-dark mb-2">Phone</label>
+              <input type="tel" id="au-phone" name="phone" required autocomplete="tel"
+                class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                placeholder="(423) 555-0100" />
+            </div>
+          </div>
+
+          <div>
+            <label for="au-location" class="block text-sm font-medium text-dark mb-2">Where are you located?</label>
+            <input type="text" id="au-location" name="location" required
+              class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+              placeholder="Greeneville, Mosheim, Chuckey, Tusculum…" />
+          </div>
+
+          <div>
+            <label for="au-links" class="block text-sm font-medium text-dark mb-2">Website or Facebook page (optional)</label>
+            <input type="text" id="au-links" name="links"
+              class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+              placeholder="Don't have one? That's fine — leave it blank." />
+          </div>
+
+          <button type="submit"
+            class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25">
+            Get My Free Audit
+          </button>
+          <p class="text-xs text-warm-500 text-center leading-relaxed">
+            No charge, no obligation. You'll hear from us within a business day, and the full report
+            lands in your inbox a few days after.
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-28 bg-warm-100 border-t border-warm-200">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Questions</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3">The stuff people ask.</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-2xl border border-warm-200 p-6" data-reveal>
+            <h3 class="text-lg font-semibold text-dark mb-2">{faq.q}</h3>
+            <p class="text-warm-600 leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-sm text-warm-500 mt-10">
+        Still wondering about something?{" "}
+        <a href="/contact" class="text-primary font-semibold hover:text-primary-dark transition-colors">Just ask.</a>
+      </p>
+    </div>
+  </section>
+</Layout>
