@@ -23,7 +23,7 @@ export const jumps = [
   { label: "How an engagement works", href: "#engagement" },
   { label: "What we build", href: "#build" },
   { label: "Included in every project", href: "#included" },
-  { label: "Getting found", href: "#found" },
+  { label: "Marketing services", href: "#found" },
   { label: "Questions", href: "#faq" },
   { label: "Small business packages", href: "/small-business" },
 ];
@@ -100,21 +100,33 @@ export const found = {
   eyebrow: "Getting Found",
   title: "Google Business Profile and Google Ads.",
   body:
-    "Available with any website we build, from a small-business package to a custom build.",
+    "Paid marketing and local visibility, available with any website we build, from a small-business package to a custom build.",
+  /* Short version for the homepage */
+  teaser: {
+    title: "Get found on Google, too.",
+    body: "Once the site is built, we can manage your Google Business Profile and your Google Ads, so the people searching for what you do find you first.",
+    link: { label: "See marketing services and pricing", href: "/services#found" },
+  },
   services: [
     {
       name: "Google Business Profile Setup",
       price: "$400, one-time (add-on to any package)",
+      short: "$400 one-time",
+      summary: "Your profile claimed, cleaned up and filled in, with photos from your shoot.",
       text: "We claim or clean up your Google Business Profile, set your categories, services and hours, write your business description, and add professional photos from your shoot. You own the profile, and we're added as a manager.",
     },
     {
       name: "Google Business Profile Care",
       price: "$200/month, 3-month minimum",
+      short: "$200/month",
+      summary: "Posts, fresh photos, review replies and a monthly report.",
       text: "Two posts a month, new photos each quarter, review replies written for your approval, and a short monthly report on calls, direction requests and website clicks.",
     },
     {
       name: "Google Ads Management",
       price: "$750 setup, then $400/month or 15% of ad spend, whichever is higher. 3-month minimum.",
+      short: "$750 setup, then from $400/month",
+      summary: "Paid search campaigns built, tracked and managed, on an ad account you own.",
       text: "Setup covers the account structure, keywords, ad copy, and tracking for calls, forms and bookings. Each month we manage bids, keywords and ads, and send a short report on what the spend brought in. Ad spend is paid by you directly to Google from an account you own. We recommend at least $500 a month in ad spend.",
     },
   ],

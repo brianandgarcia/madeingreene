@@ -5,9 +5,10 @@
 */
 import Layout from "../layouts/Layout.astro";
 import Pictogram from "../components/art/Pictogram.astro";
+import GettingFound from "../components/GettingFound.astro";
 import Engagement from "../components/home/Engagement.astro";
 import Capabilities from "../components/home/Capabilities.astro";
-import { seo, header, jumps, buildDetail, proofLine, included, found, terms, faqs, smallBusinessBand } from "../data/services";
+import { seo, header, jumps, buildDetail, proofLine, included, terms, faqs, smallBusinessBand } from "../data/services";
 import { closing } from "../data/home";
 import { withPlaceholders } from "../lib/placeholder";
 
@@ -82,27 +83,7 @@ const heroIcons = [
   </section>
 
   <!-- Getting found: Google Business Profile and Google Ads -->
-  <section id="found" class="py-24 md:py-36 bg-primary-dark text-white scroll-mt-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-2xl">
-        <span class="text-primary-light font-semibold text-sm uppercase tracking-wider">{found.eyebrow}</span>
-        <h2 class="mt-3 text-3xl md:text-5xl font-bold leading-[1.05]">{found.title}</h2>
-        <p class="mt-5 text-lg text-white/75 leading-relaxed">{found.body}</p>
-      </div>
-      <div class="mt-12 border-t border-white/15">
-        {found.services.map((svc) => (
-          <article class="grid gap-3 py-8 border-b border-white/15 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-12">
-            <div>
-              <h3 class="text-xl md:text-2xl font-bold">{svc.name}</h3>
-              <p class="mt-2 font-semibold text-accent leading-snug">{svc.price}</p>
-            </div>
-            <p class="text-white/85 leading-relaxed">{svc.text}</p>
-          </article>
-        ))}
-      </div>
-      <p class="mt-8 pl-4 border-l-2 border-accent text-white/85 leading-relaxed max-w-3xl">{found.note}</p>
-    </div>
-  </section>
+  <GettingFound />
 
   <!-- Pricing structure -->
   <section class="py-24 md:py-36 bg-white border-y border-warm-200">

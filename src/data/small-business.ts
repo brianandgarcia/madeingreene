@@ -113,9 +113,7 @@ export const addons = {
     { name: "Digital Presence Setup (domain, business email, accounts)", price: "$199" },
     { name: "Social Media Starter Kit", price: "$199" },
     { name: "Email / SMS capture setup", price: "$350" },
-    { name: "Google Business Profile Setup", price: "$400" },
   ],
-  more: { label: "Google Business Profile Care and Google Ads management", href: "/services#found" },
 };
 
 export const terms = {
