@@ -3,7 +3,7 @@
   The offer structure: three phases on one track. Prices and lengths are
   placeholders in src/data/home.ts until Brian sets them.
 */
-import { engagement } from "../../data/home";
+import { engagement, smallBusinessNudge } from "../../data/home";
 import { withPlaceholders } from "../../lib/placeholder";
 ---
 
@@ -37,5 +37,12 @@ import { withPlaceholders } from "../../lib/placeholder";
         </li>
       ))}
     </ol>
+
+    <p class="mt-16 md:mt-20 pt-8 border-t border-warm-300 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-lg text-warm-800">
+      <span>{smallBusinessNudge.text}</span>
+      <a href={smallBusinessNudge.link.href} class="sm:ml-auto shrink-0 font-semibold text-primary hover:text-primary-dark underline underline-offset-4 whitespace-nowrap">
+        {smallBusinessNudge.link.label} <span aria-hidden="true">→</span>
+      </a>
+    </p>
   </div>
 </section>

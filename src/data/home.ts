@@ -151,6 +151,12 @@ export const photoBand = {
   caption: "We come to you. Every build includes on-location photography of your people, your place and your work.",
 };
 
+/* Shown under the phases so a small business isn't lost at the custom-build prices. */
+export const smallBusinessNudge = {
+  text: "Smaller business? Fixed-price websites start at $1,750, with a local photo session included.",
+  link: { label: "See small business packages", href: "/small-business" },
+};
+
 export const engagement = {
   eyebrow: "How an Engagement Works",
   title: "One roadmap, one build, one team that keeps it running.",
