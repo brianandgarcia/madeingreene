@@ -94,16 +94,6 @@ import { withPlaceholders } from "../lib/placeholder";
         <span class="text-primary font-semibold text-sm uppercase tracking-wider">{terms.eyebrow}</span>
         <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">{terms.title}</h2>
         {terms.body.map((p) => <p class="mt-6 text-lg text-warm-700 leading-relaxed">{p}</p>)}
-        <h3 class="mt-10 text-lg font-bold text-dark">{terms.lineItemsTitle}</h3>
-        <dl class="mt-3 border-t border-warm-300">
-          {terms.lineItems.map((li) => (
-            <div class="grid grid-cols-[1fr_auto] gap-x-6 py-3 border-b border-warm-200">
-              <dt class="font-semibold text-dark">{li.label}</dt>
-              <dd class="font-semibold text-primary-dark text-right whitespace-nowrap">{li.price}</dd>
-              <dd class="col-span-2 text-sm text-warm-600">{li.detail}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
       <dl class="border-t-2 border-dark">
         {terms.rows.map((r) => (
