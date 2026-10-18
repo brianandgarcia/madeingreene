@@ -73,10 +73,13 @@ export const terms = {
     "We don't quote a build until discovery is done, because the right price depends on what's worth building. Discovery is a fixed fee and ends with a written roadmap and a fixed-price proposal. You decide from there.",
   ],
   rows: [
-    { label: "Discovery & Roadmap", value: "[PLACEHOLDER: discovery fee]" },
-    { label: "Design & Build", value: "[PLACEHOLDER: builds from $XX,XXX]" },
-    { label: "Run & Improve", value: "[PLACEHOLDER: $X,XXX / month]" },
-    { label: "Payment schedule", value: "[PLACEHOLDER: e.g. milestone billing across the build]" },
+    { label: "Discovery & Roadmap", value: "$3,500, credited toward the build if you sign within 60 days" },
+    { label: "Design & Build", value: "From $20,000. Quoted after discovery, with each integration and automation as its own line item." },
+    { label: "Run", value: "$750/month ($7,500/year). Hosting, monitoring, security updates, integration upkeep, up to 3 hours a month of support and a monthly review call." },
+    { label: "Improve", value: "$1,500/month ($15,000/year). Everything in Run, plus up to 8 hours a month of new features and automations, with priority turnaround. Both plans have a 6-month minimum, then month to month." },
+    { label: "Payment schedule", value: "40% at signing, 30% at design approval, 30% at launch" },
+    { label: "Out-of-scope work", value: "$150/hour, approved before it starts" },
+    { label: "Warranty", value: "90 days after launch on custom builds" },
   ],
 };
 
@@ -122,7 +125,7 @@ export const packages = {
   eyebrow: "Small Business Packages",
   title: "Smaller business? Our website packages are still here.",
   body:
-    "For new and small businesses that need a professional website rather than a connected system. Same care, real photography, and copy written for you. Projects start at $950, and every package can be paid once or monthly.",
+    "For new and small businesses that need a professional website rather than a connected system. Same care, real photography, and copy written for you. Packages start at $1,750, and every package can be paid once or monthly.",
   list: [
     { name: "Local Landing Page", scope: "1 page", text: "For new businesses, solo operators and side businesses." },
     { name: "Business Website", scope: "Up to 5 pages", text: "A clean, professional presence for a local business." },
@@ -131,6 +134,7 @@ export const packages = {
   ],
   notes: [
     "Every package includes a local photo session and a 1-year bug-free guarantee.",
+    "Need one tool connected? A simple integration add-on starts at $1,500.",
     "Optional monthly care plans cover hosting, updates and content changes.",
   ],
   cta: { label: "Ask for the pricing sheet", href: "/contact" },

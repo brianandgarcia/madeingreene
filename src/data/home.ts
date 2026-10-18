@@ -140,7 +140,7 @@ export const engagement = {
       number: "01",
       name: "Discovery & Roadmap",
       length: "[PLACEHOLDER: e.g. 2 weeks]",
-      price: "[PLACEHOLDER: discovery fee]",
+      price: "$3,500, credited toward the build if you sign within 60 days",
       items: [
         "Working sessions with the people who do the work",
         "A map of your systems and where data gets retyped",
@@ -152,7 +152,7 @@ export const engagement = {
       number: "02",
       name: "Design & Build",
       length: "[PLACEHOLDER: e.g. 8 to 14 weeks]",
-      price: "[PLACEHOLDER: builds from $XX,XXX]",
+      price: "From $20,000, fixed after discovery",
       items: [
         "A custom-designed website, written and photographed for you",
         "The integrations and automations from the roadmap",
@@ -164,7 +164,7 @@ export const engagement = {
       number: "03",
       name: "Run & Improve",
       length: "Monthly",
-      price: "[PLACEHOLDER: $X,XXX / month]",
+      price: "Run $750/mo · Improve $1,500/mo, 6-month minimum",
       items: [
         "Hosting, monitoring and security updates",
         "We watch every integration and fix it if a vendor changes theirs",

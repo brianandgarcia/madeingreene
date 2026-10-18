@@ -21,9 +21,14 @@ One engagement in three phases, so the bigger price is anchored to a plan:
    review, new automations over time. This is the recurring revenue that makes
    fewer clients work.
 
-Prices, phase lengths and yearly capacity are visible `[PLACEHOLDER]` tags in
-`src/data/home.ts`. Suggestions for Brian to decide: credit the discovery fee
-toward the build, and publish a "builds from" number rather than full pricing.
+Prices (set by Brian 2026-10-18): Discovery $3,500, credited toward the build
+if signed within 60 days; Design & Build from $20,000, quoted after discovery;
+Run $750/mo and Improve $1,500/mo, 6-month minimum; custom builds paid
+40/30/30, $150/hr out of scope, 90-day warranty. Small-business packages start
+at $1,750 with a photo session and the 1-year guarantee; simple integration
+add-on from $1,500. Phase lengths and yearly capacity are still
+`[PLACEHOLDER]` tags. The farm-stands page still carries the old "$150 down /
+own it for $850" offer until Brian decides what replaces it.
 
 ## Proof used (all real, from src/data/projects.ts)
 - Echo Station: 40 taps synced from Untappd, events from Google Calendar.
@@ -45,7 +50,7 @@ Made in Greene is run part-time alongside a higher-ed job (worth deciding
 whether that stays anywhere: mid-market buyers will ask about capacity).
 
 ## Still to decide or supply
-- Prices, phase lengths, builds per year.
+- Phase lengths, builds per year, and the farm-stands offer.
 - Domenique's last name and title.
 - Founded year.
 - Photos: leadership portrait (4:5), and a more formal About hero than the
