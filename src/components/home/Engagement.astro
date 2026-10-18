@@ -15,10 +15,9 @@ import { withPlaceholders } from "../../lib/placeholder";
       <p class="mt-5 text-lg text-warm-600 leading-relaxed">{engagement.body}</p>
     </div>
 
-    <ol class="eng-track relative mt-16 md:mt-20 grid gap-14 lg:grid-cols-3 lg:gap-12">
+    <ol class="mt-16 md:mt-20 grid gap-14 lg:grid-cols-3 lg:gap-12">
       {engagement.phases.map((phase, i) => (
-        <li class="relative pl-12 lg:pl-0 lg:pt-16" data-reveal style={`--reveal-delay: ${i * 110}ms`}>
-          <span class="eng-stop" aria-hidden="true"></span>
+        <li data-reveal style={`--reveal-delay: ${i * 110}ms`}>
           <p class="font-display text-sm font-bold tracking-[0.14em] text-primary">PHASE {phase.number}</p>
           <h3 class="mt-2 text-2xl md:text-[1.7rem] font-bold text-dark">{phase.name}</h3>
           <dl class="mt-4 space-y-1.5 text-sm">
@@ -40,61 +39,3 @@ import { withPlaceholders } from "../../lib/placeholder";
     </ol>
   </div>
 </section>
-
-<style>
-  /* The track is a fence: two rails, with a post at each phase. Vertical on
-     phones, horizontal from lg up. */
-  .eng-track::before {
-    content: "";
-    position: absolute;
-    left: 0.45rem;
-    top: 0;
-    bottom: 0;
-    width: 0.7rem;
-    border-left: 2px solid var(--color-primary-dark);
-    border-right: 2px solid var(--color-primary-dark);
-    opacity: 0.35;
-  }
-
-  .eng-stop {
-    position: absolute;
-    left: 0.2rem;
-    top: -0.3rem;
-    width: 1.2rem;
-    height: 2.4rem;
-    border-radius: 0.2rem 0.2rem 0 0;
-    background: var(--color-hay);
-    border: 2px solid var(--color-primary-dark);
-  }
-
-  .eng-stop::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: -0.55rem;
-    width: 0.55rem;
-    height: 0.55rem;
-    transform: translateX(-50%);
-    border-radius: 999px;
-    background: var(--color-accent);
-  }
-
-  @media (min-width: 64rem) {
-    .eng-track::before {
-      left: 0;
-      right: 0;
-      top: 0.55rem;
-      bottom: auto;
-      width: auto;
-      height: 0.7rem;
-      border: 0;
-      border-top: 2px solid var(--color-primary-dark);
-      border-bottom: 2px solid var(--color-primary-dark);
-    }
-
-    .eng-stop {
-      left: 0;
-      top: -0.6rem;
-    }
-  }
-</style>
