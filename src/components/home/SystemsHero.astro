@@ -30,7 +30,7 @@ const wire = (x: number, y: number, i: number) => {
     <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:gap-24 items-center">
       <div class="sys-hero-copy max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{hero.eyebrow}</p>
-        <h1 class="mt-5 font-display font-black leading-[0.98] tracking-tight text-balance text-[clamp(2.6rem,5vw,4.9rem)]">
+        <h1 class="mt-5 font-display font-black leading-[0.98] tracking-tight text-balance text-[clamp(2.3rem,4.4vw,4.3rem)]">
           {hero.title} <span class="text-primary">{hero.titleAccent}</span>
         </h1>
         <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-xl">{hero.body}</p>
@@ -70,7 +70,8 @@ const wire = (x: number, y: number, i: number) => {
         <ul class="absolute inset-0">
           {hero.nodes.map((n, i) => (
             <li
-              class="sys-node absolute -translate-x-1/2 -translate-y-1/2"
+              class="sys-node absolute"
+              data-above={n.y < 40 ? "" : undefined}
               style={`left:${n.x}%;top:${n.y}%;--d:${0.25 + i * 0.08}s`}
             >
               <span class="sys-node__dot" aria-hidden="true"></span>
@@ -161,14 +162,33 @@ const wire = (x: number, y: number, i: number) => {
       0 24px 48px -20px rgba(23, 73, 50, 0.55);
   }
 
+  /* Anchored on the dot: its centre sits exactly where the wire ends, with
+     the label hanging below. All positioning lives in `transform` here (not
+     Tailwind's translate utilities) so the entrance animation can't stack a
+     second offset on top of it. */
   .sys-node {
-    display: grid;
-    justify-items: center;
+    transform: translate(-50%, -0.4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 0.25rem;
     width: 9.5rem;
     opacity: 0;
     animation: sysNodeIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) var(--d, 0s) forwards;
+  }
+
+  /* Top-row nodes: wires arrive from below, so the label sits above the dot
+     and the line is never hidden behind it. */
+  .sys-node[data-above] {
+    flex-direction: column-reverse;
+    transform: translate(-50%, calc(-100% + 0.4rem));
+    animation-name: sysNodeInAbove;
+  }
+
+  @keyframes sysNodeInAbove {
+    from { opacity: 0; transform: translate(-50%, calc(-100% + 0.4rem + 8px)); }
+    to { opacity: 1; transform: translate(-50%, calc(-100% + 0.4rem)); }
   }
 
   .sys-node__dot {
@@ -208,8 +228,8 @@ const wire = (x: number, y: number, i: number) => {
   }
 
   @keyframes sysNodeIn {
-    from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)); }
-    to { opacity: 1; transform: translate(-50%, -50%); }
+    from { opacity: 0; transform: translate(-50%, calc(-0.4rem + 8px)); }
+    to { opacity: 1; transform: translate(-50%, -0.4rem); }
   }
 
   .sys-hero-copy {

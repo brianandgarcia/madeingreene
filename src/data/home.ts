@@ -28,12 +28,12 @@ export const hero = {
   /* The systems map. `x`/`y` are percentages of the map box; the website sits
      in the middle and every node is wired back to it. */
   nodes: [
-    { label: "CRM", detail: "Leads land with a source and an owner", x: 14, y: 16 },
-    { label: "Scheduling", detail: "Bookings and crews in one calendar", x: 86, y: 14 },
-    { label: "Inventory / ERP", detail: "What's in stock, shown live", x: 90, y: 56 },
-    { label: "Accounting", detail: "Quotes turn into invoices", x: 70, y: 90 },
-    { label: "Email & SMS", detail: "Follow-ups that send themselves", x: 22, y: 88 },
-    { label: "Reporting", detail: "Monday numbers in your inbox", x: 8, y: 52 },
+    { label: "CRM", detail: "Leads land with a source and an owner", x: 15, y: 24 },
+    { label: "Scheduling", detail: "Bookings and crews in one calendar", x: 85, y: 22 },
+    { label: "Inventory / ERP", detail: "What's in stock, shown live", x: 87, y: 56 },
+    { label: "Accounting", detail: "Quotes turn into invoices", x: 70, y: 80 },
+    { label: "Email & SMS", detail: "Follow-ups that send themselves", x: 25, y: 78 },
+    { label: "Reporting", detail: "Monday numbers in your inbox", x: 11, y: 50 },
   ],
   proof: {
     label: "Running now at Echo Station",

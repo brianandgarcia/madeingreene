@@ -31,7 +31,8 @@
   --color-cream: #f7f6f1;
 
   --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
-  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Archivo", "Figtree", system-ui, sans-serif;
+  --font-serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
   --font-accent: "Cormorant Garamond", Georgia, serif;
 
   /* Slightly larger body type scale, sitewide, for readability */
@@ -55,10 +56,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Headings: all-caps Archivo, slightly condensed so long headlines still fit. */
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  letter-spacing: -0.015em;
+  font-stretch: 90%;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
 }
 
 [data-reveal] {
