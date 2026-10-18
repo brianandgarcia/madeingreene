@@ -4,9 +4,17 @@
   row with a big numeral, a short pitch, and the concrete things it covers.
 */
 import { capabilities } from "../../data/home";
+
+interface Props {
+  id?: string;
+  /** Optional "when it fits" line per lane, matched by lane number (used on /services). */
+  fit?: { number: string; question: string; text: string }[];
+}
+
+const { id, fit = [] } = Astro.props;
 ---
 
-<section class="relative py-20 md:py-28 bg-primary-dark text-white overflow-hidden">
+<section id={id} class="relative py-20 md:py-28 bg-primary-dark text-white overflow-hidden scroll-mt-24">
   <div class="pointer-events-none absolute inset-0 cap-grid" aria-hidden="true"></div>
 
   <div class="relative max-w-6xl mx-auto px-6">
@@ -26,6 +34,12 @@ import { capabilities } from "../../data/home";
           <div>
             <h3 class="text-2xl md:text-3xl font-bold">{lane.name}</h3>
             <p class="mt-3 text-white/75 leading-relaxed">{lane.summary}</p>
+            {fit.filter((f) => f.number === lane.number).map((f) => (
+              <p class="mt-5 pl-4 border-l-2 border-accent text-white/85 leading-relaxed">
+                <span class="block text-xs font-semibold uppercase tracking-wider text-accent mb-1">{f.question}</span>
+                {f.text}
+              </p>
+            ))}
           </div>
           <ul class="grid gap-x-8 gap-y-3 sm:grid-cols-2 content-start">
             {lane.examples.map((ex) => (
