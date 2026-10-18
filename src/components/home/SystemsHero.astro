@@ -6,6 +6,7 @@
   Content lives in src/data/home.ts (hero.nodes positions the map).
 */
 import { hero } from "../../data/home";
+import FenceLine from "../art/FenceLine.astro";
 
 const CX = 50;
 const CY = 50;
@@ -26,7 +27,7 @@ const wire = (x: number, y: number, i: number) => {
 <section class="relative bg-white text-dark overflow-hidden">
   <div class="pointer-events-none absolute inset-0 sys-hero-bg" aria-hidden="true"></div>
 
-  <div class="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-32 lg:pt-40 pb-16 lg:pb-24">
+  <div class="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-28 lg:pt-32 pb-4 lg:pb-0">
     <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:gap-24 items-center">
       <div class="sys-hero-copy max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{hero.eyebrow}</p>
@@ -103,10 +104,16 @@ const wire = (x: number, y: number, i: number) => {
       </figure>
     </div>
 
+  </div>
+
+  <!-- The county horizon: farm and factory on the same power line -->
+  <FenceLine class="relative h-40 sm:h-48 lg:h-auto lg:-mt-10 text-primary-dark/80" />
+
+  <div class="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pb-6">
     <!-- Proof that this isn't hypothetical -->
     <a
       href={hero.proof.href}
-      class="sys-proof group mt-12 lg:mt-16 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 rounded-2xl border border-warm-200 bg-cream px-6 py-5 hover:border-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      class="sys-proof group mt-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
       <span class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary whitespace-nowrap">
         <span class="sys-live w-2 h-2 rounded-full bg-primary-light" aria-hidden="true"></span>

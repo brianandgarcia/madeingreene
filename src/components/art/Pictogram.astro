@@ -1,0 +1,55 @@
+---
+/*
+  Line pictograms in the same hand as the FenceLine horizon: who we build for,
+  and the three kinds of work. 48 × 48, stroked in currentColor.
+*/
+type PictogramName =
+  | "factory" | "farm" | "truck" | "hardhat" | "practice" | "locations"
+  | "gear" | "belt" | "arm";
+
+interface Props {
+  name: PictogramName;
+  class?: string;
+}
+const { name, class: className = "" } = Astro.props;
+
+// A 10-tooth gear around (24, 24).
+function gearPath() {
+  const teeth = 10, r1 = 13, r2 = 17, pts: string[] = [];
+  for (let i = 0; i < teeth * 2; i++) {
+    const r = i % 2 === 0 ? r2 : r1;
+    const a0 = ((i - 0.3) / (teeth * 2)) * Math.PI * 2;
+    const a1 = ((i + 0.3) / (teeth * 2)) * Math.PI * 2;
+    pts.push(`${(24 + r * Math.cos(a0)).toFixed(1)} ${(24 + r * Math.sin(a0)).toFixed(1)}`);
+    pts.push(`${(24 + r * Math.cos(a1)).toFixed(1)} ${(24 + r * Math.sin(a1)).toFixed(1)}`);
+  }
+  return `M${pts.join(" L")} Z`;
+}
+const gear = gearPath();
+
+const paths: Record<PictogramName, string> = {
+  factory: "M2 42 H46 M4 42 V22 L14 28 V22 L24 28 V22 L34 28 V8 H40 V42 M10 35 H15 M20 35 H25 M34 13 H40",
+  farm: "M2 42 H46 M6 42 V24 L12 16 L21 12 L30 16 L36 24 V42 M16 42 V32 H26 V42 M16 32 L26 42 M26 32 L16 42 M39 42 V16 A3.5 3.5 0 0 1 46 16 V42 M39 24 H46 M39 32 H46",
+  truck: "M2 42 H46 M4 12 H30 V34 H4 Z M30 19 H38 L44 26 V34 H30 M33 22 H37 L40 26 H33 Z",
+  hardhat: "M8 32 C8 20 15 12 24 12 C33 12 40 20 40 32 M4 32 H44 V37 H4 Z M20 13 V26 M28 13 V26",
+  practice: "M2 42 H46 M8 42 V14 H40 V42 M24 19 V31 M18 25 H30 M20 42 V36 H28 V42",
+  locations: "M13 30 C9 24 6 20 6 15 A7 7 0 0 1 20 15 C20 20 17 24 13 30 Z M35 36 C31 30 28 26 28 21 A7 7 0 0 1 42 21 C42 26 39 30 35 36 Z M13 34 C16 42 26 44 31 40",
+  gear: `${gear} M24 18 A6 6 0 1 1 23.9 18 Z`,
+  belt: "M13 15 H35 M13 33 H35 M13 15 A9 9 0 0 0 13 33 M35 15 A9 9 0 0 1 35 33 M13 21 A3 3 0 1 1 12.9 21 Z M35 21 A3 3 0 1 1 34.9 21 Z M20 15 L23 12 M27 33 L24 36",
+  arm: "M6 42 H26 M10 42 V38 H22 V42 M16 38 V35 M16 32 A3 3 0 1 1 15.9 32 Z M18 33 L27 21 M29 17 A3 3 0 1 1 28.9 17 Z M31 21 L39 27 M39 27 L44 23 M39 27 L43 32",
+};
+---
+
+<svg
+  class={className}
+  viewBox="0 0 48 48"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d={paths[name]} />
+</svg>

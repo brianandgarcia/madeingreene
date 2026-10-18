@@ -77,3 +77,16 @@ src/data/small-business.ts) carries the hero, full package inclusions from the
 service list, care plans, add-ons, terms and the two client testimonials.
 /services keeps a short band linking to it; /farm-stands redirects there.
 Serif accents (the quote, the small-business headline) use Fraunces again.
+
+## Visual pass: "Fence line" (2026-10-18)
+Brian asked for elements from Greene County's farms and manufacturing, more
+white space, fewer boxes and bigger images. One hand-drawn horizon
+(src/components/art/FenceLine.astro: mountains, barn and silo, cattle, hay,
+power poles carrying a gold signal, water tower, sawtooth-roof plant, box
+truck, grain bins) closes the homepage hero and opens the footer on every
+page. Line pictograms (src/components/art/Pictogram.astro) mark who we build
+for and the three kinds of work. New warm `hay` background, section padding
+raised sitewide, hairline rules removed, a full-width photo band (The Funny
+Farm, Echo Station) and a larger Echo Station screenshot. Engagement phases sit
+on fence rails. Farms and agricultural operations added to who we build for.
+Needs Brian's photos: a client plant floor or farm operation for the band.

@@ -1,9 +1,11 @@
 ---
+import FenceLine from "./art/FenceLine.astro";
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-dark text-warm-400">
-  <div class="max-w-6xl mx-auto px-6 py-16">
+  <FenceLine class="h-36 sm:h-44 lg:h-auto text-warm-300/45 pt-6" align="mid" />
+  <div class="max-w-6xl mx-auto px-6 py-16 border-t border-white/0">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
       <div class="md:col-span-2">
         <a href="/" class="inline-flex items-center mb-4" aria-label="Made in Greene — home">

@@ -3,7 +3,7 @@
 import { whyUs, smallBusiness, closing } from "../../data/home";
 ---
 
-<section class="py-20 md:py-28 bg-cream">
+<section class="py-24 md:py-36 bg-white overflow-hidden">
   <div class="max-w-6xl mx-auto px-6 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 items-start">
     <div data-reveal>
       <span class="text-primary font-semibold text-sm uppercase tracking-wider">{whyUs.eyebrow}</span>
@@ -31,7 +31,7 @@ import { whyUs, smallBusiness, closing } from "../../data/home";
   </div>
 </section>
 
-<div class="bg-white border-y border-warm-200">
+<div class="bg-hay">
   <p class="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-warm-700">
     {smallBusiness.text}
     <a href={smallBusiness.link.href} class="sm:ml-auto font-semibold text-primary hover:text-primary-dark whitespace-nowrap underline underline-offset-4">
@@ -40,11 +40,7 @@ import { whyUs, smallBusiness, closing } from "../../data/home";
   </p>
 </div>
 
-<section class="relative py-24 md:py-32 bg-dark text-white overflow-hidden border-b border-white/10">
-  <svg class="pointer-events-none absolute inset-0 w-full h-full opacity-[0.18]" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path d="M-20 320 C 240 300, 380 120, 600 200 S 980 80, 1220 120" fill="none" stroke="#8eaf3e" stroke-width="1.5" stroke-dasharray="6 8" />
-    <path d="M-20 80 C 200 140, 420 40, 640 110 S 1000 300, 1220 260" fill="none" stroke="#e6af2e" stroke-width="1.5" stroke-dasharray="6 8" />
-  </svg>
+<section class="relative pt-24 md:pt-36 pb-8 bg-dark text-white overflow-hidden">
   <div class="relative max-w-4xl mx-auto px-6" data-reveal>
     <h2 class="text-4xl md:text-6xl font-bold leading-[1.02] text-balance">{closing.title}</h2>
     <p class="mt-6 text-lg md:text-xl text-warm-300 max-w-2xl leading-relaxed">{closing.body}</p>

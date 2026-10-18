@@ -46,7 +46,16 @@ export const fit = {
   eyebrow: "Who We Build For",
   title: "For companies that have outgrown a brochure website.",
   body:
-    "Manufacturers, distributors, contractors, medical and professional practices, and businesses with more than one location. If the business runs on more systems than the website knows about, we should talk.",
+    "Manufacturers, farms and agricultural operations, distributors, contractors, medical and professional practices, and businesses with more than one location. If the business runs on more systems than the website knows about, we should talk.",
+  /* Pictograms are drawn in src/components/art/Pictogram.astro. */
+  who: [
+    { icon: "factory", label: "Manufacturers" },
+    { icon: "farm", label: "Farms & agriculture" },
+    { icon: "truck", label: "Distributors" },
+    { icon: "hardhat", label: "Contractors" },
+    { icon: "practice", label: "Medical & professional practices" },
+    { icon: "locations", label: "Multi-location businesses" },
+  ],
   signsTitle: "It usually sounds like this:",
   signs: [
     "Your team retypes the same information into two or three systems.",
@@ -66,6 +75,7 @@ export const capabilities = {
   lanes: [
     {
       number: "01",
+      icon: "gear",
       name: "Custom features",
       summary:
         "The parts of your site that do something specific to your business, built for it rather than bolted on from a plugin.",
@@ -80,6 +90,7 @@ export const capabilities = {
     },
     {
       number: "02",
+      icon: "belt",
       name: "Integrations",
       summary:
         "Your website talks to the software you already pay for, so information is entered once and shows up everywhere it should.",
@@ -94,6 +105,7 @@ export const capabilities = {
     },
     {
       number: "03",
+      icon: "arm",
       name: "Automations",
       summary:
         "The small jobs that eat a week, handed to software that never forgets, with a person still in charge of anything that matters.",
@@ -128,6 +140,16 @@ export const proof = {
   link: { label: "Read the Echo Station case study", href: "/work/echo-station" },
   note:
     "The same approach scales to a parts catalog, a service schedule, or a dealer price list.",
+};
+
+/* Full-width photo band between the proof and the engagement. Real client
+   photos; swap in a plant floor or farm operation once Brian has one. */
+export const photoBand = {
+  images: [
+    { src: "/the-funny-farm-tile.jpg", alt: "A Scottish Highland calf at The Funny Farm in Chuckey", place: "The Funny Farm · Chuckey" },
+    { src: "/echo-station-photo-shoot.jpg", alt: "The bar at Echo Station in Greeneville, under its neon Drinks sign", place: "Echo Station · Greeneville" },
+  ],
+  caption: "We come to you. Every build includes on-location photography of your people, your place and your work.",
 };
 
 export const engagement = {
