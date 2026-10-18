@@ -20,12 +20,12 @@ interface Props {
 
 const {
   title,
-  description = "Made in Greene builds affordable websites for local businesses in Greene County, TN. Clear pricing. Local support. No runaround.",
+  description = "Made in Greene is a web design and development studio in Greeneville, Tennessee, building custom websites, integrations and automation for established businesses.",
   noindex = false,
   hideOffer = false,
   headerOverlay,
   ogImage: ogImageProp,
-  ogImageAlt = "Made in Greene — affordable, custom websites for local businesses.",
+  ogImageAlt = "Made in Greene — custom websites, integrations and automation.",
   ogType = "website",
 } = Astro.props;
 
@@ -42,7 +42,7 @@ const businessSchema = {
   "@id": `${siteUrl.origin}/#business`,
   name: "Made in Greene",
   description:
-    "Affordable, custom websites for local businesses, farms, shops, and organizations in and around Greene County, Tennessee.",
+    "Custom websites, software integrations and business automation for established companies in East Tennessee, from a studio in Greeneville.",
   url: siteUrl.origin,
   telephone: "+1-423-292-7294",
   email: "brian@madeingreene.com",

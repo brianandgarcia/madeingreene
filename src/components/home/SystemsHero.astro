@@ -1,0 +1,243 @@
+---
+/*
+  Hero: the pitch on the left, the "systems map" on the right. The map is the
+  page's one idea made visible: the website in the middle, wired to the tools a
+  business already runs on, with signal travelling along each line.
+  Content lives in src/data/home.ts (hero.nodes positions the map).
+*/
+import { hero } from "../../data/home";
+
+const CX = 50;
+const CY = 50;
+
+// A gentle bend on every wire, so the map reads as roads on a county map
+// rather than spokes on a wheel.
+const wire = (x: number, y: number, i: number) => {
+  const mx = (CX + x) / 2;
+  const my = (CY + y) / 2;
+  const bend = i % 2 === 0 ? 9 : -9;
+  const dx = y - CY;
+  const dy = -(x - CX);
+  const len = Math.hypot(dx, dy) || 1;
+  return `M${CX} ${CY} Q${(mx + (dx / len) * bend).toFixed(1)} ${(my + (dy / len) * bend).toFixed(1)} ${x} ${y}`;
+};
+---
+
+<section class="relative bg-white text-dark overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 sys-hero-bg" aria-hidden="true"></div>
+
+  <div class="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-32 lg:pt-40 pb-16 lg:pb-24">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:gap-24 items-center">
+      <div class="sys-hero-copy max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{hero.eyebrow}</p>
+        <h1 class="mt-5 font-display font-black leading-[0.98] tracking-tight text-balance text-[clamp(2.6rem,5vw,4.9rem)]">
+          {hero.title} <span class="text-primary">{hero.titleAccent}</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-xl">{hero.body}</p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-3">
+          <a
+            href={hero.primary.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-7 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            {hero.primary.label}
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href={hero.secondary.href}
+            class="inline-flex items-center justify-center px-7 py-4 border border-warm-300 text-dark font-semibold rounded-xl hover:border-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            {hero.secondary.label}
+          </a>
+        </div>
+      </div>
+
+      <!-- The systems map -->
+      <figure class="sys-map relative w-full max-w-[36rem] mx-auto aspect-square" aria-labelledby="sys-map-caption">
+        <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 100 100" aria-hidden="true">
+          {hero.nodes.map((n, i) => (
+            <g>
+              <path d={wire(n.x, n.y, i)} class="sys-wire" />
+              <path d={wire(n.x, n.y, i)} class="sys-signal" style={`--d:${i * 0.45}s`} pathLength="100" />
+            </g>
+          ))}
+        </svg>
+
+        <ul class="absolute inset-0">
+          {hero.nodes.map((n, i) => (
+            <li
+              class="sys-node absolute -translate-x-1/2 -translate-y-1/2"
+              style={`left:${n.x}%;top:${n.y}%;--d:${0.25 + i * 0.08}s`}
+            >
+              <span class="sys-node__dot" aria-hidden="true"></span>
+              <span class="sys-node__label">{n.label}</span>
+              <span class="sys-node__detail">{n.detail}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- The website itself, drawn as a small browser window at the centre -->
+        <div class="sys-core absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
+          <div class="flex gap-1 px-2.5 py-2 border-b border-white/15">
+            <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+          </div>
+          <div class="px-3 py-3 text-left">
+            <span class="block font-display font-bold text-white text-sm sm:text-base leading-tight">Your website</span>
+            <span class="mt-2 block h-1 w-10/12 rounded bg-white/25"></span>
+            <span class="mt-1.5 block h-1 w-7/12 rounded bg-white/25"></span>
+            <span class="mt-2.5 block h-2.5 w-8 rounded-sm bg-accent"></span>
+          </div>
+        </div>
+
+        <figcaption id="sys-map-caption" class="sr-only">
+          A diagram of a website at the centre of a business, connected to its CRM, scheduling, inventory,
+          accounting, email and reporting tools.
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Proof that this isn't hypothetical -->
+    <a
+      href={hero.proof.href}
+      class="sys-proof group mt-12 lg:mt-16 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 rounded-2xl border border-warm-200 bg-cream px-6 py-5 hover:border-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    >
+      <span class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary whitespace-nowrap">
+        <span class="sys-live w-2 h-2 rounded-full bg-primary-light" aria-hidden="true"></span>
+        {hero.proof.label}
+      </span>
+      <span class="text-warm-700">{hero.proof.text}</span>
+      <span class="sm:ml-auto font-semibold text-dark group-hover:text-primary transition-colors whitespace-nowrap">
+        See how it works <span aria-hidden="true">→</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .sys-hero-bg {
+    background:
+      radial-gradient(55% 60% at 100% 30%, rgba(142, 175, 62, 0.12), transparent 65%),
+      radial-gradient(40% 45% at 0% 100%, rgba(230, 175, 46, 0.08), transparent 70%);
+  }
+
+  /* Wires: a quiet base line, and a short bright "signal" that travels along it. */
+  .sys-wire {
+    fill: none;
+    stroke: var(--color-primary-dark);
+    stroke-opacity: 0.22;
+    stroke-width: 0.45;
+    stroke-dasharray: 1.2 1.2;
+  }
+
+  .sys-signal {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 0.9;
+    stroke-linecap: round;
+    stroke-dasharray: 9 91;
+    stroke-dashoffset: 100;
+    animation: sysSignal 3.6s cubic-bezier(0.45, 0, 0.3, 1) var(--d, 0s) infinite;
+  }
+
+  @keyframes sysSignal {
+    0% { stroke-dashoffset: 100; opacity: 0; }
+    8% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { stroke-dashoffset: -9; opacity: 0; }
+  }
+
+  .sys-core {
+    width: 32%;
+    border-radius: 0.75rem;
+    background: var(--color-primary-dark);
+    box-shadow:
+      0 0 0 6px rgba(23, 73, 50, 0.08),
+      0 24px 48px -20px rgba(23, 73, 50, 0.55);
+  }
+
+  .sys-node {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 0.25rem;
+    width: 9.5rem;
+    opacity: 0;
+    animation: sysNodeIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) var(--d, 0s) forwards;
+  }
+
+  .sys-node__dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 999px;
+    background: #fff;
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(61, 122, 28, 0.12);
+  }
+
+  .sys-node__label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.1;
+    color: var(--color-dark);
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+  }
+
+  .sys-node__detail {
+    font-size: 0.78rem;
+    line-height: 1.3;
+    color: var(--color-warm-600);
+    max-width: 8.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 0.25rem;
+  }
+
+  /* On a phone the map is small: keep the labels, drop the detail lines. */
+  @media (max-width: 39.99rem) {
+    .sys-node { width: 6rem; }
+    .sys-node__label { font-size: 0.8rem; }
+    .sys-node__detail { display: none; }
+  }
+
+  @keyframes sysNodeIn {
+    from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  .sys-hero-copy {
+    animation: sysCopyIn 0.6s ease-out both;
+  }
+
+  @keyframes sysCopyIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .sys-live {
+    box-shadow: 0 0 0 0 rgba(142, 175, 62, 0.6);
+    animation: sysLive 2.2s ease-out infinite;
+  }
+
+  @keyframes sysLive {
+    0% { box-shadow: 0 0 0 0 rgba(142, 175, 62, 0.6); }
+    100% { box-shadow: 0 0 0 10px rgba(142, 175, 62, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sys-signal { display: none; }
+    .sys-node,
+    .sys-hero-copy {
+      opacity: 1;
+      animation: none;
+    }
+    .sys-live { animation: none; }
+  }
+</style>

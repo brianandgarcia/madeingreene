@@ -1,0 +1,33 @@
+---
+/* Who the work is for, written as the problems they'd recognise. */
+import { fit } from "../../data/home";
+import { withPlaceholders } from "../../lib/placeholder";
+---
+
+<section class="py-20 md:py-28 bg-cream border-t border-warm-200">
+  <div class="max-w-6xl mx-auto px-6 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+    <div data-reveal>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">{fit.eyebrow}</span>
+      <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05] text-balance">{fit.title}</h2>
+      <p class="mt-6 text-lg text-warm-600 leading-relaxed">{fit.body}</p>
+      <p class="mt-8 pl-5 border-l-2 border-accent text-warm-700 leading-relaxed">
+        {fit.aside}
+        <span class="block mt-2" set:html={withPlaceholders(fit.capacity)} />
+      </p>
+    </div>
+
+    <div data-reveal style="--reveal-delay: 120ms">
+      <p class="font-display text-xl font-semibold text-dark">{fit.signsTitle}</p>
+      <ol class="mt-6 divide-y divide-warm-200 border-y border-warm-200">
+        {fit.signs.map((sign, i) => (
+          <li class="flex gap-5 py-5">
+            <span class="font-display text-2xl font-bold text-primary-light tabular-nums leading-none pt-0.5" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span class="text-lg text-warm-800 leading-snug">{sign}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

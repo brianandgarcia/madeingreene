@@ -1,28 +1,25 @@
 ---
+/*
+  Homepage, mid-market redesign: custom websites, integrations and automation
+  for established businesses. All copy is in src/data/home.ts.
+  The previous small-business homepage sections (Hero, WhyWebsite, GreeneQuote,
+  ServicesOverview, PricingPreview, etc.) are untouched in src/components/.
+*/
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import WhyWebsite from "../components/WhyWebsite.astro";
-import GreeneQuote from "../components/GreeneQuote.astro";
-import ServicesOverview from "../components/ServicesOverview.astro";
-import PricingPreview from "../components/PricingPreview.astro";
-import FeaturedWork from "../components/FeaturedWork.astro";
-import FromTheBlog from "../components/FromTheBlog.astro";
-import Testimonials from "../components/Testimonials.astro";
-import CTA from "../components/CTA.astro";
+import SystemsHero from "../components/home/SystemsHero.astro";
+import FitCheck from "../components/home/FitCheck.astro";
+import Capabilities from "../components/home/Capabilities.astro";
+import Proof from "../components/home/Proof.astro";
+import Engagement from "../components/home/Engagement.astro";
+import WhyLocal from "../components/home/WhyLocal.astro";
+import { seo } from "../data/home";
 ---
 
-<Layout
-  title="Affordable Websites for Greene County Businesses"
-  description="Made in Greene builds affordable websites for Greene County businesses with clear pricing and local support."
-  headerOverlay="light"
->
-  <Hero />
-  <WhyWebsite />
-  <GreeneQuote />
-  <ServicesOverview />
-  <FeaturedWork />
-  <Testimonials />
-  <FromTheBlog />
-  <PricingPreview />
-  <CTA />
+<Layout title={seo.title} description={seo.description} headerOverlay="light">
+  <SystemsHero />
+  <FitCheck />
+  <Capabilities />
+  <Proof />
+  <Engagement />
+  <WhyLocal />
 </Layout>
