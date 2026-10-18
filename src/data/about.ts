@@ -26,7 +26,6 @@ export const overview = {
     "Made in Greene is family-owned and based in Greeneville, and we are members of the Greene County Partnership.",
   ],
   facts: [
-    { label: "Founded", value: "[PLACEHOLDER: year founded]" },
     { label: "Based in", value: "Greeneville, Tennessee" },
     { label: "Experience", value: "15+ years in web design and development" },
     { label: "Membership", value: "Greene County Partnership" },
@@ -35,25 +34,18 @@ export const overview = {
 
 export const leadership = {
   eyebrow: "Leadership",
-  title: "The people responsible for your project.",
+  title: "Who leads your project.",
   people: [
     {
-      name: "Brian Garcia",
+      name: "Brian G.",
       role: "Owner",
       bio: "Brian leads design and development on every Made in Greene project. He brings more than fifteen years of professional experience designing and developing websites for organizations that need dependable, thoughtful digital work.",
     },
-    {
-      name: "Domenique [PLACEHOLDER: confirm last name]",
-      role: "[PLACEHOLDER: title, e.g. Client Relations & Project Management]",
-      bio: "Domenique manages projects and client communication. She brings more than ten years of experience supporting C-suite executives at Verizon's corporate headquarters.",
-    },
   ],
-  /* Shot needed. Set `src` to the photo's path (e.g. "/about-leadership.jpg")
-     and the placeholder panel is replaced by the image. */
   image: {
-    src: "",
-    alt: "Brian and Domenique of Made in Greene at the studio",
-    shot: "Leadership portrait of Brian and Domenique, working setting, portrait 4:5",
+    src: "/about-brian-g.jpg",
+    alt: "Brian G. of Made in Greene holding the Greene County Partnership member plaque",
+    shot: "",
   },
 };
 
