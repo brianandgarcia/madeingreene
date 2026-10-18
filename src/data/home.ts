@@ -170,6 +170,7 @@ export const engagement = {
         "We watch every integration and fix it if a vendor changes theirs",
         "A standing monthly review of what's working",
         "New features and automations as the business changes",
+        "On Improve: Google Business Profile care and Google Ads management, with no management fee",
       ],
     },
   ],

@@ -23,6 +23,7 @@ export const jumps = [
   { label: "How an engagement works", href: "#engagement" },
   { label: "What we build", href: "#build" },
   { label: "Included in every project", href: "#included" },
+  { label: "Getting found", href: "#found" },
   { label: "Questions", href: "#faq" },
   { label: "Small business packages", href: "#packages" },
 ];
@@ -75,12 +76,39 @@ export const terms = {
   rows: [
     { label: "Discovery & Roadmap", value: "$3,500, credited toward the build if you sign within 60 days" },
     { label: "Design & Build", value: "From $20,000. Quoted after discovery, with each integration and automation as its own line item." },
-    { label: "Run", value: "$750/month ($7,500/year). Hosting, monitoring, security updates, integration upkeep, up to 3 hours a month of support and a monthly review call." },
-    { label: "Improve", value: "$1,500/month ($15,000/year). Everything in Run, plus up to 8 hours a month of new features and automations, with priority turnaround. Both plans have a 6-month minimum, then month to month." },
+    { label: "Run", value: "$750/month ($7,500/year). Hosting, monitoring, security updates, integration upkeep, up to 3 hours a month of support and a monthly review call. Profile Care and Ads Management can be added at their own prices." },
+    { label: "Improve", value: "$1,500/month ($15,000/year). Everything in Run, plus up to 8 hours a month of new features and automations, with priority turnaround, plus Google Business Profile Care and Google Ads Management with no management fee (ad spend is still paid by you directly to Google). Both plans have a 6-month minimum, then month to month." },
     { label: "Payment schedule", value: "40% at signing, 30% at design approval, 30% at launch" },
     { label: "Out-of-scope work", value: "$150/hour, approved before it starts" },
     { label: "Warranty", value: "90 days after launch on custom builds" },
   ],
+};
+
+/* Advertising and Google Business Profile services. Wording is final (Brian, 2026-10-18). */
+export const found = {
+  eyebrow: "Getting Found",
+  title: "Google Business Profile and Google Ads.",
+  body:
+    "Available with any website we build, from a small-business package to a custom build.",
+  services: [
+    {
+      name: "Google Business Profile Setup",
+      price: "$400, one-time (add-on to any package)",
+      text: "We claim or clean up your Google Business Profile, set your categories, services and hours, write your business description, and add professional photos from your shoot. You own the profile, and we're added as a manager.",
+    },
+    {
+      name: "Google Business Profile Care",
+      price: "$200/month, 3-month minimum",
+      text: "Two posts a month, new photos each quarter, review replies written for your approval, and a short monthly report on calls, direction requests and website clicks.",
+    },
+    {
+      name: "Google Ads Management",
+      price: "$750 setup, then $400/month or 15% of ad spend, whichever is higher. 3-month minimum.",
+      text: "Setup covers the account structure, keywords, ad copy, and tracking for calls, forms and bookings. Each month we manage bids, keywords and ads, and send a short report on what the spend brought in. Ad spend is paid by you directly to Google from an account you own. We recommend at least $500 a month in ad spend.",
+    },
+  ],
+  note:
+    "Custom builds: the Improve plan ($1,500/month) includes Profile Care and Ads Management with no management fee; ad spend is still paid by you directly to Google. Run ($750/month) does not include them, and they can be added at the prices above.",
 };
 
 export const faqs = [

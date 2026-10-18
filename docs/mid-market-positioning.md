@@ -58,3 +58,10 @@ whether that stays anywhere: mid-market buyers will ask about capacity).
   current family hiking photo (landscape, 16:9).
 - The /services, /contact and /work pages still speak to small businesses;
   next pass if this direction holds.
+
+## Getting found (added 2026-10-18)
+Google Business Profile Setup ($400 one-time), Profile Care ($200/mo, 3-month
+minimum) and Google Ads Management ($750 setup, then $400/mo or 15% of ad
+spend, whichever is higher, 3-month minimum) are on /services#found, with
+wording as approved. Improve includes Profile Care and Ads Management with no
+management fee; Run does not.
