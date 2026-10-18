@@ -27,12 +27,16 @@
   --color-warm-800: #292524;
   --color-warm-900: #1c1917;
 
+  /* Hay — warm open background for the new horizon sections */
+  --color-hay: #f2ecdf;
+
   /* Warm Field — page background */
   --color-cream: #f7f6f1;
 
   --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
-  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
-  --font-accent: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-accent: "Fraunces", Georgia, serif;
 
   /* Slightly larger body type scale, sitewide, for readability */
   --text-xs: 0.8125rem;   /* 13px (was 12) */
@@ -55,10 +59,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Headings: Fraunces, the original serif (Brian, 2026-10-18). */
 h1, h2, h3 {
   font-family: var(--font-display);
   font-optical-sizing: auto;
   letter-spacing: -0.015em;
+}
+
+/* Serif headline in the original Fraunces style (small-business page). */
+.serif-heading {
+  font-family: var(--font-serif);
+  font-stretch: normal;
+  text-transform: none;
+  letter-spacing: -0.02em;
 }
 
 [data-reveal] {
@@ -93,4 +106,26 @@ h1, h2, h3 {
     transform: none;
     transition: none;
   }
+}
+
+/* Visible tag for content still waiting on a decision. See src/lib/placeholder.ts. */
+.ph-tag {
+  display: inline;
+  padding: 0.1em 0.45em;
+  border-radius: 0.3em;
+  background: #fff3c4;
+  color: #5a4200;
+  font-family: var(--font-sans);
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  outline: 1px dashed #c99a1e;
+}
+
+.ph-tag__label {
+  text-transform: uppercase;
+  font-size: 0.78em;
+  letter-spacing: 0.06em;
 }

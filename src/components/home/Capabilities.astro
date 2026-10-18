@@ -1,0 +1,75 @@
+---
+/*
+  What we build, as a ledger rather than a row of cards: each lane is a full
+  row with a big numeral, a short pitch, and the concrete things it covers.
+*/
+import { capabilities } from "../../data/home";
+import Pictogram from "../art/Pictogram.astro";
+
+interface Props {
+  id?: string;
+  /** Optional "when it fits" line per lane, matched by lane number (used on /services). */
+  fit?: { number: string; question: string; text: string }[];
+}
+
+const { id, fit = [] } = Astro.props;
+---
+
+<section id={id} class="relative py-24 md:py-36 bg-primary-dark text-white overflow-hidden scroll-mt-24">
+  <Pictogram name="gear" class="cap-gear pointer-events-none absolute -right-24 -top-24 w-[34rem] h-[34rem] text-white/[0.05]" />
+
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-primary-light font-semibold text-sm uppercase tracking-wider">{capabilities.eyebrow}</span>
+      <h2 class="mt-3 text-3xl md:text-5xl font-bold leading-[1.05] text-balance">{capabilities.title}</h2>
+    </div>
+
+    <div class="mt-16 md:mt-20 space-y-16 md:space-y-20">
+      {capabilities.lanes.map((lane, i) => (
+        <article
+          class="grid gap-6 md:grid-cols-[8.5rem_minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10"
+          data-reveal
+          style={`--reveal-delay: ${i * 90}ms`}
+        >
+          <div class="self-start flex items-center gap-3 text-accent md:-mt-2" aria-hidden="true">
+            <span class="font-display text-3xl font-bold leading-none tabular-nums">{lane.number}</span>
+            <Pictogram name={lane.icon as any} class="w-14 h-14 shrink-0" />
+          </div>
+          <div>
+            <h3 class="text-2xl md:text-3xl font-bold">{lane.name}</h3>
+            <p class="mt-3 text-white/75 leading-relaxed">{lane.summary}</p>
+            {fit.filter((f) => f.number === lane.number).map((f) => (
+              <p class="mt-5 pl-4 border-l-2 border-accent text-white/85 leading-relaxed">
+                <span class="block text-xs font-semibold uppercase tracking-wider text-accent mb-1">{f.question}</span>
+                {f.text}
+              </p>
+            ))}
+          </div>
+          <ul class="grid gap-x-8 gap-y-3 sm:grid-cols-2 content-start">
+            {lane.examples.map((ex) => (
+              <li class="flex gap-3 text-white/90 leading-snug">
+                <span class="mt-2 w-3 h-px bg-primary-light shrink-0" aria-hidden="true"></span>
+                {ex}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* The background gear turns very slowly; it stops under reduced motion. */
+  .cap-gear {
+    animation: capGear 90s linear infinite;
+  }
+
+  @keyframes capGear {
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cap-gear { animation: none; }
+  }
+</style>

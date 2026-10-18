@@ -1,695 +1,185 @@
 ---
+/*
+  What We Offer, mid-market redesign. Copy lives in src/data/services.ts; the
+  engagement phases and the three kinds of work are shared with the homepage.
+*/
 import Layout from "../layouts/Layout.astro";
-import PageHero from "../components/PageHero.astro";
-import CTA from "../components/CTA.astro";
+import Pictogram from "../components/art/Pictogram.astro";
+import GettingFound from "../components/GettingFound.astro";
+import Engagement from "../components/home/Engagement.astro";
+import Capabilities from "../components/home/Capabilities.astro";
+import { seo, header, jumps, buildDetail, proofLine, included, terms, faqs, smallBusinessBand } from "../data/services";
+import { closing } from "../data/home";
+import { withPlaceholders } from "../lib/placeholder";
 
-const packages = [
-  {
-    name: "Local Landing Page",
-    pages: "1 page",
-    description:
-      "For brand-new businesses, solo operators, pop-ups, tiny farms, and side businesses. Grows into a full Business Website as you scale.",
-    included: [
-      "One-page custom design, built fast",
-      "Quick 30-min local photo session included",
-      "Mobile-friendly design + basic copy",
-      "Business info + services/products sections",
-      "Social media + Google Maps links",
-      "Basic SEO setup + 30-minute handoff call",
-      "We make your content changes for you",
-    ],
-    highlight: false,
-    cta: "Get Started",
-  },
-  {
-    name: "Business Website",
-    pages: "Up to 5 pages",
-    description:
-      "Best for small local businesses that need a clean, professional online presence.",
-    included: [
-      "Custom design + development for your business",
-      "1 local photo/video session, up to 60 min",
-      "We write your copy for up to 5 pages",
-      "Home, About, Services, Contact + form, +1 more",
-      "Edit it yourself anytime, no developer needed",
-      "In-person meetings + 1-hour training session",
-      "Accessibility-friendly build + basic SEO",
-    ],
-    highlight: true,
-    cta: "Get Started",
-  },
-  {
-    name: "Growth Website",
-    pages: "Up to 10 pages",
-    description:
-      "Best for growing businesses that want a stronger presence, more content, and tools to attract and convert customers.",
-    included: [
-      "Everything in the Business Website, plus:",
-      "Extended photo/video session (up to 2 hrs) + 20 edited images",
-      "Copy + design for up to 10 pages",
-      "Blog / News / Projects section setup",
-      "Enhanced SEO + content structure guidance",
-      "Lead-gen layouts, CTAs, and inquiry forms",
-      "Priority project scheduling",
-    ],
-    highlight: false,
-    cta: "Get Started",
-  },
-  {
-    name: "Ecommerce Website",
-    pages: "Business + store",
-    description:
-      "Best for shops, farms, makers, and service businesses ready to sell online.",
-    included: [
-      "Everything in the Business Website package",
-      "Local photo/video session for your products",
-      "Shopify setup with up to 10 products",
-      "Product and category setup",
-      "Payment, shipping & tax configuration guidance",
-      "Store training to manage orders confidently",
-    ],
-    highlight: false,
-    cta: "Let's Talk",
-  },
-];
-
-const sharedNotIncluded = [
-  { label: "Domain name", note: "~$12–20/yr, paid to your registrar so it stays in your name." },
-  { label: "Hosting & platform subscriptions", note: "Covered for most brochure sites; paid plans are shown up front." },
-  { label: "Logo & brand design", note: "Available as an add-on if you need one — it's on the pricing sheet." },
-  { label: "Additional pages", note: "Priced per page beyond what your package includes — same rate for everybody, on the pricing sheet." },
-  { label: "Online selling fees", note: "Shopify plan + processing (~2.9% + 30¢), billed by the provider." },
-];
-
-const addonGroups = [
-  {
-    title: "Website Add-Ons",
-    items: [
-      { name: "Self-editing (CMS) setup", note: "edit your own content anytime; included on Business and up" },
-      { name: "Additional pages", note: "priced per page" },
-      { name: "Blog / News / Projects setup", note: "+ up to 2 initial posts" },
-      { name: "Online Store / Shopify", note: "up to 10 products" },
-    ],
-  },
-  {
-    title: "Design & Brand",
-    items: [
-      { name: "Brand Starter Package", note: "logo, alternate, palette, font pairing, files" },
-      { name: "Website Photography Session", note: "local mini brand / photo session" },
-    ],
-  },
-  {
-    title: "Marketing & Visibility",
-    items: [
-      { name: "Digital Presence Setup", note: "Google Business Profile, domain + email guidance" },
-      { name: "Social Media Starter Kit" },
-      { name: "Email / SMS Capture Setup" },
-    ],
-  },
-];
-
-const faqs = [
-  {
-    question: "Why aren't the prices listed on this page?",
-    answer:
-      "Because every package can now be paid two ways — once, or monthly — and one number on a page can't show both without misleading somebody. The pricing sheet shows everything side by side: every package, every add-on, both ways to pay. Ask for it and we'll send it over, no phone call required. Projects start at $950, and the rate is the same for everybody.",
-  },
-  {
-    question: "Can I pay monthly?",
-    answer:
-      "Yes. Own it outright with half to reserve your spot and half at launch, or spread the same site into a monthly plan. Both options are on the pricing sheet, and nothing is hidden in either one.",
-  },
-  {
-    question: "Can I see something before I commit?",
-    answer:
-      "Usually, yes. If it helps you decide, we'll put together a quick demo of your site — your name, your photos, your services on a real page — before you owe anything. Just ask when you reach out.",
-    link: { href: "/free-demo", label: "How the demo works" },
-  },
-  {
-    question: "Do I need to have all my content ready before I reach out?",
-    answer:
-      "No. If you know what your business does and what you want the site to help with, that is enough to start. We can help you organize the rest.",
-  },
-  {
-    question: "Is hosting included?",
-    answer:
-      "For most brochure-style small business sites, yes. If your site needs paid hosting or third-party software, we show that cost before work starts.",
-  },
-  {
-    question: "Is the domain name included?",
-    answer:
-      "No. We recommend you buy the domain directly so it stays in your name. We can help you choose it and get it connected.",
-  },
-  {
-    question: "Can I edit the site myself?",
-    answer:
-      "On Business, Growth, and Ecommerce, yes. Self-editing is built in, with a training session so you can update hours, photos, and text whenever you like. The Local Landing Page keeps it simple: we make your changes for you, and you can add self-editing anytime.",
-  },
-  {
-    question: "Do you write the page content?",
-    answer:
-      "Yes — we write all of it. You tell us what you do, who your customers are, and what makes you different. We turn that into clear, professional copy. You review it and we make it right. No blank pages, no guessing.",
-  },
-  {
-    question: "Is photography included?",
-    answer:
-      "Yes, every package includes photography. The Local Landing Page includes a quick 30-minute session while we meet in person. Business, Growth, and Ecommerce include a fuller local photo/video session, and Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, so you get real photos of your space, team, and work, which connect with local customers far better than stock. Need more? A dedicated session can be added on.",
-  },
-  {
-    question: "Is this WordPress?",
-    answer:
-      "Not by default. We use a leaner setup designed to stay fast, easier to manage, and less dependent on plugins.",
-  },
-  {
-    question: "Are you actually based in Greene County?",
-    answer:
-      "Yes — we live and work here. We're not an agency in Columbus or a freelancer overseas. That means we know the area, we're reachable by phone, and we're not going anywhere.",
-  },
-  {
-    question: "Can we meet in person?",
-    answer:
-      "Absolutely. We're happy to meet at your business, a coffee shop in Greeneville, or wherever is easiest. A lot of our best projects start with a 30-minute conversation.",
-  },
-  {
-    question: "What if something breaks after launch?",
-    answer:
-      "That's what the 1-Year Bug-Free Guarantee is for. If anything we built stops working, we fix it free for a full year. New pages, features, and content changes aren't bugs, but a care plan covers those too, and keeps your guarantee active for as long as you're with us.",
-  },
-];
+const heroIcons = [
+  { icon: "gear", label: "Custom features" },
+  { icon: "belt", label: "Integrations" },
+  { icon: "arm", label: "Automations" },
+] as const;
 ---
 
-<Layout
-  title="Website Packages & Pricing"
-  description="Custom websites for Greene County small businesses. No templates or stock photos — real photography and copy written for you. From $950, pay once or monthly."
->
-  <PageHero
-    eyebrow="Services & Pricing"
-    title="Local websites that work for you."
-    subtitle="No cookie-cutter templates, no stock photos, no AI-generated images — everything is built and photographed specifically for your business. We're local, right here in Greeneville."
-    image="/echo-station-photo-shoot.jpg"
-    imagePosition="object-[30%_center] md:object-center"
-  />
-
-  <section class="pt-14 md:pt-16 pb-20 md:pb-28 bg-warm-100">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:items-center sm:gap-x-8 sm:gap-y-3 max-w-md mx-auto sm:max-w-none mb-14 text-sm border-y border-warm-200 py-5">
-        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-          </svg>
-          <span>Based in Greene County, TN.</span>
-        </div>
-        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-          </svg>
-          <span>Real person picks up the phone.</span>
-        </div>
-        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-          </svg>
-          <span>We meet in person: Greeneville, Mosheim, Tusculum & beyond.</span>
-        </div>
-        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          <span>Pricing sheet sent within 1 business day.</span>
-        </div>
-        <div class="flex items-start sm:items-center gap-2.5 text-warm-600">
-          <svg class="w-4 h-4 text-primary shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-          </svg>
-          <span>Every build backed by a 1-year bug-free guarantee.</span>
-        </div>
+<Layout title={seo.title} description={seo.description} >
+  <!-- Light hero: same white field and solid header as the homepage -->
+  <section class="relative bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 pt-36 md:pt-44 pb-16 md:pb-24 grid gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:gap-20 items-end">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{header.eyebrow}</p>
+        <h1 class="mt-5 font-black leading-[1.02] tracking-tight text-balance text-[clamp(2.4rem,5vw,4.5rem)] text-dark">{header.title}</h1>
+        <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">{header.subtitle}</p>
       </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
-        {packages.map((pkg) => (
-          <div
-            class:list={[
-              "group relative flex flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1.5",
-              pkg.highlight
-                ? "bg-[#edf4e6] ring-2 ring-primary shadow-xl shadow-primary/20"
-                : "bg-white border border-warm-200 shadow-sm hover:shadow-xl hover:border-primary/30",
-            ]}
-          >
-            {pkg.highlight && (
-              <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-4 py-1.5 bg-accent text-warm-900 text-[10px] font-bold uppercase tracking-wider rounded-full shadow-md whitespace-nowrap">
-                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.956a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.956c.3.922-.755 1.688-1.54 1.118l-3.367-2.446a1 1 0 00-1.176 0l-3.367 2.446c-.784.57-1.838-.196-1.539-1.118l1.287-3.956a1 1 0 00-.364-1.118L2.98 9.383c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.956z" />
-                </svg>
-                Most Popular
-              </span>
-            )}
-
-            <div class="p-7 pb-5 text-center">
-              <h3 class="text-xl font-bold text-dark leading-snug">{pkg.name}</h3>
-              <span class:list={[
-                "inline-block mt-2 px-3 py-1 rounded-full text-[11px] font-semibold text-primary-dark uppercase tracking-wider",
-                pkg.highlight ? "bg-white ring-1 ring-primary/20" : "bg-warm-100",
-              ]}>{pkg.pages}</span>
-
-              <p class="text-sm text-warm-600 leading-relaxed mt-5">{pkg.description}</p>
-            </div>
-
-            <div class="px-7">
-              <div class="flex items-center gap-3">
-                <span class="text-[11px] font-bold uppercase tracking-widest text-primary whitespace-nowrap">What's included</span>
-                <span class="h-px flex-1 bg-warm-300"></span>
-              </div>
-            </div>
-
-            <ul class="space-y-3 px-7 pt-5 pb-6 flex-1">
-              {pkg.included.map((item) => (
-                item.startsWith("Everything") ? (
-                  <li class="text-sm font-bold text-dark">{item}</li>
-                ) : (
-                  <li class="flex items-start gap-2.5 text-sm text-warm-700">
-                    <span class="shrink-0 mt-0.5 w-[18px] h-[18px] rounded-full bg-primary/10 flex items-center justify-center">
-                      <svg class="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                )
-              ))}
-            </ul>
-
-            <div class="p-7 pt-0">
-              <a
-                href="/contact"
-                class:list={[
-                  "block text-center px-6 py-3.5 rounded-xl font-semibold text-sm transition-all",
-                  pkg.highlight
-                    ? "bg-primary text-white hover:bg-primary-dark shadow-lg shadow-primary/25"
-                    : "bg-dark text-white hover:bg-primary",
-                ]}
-              >
-                {pkg.cta}
-              </a>
-            </div>
-          </div>
+      <ul class="grid grid-cols-3 gap-6 lg:gap-8 text-primary-dark" aria-label="What we build">
+        {heroIcons.map((h) => (
+          <li class="flex flex-col items-start">
+            <Pictogram name={h.icon} class="w-14 h-14 md:w-20 md:h-20" />
+            <span class="mt-3 text-sm md:text-base font-semibold text-dark leading-tight">{h.label}</span>
+          </li>
         ))}
-      </div>
-
-      <div class="mt-10 rounded-2xl bg-white ring-2 ring-primary/25 shadow-sm p-7 md:p-9">
-        <div class="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
-          <div>
-            <span class="text-primary font-semibold text-sm uppercase tracking-wider">How pricing works</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-dark mt-3 mb-4 leading-snug">
-              Same fair price for everybody. Two ways to pay it.
-            </h2>
-            <p class="text-warm-600 leading-relaxed">
-              We charge the same rates whether you're a one-person shop or a full crew — nobody gets sized
-              up. The reason the numbers aren't printed here is simple: every package can now be paid once
-              or spread into a monthly plan, and a single figure on a page can't show both honestly. The
-              pricing sheet can. Ask for it and it's yours, no phone call required.
-            </p>
-            <p class="text-warm-600 leading-relaxed mt-4">
-              Projects start at <span class="font-semibold text-dark">$950</span> to own outright. And
-              before we build anything, we come by — we'd rather be a customer of yours first than sell you
-              something over the phone.
-            </p>
-            <a
-              href="/contact"
-              class="inline-flex items-center gap-2 mt-6 px-6 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25"
-            >
-              Ask for the pricing sheet
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
-
-          <ul class="space-y-4">
-            {[
-              ["Same price for everybody.", "No sizing you up, no “it depends.” The sheet is the sheet."],
-              ["Pay once, or go monthly.", "Own it outright with half to start and half at launch, or spread it into a monthly plan."],
-              ["No hourly surprises.", "Anything outside your package is on the sheet and approved before anyone touches it."],
-              ["No hidden fees or surprise renewals.", "Anything billed by someone else is named below, before you commit."],
-            ].map(([title, note]) => (
-              <li class="flex items-start gap-3.5">
-                <span class="shrink-0 mt-0.5 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg class="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                  </svg>
-                </span>
-                <div>
-                  <span class="font-semibold text-dark">{title}</span>
-                  <p class="text-sm text-warm-600 mt-0.5 leading-relaxed">{note}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-10 bg-cream border border-warm-200 rounded-2xl p-6 md:p-8">
-        <div class="mb-7">
-          <div class="text-sm font-bold text-dark uppercase tracking-widest mb-2">
-            Not included in any package
-          </div>
-          <p class="text-base text-warm-600">
-            A few things you pay separately — we tell you up front, so there are no surprise charges or renewals.
-          </p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-          {sharedNotIncluded.map((item) => (
-            <div class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-warm-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <div>
-                <span class="font-semibold text-dark text-base">{item.label}</span>
-                <p class="text-sm text-warm-600 mt-1 leading-relaxed">{item.note}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p class="text-sm text-warm-500 mt-8">
-          * Hosting for most brochure-style small business sites is covered by our setup. If your project
-          needs paid hosting or third-party services, we show the cost before work starts.
-        </p>
-      </div>
+      </ul>
     </div>
   </section>
 
-  <section class="py-16 bg-cream border-y border-warm-200">
+  <!-- Jump links: the page is long, so say what's on it up front -->
+  <nav aria-label="On this page" class="bg-white border-b border-warm-200">
+    <ul class="max-w-6xl mx-auto px-6 py-4 flex gap-x-6 gap-y-2 flex-wrap text-sm">
+      {jumps.map((j) => (
+        <li>
+          <a href={j.href} class="font-semibold text-warm-700 hover:text-primary underline-offset-4 hover:underline">{j.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <Engagement />
+
+  <Capabilities id="build" fit={buildDetail} />
+
+  <div class="bg-white border-b border-warm-200">
+    <p class="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-warm-700">
+      <span class="inline-flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-primary-light shrink-0" aria-hidden="true"></span>
+        {proofLine.text}
+      </span>
+      <a href={proofLine.link.href} class="sm:ml-auto font-semibold text-primary hover:text-primary-dark whitespace-nowrap underline underline-offset-4">
+        {proofLine.link.label} <span aria-hidden="true">→</span>
+      </a>
+    </p>
+  </div>
+
+  <!-- Included in every project -->
+  <section id="included" class="py-24 md:py-36 bg-cream scroll-mt-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-10">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Built into every package</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-dark mt-3">
-          No upsells. These come standard.
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4">
-          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-dark mb-1">SEO is built in.</h3>
-            <p class="text-warm-500 text-sm leading-relaxed">
-              Every page ships with proper meta tags, structured data markup, and a Google-ready sitemap. Not an afterthought — baked in from the first line of code.
-            </p>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4">
-          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-dark mb-1">Every site is accessibility-ready.</h3>
-            <p class="text-warm-500 text-sm leading-relaxed">
-              WCAG-friendly markup, semantic HTML, and proper contrast ratios so your site works for everyone — and holds up under screen readers and audits.
-            </p>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-7 border border-warm-200 flex flex-col gap-4">
-          <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-dark mb-1">We write the content.</h3>
-            <p class="text-warm-500 text-sm leading-relaxed">
-              You tell us what you do, we turn it into clear, professional copy that speaks to your customers. No blank pages for you to stare at — we handle the writing.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="mt-8 p-5 rounded-2xl bg-primary/5 border border-primary/15 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="text-sm font-semibold text-dark">Photography is included with every package.</p>
-          <p class="text-sm text-warm-500 mt-0.5">
-            The Local Landing Page includes a quick 30-minute session while we meet in person. Business, Growth, and Ecommerce include a fuller local photo/video session, and Growth includes an extended 2-hour session plus 20 edited images. Brian shoots it himself, right here in Greene County.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 1-Year Bug-Free Guarantee -->
-  <section class="py-20 md:py-28 bg-primary-dark text-white relative overflow-hidden">
-    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/30 blur-3xl pointer-events-none"></div>
-    <div class="relative max-w-4xl mx-auto px-6 text-center">
-      <div class="w-16 h-16 rounded-2xl bg-white/10 ring-1 ring-white/20 flex items-center justify-center mx-auto mb-6">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      </div>
-      <span class="text-primary-light font-semibold text-sm uppercase tracking-wider">Our promise</span>
-      <h2 class="text-3xl md:text-5xl font-bold mt-3 mb-4">The 1-Year Bug-Free Guarantee.</h2>
-      <p class="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mx-auto">
-        Every website we build is covered for a full year. If something we built stops working,
-        we fix it, free. No fine print, no runaround.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto mt-10">
-        <div class="rounded-2xl bg-white/10 ring-1 ring-white/15 p-6">
-          <div class="flex items-center gap-2 mb-3">
-            <svg class="w-5 h-5 text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
-            <span class="font-bold">What's covered</span>
-          </div>
-          <p class="text-white/80 text-sm leading-relaxed">
-            Anything we built that stops working the way it did at launch: a broken contact form, dead
-            links, a section not displaying right, or something that breaks after a phone or browser update.
-          </p>
-        </div>
-        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
-          <div class="flex items-center gap-2 mb-3">
-            <svg class="w-5 h-5 text-white/50 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
-            <span class="font-bold">What's not</span>
-          </div>
-          <p class="text-white/70 text-sm leading-relaxed">
-            New pages or features, content and photo changes, or problems from things outside our build,
-            like your hosting, an app you add, an expired domain, or edits you make yourself. Those are
-            normal work, and a care plan can cover them too.
-          </p>
-        </div>
-      </div>
-
-      <p class="text-white/85 mt-8 max-w-2xl mx-auto">
-        Want it to never expire? Stay on a <span class="font-semibold text-white">Care Plan</span> and we
-        keep it guaranteed for as long as you're with us.
-      </p>
-    </div>
-  </section>
-
-  <section id="add-ons" class="py-20 md:py-28 bg-warm-100 scroll-mt-24">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Add-Ons</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
-          Need a little extra?
-        </h2>
-        <p class="text-warm-500">
-          Add any of these to your package. Every one is on the pricing sheet, so you'll know the cost before you commit.
-        </p>
-      </div>
-
-      <div class="space-y-10">
-        {addonGroups.map((group) => (
-          <div>
-            <h3 class="text-sm font-bold text-dark uppercase tracking-widest mb-4">{group.title}</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {group.items.map((addon) => (
-                <div class="flex items-center gap-4 p-5 rounded-xl bg-white border border-warm-200 hover:border-primary/30 transition-colors">
-                  <div>
-                    <span class="font-medium text-dark">{addon.name}</span>
-                    {addon.note && <span class="block text-xs text-warm-500 mt-0.5">{addon.note}</span>}
-                  </div>
-                </div>
-              ))}
-            </div>
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">{included.eyebrow}</span>
+      <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05] max-w-2xl">{included.title}</h2>
+      <dl class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-warm-300">
+        {included.items.map((item) => (
+          <div class="p-6 border-r border-b border-warm-300">
+            <dt class="font-display text-lg font-bold text-dark">{item.name}</dt>
+            <dd class="mt-2 text-warm-700 leading-relaxed">{item.text}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </div>
   </section>
 
-  <section class="py-20 md:py-28 bg-cream">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Training</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
-          We teach you how to run it.
-        </h2>
-        <p class="text-warm-500 max-w-2xl mx-auto">
-          Every site we build comes with a real handoff, not a 40-page PDF. If your plan includes
-          self-editing, we walk through everything you can update yourself. If you want more, we're happy to help.
-        </p>
-      </div>
+  <!-- Getting found: Google Business Profile and Google Ads -->
+  <GettingFound />
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl p-6 border border-warm-200">
-          <div class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Local Landing Page</div>
-          <h3 class="text-lg font-semibold text-dark mb-2">You get a 30-minute handoff.</h3>
-          <p class="text-warm-500 text-sm leading-relaxed">
-            A walkthrough of your finished site, and how to send us any change you need. We make your
-            edits for you. Want to update it yourself? Self-editing can be added anytime.
-          </p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 border-2 border-primary">
-          <div class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Business, Growth & Ecommerce</div>
-          <h3 class="text-lg font-semibold text-dark mb-2">You get a 1-hour training session.</h3>
-          <p class="text-warm-500 text-sm leading-relaxed">
-            An in-person, in-depth session covering the editor, content updates, and basic SEO.
-            Ecommerce includes store training so you can manage orders confidently.
-          </p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 border border-warm-200">
-          <span class="inline-block text-[11px] font-bold text-warm-900 bg-accent uppercase tracking-widest mb-3 px-2.5 py-1 rounded-md">Add-on</span>
-          <h3 class="text-lg font-semibold text-dark mb-2">Book extra time anytime.</h3>
-          <p class="text-warm-600 text-sm leading-relaxed">
-            Bring on a new employee? Forgot how something works? Book more time whenever you need
-            it, at our standard hourly rate, with no monthly commitment.
-          </p>
-        </div>
+  <!-- Pricing structure -->
+  <section class="py-24 md:py-36 bg-white border-y border-warm-200">
+    <div class="max-w-6xl mx-auto px-6 grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20 items-start">
+      <div>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">{terms.eyebrow}</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">{terms.title}</h2>
+        {terms.body.map((p) => <p class="mt-6 text-lg text-warm-700 leading-relaxed">{p}</p>)}
       </div>
+      <dl class="border-t-2 border-dark">
+        {terms.rows.map((r) => (
+          <div class="grid gap-1 sm:grid-cols-[12rem_1fr] sm:gap-6 py-5 border-b border-warm-300">
+            <dt class="font-display font-bold text-dark">{r.label}</dt>
+            <dd class="text-warm-800" set:html={withPlaceholders(r.value)} />
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
 
-  <section class="py-20 md:py-28 bg-warm-100">
+  <!-- FAQ -->
+  <section id="faq" class="py-24 md:py-36 bg-cream scroll-mt-24">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Monthly Care Plans</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
-          We keep it running. You keep growing.
-        </h2>
-        <p class="text-warm-500 max-w-2xl mx-auto">
-          Recommended on every website — care plans keep your site secure, online, and current, and
-          give you a real person to call. Both are on the pricing sheet. No plan starts
-          automatically; you choose it, and cancel anytime with 30 days' notice.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl p-8 border border-warm-200">
-          <h3 class="text-xl font-bold text-dark mb-2">Essential Care</h3>
-          <p class="text-sm text-warm-500 mb-4">Billed monthly, or annually for two months free.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Hosting and technical monitoring — we keep the site up
-            </li>
-            <li class="flex items-start gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Platform, plugin, and security updates as applicable
-            </li>
-            <li class="flex items-start gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Up to 30 minutes/month of minor text, image, or content updates
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 border border-warm-200">
-          <h3 class="text-xl font-bold text-dark mb-2">Growth Care</h3>
-          <p class="text-sm text-warm-500 mb-4">Billed monthly, or annually for two months free.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Everything in Essential Care
-            </li>
-            <li class="flex items-start gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Up to 60 minutes/month for updates, promotions, events, or content support
-            </li>
-            <li class="flex items-start gap-3 text-sm text-warm-600">
-              <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Priority turnaround on requests
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="text-center text-xs text-warm-500 mt-6 max-w-2xl mx-auto">
-        Time doesn't roll over month to month. Work beyond your included time is billed at our
-        standard hourly rate, quoted before we start.
-      </p>
-    </div>
-  </section>
-
-  <section class="py-20 md:py-28 bg-cream border-t border-warm-200">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">How We Work</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
-          Simple terms, written down.
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div class="bg-white rounded-2xl p-6 border border-warm-200 text-center">
-          <div class="text-2xl font-extrabold text-dark mb-1">50% upfront</div>
-          <p class="text-warm-500 text-sm">Deposit to reserve your spot and begin work</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 border border-warm-200 text-center">
-          <div class="text-2xl font-extrabold text-dark mb-1">50% at launch</div>
-          <p class="text-warm-500 text-sm">Balance due before your site goes live</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 border-2 border-primary text-center">
-          <div class="text-2xl font-extrabold text-dark mb-1">Or go monthly</div>
-          <p class="text-warm-500 text-sm">Every package has a monthly plan. It's on the pricing sheet.</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 border border-warm-200 space-y-3 text-sm text-warm-600">
-        <p>
-          <span class="font-semibold text-dark">Every project includes 30 days of hands-on support and a 1-year bug-free guarantee.</span>
-          Support is help and small tweaks after launch; the guarantee means if anything we built breaks, we fix it free for a full year. Pay once and own it, we build, train, and hand over the keys, or add an optional care plan so we handle hosting, updates, and changes.
-        </p>
-        <p>
-          <span class="font-semibold text-dark">What "Basic SEO" includes:</span>
-          page titles and meta descriptions, clean page structure and headings, image alt text, an XML sitemap, and Google Search Console submission. Ongoing local search work is available as an add-on.
-        </p>
-        <p>
-          <span class="font-semibold text-dark">Not included unless stated:</span>
-          domain fees, hosting or platform subscriptions, business email, Shopify subscription, payment processing fees, third-party apps, and platform subscriptions. These are billed directly to you by the provider.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-20 md:py-28 bg-warm-100 border-t border-warm-200">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">FAQ</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">
-          The questions most people ask before they reach out.
-        </h2>
-      </div>
-
-      <div class="space-y-4">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Questions</span>
+      <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">What people ask before a discovery call.</h2>
+      <div class="mt-10 border-t border-warm-300">
         {faqs.map((faq) => (
-          <div class="bg-white rounded-2xl border border-warm-200 p-6">
-            <h3 class="text-lg font-semibold text-dark mb-2">{faq.question}</h3>
-            <p class="text-warm-600 leading-relaxed">{faq.answer}</p>
-            {faq.link && (
-              <a href={faq.link.href} class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
-                {faq.link.label}
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
-            )}
-          </div>
+          <details class="faq group border-b border-warm-300">
+            <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer list-none font-display text-lg md:text-xl font-bold text-dark hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+              {faq.question}
+              <span class="faq-icon shrink-0 w-7 h-7 rounded-full border border-warm-300 grid place-items-center text-primary" aria-hidden="true">+</span>
+            </summary>
+            <p class="pb-6 pr-12 text-warm-700 leading-relaxed">{faq.answer}</p>
+          </details>
         ))}
       </div>
     </div>
   </section>
 
-  <CTA />
+  <!-- Small business packages now have their own page -->
+  <section id="packages" class="py-14 md:py-16 bg-warm-100 border-t border-warm-200 scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
+      <div class="max-w-2xl">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">{smallBusinessBand.eyebrow}</span>
+        <h2 class="mt-2 text-2xl md:text-3xl font-bold text-dark leading-[1.1]">{smallBusinessBand.title}</h2>
+        <p class="mt-3 text-warm-700 leading-relaxed">{smallBusinessBand.body}</p>
+      </div>
+      <a href={smallBusinessBand.cta.href} class="md:ml-auto shrink-0 inline-flex items-center gap-2 px-6 py-3.5 bg-dark text-white font-semibold rounded-xl hover:bg-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+        {smallBusinessBand.cta.label} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Close -->
+  <section class="py-20 md:py-24 bg-dark text-white border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-16">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-5xl font-bold leading-[1.05]">{closing.title}</h2>
+        <p class="mt-5 text-lg text-warm-300 leading-relaxed">{closing.body}</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 lg:ml-auto shrink-0">
+        <a
+          href={closing.primary.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-7 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-light hover:text-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {closing.primary.label}
+        </a>
+        <a
+          href={closing.secondary.href}
+          class="inline-flex items-center justify-center px-7 py-4 border border-warm-600 text-warm-200 font-semibold rounded-xl hover:border-white hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {closing.secondary.label}
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    transition: transform 200ms ease-out;
+  }
+
+  .faq[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon {
+      transition: none;
+    }
+  }
+</style>

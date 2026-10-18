@@ -29,6 +29,7 @@ const announcement = {
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "What We Offer" },
+  { href: "/small-business", label: "Small Business" },
   { href: "/work", label: "Our Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -70,7 +71,7 @@ const navLinks = [
             <a
               href={link.href}
               class:list={[
-                "nav-item nav-link text-lg transition-colors hover:text-primary",
+                "nav-item nav-link text-base xl:text-lg whitespace-nowrap transition-colors hover:text-primary",
                 currentPath === link.href
                   ? "is-active font-bold text-primary"
                   : "font-medium text-dark",
@@ -89,7 +90,7 @@ const navLinks = [
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.515l.7 2.8a2 2 0 01-.45 1.95l-1.27 1.27a16 16 0 006.32 6.32l1.27-1.27a2 2 0 011.95-.45l2.8.7A2 2 0 0121 17.72V20a2 2 0 01-2 2h-1C9.716 22 2 14.284 2 5V4" />
           </svg>
-          Call/Text 423-292-7294
+          Call/Text<span class="hidden xl:inline">423-292-7294</span>
         </a>
       </div>
 

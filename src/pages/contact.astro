@@ -177,12 +177,35 @@ import PageHero from "../components/PageHero.astro";
                   class="w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                 >
                   <option value="">Pick one...</option>
-                  <option value="landing">Local Landing Page — one page</option>
-                  <option value="business">Business Website — up to 5 pages</option>
-                  <option value="growth">Growth Website — up to 10 pages</option>
-                  <option value="ecommerce">Ecommerce Website — sell online</option>
-                  <option value="pricing-sheet">Just send me the pricing sheet</option>
-                  <option value="unsure">Not sure yet — just want to talk</option>
+                  <optgroup label="Custom builds">
+                    <option value="custom">Custom build — website, integrations, automation</option>
+                    <option value="discovery">Discovery &amp; Roadmap</option>
+                    <option value="run-improve">Run &amp; Improve plan for an existing build</option>
+                  </optgroup>
+                  <optgroup label="Small business websites">
+                    <option value="landing">Local Landing Page — one page</option>
+                    <option value="business">Business Website — up to 5 pages</option>
+                    <option value="growth">Growth Website — up to 10 pages</option>
+                    <option value="ecommerce">Ecommerce Website — sell online</option>
+                    <option value="care-plan">Hosting or care plan</option>
+                  </optgroup>
+                  <optgroup label="Marketing">
+                    <option value="gbp-setup">Google Business Profile Setup</option>
+                    <option value="gbp-care">Google Business Profile Care</option>
+                    <option value="google-ads">Google Ads Management</option>
+                    <option value="social-starter">Social Media Starter Kit</option>
+                    <option value="email-sms">Email / SMS capture setup</option>
+                    <option value="digital-presence">Digital Presence Setup — domain, email, accounts</option>
+                  </optgroup>
+                  <optgroup label="Brand, photos and add-ons">
+                    <option value="brand-starter">Brand Starter Package</option>
+                    <option value="photography">Website photography session</option>
+                    <option value="add-on">Add-on to my current site — pages, blog, store, integration</option>
+                  </optgroup>
+                  <optgroup label="Other">
+                    <option value="pricing-sheet">Just send me the pricing sheet</option>
+                    <option value="unsure">Not sure yet — just want to talk</option>
+                  </optgroup>
                 </select>
               </div>
 

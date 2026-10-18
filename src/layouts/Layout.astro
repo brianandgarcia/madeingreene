@@ -2,13 +2,11 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import OfferModal from "../components/OfferModal.astro";
 
 interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
-  hideOffer?: boolean;
   /* Transparent header over the page's hero until scroll. "light" for a light
      hero, "dark" for a dark one (PageHero). Omit for the solid white bar. */
   headerOverlay?: "light" | "dark";
@@ -20,12 +18,11 @@ interface Props {
 
 const {
   title,
-  description = "Made in Greene builds affordable websites for local businesses in Greene County, TN. Clear pricing. Local support. No runaround.",
+  description = "Made in Greene is a web design and development studio in Greeneville, Tennessee, building custom websites, integrations and automation for established businesses.",
   noindex = false,
-  hideOffer = false,
   headerOverlay,
   ogImage: ogImageProp,
-  ogImageAlt = "Made in Greene — affordable, custom websites for local businesses.",
+  ogImageAlt = "Made in Greene — custom websites, integrations and automation.",
   ogType = "website",
 } = Astro.props;
 
@@ -42,7 +39,7 @@ const businessSchema = {
   "@id": `${siteUrl.origin}/#business`,
   name: "Made in Greene",
   description:
-    "Affordable, custom websites for local businesses, farms, shops, and organizations in and around Greene County, Tennessee.",
+    "Custom websites, software integrations and business automation for established companies in East Tennessee, from a studio in Greeneville.",
   url: siteUrl.origin,
   telephone: "+1-423-292-7294",
   email: "brian@madeingreene.com",
@@ -106,7 +103,7 @@ const businessSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800;9..144,900&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Figtree:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,500&family=Figtree:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
@@ -128,8 +125,6 @@ const businessSchema = {
       <slot />
     </main>
     <Footer />
-    {/* Offer modal disabled while the promo is being updated */}
-    {false && !hideOffer && <OfferModal />}
 
     <script>
       const revealElements = document.querySelectorAll<HTMLElement>("[data-reveal]");
