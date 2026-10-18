@@ -2,13 +2,11 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import OfferModal from "../components/OfferModal.astro";
 
 interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
-  hideOffer?: boolean;
   /* Transparent header over the page's hero until scroll. "light" for a light
      hero, "dark" for a dark one (PageHero). Omit for the solid white bar. */
   headerOverlay?: "light" | "dark";
@@ -22,7 +20,6 @@ const {
   title,
   description = "Made in Greene is a web design and development studio in Greeneville, Tennessee, building custom websites, integrations and automation for established businesses.",
   noindex = false,
-  hideOffer = false,
   headerOverlay,
   ogImage: ogImageProp,
   ogImageAlt = "Made in Greene — custom websites, integrations and automation.",
@@ -128,8 +125,6 @@ const businessSchema = {
       <slot />
     </main>
     <Footer />
-    {/* Offer modal disabled while the promo is being updated */}
-    {false && !hideOffer && <OfferModal />}
 
     <script>
       const revealElements = document.querySelectorAll<HTMLElement>("[data-reveal]");

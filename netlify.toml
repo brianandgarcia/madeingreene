@@ -29,3 +29,9 @@
   to = "/why-not-other-providers"
   status = 301
   force = true
+
+# The farm-stand offer page was retired; send old links to the small-business packages.
+[[redirects]]
+  from = "/farm-stands"
+  to = "/services#packages"
+  status = 301

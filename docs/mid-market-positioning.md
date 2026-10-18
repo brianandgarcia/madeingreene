@@ -27,8 +27,9 @@ Run $750/mo and Improve $1,500/mo, 6-month minimum; custom builds paid
 40/30/30, $150/hr out of scope, 90-day warranty. Small-business packages start
 at $1,750 with a photo session and the 1-year guarantee; simple integration
 add-on from $1,500. Phase lengths and yearly capacity are still
-`[PLACEHOLDER]` tags. The farm-stands page still carries the old "$150 down /
-own it for $850" offer until Brian decides what replaces it.
+`[PLACEHOLDER]` tags. The old farm-stands
+offer page ("$150 down / own it for $850") was removed at Brian's request;
+/farm-stands now redirects to /services#packages.
 
 ## Proof used (all real, from src/data/projects.ts)
 - Echo Station: 40 taps synced from Untappd, events from Google Calendar.
@@ -50,7 +51,7 @@ Made in Greene is run part-time alongside a higher-ed job (worth deciding
 whether that stays anywhere: mid-market buyers will ask about capacity).
 
 ## Still to decide or supply
-- Phase lengths, builds per year, and the farm-stands offer.
+- Phase lengths, builds per year.
 - Domenique's last name and title.
 - Founded year.
 - Photos: leadership portrait (4:5), and a more formal About hero than the
