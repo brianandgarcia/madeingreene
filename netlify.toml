@@ -33,5 +33,5 @@
 # The farm-stand offer page was retired; send old links to the small-business packages.
 [[redirects]]
   from = "/farm-stands"
-  to = "/services#packages"
+  to = "/small-business"
   status = 301

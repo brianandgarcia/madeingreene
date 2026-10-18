@@ -69,3 +69,11 @@ minimum) and Google Ads Management ($750 setup, then $400/mo or 15% of ad
 spend, whichever is higher, 3-month minimum) are on /services#found, with
 wording as approved. Improve includes Profile Care and Ads Management with no
 management fee; Run does not.
+
+## Small-business page (2026-10-18)
+Brian asked to split the packages off What We Offer onto their own landing page
+with the original tile-collage hero. `/small-business` (copy in
+src/data/small-business.ts) carries the hero, full package inclusions from the
+service list, care plans, add-ons, terms and the two client testimonials.
+/services keeps a short band linking to it; /farm-stands redirects there.
+Serif accents (the quote, the small-business headline) use Fraunces again.

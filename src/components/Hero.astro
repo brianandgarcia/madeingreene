@@ -1,5 +1,8 @@
 ---
 /*
+  Small-business landing page hero (/small-business): the original homepage
+  hero with the photo collage, kept for package clients.
+
   Trust bar under the hero. Icons are single-path stroke icons so a new one is
   just a `d` string — no extra markup.
 */
@@ -132,7 +135,7 @@ const collage = [
     <div class="hero-layout grid grid-cols-3 gap-3 items-start lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-14 xl:gap-20 lg:items-center">
       <!-- Left: the message -->
       <div class="hero-delayed-fade col-span-full order-2 py-8 max-w-xl lg:col-auto lg:order-none lg:py-0">
-        <h1 class="font-display font-black leading-[0.95] tracking-tight text-balance text-[clamp(2.75rem,5.2vw,5.25rem)]">
+        <h1 class="serif-heading font-black leading-[0.95] tracking-tight text-balance text-[clamp(2.75rem,5.2vw,5.25rem)]">
           Every business has a <span class="text-primary">story.</span>
         </h1>
 
@@ -142,7 +145,7 @@ const collage = [
 
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
           <a
-            href="/services"
+            href="#packages"
             class="inline-flex items-center justify-center px-8 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-dark-light transition-all hover:shadow-xl hover:shadow-dark/20 hover:-translate-y-0.5"
           >
             View Website Packages

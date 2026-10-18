@@ -202,7 +202,7 @@ export const whyUs = {
 
 export const smallBusiness = {
   text: "Running a smaller business? Our website packages are still here, with the same care and clear pricing.",
-  link: { label: "See website packages", href: "/services#packages" },
+  link: { label: "See website packages", href: "/small-business" },
 };
 
 export const closing = {

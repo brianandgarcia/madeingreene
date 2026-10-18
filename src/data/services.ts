@@ -25,7 +25,7 @@ export const jumps = [
   { label: "Included in every project", href: "#included" },
   { label: "Getting found", href: "#found" },
   { label: "Questions", href: "#faq" },
-  { label: "Small business packages", href: "#packages" },
+  { label: "Small business packages", href: "/small-business" },
 ];
 
 /* Deeper detail per kind of work, keyed to the homepage lanes by number. */
@@ -159,34 +159,10 @@ export const faqs = [
   },
 ];
 
-/* The existing small-business packages, kept in a compact form. */
-export const packages = {
+/* Small-business packages now live on their own page (/small-business). */
+export const smallBusinessBand = {
   eyebrow: "Small Business Packages",
-  title: "Smaller business? Our website packages are still here.",
-  body:
-    "For new and small businesses that need a professional website rather than a connected system. Same care, real photography, and copy written for you. Packages start at $1,750, paid 50% to start and 50% at launch. Payment plans available, just ask.",
-  list: [
-    { name: "Local Landing Page", price: "$1,750", scope: "1 page", text: "For new businesses, solo operators and side businesses. Includes a photo session of up to 30 minutes. About 4 weeks." },
-    { name: "Business Website", price: "$3,500", scope: "Up to 5 pages", text: "A clean, professional presence for a local business. About 6 weeks." },
-    { name: "Growth Website", price: "$5,500", scope: "Up to 10 pages", text: "More content and tools to attract and convert customers." },
-    { name: "Ecommerce Website", price: "From $6,000", scope: "Business + store", text: "Shopify setup for shops, farms and makers ready to sell online." },
-  ],
-  notes: [
-    "Every package includes a local photo session, 30 days of post-launch support and a 1-year bug-free guarantee.",
-    "Care plans: Hosting $10/month (billed annually at $120), Care $49/month, Care Plus $99/month.",
-    "Edits without a plan: $35 per 15 minutes ($125/hour), or a 2-hour Edit Pack for $200, used within 12 months.",
-  ],
-  addonsTitle: "Add-ons",
-  addons: [
-    { name: "Additional page", price: "$200 per page" },
-    { name: "Blog / News / Projects setup, with 2 first posts", price: "$500" },
-    { name: "Online store (Shopify), up to 10 products", price: "$1,500" },
-    { name: "Simple integration (calendar, tap list, menu or CRM form)", price: "From $1,500" },
-    { name: "Brand Starter Package", price: "From $750" },
-    { name: "Website photography session", price: "From $299" },
-    { name: "Digital Presence Setup (domain, business email, accounts)", price: "$199" },
-    { name: "Social Media Starter Kit", price: "$199" },
-    { name: "Email / SMS capture setup", price: "$350" },
-  ],
-  cta: { label: "Ask for the pricing sheet", href: "/contact" },
+  title: "Smaller business? Our website packages have their own page.",
+  body: "Fixed-price websites for new and small businesses, from $1,750, with a local photo session and copy written for you.",
+  cta: { label: "See the small business packages", href: "/small-business" },
 };

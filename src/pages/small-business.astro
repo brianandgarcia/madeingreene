@@ -1,0 +1,127 @@
+---
+/*
+  Small business packages. The original homepage hero (photo collage) lives
+  here now; copy is in src/data/small-business.ts.
+*/
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Testimonials from "../components/Testimonials.astro";
+import { seo, intro, packages, care, addons, terms, closing } from "../data/small-business";
+---
+
+<Layout title={seo.title} description={seo.description} headerOverlay="light">
+  <Hero />
+
+  <!-- Packages -->
+  <section id="packages" class="py-20 md:py-28 bg-cream scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl" data-reveal>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">{intro.eyebrow}</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">{intro.title}</h2>
+        <p class="mt-5 text-lg text-warm-700 leading-relaxed">{intro.body}</p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {packages.map((p, i) => (
+          <article
+            class:list={[
+              "relative flex flex-col rounded-2xl bg-white p-7 md:p-8 border",
+              p.badge ? "border-primary ring-1 ring-primary" : "border-warm-200",
+            ]}
+            data-reveal
+            style={`--reveal-delay: ${i * 80}ms`}
+          >
+            {p.badge && (
+              <span class="absolute -top-3 left-7 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">{p.badge}</span>
+            )}
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="text-xl md:text-2xl font-bold text-dark">{p.name}</h3>
+              <span class="font-display text-2xl font-bold text-primary-dark whitespace-nowrap">{p.price}</span>
+            </div>
+            <p class="mt-2 text-warm-600 leading-relaxed">{p.bestFor}</p>
+            {p.timeline && <p class="mt-1 text-sm font-semibold text-primary">{p.timeline}</p>}
+            <ul class="mt-5 space-y-2 text-warm-800">
+              {p.items.map((item) => (
+                <li class="flex gap-2.5 leading-snug"><span class="text-primary" aria-hidden="true">✓</span>{item}</li>
+              ))}
+            </ul>
+            <p class="mt-auto pt-5 text-sm text-warm-600">{p.note}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ownership & care -->
+  <section id="care" class="py-20 md:py-28 bg-white border-y border-warm-200 scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-16" data-reveal>
+        <div>
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">{care.eyebrow}</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">{care.title}</h2>
+        </div>
+        <div>{care.body.map((b) => <p class="mt-4 first:mt-0 text-lg text-warm-700 leading-relaxed">{b}</p>)}</div>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {care.plans.map((plan) => (
+          <div class="rounded-2xl border border-warm-200 bg-cream p-7">
+            <h3 class="text-lg font-bold text-dark">{plan.name}</h3>
+            <p class="mt-2 font-display text-3xl font-bold text-primary-dark">{plan.price}</p>
+            <p class="text-sm text-warm-600">{plan.sub}</p>
+            <ul class="mt-5 space-y-2 text-warm-800">
+              {plan.items.map((item) => <li class="flex gap-2.5 leading-snug"><span class="text-primary" aria-hidden="true">✓</span>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <ul class="mt-8 space-y-1 text-warm-700">
+        {care.edits.map((e) => <li>{e}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Add-ons and terms -->
+  <section class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-6 grid gap-14 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <h2 class="text-2xl md:text-4xl font-bold text-dark leading-[1.1]">{addons.title}</h2>
+        <dl class="mt-6 border-t border-warm-300">
+          {addons.list.map((a) => (
+            <div class="flex justify-between gap-6 py-3 border-b border-warm-200">
+              <dt class="text-warm-800">{a.name}</dt>
+              <dd class="font-semibold text-primary-dark whitespace-nowrap">{a.price}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-5 text-warm-700">
+          Ongoing <a href={addons.more.href} class="font-semibold text-primary underline underline-offset-4 hover:text-primary-dark">{addons.more.label}</a> are also available.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-2xl md:text-4xl font-bold text-dark leading-[1.1]">{terms.title}</h2>
+        <dl class="mt-6 border-t border-warm-300">
+          {terms.rows.map((r) => (
+            <div class="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-6 py-4 border-b border-warm-200">
+              <dt class="font-semibold text-dark">{r.label}</dt>
+              <dd class="text-warm-700 leading-relaxed">{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <section class="py-20 md:py-24 bg-dark text-white">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-16">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-5xl font-bold leading-[1.05]">{closing.title}</h2>
+        <p class="mt-5 text-lg text-warm-300 leading-relaxed">{closing.body}</p>
+      </div>
+      <div class="flex flex-col gap-4 lg:ml-auto shrink-0">
+        <a href={closing.primary.href} class="inline-flex items-center justify-center px-7 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-light hover:text-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">{closing.primary.label}</a>
+        <a href={closing.secondary.href} class="text-warm-300 hover:text-white underline underline-offset-4 text-sm">{closing.secondary.label}</a>
+      </div>
+    </div>
+  </section>
+</Layout>
