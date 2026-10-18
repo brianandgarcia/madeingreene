@@ -153,17 +153,18 @@ export const packages = {
   eyebrow: "Small Business Packages",
   title: "Smaller business? Our website packages are still here.",
   body:
-    "For new and small businesses that need a professional website rather than a connected system. Same care, real photography, and copy written for you. Packages start at $1,750, and every package can be paid once or monthly.",
+    "For new and small businesses that need a professional website rather than a connected system. Same care, real photography, and copy written for you. Packages start at $1,750. Payment plans available, just ask.",
   list: [
-    { name: "Local Landing Page", scope: "1 page", text: "For new businesses, solo operators and side businesses." },
-    { name: "Business Website", scope: "Up to 5 pages", text: "A clean, professional presence for a local business." },
-    { name: "Growth Website", scope: "Up to 10 pages", text: "More content and tools to attract and convert customers." },
-    { name: "Ecommerce Website", scope: "Business + store", text: "Shopify setup for shops, farms and makers ready to sell online." },
+    { name: "Local Landing Page", price: "$1,750", scope: "1 page", text: "For new businesses, solo operators and side businesses. Includes a photo session of up to 30 minutes. About 4 weeks." },
+    { name: "Business Website", price: "$3,500", scope: "Up to 5 pages", text: "A clean, professional presence for a local business. About 6 weeks." },
+    { name: "Growth Website", price: "$5,500", scope: "Up to 10 pages", text: "More content and tools to attract and convert customers." },
+    { name: "Ecommerce Website", price: "From $6,000", scope: "Business + store", text: "Shopify setup for shops, farms and makers ready to sell online." },
   ],
   notes: [
     "Every package includes a local photo session and a 1-year bug-free guarantee.",
     "Need one tool connected? A simple integration add-on starts at $1,500.",
-    "Optional monthly care plans cover hosting, updates and content changes.",
+    "Care plans: Hosting $10/month (billed annually at $120), Care $49/month, Care Plus $99/month.",
+    "Edits as you need them: $35 per 15 minutes, or a 2-hour Edit Pack for $200.",
   ],
   cta: { label: "Ask for the pricing sheet", href: "/contact" },
 };
