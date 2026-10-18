@@ -66,7 +66,6 @@ export const fit = {
   ],
   aside:
     "We take on a small number of these projects each year, so each one gets the time it deserves.",
-  capacity: "[PLACEHOLDER: number of builds per year, or per quarter]",
 };
 
 export const capabilities = {
@@ -161,7 +160,7 @@ export const engagement = {
     {
       number: "01",
       name: "Discovery & Roadmap",
-      length: "[PLACEHOLDER: e.g. 2 weeks]",
+      length: "2 weeks",
       price: "$3,500, credited toward the build if you sign within 60 days",
       items: [
         "Working sessions with the people who do the work",
@@ -173,7 +172,7 @@ export const engagement = {
     {
       number: "02",
       name: "Design & Build",
-      length: "[PLACEHOLDER: e.g. 8 to 14 weeks]",
+      length: "8 to 14 weeks",
       price: "From $20,000, fixed after discovery",
       items: [
         "A custom-designed website, written and photographed for you",
@@ -204,7 +203,7 @@ export const whyUs = {
   points: [
     {
       name: "15+ years building for the web",
-      text: "Brian has spent more than fifteen years designing and developing websites for organizations that need dependable, thoughtful digital work.",
+      text: "Our team brings more than fifteen years of experience designing and developing websites for organizations that need dependable, thoughtful digital work.",
     },
     {
       name: "The person you meet builds it",

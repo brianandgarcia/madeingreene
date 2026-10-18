@@ -27,13 +27,13 @@ const { id, fit = [] } = Astro.props;
     <div class="mt-16 md:mt-20 space-y-16 md:space-y-20">
       {capabilities.lanes.map((lane, i) => (
         <article
-          class="grid gap-6 md:grid-cols-[7rem_minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12"
+          class="grid gap-6 md:grid-cols-[8.5rem_minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10"
           data-reveal
           style={`--reveal-delay: ${i * 90}ms`}
         >
-          <div class="flex md:flex-col items-center md:items-start gap-4" aria-hidden="true">
-            <Pictogram name={lane.icon as any} class="w-16 h-16 md:w-20 md:h-20 text-accent" />
-            <span class="font-display text-sm font-bold tracking-[0.14em] text-white/50">{lane.number}</span>
+          <div class="self-start flex items-center gap-3 text-accent md:-mt-2" aria-hidden="true">
+            <span class="font-display text-3xl font-bold leading-none tabular-nums">{lane.number}</span>
+            <Pictogram name={lane.icon as any} class="w-14 h-14 shrink-0" />
           </div>
           <div>
             <h3 class="text-2xl md:text-3xl font-bold">{lane.name}</h3>

@@ -1,7 +1,6 @@
 ---
 /* Who the work is for: drawn as the places they work, then the problems they'd recognise. */
 import { fit } from "../../data/home";
-import { withPlaceholders } from "../../lib/placeholder";
 import Pictogram from "../art/Pictogram.astro";
 ---
 
@@ -27,7 +26,6 @@ import Pictogram from "../art/Pictogram.astro";
         <p class="font-display text-2xl md:text-3xl font-bold leading-tight text-dark">{fit.signsTitle}</p>
         <p class="mt-8 pl-5 border-l-2 border-accent text-warm-700 leading-relaxed">
           {fit.aside}
-          <span class="block mt-2" set:html={withPlaceholders(fit.capacity)} />
         </p>
       </div>
       <ol class="space-y-8" data-reveal style="--reveal-delay: 120ms">
