@@ -77,10 +77,21 @@ export const terms = {
     { label: "Discovery & Roadmap", value: "$3,500, credited toward the build if you sign within 60 days" },
     { label: "Design & Build", value: "From $20,000. Quoted after discovery, with each integration and automation as its own line item." },
     { label: "Run", value: "$750/month ($7,500/year). Hosting, monitoring, security updates, integration upkeep, up to 3 hours a month of support and a monthly review call. Profile Care and Ads Management can be added at their own prices." },
-    { label: "Improve", value: "$1,500/month ($15,000/year). Everything in Run, plus up to 8 hours a month of new features and automations, with priority turnaround, plus Google Business Profile Care and Google Ads Management with no management fee (ad spend is still paid by you directly to Google). Both plans have a 6-month minimum, then month to month." },
+    { label: "Improve", value: "$1,500/month ($15,000/year). Everything in Run, plus up to 8 hours a month of new features and automations, with priority turnaround, plus Google Business Profile Care and Google Ads Management with no management fee (ad spend is still paid by you directly to Google)." },
+    { label: "Plan terms", value: "6-month minimum, then month to month with 30 days' notice. Pay annually and save two months. Included hours don't roll over." },
     { label: "Payment schedule", value: "40% at signing, 30% at design approval, 30% at launch" },
     { label: "Out-of-scope work", value: "$150/hour, approved before it starts" },
     { label: "Warranty", value: "90 days after launch on custom builds" },
+    { label: "Third-party costs", value: "Software subscriptions, API fees and other third-party costs are billed to you directly by the provider" },
+  ],
+  /* Typical line items in a Design & Build quote, from the pricing sheet. */
+  lineItemsTitle: "Typical line items in a build",
+  lineItems: [
+    { label: "Custom site foundation", detail: "Design, copy, photography, up to 15 pages, training", price: "$12,000 – $15,000" },
+    { label: "Simple integration", detail: "One-way sync, e.g. form to CRM, calendar or menu feed", price: "$1,500 – $2,500 each" },
+    { label: "Standard integration", detail: "Two-way sync, e.g. CRM, inventory, booking, payments", price: "$3,000 – $6,000 each" },
+    { label: "Complex integration", detail: "Accounting or ERP, customer or dealer portal", price: "From $7,500 each" },
+    { label: "Automation", detail: "E.g. lead routing, follow-ups, scheduled reports", price: "$1,000 – $3,000 each" },
   ],
 };
 
@@ -153,7 +164,7 @@ export const packages = {
   eyebrow: "Small Business Packages",
   title: "Smaller business? Our website packages are still here.",
   body:
-    "For new and small businesses that need a professional website rather than a connected system. Same care, real photography, and copy written for you. Packages start at $1,750. Payment plans available, just ask.",
+    "For new and small businesses that need a professional website rather than a connected system. Same care, real photography, and copy written for you. Packages start at $1,750, paid 50% to start and 50% at launch. Payment plans available, just ask.",
   list: [
     { name: "Local Landing Page", price: "$1,750", scope: "1 page", text: "For new businesses, solo operators and side businesses. Includes a photo session of up to 30 minutes. About 4 weeks." },
     { name: "Business Website", price: "$3,500", scope: "Up to 5 pages", text: "A clean, professional presence for a local business. About 6 weeks." },
@@ -161,10 +172,21 @@ export const packages = {
     { name: "Ecommerce Website", price: "From $6,000", scope: "Business + store", text: "Shopify setup for shops, farms and makers ready to sell online." },
   ],
   notes: [
-    "Every package includes a local photo session and a 1-year bug-free guarantee.",
-    "Need one tool connected? A simple integration add-on starts at $1,500.",
+    "Every package includes a local photo session, 30 days of post-launch support and a 1-year bug-free guarantee.",
     "Care plans: Hosting $10/month (billed annually at $120), Care $49/month, Care Plus $99/month.",
-    "Edits as you need them: $35 per 15 minutes, or a 2-hour Edit Pack for $200.",
+    "Edits without a plan: $35 per 15 minutes ($125/hour), or a 2-hour Edit Pack for $200, used within 12 months.",
+  ],
+  addonsTitle: "Add-ons",
+  addons: [
+    { name: "Additional page", price: "$200 per page" },
+    { name: "Blog / News / Projects setup, with 2 first posts", price: "$500" },
+    { name: "Online store (Shopify), up to 10 products", price: "$1,500" },
+    { name: "Simple integration (calendar, tap list, menu or CRM form)", price: "From $1,500" },
+    { name: "Brand Starter Package", price: "From $750" },
+    { name: "Website photography session", price: "From $299" },
+    { name: "Digital Presence Setup (domain, business email, accounts)", price: "$199" },
+    { name: "Social Media Starter Kit", price: "$199" },
+    { name: "Email / SMS capture setup", price: "$350" },
   ],
   cta: { label: "Ask for the pricing sheet", href: "/contact" },
 };

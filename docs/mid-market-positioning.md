@@ -24,9 +24,13 @@ One engagement in three phases, so the bigger price is anchored to a plan:
 Prices (set by Brian 2026-10-18): Discovery $3,500, credited toward the build
 if signed within 60 days; Design & Build from $20,000, quoted after discovery;
 Run $750/mo and Improve $1,500/mo, 6-month minimum; custom builds paid
-40/30/30, $150/hr out of scope, 90-day warranty. Small-business packages start
-at $1,750 with a photo session and the 1-year guarantee; simple integration
-add-on from $1,500. Phase lengths and yearly capacity are still
+40/30/30, $150/hr out of scope, 90-day warranty. Small-business packages
+(updated to Brian's service list 2026-10-18): Landing $1,750, Business $3,500,
+Growth $5,500, Ecommerce from $6,000, 50/50 payment, care plans Hosting $10/mo,
+Care $49/mo, Care Plus $99/mo, edits $35 per 15 min, add-ons listed compactly
+on /services#packages. The 1-year guarantee stays until Brian settles it
+against the PDF's 3-month warranty. The typical Design & Build line items from
+the sheet are shown under Pricing. Phase lengths and yearly capacity are still
 `[PLACEHOLDER]` tags. The old farm-stands
 offer page ("$150 down / own it for $850") was removed at Brian's request;
 /farm-stands now redirects to /services#packages.
