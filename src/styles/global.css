@@ -34,7 +34,7 @@
   --color-cream: #f7f6f1;
 
   --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
-  --font-display: "Archivo", "Figtree", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
   --font-serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
   --font-accent: "Fraunces", Georgia, serif;
 
@@ -59,12 +59,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings: all-caps Archivo, slightly condensed so long headlines still fit. */
+/* Headings: Fraunces, the original serif (Brian, 2026-10-18). */
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-stretch: 90%;
-  text-transform: uppercase;
-  letter-spacing: -0.005em;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
 }
 
 /* Serif headline in the original Fraunces style (small-business page). */
