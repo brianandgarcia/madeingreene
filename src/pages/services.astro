@@ -4,22 +4,39 @@
   engagement phases and the three kinds of work are shared with the homepage.
 */
 import Layout from "../layouts/Layout.astro";
-import PageHero from "../components/PageHero.astro";
+import Pictogram from "../components/art/Pictogram.astro";
 import Engagement from "../components/home/Engagement.astro";
 import Capabilities from "../components/home/Capabilities.astro";
 import { seo, header, jumps, buildDetail, proofLine, included, found, terms, faqs, smallBusinessBand } from "../data/services";
 import { closing } from "../data/home";
 import { withPlaceholders } from "../lib/placeholder";
+
+const heroIcons = [
+  { icon: "gear", label: "Custom features" },
+  { icon: "belt", label: "Integrations" },
+  { icon: "arm", label: "Automations" },
+] as const;
 ---
 
-<Layout title={seo.title} description={seo.description} headerOverlay="dark">
-  <PageHero
-    eyebrow={header.eyebrow}
-    title={header.title}
-    subtitle={header.subtitle}
-    image="/echo-station-photo-shoot.jpg"
-    imagePosition="object-[30%_center] md:object-center"
-  />
+<Layout title={seo.title} description={seo.description} >
+  <!-- Light hero: same white field and solid header as the homepage -->
+  <section class="relative bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 pt-36 md:pt-44 pb-16 md:pb-24 grid gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:gap-20 items-end">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{header.eyebrow}</p>
+        <h1 class="mt-5 font-black leading-[1.02] tracking-tight text-balance text-[clamp(2.4rem,5vw,4.5rem)] text-dark">{header.title}</h1>
+        <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">{header.subtitle}</p>
+      </div>
+      <ul class="grid grid-cols-3 gap-6 lg:gap-8 text-primary-dark" aria-label="What we build">
+        {heroIcons.map((h) => (
+          <li class="flex flex-col items-start">
+            <Pictogram name={h.icon} class="w-14 h-14 md:w-20 md:h-20" />
+            <span class="mt-3 text-sm md:text-base font-semibold text-dark leading-tight">{h.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
   <!-- Jump links: the page is long, so say what's on it up front -->
   <nav aria-label="On this page" class="bg-white border-b border-warm-200">
