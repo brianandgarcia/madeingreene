@@ -1,0 +1,564 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+// Draft copy for Brian's tone review. Spec: directory-audit-spec.md (project files).
+const inputClass =
+  "w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors";
+
+const directories = [
+  { key: "facebook", label: "Facebook" },
+  { key: "yelp", label: "Yelp" },
+  { key: "bing", label: "Bing" },
+];
+const fields = [
+  { key: "name", label: "Name" },
+  { key: "address", label: "Address" },
+  { key: "phone", label: "Phone" },
+];
+---
+
+<Layout
+  title="Free Local Directory Audit"
+  description="Check whether your business name, address and phone match on your website, Google, Facebook, Yelp and Bing. Free, in about a minute."
+  hideOffer
+  headerOverlay="light"
+>
+  <section class="relative bg-white text-dark overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(60% 55% at 0% 0%, rgba(61,122,28,0.07), transparent 62%), radial-gradient(50% 50% at 100% 90%, rgba(230,175,46,0.08), transparent 65%);"
+    ></div>
+    <div class="relative max-w-3xl mx-auto px-6 pt-28 lg:pt-36 pb-12 text-center">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-primary/10 ring-1 ring-primary/20 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-primary-dark">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span>
+        Free tool · Local directory audit
+      </span>
+      <h1 class="font-display font-black leading-[0.98] tracking-tight text-balance text-[clamp(2.25rem,5vw,3.75rem)]">
+        Do your listings <span class="text-primary">agree</span> with each other?
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl mx-auto">
+        When your name, address or phone number is different on your website, Google, Facebook, Yelp
+        or Bing, customers call the wrong number and Google trusts your listing less. Check yours in
+        about a minute.
+      </p>
+    </div>
+  </section>
+
+  <!-- Step 1: who are you -->
+  <section class="bg-cream border-t border-warm-200 py-14 md:py-20">
+    <div class="max-w-2xl mx-auto px-6">
+      <form id="da-form" class="bg-white rounded-2xl p-6 sm:p-8 border border-warm-200 shadow-sm space-y-5" novalidate>
+        <div id="da-search-block">
+          <label for="da-search" class="block text-sm font-medium text-dark mb-2">Find your business on Google</label>
+          <div class="relative">
+            <input
+              id="da-search"
+              type="text"
+              autocomplete="off"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-controls="da-suggestions"
+              class={inputClass}
+              placeholder="Business name and town, e.g. Brown's Fencing Greeneville"
+            />
+            <ul
+              id="da-suggestions"
+              role="listbox"
+              class="hidden absolute z-20 mt-1 w-full bg-white border border-warm-300 rounded-xl shadow-lg overflow-hidden"
+            ></ul>
+          </div>
+          <p id="da-picked" class="hidden mt-2 text-sm text-primary-dark font-medium"></p>
+          <button type="button" id="da-manual-toggle" class="mt-2 text-sm text-warm-600 underline underline-offset-2 hover:text-dark">
+            I can't find my business on Google
+          </button>
+        </div>
+
+        <fieldset id="da-manual" class="hidden space-y-5">
+          <legend class="text-sm text-warm-600 mb-1">
+            Type your details the way you want customers to see them. We'll compare everything else against these.
+          </legend>
+          <div>
+            <label for="da-name" class="block text-sm font-medium text-dark mb-2">Business name</label>
+            <input id="da-name" type="text" autocomplete="organization" class={inputClass} />
+          </div>
+          <div>
+            <label for="da-address" class="block text-sm font-medium text-dark mb-2">Street address (optional)</label>
+            <input id="da-address" type="text" autocomplete="street-address" class={inputClass} placeholder="123 Main St, Greeneville, TN 37743" />
+          </div>
+          <div>
+            <label for="da-phone" class="block text-sm font-medium text-dark mb-2">Phone</label>
+            <input id="da-phone" type="tel" autocomplete="tel" class={inputClass} placeholder="(423) 555-0100" />
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="da-website" class="block text-sm font-medium text-dark mb-2">Website (optional)</label>
+          <input id="da-website" type="text" inputmode="url" autocomplete="url" class={inputClass} placeholder="yourbusiness.com" />
+          <p class="mt-1.5 text-xs text-warm-500">Leave blank to use the website on your Google listing.</p>
+        </div>
+
+        <p id="da-error" role="alert" class="hidden text-sm font-medium text-[#a63d2f]"></p>
+
+        <button
+          type="submit"
+          id="da-submit"
+          class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25 disabled:opacity-60 disabled:cursor-wait"
+        >
+          Check my listings
+        </button>
+        <p class="text-xs text-warm-500 text-center">Free. We only look at public business information.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="da-results" class="hidden bg-white border-t border-warm-200 py-14 md:py-20 scroll-mt-20" aria-live="polite">
+    <div class="max-w-3xl mx-auto px-6 space-y-10">
+      <!-- Score -->
+      <div class="flex flex-col sm:flex-row items-center gap-6 bg-warm-50 rounded-2xl p-6 ring-1 ring-warm-200">
+        <div class="text-center sm:text-left">
+          <p class="text-sm font-semibold uppercase tracking-wider text-warm-600">Consistency score</p>
+          <p class="mt-1"><span id="da-score" class="font-display text-6xl font-black text-dark">–</span><span class="text-2xl text-warm-500">/100</span></p>
+          <p id="da-band" class="mt-1 font-semibold"></p>
+        </div>
+        <p id="da-score-note" class="text-warm-600 sm:ml-auto sm:max-w-xs text-sm leading-relaxed"></p>
+      </div>
+
+      <!-- Step 1 result -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-dark">Step 1: Your website vs <span id="da-ref-label">Google</span></h2>
+        <p id="da-website-note" class="mt-2 text-warm-600"></p>
+        <div class="mt-5 overflow-x-auto">
+          <table class="w-full text-left text-sm border-separate border-spacing-0">
+            <thead>
+              <tr class="text-warm-600">
+                <th scope="col" class="py-2 pr-3 font-semibold">Detail</th>
+                <th scope="col" class="py-2 pr-3 font-semibold" id="da-ref-col">Google</th>
+                <th scope="col" class="py-2 pr-3 font-semibold">Your website</th>
+                <th scope="col" class="py-2 font-semibold">Result</th>
+              </tr>
+            </thead>
+            <tbody id="da-compare"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Step 2: guided check -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-dark">Step 2: Check your other listings</h2>
+        <p class="mt-2 text-warm-600">
+          Facebook, Yelp and Bing don't let us look these up for you, so open each one, find your
+          business, and tell us what you see. It's optional, and every answer updates your score.
+        </p>
+        <div class="mt-6 grid gap-5">
+          {directories.map((d) => (
+            <div class="rounded-2xl border border-warm-200 p-5" data-directory={d.key}>
+              <div class="flex flex-wrap items-center gap-3 justify-between">
+                <h3 class="text-xl font-bold text-dark">{d.label}</h3>
+                <a
+                  data-search-link
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center px-4 py-2 rounded-lg border border-warm-300 bg-warm-50 text-sm font-semibold text-dark hover:border-dark"
+                >
+                  Open {d.label} search <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+              <fieldset class="mt-4">
+                <legend class="text-sm font-medium text-dark">Did you find your business?</legend>
+                <div class="mt-2 flex gap-4 text-sm">
+                  <label class="inline-flex items-center gap-2"><input type="radio" name={`${d.key}-listed`} value="yes" class="accent-primary" /> Yes</label>
+                  <label class="inline-flex items-center gap-2"><input type="radio" name={`${d.key}-listed`} value="no" class="accent-primary" /> I'm not listed</label>
+                </div>
+              </fieldset>
+              <div data-fields class="hidden mt-4 space-y-3">
+                {fields.map((f) => (
+                  <fieldset class="grid sm:grid-cols-[6rem_1fr_auto] gap-x-3 gap-y-1 items-center text-sm">
+                    <legend class="sr-only">{d.label} {f.label}</legend>
+                    <span class="font-medium text-dark" aria-hidden="true">{f.label}</span>
+                    <span class="text-warm-600 break-words" data-expected={f.key}></span>
+                    <span class="flex gap-4">
+                      <label class="inline-flex items-center gap-1.5"><input type="radio" name={`${d.key}-${f.key}`} value="match" class="accent-primary" /> Matches</label>
+                      <label class="inline-flex items-center gap-1.5"><input type="radio" name={`${d.key}-${f.key}`} value="different" class="accent-primary" /> Different</label>
+                    </span>
+                  </fieldset>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Findings -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-dark">What to fix</h2>
+        <ol id="da-findings" class="mt-5 space-y-3"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead capture -->
+  <section id="da-cta" class="hidden py-14 md:py-20 bg-cream border-t border-warm-200">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Want us to fix these?</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mt-3 mb-4">We'll clean up your listings.</h2>
+        <p class="text-warm-600 text-lg">
+          Send us your results and we'll get back to you within a business day. Or get our
+          <a href="/audit" class="text-primary-dark font-semibold underline underline-offset-2">full free local search audit</a>.
+        </p>
+      </div>
+      <form
+        name="directory-audit"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/thank-you/"
+        class="bg-white rounded-2xl p-6 sm:p-8 border border-warm-200 shadow-sm space-y-5"
+      >
+        <input type="hidden" name="form-name" value="directory-audit" />
+        <input type="hidden" name="offer" value="Local Directory Audit" />
+        <input type="hidden" name="business" id="da-lead-business" />
+        <input type="hidden" name="score" id="da-lead-score" />
+        <textarea name="results" id="da-lead-results" class="hidden" aria-hidden="true" tabindex="-1"></textarea>
+        <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="da-lead-name" class="block text-sm font-medium text-dark mb-2">Your name</label>
+            <input id="da-lead-name" name="name" type="text" required autocomplete="name" class={inputClass} />
+          </div>
+          <div>
+            <label for="da-lead-email" class="block text-sm font-medium text-dark mb-2">Email</label>
+            <input id="da-lead-email" name="email" type="email" required autocomplete="email" class={inputClass} />
+          </div>
+        </div>
+        <div>
+          <label for="da-lead-phone" class="block text-sm font-medium text-dark mb-2">Phone (optional)</label>
+          <input id="da-lead-phone" name="phone" type="tel" autocomplete="tel" class={inputClass} />
+        </div>
+        <button type="submit" class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all hover:shadow-lg hover:shadow-primary/25">
+          Send my results
+        </button>
+        <p class="text-xs text-warm-500 text-center leading-relaxed">
+          We'll only use this to reply to you about your listings. No spam, no list.
+        </p>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { BAND_LABEL, band, type Field, type FieldComparison } from "../../lib/nap.ts";
+  import {
+    DIRECTORY_LABEL,
+    PRIORITY_LABEL,
+    summarize,
+    type Directory,
+    type GuidedAnswer,
+  } from "../../lib/directory-findings.ts";
+
+  const API = "/api/directory-audit";
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+
+  const form = $<HTMLFormElement>("da-form");
+  const search = $<HTMLInputElement>("da-search");
+  const list = $<HTMLUListElement>("da-suggestions");
+  const picked = $("da-picked");
+  const manual = $<HTMLFieldSetElement>("da-manual");
+  const manualToggle = $<HTMLButtonElement>("da-manual-toggle");
+  const errorBox = $("da-error");
+  const submit = $<HTMLButtonElement>("da-submit");
+
+  let sessionToken = crypto.randomUUID();
+  let placeId: string | null = null;
+  let manualMode = false;
+  let notOnGoogle = false;
+  let googleOn = true;
+  let state: {
+    reference: { source: "google" | "manual"; name: string | null; address: string | null; phone: string | null };
+    website: { checked: boolean; url?: string; error?: string; nap?: { hasBusinessSchema: boolean }; comparisons?: FieldComparison[] };
+  } | null = null;
+
+  async function post(body: unknown) {
+    const res = await fetch(API, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error ?? "Something went wrong. Please try again.");
+    return data;
+  }
+
+  function showError(message: string) {
+    errorBox.textContent = message;
+    errorBox.classList.toggle("hidden", !message);
+  }
+
+  function setManual(on: boolean, reason?: string) {
+    manualMode = on;
+    manual.classList.toggle("hidden", !on);
+    $("da-search-block").classList.toggle("hidden", on && !googleOn);
+    manualToggle.textContent = on ? "Search Google instead" : "I can't find my business on Google";
+    if (on) {
+      placeId = null;
+      picked.classList.add("hidden");
+      if (reason) manual.querySelector("legend")!.textContent = reason;
+    }
+  }
+
+  manualToggle.addEventListener("click", () => {
+    notOnGoogle = !manualMode && googleOn;
+    setManual(!manualMode);
+  });
+
+  // ---- Google suggestions (combobox)
+  let debounce: number | undefined;
+  let active = -1;
+
+  function closeList() {
+    list.classList.add("hidden");
+    search.setAttribute("aria-expanded", "false");
+    search.removeAttribute("aria-activedescendant");
+    active = -1;
+  }
+
+  function choose(li: HTMLElement) {
+    placeId = li.dataset.placeId!;
+    search.value = li.dataset.label!;
+    picked.textContent = `Selected: ${li.dataset.label}`;
+    picked.classList.remove("hidden");
+    closeList();
+  }
+
+  search.addEventListener("input", () => {
+    placeId = null;
+    picked.classList.add("hidden");
+    window.clearTimeout(debounce);
+    const q = search.value.trim();
+    if (q.length < 3) return closeList();
+    debounce = window.setTimeout(async () => {
+      try {
+        const data = await post({ action: "suggest", input: q, sessionToken });
+        if (!data.configured) {
+          googleOn = false;
+          setManual(true, "Type your details the way you want customers to see them. We'll compare your website and other listings against these.");
+          $<HTMLInputElement>("da-name").value = q;
+          return;
+        }
+        list.innerHTML = "";
+        data.suggestions.forEach((s: { placeId: string; main: string; secondary: string }, i: number) => {
+          const li = document.createElement("li");
+          li.id = `da-opt-${i}`;
+          li.setAttribute("role", "option");
+          li.dataset.placeId = s.placeId;
+          li.dataset.label = [s.main, s.secondary].filter(Boolean).join(", ");
+          li.className = "px-4 py-3 cursor-pointer hover:bg-warm-100 aria-selected:bg-warm-100";
+          li.innerHTML = `<span class="font-medium text-dark"></span> <span class="text-warm-500 text-sm"></span>`;
+          li.children[0].textContent = s.main;
+          li.children[1].textContent = s.secondary;
+          li.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            choose(li);
+          });
+          list.appendChild(li);
+        });
+        const open = data.suggestions.length > 0;
+        list.classList.toggle("hidden", !open);
+        search.setAttribute("aria-expanded", String(open));
+      } catch (err) {
+        closeList();
+      }
+    }, 300);
+  });
+
+  search.addEventListener("keydown", (e) => {
+    const items = [...list.querySelectorAll<HTMLElement>("[role=option]")];
+    if (!items.length || list.classList.contains("hidden")) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      active = (active + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length;
+      items.forEach((el, i) => el.setAttribute("aria-selected", String(i === active)));
+      search.setAttribute("aria-activedescendant", items[active].id);
+    } else if (e.key === "Enter" && active >= 0) {
+      e.preventDefault();
+      choose(items[active]);
+    } else if (e.key === "Escape") {
+      closeList();
+    }
+  });
+  search.addEventListener("blur", () => window.setTimeout(closeList, 150));
+
+  // ---- Run the audit
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    showError("");
+    const website = $<HTMLInputElement>("da-website").value.trim();
+    let body: Record<string, unknown>;
+    if (manualMode) {
+      const name = $<HTMLInputElement>("da-name").value.trim();
+      if (!name) return showError("Please enter your business name.");
+      body = {
+        action: "audit",
+        website,
+        manual: { name, address: $<HTMLInputElement>("da-address").value, phone: $<HTMLInputElement>("da-phone").value },
+      };
+    } else {
+      if (!placeId) return showError("Pick your business from the list, or choose \"I can't find my business on Google\".");
+      body = { action: "audit", placeId, sessionToken, website };
+    }
+
+    submit.disabled = true;
+    submit.textContent = "Checking…";
+    try {
+      state = await post(body);
+      sessionToken = crypto.randomUUID(); // A Google session ends with the details lookup.
+      renderResults();
+    } catch (err) {
+      showError((err as Error).message);
+    } finally {
+      submit.disabled = false;
+      submit.textContent = "Check my listings";
+    }
+  });
+
+  const RESULT_PILL: Record<string, [string, string]> = {
+    match: ["Match", "bg-primary/10 text-primary-dark"],
+    minor: ["Minor difference", "bg-[#f6ebd1] text-[#8a5a0a]"],
+    mismatch: ["Mismatch", "bg-[#f5ddd8] text-[#a63d2f]"],
+    missing: ["Missing", "bg-warm-100 text-warm-700"],
+  };
+  const FIELD_LABEL: Record<Field, string> = { name: "Name", address: "Address", phone: "Phone" };
+
+  function cell(text: string | null, cls = "") {
+    const td = document.createElement("td");
+    td.className = `py-3 pr-3 align-top border-t border-warm-200 break-words ${cls}`;
+    td.textContent = text ?? "Not found";
+    if (!text) td.classList.add("text-warm-500", "italic");
+    return td;
+  }
+
+  function renderResults() {
+    if (!state) return;
+    const { reference, website } = state;
+    const refLabel = reference.source === "google" ? "Google" : "Your details";
+    $("da-ref-label").textContent = reference.source === "google" ? "Google" : "the details you gave us";
+    $("da-ref-col").textContent = refLabel;
+
+    const note = $("da-website-note");
+    if (website.checked) note.textContent = `We checked ${website.url}.`;
+    else if (website.error) note.textContent = `${website.error} The rest of the report still works.`;
+    else note.textContent = "No website was given, so we skipped this step.";
+
+    const tbody = $("da-compare");
+    tbody.innerHTML = "";
+    for (const c of website.comparisons ?? []) {
+      const tr = document.createElement("tr");
+      tr.appendChild(cell(FIELD_LABEL[c.field], "font-medium text-dark"));
+      tr.appendChild(cell(c.expected));
+      tr.appendChild(cell(c.found));
+      const td = cell(" ");
+      const [label, cls] = RESULT_PILL[c.expected ? c.result : "missing"];
+      td.innerHTML = `<span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold ${cls}"></span>`;
+      td.firstElementChild!.textContent = c.expected ? label : "Not checked";
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+
+    // Guided check: expected details and search links.
+    const name = reference.name ?? "";
+    const address = reference.address ?? "";
+    // "LLC" and similar endings make directory searches miss.
+    const searchName = name.replace(/,?\s+(LLC|L\.L\.C\.|Inc\.?|Co\.?|Corp\.?)$/i, "");
+    const links: Record<Directory, string> = {
+      facebook: `https://www.facebook.com/search/pages/?q=${encodeURIComponent(searchName)}`,
+      yelp: `https://www.yelp.com/search?find_desc=${encodeURIComponent(searchName)}&find_loc=${encodeURIComponent(address || "Greeneville, TN")}`,
+      bing: `https://www.bing.com/maps?q=${encodeURIComponent(`${searchName} ${address}`.trim())}`,
+    };
+    document.querySelectorAll<HTMLElement>("[data-directory]").forEach((card) => {
+      const key = card.dataset.directory as Directory;
+      card.querySelector<HTMLAnchorElement>("[data-search-link]")!.href = links[key];
+      card.querySelectorAll<HTMLElement>("[data-expected]").forEach((el) => {
+        const v = reference[el.dataset.expected as Field];
+        el.textContent = v ? `Should be: ${v}` : "Not on file";
+      });
+    });
+
+    $("da-lead-business").setAttribute("value", name);
+    $("da-results").classList.remove("hidden");
+    $("da-cta").classList.remove("hidden");
+    renderSummary();
+    $("da-results").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function guidedAnswers(): Partial<Record<Directory, GuidedAnswer>> {
+    const out: Partial<Record<Directory, GuidedAnswer>> = {};
+    for (const key of Object.keys(DIRECTORY_LABEL) as Directory[]) {
+      const pick = (n: string) => form.ownerDocument.querySelector<HTMLInputElement>(`input[name="${n}"]:checked`)?.value ?? null;
+      const listed = pick(`${key}-listed`);
+      out[key] = {
+        listed: listed === null ? null : listed === "yes",
+        fields: {
+          name: pick(`${key}-name`) as "match" | "different" | null,
+          address: pick(`${key}-address`) as "match" | "different" | null,
+          phone: pick(`${key}-phone`) as "match" | "different" | null,
+        },
+      };
+    }
+    return out;
+  }
+
+  function renderSummary() {
+    if (!state) return;
+    const { score, findings, checked } = summarize({
+      referenceSource: state.reference.source,
+      notOnGoogle,
+      website: state.website.checked
+        ? { checked: true, hasBusinessSchema: Boolean(state.website.nap?.hasBusinessSchema), comparisons: state.website.comparisons ?? [] }
+        : null,
+      guided: guidedAnswers(),
+    });
+
+    $("da-score").textContent = score === null ? "–" : String(score);
+    const b = score === null ? null : band(score);
+    const bandEl = $("da-band");
+    bandEl.textContent = b ? BAND_LABEL[b] : "Answer Step 2 to get a score";
+    bandEl.className = `mt-1 font-semibold ${b === "great" || b === "good" ? "text-primary-dark" : b === "needs-work" ? "text-[#8a5a0a]" : "text-[#a63d2f]"}`;
+    $("da-score-note").textContent = checked
+      ? `Based on ${checked} detail${checked === 1 ? "" : "s"} checked so far. Every listing you check in Step 2 makes it more accurate.`
+      : "";
+
+    const ol = $("da-findings");
+    ol.innerHTML = "";
+    if (!findings.length) {
+      ol.innerHTML = `<li class="rounded-xl bg-primary/10 text-primary-dark p-4 font-medium">Everything we checked matches. Nice work.</li>`;
+    }
+    for (const f of findings) {
+      const li = document.createElement("li");
+      li.className = "rounded-xl border border-warm-200 p-4";
+      const cls = f.priority === "fix-first" ? "bg-[#f5ddd8] text-[#a63d2f]" : f.priority === "worth-fixing" ? "bg-[#f6ebd1] text-[#8a5a0a]" : "bg-warm-100 text-warm-700";
+      li.innerHTML = `<span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold ${cls}"></span><p class="mt-2 font-semibold text-dark"></p><p class="mt-1 text-warm-600"></p>`;
+      li.children[0].textContent = PRIORITY_LABEL[f.priority];
+      li.children[1].textContent = f.title;
+      li.children[2].textContent = f.fix;
+      ol.appendChild(li);
+    }
+
+    $("da-lead-score").setAttribute("value", score === null ? "" : String(score));
+    $<HTMLTextAreaElement>("da-lead-results").value = [
+      `Reference (${state.reference.source}): ${state.reference.name ?? ""} | ${state.reference.address ?? ""} | ${state.reference.phone ?? ""}`,
+      `Website: ${state.website.url ?? "none"}`,
+      ...findings.map((f) => `- [${PRIORITY_LABEL[f.priority]}] ${f.title}`),
+    ].join("\n");
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-directory]").forEach((card) => {
+    card.addEventListener("change", () => {
+      const yes = card.querySelector<HTMLInputElement>('input[value="yes"]')!.checked;
+      card.querySelector("[data-fields]")!.classList.toggle("hidden", !yes);
+      renderSummary();
+    });
+  });
+</script>
