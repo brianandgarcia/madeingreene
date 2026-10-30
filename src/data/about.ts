@@ -59,7 +59,7 @@ export const principles = {
     },
     {
       title: "A fixed scope and a written plan.",
-      text: "Before any build begins, you receive a written roadmap and a fixed-price proposal.",
+      text: "Before any build begins, you receive a written, fixed-price proposal.",
     },
     {
       title: "Plain answers.",

@@ -8,14 +8,14 @@
 export const seo = {
   title: "What We Offer: Custom Websites, Integrations & Automation",
   description:
-    "Custom website design and development, software integrations and business automation for established companies, delivered as a roadmap, a fixed-price build and ongoing support.",
+    "Custom website design and development, software integrations and business automation for established companies, from a free walkthrough to a fixed-price build and ongoing support.",
 };
 
 export const header = {
   eyebrow: "What We Offer",
   title: "Custom websites, integrations and automation.",
   subtitle:
-    "One team designs your website, connects it to the software you already run, and automates the work in between. Every engagement starts with a roadmap and a fixed price.",
+    "One team designs your website, connects it to the software you already run, and automates the work in between. Every engagement starts with a free walkthrough and a fixed price.",
 };
 
 /* Jump links under the header */
@@ -71,13 +71,13 @@ export const terms = {
   eyebrow: "Pricing",
   title: "A fixed price, agreed before the build.",
   body: [
-    "We don't quote a build until discovery is done, because the right price depends on what's worth building. Discovery is a fixed fee and ends with a written roadmap and a fixed-price proposal. You decide from there.",
+    "We start with a free walkthrough of your business, then send a written proposal with a fixed price. Every integration and automation is its own line item, so you can see what each piece costs and choose what to build now and what to save for later.",
   ],
   rows: [
-    { label: "Discovery & Roadmap", value: "$3,500, credited toward the build if you sign within 60 days" },
-    { label: "Design & Build", value: "From $20,000. Quoted after discovery, with each integration and automation as its own line item." },
-    { label: "Run", value: "$750/month ($7,500/year). Hosting, monitoring, security updates, integration upkeep, up to 3 hours a month of support and a monthly review call. Profile Care and Ads Management can be added at their own prices." },
-    { label: "Improve", value: "$1,500/month ($15,000/year). Everything in Run, plus up to 8 hours a month of new features and automations, with priority turnaround, plus Google Business Profile Care and Google Ads Management with no management fee (ad spend is still paid by you directly to Google)." },
+    { label: "Systems Walkthrough", value: "Free. 60 to 90 minutes on site, followed by a written fixed-price proposal." },
+    { label: "Connected Website", value: "From $8,000. A custom website with one simple integration included. Additional integrations and automations are quoted as their own line items." },
+    { label: "Run", value: "$300/month ($3,000/year). Hosting, monitoring, security updates, integration upkeep and up to 2 hours a month of support. Profile Care and Ads Management can be added at their own prices." },
+    { label: "Improve", value: "$750/month ($7,500/year). Everything in Run, plus up to 5 hours a month of new features and automations, priority turnaround, a monthly review call and Google Business Profile Care. Ads Management can be added at its own price." },
     { label: "Plan terms", value: "6-month minimum, then month to month with 30 days' notice. Pay annually and save two months. Included hours don't roll over." },
     { label: "Payment schedule", value: "40% at signing, 30% at design approval, 30% at launch" },
     { label: "Out-of-scope work", value: "$150/hour, approved before it starts" },
@@ -87,10 +87,11 @@ export const terms = {
   /* Typical line items in a Design & Build quote, from the pricing sheet. */
   lineItemsTitle: "Typical line items in a build",
   lineItems: [
-    { label: "Custom site foundation", detail: "Design, copy, photography, up to 15 pages, training", price: "$12,000 – $15,000" },
-    { label: "Simple integration", detail: "One-way sync, e.g. form to CRM, calendar or menu feed", price: "$1,500 – $2,500 each" },
+    { label: "Connected Website", detail: "Design, copy, photography, up to 10 pages, training, plus one simple integration", price: "From $8,000" },
+    { label: "Additional page", detail: "Design and content for each page beyond 10", price: "$200 per page" },
+    { label: "Simple integration", detail: "One-way sync, e.g. form to CRM, calendar, menu or inventory feed", price: "$1,500 – $2,500 each" },
     { label: "Standard integration", detail: "Two-way sync, e.g. CRM, inventory, booking, payments", price: "$3,000 – $6,000 each" },
-    { label: "Complex integration", detail: "Accounting or ERP, customer or dealer portal", price: "From $7,500 each" },
+    { label: "Complex integration", detail: "Accounting or ERP, customer or dealer portal", price: "Quoted per project" },
     { label: "Automation", detail: "E.g. lead routing, follow-ups, scheduled reports", price: "$1,000 – $3,000 each" },
   ],
 };
@@ -131,24 +132,24 @@ export const found = {
     },
   ],
   note:
-    "Custom builds: the Improve plan ($1,500/month) includes Profile Care and Ads Management with no management fee; ad spend is still paid by you directly to Google. Run ($750/month) does not include them, and they can be added at the prices above.",
+    "Custom builds: the Improve plan ($750/month) includes Profile Care. Ads Management can be added to Run or Improve at the price above, and ad spend is always paid by you directly to Google.",
 };
 
 export const faqs = [
   {
     question: "Do we have to replace the software we already use?",
     answer:
-      "Usually not. Most projects connect the tools you already pay for. If something truly isn't working for you, the roadmap will say so and why.",
+      "Usually not. Most projects connect the tools you already pay for. If something truly isn't working for you, we'll say so and why.",
   },
   {
     question: "What if our software doesn't have an API?",
     answer:
-      "Many tools still offer exports, email notifications, webhooks or scheduled reports we can work from. We'll tell you during discovery what's possible and what isn't.",
+      "Many tools still offer exports, email notifications, webhooks or scheduled reports we can work from. We'll tell you during the walkthrough what's possible and what isn't.",
   },
   {
     question: "How long does a project take?",
     answer:
-      "It depends on what the roadmap includes. Discovery tells you the timeline along with the price, before you commit to the build.",
+      "Most Connected Website projects take 6 to 12 weeks, depending on the integrations. Your proposal includes the timeline along with the price, before you commit to anything.",
   },
   {
     question: "What happens after launch?",
