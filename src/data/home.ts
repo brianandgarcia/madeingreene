@@ -23,7 +23,7 @@ export const hero = {
   titleAccent: "actually runs.",
   body:
     "We design and build custom websites for established companies, connected to the tools your team already uses, with automations that take the repetitive work off people's desks.",
-  primary: { label: "Book a Discovery Call", href: bookingUrl },
+  primary: { label: "Book a Free Walkthrough", href: bookingUrl },
   secondary: { label: "See How an Engagement Works", href: "#engagement" },
   /* The systems map. `x`/`y` are percentages of the map box; the website sits
      in the middle and every node is wired back to it. */
@@ -159,30 +159,30 @@ export const smallBusinessNudge = {
 
 export const engagement = {
   eyebrow: "How an Engagement Works",
-  title: "One roadmap, one build, one team that keeps it running.",
+  title: "One walkthrough, one build, one team that keeps it running.",
   body:
-    "Every project starts by mapping how work actually moves through your business. You get a written plan and a fixed price before anything is built.",
+    "Every project starts with a free walkthrough of how work actually moves through your business. You get a written proposal and a fixed price before anything is built.",
   phases: [
     {
       number: "01",
-      name: "Discovery & Roadmap",
-      length: "2 weeks",
-      price: "$3,500, credited toward the build if you sign within 60 days",
+      name: "Systems Walkthrough",
+      length: "60 to 90 minutes, on site",
+      price: "Free",
       items: [
-        "Working sessions with the people who do the work",
-        "A map of your systems and where data gets retyped",
-        "The automations worth building, ranked by time saved",
-        "A written roadmap and a fixed-price proposal",
+        "We walk through how work moves through your business",
+        "We note where information gets retyped or lost",
+        "We tell you plainly what's worth connecting and what isn't",
+        "You get a written, fixed-price proposal, with no obligation",
       ],
     },
     {
       number: "02",
       name: "Design & Build",
-      length: "8 to 14 weeks",
-      price: "From $20,000, fixed after discovery",
+      length: "6 to 12 weeks",
+      price: "Connected Website from $8,000, fixed before we start",
       items: [
         "A custom-designed website, written and photographed for you",
-        "The integrations and automations from the roadmap",
+        "The integrations and automations from your proposal",
         "On-location photography by our own team",
         "Training for your staff, and you own your domain and site files",
       ],
@@ -191,13 +191,13 @@ export const engagement = {
       number: "03",
       name: "Run & Improve",
       length: "Monthly",
-      price: "Run $750/mo · Improve $1,500/mo, 6-month minimum",
+      price: "Run $300/mo · Improve $750/mo, 6-month minimum",
       items: [
         "Hosting, monitoring and security updates",
         "We watch every integration and fix it if a vendor changes theirs",
         "A standing monthly review of what's working",
         "New features and automations as the business changes",
-        "On Improve: Google Business Profile care and Google Ads management, with no management fee",
+        "On Improve: hours for new work each month, plus Google Business Profile care",
       ],
     },
   ],
@@ -236,6 +236,6 @@ export const closing = {
   title: "Bring us the process that eats your week.",
   body:
     "Tell us what your team does by hand that a website or a piece of software should be doing. We'll tell you plainly whether it's worth building.",
-  primary: { label: "Book a Discovery Call", href: bookingUrl },
+  primary: { label: "Book a Free Walkthrough", href: bookingUrl },
   secondary: { label: "Send Us a Note", href: "/contact" },
 };
