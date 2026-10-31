@@ -60,6 +60,219 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // Screenshots for the first two are placeholders in /placeholders until Brian
+  // sends the real captures. FeaturedWork skips them while they are.
+  {
+    name: "Greeneville & Co.",
+    category: "Independent Real Estate Brokerage",
+    description:
+      "An independent brokerage on Tusculum Boulevard serving Greene County and the Tri-Cities. The website searches the live MLS natively — every listing, every town guide, on their own domain instead of inside somebody else's widget.",
+    highlights: [
+      "Live MLS search built into the site, not an IDX iframe",
+      "Community guides for five towns, each with current listings",
+      "A home-value request priced by an agent, not an algorithm",
+    ],
+    images: [
+      {
+        src: "/placeholders/greeneville-and-co-hero.svg",
+        alt: "The Greeneville & Co. homepage — “Rooted in Greeneville. Serving East Tennessee.”",
+      },
+    ],
+    featured: true,
+    url: "https://greenevilleandco.com",
+
+    slug: "greeneville-and-co",
+    tagline:
+      "A local brokerage's website with the whole MLS built in — live listings, town guides, and their own name on every page.",
+    meta: [
+      { label: "Client", value: "Greeneville & Co." },
+      { label: "Location", value: "Greeneville, Tennessee" },
+      { label: "Industry", value: "Real Estate Brokerage" },
+      { label: "Services", value: "Website · Live MLS Integration · Content Editing" },
+    ],
+    goal: [
+      "Greeneville & Co. is an independent brokerage on Tusculum Boulevard in Greeneville, started by Tom Willett, who will tell you plainly that he isn't your average broker. No franchise, no sales pitch, no sugarcoating — straight answers, hard work and aggressive marketing, with one licensed agent who stays with you from the first conversation to closing.",
+      "Their slogan is real estate, done differently, and the website had to live up to it. Most small brokerages end up with a template site and an IDX widget bolted on: a search box that opens somebody else's page, under somebody else's branding, that Google barely credits to the brokerage at all.",
+      "They wanted the opposite. A site that reads like a local firm that knows the ground — Greeneville, Afton, Chuckey, Tusculum, Jonesborough, Johnson City, Kingsport — with every home on the Tennessee/Virginia Regional MLS searchable on their own pages, and their own listings given pride of place.",
+    ],
+    built: [
+      {
+        title: "The MLS is part of the site, not a widget on it.",
+        description:
+          "Search runs directly against the Tennessee/Virginia Regional MLS through its RESO Web API. Filter by town, price, beds, baths, property type and acreage, and the results are their pages on their domain — shareable searches, real listing pages, and nothing copied into a database that can go stale.",
+        image: {
+          src: "/placeholders/greeneville-and-co-search.svg",
+          alt: "The property search page, with filters above live MLS listing cards",
+        },
+      },
+      {
+        title: "Every town gets a real guide, with current homes underneath.",
+        description:
+          "Greeneville, Johnson City, Jonesborough, Kingsport and Morristown each have their own page: a local introduction written by people who live here, then the homes for sale in that town right now. It's the kind of page a search engine rewards and a widget can't produce.",
+        image: {
+          src: "/placeholders/greeneville-and-co-community.svg",
+          alt: "The Homes for Sale in Greeneville community guide, with local copy above a grid of current listings",
+        },
+      },
+      {
+        title: "Don't let an algorithm price your house.",
+        description:
+          "Instead of an automated estimate, sellers request a real comparative market analysis. The form asks what a computer misses — the new roof, the finished basement, the road that floods — and a licensed agent prices it properly.",
+        image: {
+          src: "/placeholders/greeneville-and-co-home-value.svg",
+          alt: "The “What's your home worth?” page, a short step-by-step valuation request",
+        },
+      },
+      {
+        title: "Their own listings come first.",
+        description:
+          "The brokerage's listings are pulled separately from the wider feed and featured on the homepage and agent pages, so the homes they're marketing aren't buried among thousands of others.",
+      },
+      {
+        title: "Rentals and commercial have their own searches.",
+        description:
+          "Residential leases, storefronts, commercial buildings and land each get a dedicated page with the right filters already set, so a renter or a business owner doesn't have to wade through houses to find them.",
+      },
+      {
+        title: "The team is on the site, in their own words.",
+        description:
+          "An agent page for each person, with a photo, a bio and a direct line — because at a small firm you're hiring the person, not the logo.",
+        image: {
+          src: "/placeholders/greeneville-and-co-team.svg",
+          alt: "The Meet the Team section, with Tom Willett and the Greeneville & Co. agents",
+        },
+      },
+      {
+        title: "The office can edit it without calling us.",
+        description:
+          "Pages, agent bios, town guides and testimonials are content the office can change themselves. Listing data stays with the MLS, where it belongs, and updates on its own.",
+      },
+      {
+        title: "Fast, findable, and careful with the rules.",
+        description:
+          "Clean listing URLs, search-friendly town pages, the MLS attribution the board requires, and API credentials that never leave the server.",
+      },
+    ],
+    showcase: {
+      desktop: {
+        src: "/placeholders/greeneville-and-co-desktop.svg",
+        alt: "The Greeneville & Co. homepage on desktop",
+      },
+      mobile: {
+        src: "/placeholders/greeneville-and-co-mobile.svg",
+        alt: "The Greeneville & Co. homepage on a phone",
+      },
+    },
+    results: [
+      "Every home on the regional MLS is searchable on Greeneville & Co.'s own domain, under their own name.",
+      "Town guides that give the brokerage something to rank for beyond its own name.",
+      "Sellers get a person pricing their house, which is the whole point of the firm.",
+      "An independent brokerage that looks every bit as established online as the franchises down the road.",
+    ],
+  },
+  {
+    name: "Hydra ThrIVe",
+    category: "Mobile IV Hydration & Wellness",
+    description:
+      "A nurse-owned mobile IV service in Greeneville that comes to your home, office, gym — or the drag strip. The website helps people pick the right drip, book it, and find the team trackside.",
+    highlights: [
+      "A “choose your path” drip finder that recommends a drip in two taps",
+      "A separate trackside page for diesel and motorsport events",
+      "Real photos of the nurses and the work, not stock",
+    ],
+    images: [
+      {
+        src: "/placeholders/hydra-thrive-hero.svg",
+        alt: "The Hydra ThrIVe homepage, with a photo of an IV drip and the Book a visit button",
+      },
+    ],
+    featured: true,
+    url: "https://hydrathrivetn.com",
+
+    slug: "hydra-thrive",
+    tagline:
+      "A mobile IV website that answers “which drip do I need?” before anyone has to call — and has a louder twin for race day.",
+    meta: [
+      { label: "Client", value: "Hydra ThrIVe" },
+      { label: "Location", value: "Greeneville, Tennessee" },
+      { label: "Industry", value: "Mobile IV Hydration & Wellness" },
+      { label: "Services", value: "Website · Drip Finder · Event Landing Page" },
+    ],
+    goal: [
+      "Hydra ThrIVe is a mobile IV hydration and wellness service founded in 2024 by Meghan, a registered nurse since 2008 with a background in critical care, post-op recovery and home health. She brings IV drips and vitamin shots to people's homes, offices and gyms across Greene County, one-on-one, with time to talk before anything starts.",
+      "IV therapy is new to a lot of people, and the first questions are always the same: is this safe, who's putting the line in, and which drip do I actually need? A menu of drips with names like Myers Cocktail doesn't answer that on its own.",
+      "There's a second side to the business, too. Hydra ThrIVe sets up trackside at diesel and motorsport events with chairs, bags and several lines running at once — a completely different crowd that needed a completely different pitch.",
+    ],
+    goalImage: {
+      src: "/placeholders/hydra-thrive-team.svg",
+      alt: "The About Hydra ThrIVe section, with Meghan in teal scrubs",
+    },
+    built: [
+      {
+        title: "A drip finder that asks what's bugging you.",
+        description:
+          "“Running on fumes,” “last night got away from me,” “my workouts are catching up with me” — pick the closest one, answer a follow-up, and the site recommends a drip with the reason why and a tip from Meghan. And if the answer sounds like a doctor's visit instead of a drip, it says so.",
+        image: {
+          src: "/placeholders/hydra-thrive-finder.svg",
+          alt: "The drip finder, asking “What is bugging you most today?” with a list of plain-language answers",
+        },
+      },
+      {
+        title: "A trackside page for race day.",
+        description:
+          "/track is the louder, darker side of the brand — Hydrate. Recover. Perform. — with a trimmed menu written for crews on hot asphalt and a list of upcoming events, so promoters and racers know where to find the tent.",
+        image: {
+          src: "/placeholders/hydra-thrive-track.svg",
+          alt: "The trackside landing page, a dark page headed Hydrate. Recover. Perform.",
+        },
+      },
+      {
+        title: "The nurse comes first.",
+        description:
+          "Meghan's credentials and the team behind her sit near the top of the page, because the first thing someone wants to know before an IV is who's starting it.",
+      },
+      {
+        title: "Real photos, framed like the work.",
+        description:
+          "Photos of Meghan prepping a line, B12 shots, drips in a living room and the tent at a truck show, set in taped frames that feel like a scrapbook rather than a stock library. An events row opens into a full-size lightbox.",
+      },
+      {
+        title: "The whole menu, in plain language.",
+        description:
+          "Every drip, shot and add-on with a line on what it's for, so people can compare before they book instead of messaging to ask what's in each bag.",
+      },
+      {
+        title: "Booking is one button.",
+        description:
+          "Book a visit goes straight to their scheduling system, with the phone number beside it for anyone who'd rather talk first — and kept out of reach of the spam bots that scrape numbers off websites.",
+      },
+      {
+        title: "Ten towns, named.",
+        description:
+          "Greeneville, Tusculum, Mosheim, Chuckey, Afton, Baileyton and the rest are listed by name, so someone in Bulls Gap knows they're covered before they ask.",
+      },
+      {
+        title: "Measured from day one.",
+        description:
+          "Google Analytics on both pages, so the owner can see what brings people in and which side of the business they came for.",
+      },
+    ],
+    showcase: {
+      desktop: {
+        src: "/placeholders/hydra-thrive-desktop.svg",
+        alt: "The Hydra ThrIVe homepage on desktop",
+      },
+      mobile: {
+        src: "/placeholders/hydra-thrive-mobile.svg",
+        alt: "The Hydra ThrIVe homepage on a phone",
+      },
+    },
+    results: [
+      "First-time clients can work out which drip they need without a phone call.",
+      "The event business has its own page to hand a promoter or post before race weekend.",
+      "A one-nurse startup reads as a credible clinical service — real people, real photos, clear booking.",
+    ],
+  },
   {
     name: "Echo Station",
     category: "Pour-Your-Own Taproom",
@@ -353,219 +566,6 @@ export const projects: Project[] = [
       "Donors can see what's short this week instead of guessing at the door.",
       "Something to hand a church group, a school drive, or a first-time volunteer.",
       "The pantry owns the site outright, and it cost them nothing.",
-    ],
-  },
-  // Screenshots for the next two are placeholders in /placeholders until Brian
-  // sends the real captures. FeaturedWork skips them while they are.
-  {
-    name: "Greeneville & Co.",
-    category: "Independent Real Estate Brokerage",
-    description:
-      "An independent brokerage on Tusculum Boulevard serving Greene County and the Tri-Cities. The website searches the live MLS natively — every listing, every town guide, on their own domain instead of inside somebody else's widget.",
-    highlights: [
-      "Live MLS search built into the site, not an IDX iframe",
-      "Community guides for five towns, each with current listings",
-      "A home-value request priced by an agent, not an algorithm",
-    ],
-    images: [
-      {
-        src: "/placeholders/greeneville-and-co-hero.svg",
-        alt: "The Greeneville & Co. homepage — “Rooted in Greeneville. Serving East Tennessee.”",
-      },
-    ],
-    featured: true,
-    url: "https://greenevilleandco.com",
-
-    slug: "greeneville-and-co",
-    tagline:
-      "A local brokerage's website with the whole MLS built in — live listings, town guides, and their own name on every page.",
-    meta: [
-      { label: "Client", value: "Greeneville & Co." },
-      { label: "Location", value: "Greeneville, Tennessee" },
-      { label: "Industry", value: "Real Estate Brokerage" },
-      { label: "Services", value: "Website · Live MLS Integration · Content Editing" },
-    ],
-    goal: [
-      "Greeneville & Co. is an independent brokerage on Tusculum Boulevard in Greeneville, started by Tom Willett, who will tell you plainly that he isn't your average broker. No franchise, no sales pitch, no sugarcoating — straight answers, hard work and aggressive marketing, with one licensed agent who stays with you from the first conversation to closing.",
-      "Their slogan is real estate, done differently, and the website had to live up to it. Most small brokerages end up with a template site and an IDX widget bolted on: a search box that opens somebody else's page, under somebody else's branding, that Google barely credits to the brokerage at all.",
-      "They wanted the opposite. A site that reads like a local firm that knows the ground — Greeneville, Afton, Chuckey, Tusculum, Jonesborough, Johnson City, Kingsport — with every home on the Tennessee/Virginia Regional MLS searchable on their own pages, and their own listings given pride of place.",
-    ],
-    built: [
-      {
-        title: "The MLS is part of the site, not a widget on it.",
-        description:
-          "Search runs directly against the Tennessee/Virginia Regional MLS through its RESO Web API. Filter by town, price, beds, baths, property type and acreage, and the results are their pages on their domain — shareable searches, real listing pages, and nothing copied into a database that can go stale.",
-        image: {
-          src: "/placeholders/greeneville-and-co-search.svg",
-          alt: "The property search page, with filters above live MLS listing cards",
-        },
-      },
-      {
-        title: "Every town gets a real guide, with current homes underneath.",
-        description:
-          "Greeneville, Johnson City, Jonesborough, Kingsport and Morristown each have their own page: a local introduction written by people who live here, then the homes for sale in that town right now. It's the kind of page a search engine rewards and a widget can't produce.",
-        image: {
-          src: "/placeholders/greeneville-and-co-community.svg",
-          alt: "The Homes for Sale in Greeneville community guide, with local copy above a grid of current listings",
-        },
-      },
-      {
-        title: "Don't let an algorithm price your house.",
-        description:
-          "Instead of an automated estimate, sellers request a real comparative market analysis. The form asks what a computer misses — the new roof, the finished basement, the road that floods — and a licensed agent prices it properly.",
-        image: {
-          src: "/placeholders/greeneville-and-co-home-value.svg",
-          alt: "The “What's your home worth?” page, a short step-by-step valuation request",
-        },
-      },
-      {
-        title: "Their own listings come first.",
-        description:
-          "The brokerage's listings are pulled separately from the wider feed and featured on the homepage and agent pages, so the homes they're marketing aren't buried among thousands of others.",
-      },
-      {
-        title: "Rentals and commercial have their own searches.",
-        description:
-          "Residential leases, storefronts, commercial buildings and land each get a dedicated page with the right filters already set, so a renter or a business owner doesn't have to wade through houses to find them.",
-      },
-      {
-        title: "The team is on the site, in their own words.",
-        description:
-          "An agent page for each person, with a photo, a bio and a direct line — because at a small firm you're hiring the person, not the logo.",
-        image: {
-          src: "/placeholders/greeneville-and-co-team.svg",
-          alt: "The Meet the Team section, with Tom Willett and the Greeneville & Co. agents",
-        },
-      },
-      {
-        title: "The office can edit it without calling us.",
-        description:
-          "Pages, agent bios, town guides and testimonials are content the office can change themselves. Listing data stays with the MLS, where it belongs, and updates on its own.",
-      },
-      {
-        title: "Fast, findable, and careful with the rules.",
-        description:
-          "Clean listing URLs, search-friendly town pages, the MLS attribution the board requires, and API credentials that never leave the server.",
-      },
-    ],
-    showcase: {
-      desktop: {
-        src: "/placeholders/greeneville-and-co-desktop.svg",
-        alt: "The Greeneville & Co. homepage on desktop",
-      },
-      mobile: {
-        src: "/placeholders/greeneville-and-co-mobile.svg",
-        alt: "The Greeneville & Co. homepage on a phone",
-      },
-    },
-    results: [
-      "Every home on the regional MLS is searchable on Greeneville & Co.'s own domain, under their own name.",
-      "Town guides that give the brokerage something to rank for beyond its own name.",
-      "Sellers get a person pricing their house, which is the whole point of the firm.",
-      "An independent brokerage that looks every bit as established online as the franchises down the road.",
-    ],
-  },
-  {
-    name: "Hydra ThrIVe",
-    category: "Mobile IV Hydration & Wellness",
-    description:
-      "A nurse-owned mobile IV service in Greeneville that comes to your home, office, gym — or the drag strip. The website helps people pick the right drip, book it, and find the team trackside.",
-    highlights: [
-      "A “choose your path” drip finder that recommends a drip in two taps",
-      "A separate trackside page for diesel and motorsport events",
-      "Real photos of the nurses and the work, not stock",
-    ],
-    images: [
-      {
-        src: "/placeholders/hydra-thrive-hero.svg",
-        alt: "The Hydra ThrIVe homepage, with a photo of an IV drip and the Book a visit button",
-      },
-    ],
-    featured: true,
-    url: "https://hydrathrivetn.com",
-
-    slug: "hydra-thrive",
-    tagline:
-      "A mobile IV website that answers “which drip do I need?” before anyone has to call — and has a louder twin for race day.",
-    meta: [
-      { label: "Client", value: "Hydra ThrIVe" },
-      { label: "Location", value: "Greeneville, Tennessee" },
-      { label: "Industry", value: "Mobile IV Hydration & Wellness" },
-      { label: "Services", value: "Website · Drip Finder · Event Landing Page" },
-    ],
-    goal: [
-      "Hydra ThrIVe is a mobile IV hydration and wellness service founded in 2024 by Meghan, a registered nurse since 2008 with a background in critical care, post-op recovery and home health. She brings IV drips and vitamin shots to people's homes, offices and gyms across Greene County, one-on-one, with time to talk before anything starts.",
-      "IV therapy is new to a lot of people, and the first questions are always the same: is this safe, who's putting the line in, and which drip do I actually need? A menu of drips with names like Myers Cocktail doesn't answer that on its own.",
-      "There's a second side to the business, too. Hydra ThrIVe sets up trackside at diesel and motorsport events with chairs, bags and several lines running at once — a completely different crowd that needed a completely different pitch.",
-    ],
-    goalImage: {
-      src: "/placeholders/hydra-thrive-team.svg",
-      alt: "The About Hydra ThrIVe section, with Meghan in teal scrubs",
-    },
-    built: [
-      {
-        title: "A drip finder that asks what's bugging you.",
-        description:
-          "“Running on fumes,” “last night got away from me,” “my workouts are catching up with me” — pick the closest one, answer a follow-up, and the site recommends a drip with the reason why and a tip from Meghan. And if the answer sounds like a doctor's visit instead of a drip, it says so.",
-        image: {
-          src: "/placeholders/hydra-thrive-finder.svg",
-          alt: "The drip finder, asking “What is bugging you most today?” with a list of plain-language answers",
-        },
-      },
-      {
-        title: "A trackside page for race day.",
-        description:
-          "/track is the louder, darker side of the brand — Hydrate. Recover. Perform. — with a trimmed menu written for crews on hot asphalt and a list of upcoming events, so promoters and racers know where to find the tent.",
-        image: {
-          src: "/placeholders/hydra-thrive-track.svg",
-          alt: "The trackside landing page, a dark page headed Hydrate. Recover. Perform.",
-        },
-      },
-      {
-        title: "The nurse comes first.",
-        description:
-          "Meghan's credentials and the team behind her sit near the top of the page, because the first thing someone wants to know before an IV is who's starting it.",
-      },
-      {
-        title: "Real photos, framed like the work.",
-        description:
-          "Photos of Meghan prepping a line, B12 shots, drips in a living room and the tent at a truck show, set in taped frames that feel like a scrapbook rather than a stock library. An events row opens into a full-size lightbox.",
-      },
-      {
-        title: "The whole menu, in plain language.",
-        description:
-          "Every drip, shot and add-on with a line on what it's for, so people can compare before they book instead of messaging to ask what's in each bag.",
-      },
-      {
-        title: "Booking is one button.",
-        description:
-          "Book a visit goes straight to their scheduling system, with the phone number beside it for anyone who'd rather talk first — and kept out of reach of the spam bots that scrape numbers off websites.",
-      },
-      {
-        title: "Ten towns, named.",
-        description:
-          "Greeneville, Tusculum, Mosheim, Chuckey, Afton, Baileyton and the rest are listed by name, so someone in Bulls Gap knows they're covered before they ask.",
-      },
-      {
-        title: "Measured from day one.",
-        description:
-          "Google Analytics on both pages, so the owner can see what brings people in and which side of the business they came for.",
-      },
-    ],
-    showcase: {
-      desktop: {
-        src: "/placeholders/hydra-thrive-desktop.svg",
-        alt: "The Hydra ThrIVe homepage on desktop",
-      },
-      mobile: {
-        src: "/placeholders/hydra-thrive-mobile.svg",
-        alt: "The Hydra ThrIVe homepage on a phone",
-      },
-    },
-    results: [
-      "First-time clients can work out which drip they need without a phone call.",
-      "The event business has its own page to hand a promoter or post before race weekend.",
-      "A one-nurse startup reads as a credible clinical service — real people, real photos, clear booking.",
     ],
   },
   {
