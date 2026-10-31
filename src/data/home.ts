@@ -139,6 +139,24 @@ export const proof = {
   link: { label: "Read the Echo Station case study", href: "/work/echo-station" },
   note:
     "The same approach scales to a parts catalog, a service schedule, or a dealer price list.",
+  /* Shorter mentions under the main proof: recent builds, linked to their case studies. */
+  more: {
+    title: "Also running now",
+    items: [
+      {
+        client: "Greeneville & Co. · Real estate",
+        title: "The whole MLS, built into a local brokerage's site.",
+        text: "Every home on the Tennessee/Virginia Regional MLS, searchable on their own domain, with town guides that list what's for sale right now.",
+        href: "/work/greeneville-and-co",
+      },
+      {
+        client: "Hydra ThrIVe · Mobile IV therapy",
+        title: "A drip finder that answers the first question.",
+        text: "Visitors say what's bugging them and the site recommends the right IV, with a separate trackside page for race-day events.",
+        href: "/work/hydra-thrive",
+      },
+    ],
+  },
 };
 
 /* Full-width photo band between the proof and the engagement. Real client
