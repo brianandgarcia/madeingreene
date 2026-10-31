@@ -11,6 +11,11 @@
 
 export const bookingUrl = "https://cal.com/made-in-greene/phone-call?overlayCalendar=true";
 
+/* "Book a Free Walkthrough" goes to the contact form, with the walkthrough
+   already picked in its dropdown. The Cal.com link stays on the contact page
+   for anyone who would rather choose a time themselves. */
+export const walkthroughUrl = "/contact?interest=walkthrough#contact-form";
+
 export const seo = {
   title: "Custom Websites, Integrations & Automation",
   description:
@@ -23,7 +28,7 @@ export const hero = {
   titleAccent: "actually runs.",
   body:
     "We design and build custom websites for established companies, connected to the tools your team already uses, with automations that take the repetitive work off people's desks.",
-  primary: { label: "Book a Free Walkthrough", href: bookingUrl },
+  primary: { label: "Book a Free Walkthrough", href: walkthroughUrl },
   secondary: { label: "See How an Engagement Works", href: "#engagement" },
   /* The systems map. `x`/`y` are percentages of the map box; the website sits
      in the middle and every node is wired back to it. */
@@ -44,7 +49,7 @@ export const hero = {
 
 export const fit = {
   eyebrow: "Who We Build For",
-  title: "For companies that have outgrown a brochure website.",
+  title: "For companies that need more than a website builder.",
   body:
     "Manufacturers, farms and agricultural operations, distributors, contractors, medical and professional practices, and businesses with more than one location. If the business runs on more systems than the website knows about, we should talk.",
   /* Pictograms are drawn in src/components/art/Pictogram.astro. */
@@ -236,6 +241,6 @@ export const closing = {
   title: "Bring us the process that eats your week.",
   body:
     "Tell us what your team does by hand that a website or a piece of software should be doing. We'll tell you plainly whether it's worth building.",
-  primary: { label: "Book a Free Walkthrough", href: bookingUrl },
+  primary: { label: "Book a Free Walkthrough", href: walkthroughUrl },
   secondary: { label: "Send Us a Note", href: "/contact" },
 };
