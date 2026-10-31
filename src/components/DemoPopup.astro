@@ -1,0 +1,256 @@
+---
+/*
+  Free-demo pop-up. Asks for a name plus an email OR a phone number, nothing
+  more. Submissions land in Netlify Forms as "demo-popup".
+
+  When it shows:  after OPEN_AFTER_MS on the page, or once the visitor has
+                  scrolled SCROLL_SHARE of it, whichever comes first.
+  How often:      once per visit; after a close it stays away for
+                  SNOOZE_DAYS, and never comes back once someone signs up.
+  Where:          every page except the ones in `hideOn`, where it would get
+                  in the way of a form that is already there.
+*/
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+
+const hideOn = ["/free-demo", "/contact", "/thank-you", "/audit", "/404"];
+const hidePrefixes = ["/proposal/"];
+
+const clean = path.replace(/\/+$/, "") || "/";
+const show = !hideOn.includes(clean) && !hidePrefixes.some((p) => path.startsWith(p));
+
+const field =
+  "w-full px-4 py-3 rounded-xl border border-warm-400 bg-warm-50 text-dark placeholder-warm-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors";
+---
+
+{show && (
+  <dialog
+    id="demo-popup"
+    aria-labelledby="demo-popup-title"
+    class="demo-popup m-auto w-[calc(100%-2rem)] max-w-lg rounded-2xl bg-cream p-0 text-dark shadow-2xl"
+  >
+    <div class="relative p-7 sm:p-9">
+      <button
+        type="button"
+        data-demo-close
+        aria-label="Close"
+        class="absolute top-3 right-3 inline-flex h-11 w-11 items-center justify-center rounded-full text-warm-600 hover:bg-warm-200 hover:text-dark transition-colors focus-visible:outline-2 focus-visible:outline-primary"
+      >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+
+      <div data-demo-form-view>
+        <div class="h-1.5 w-16 rounded bg-accent" aria-hidden="true"></div>
+        <p class="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-primary">Free website demo</p>
+        <h2 id="demo-popup-title" class="mt-2 font-display text-3xl sm:text-4xl font-bold leading-[1.05] text-dark text-balance">
+          See your new website <span class="text-primary">before you pay a dime.</span>
+        </h2>
+        <p class="mt-4 text-warm-600 leading-relaxed">
+          Leave your name and the best way to reach you. We'll build a free demo of your website,
+          with your business on it. No charge, no catch.
+        </p>
+
+        <form
+          name="demo-popup"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/thank-you/"
+          class="mt-6 space-y-4"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="demo-popup" />
+          <input type="hidden" name="offer" value="Free Website Demo (pop-up)" />
+          <input type="hidden" name="page" value={path} />
+          <p class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <div>
+            <label for="dp-name" class="block text-sm font-medium text-dark mb-1.5">Name</label>
+            <input type="text" id="dp-name" name="name" required autocomplete="name" class={field} placeholder="Your name" />
+          </div>
+
+          <fieldset>
+            <legend class="block text-sm font-medium text-dark mb-1.5">Email or phone, whichever you'd rather</legend>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="dp-email" class="sr-only">Email</label>
+                <input type="email" id="dp-email" name="email" autocomplete="email" class={field} placeholder="you@example.com" />
+              </div>
+              <div>
+                <label for="dp-phone" class="sr-only">Phone</label>
+                <input type="tel" id="dp-phone" name="phone" autocomplete="tel" class={field} placeholder="(423) 555-0100" />
+              </div>
+            </div>
+          </fieldset>
+
+          <p data-demo-error role="alert" class="hidden text-sm font-medium text-[#a63d2f]"></p>
+
+          <button
+            type="submit"
+            class="w-full px-6 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-60"
+          >
+            Get My Free Demo
+          </button>
+          <p class="text-xs text-warm-500 text-center">No obligation. We'll only use this to reach you about your demo.</p>
+        </form>
+      </div>
+
+      <div data-demo-done-view class="hidden py-6 text-center" tabindex="-1">
+        <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/15 text-primary">
+          <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <h2 class="mt-5 font-display text-3xl font-bold text-dark">Thanks, we've got it.</h2>
+        <p class="mt-3 text-warm-600 leading-relaxed">
+          We'll reach out within 1 business day to hear about your business, then get to work on your demo.
+        </p>
+        <button
+          type="button"
+          data-demo-close
+          class="mt-7 inline-flex items-center justify-center px-6 py-3 border border-warm-300 text-dark font-semibold rounded-xl hover:border-dark transition-colors"
+        >
+          Back to the site
+        </button>
+      </div>
+    </div>
+  </dialog>
+)}
+
+<style>
+  .demo-popup::backdrop {
+    background: rgb(12 12 12 / 0.55);
+  }
+  .demo-popup[open] {
+    animation: demo-pop-in 0.25s ease-out;
+  }
+  @keyframes demo-pop-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .demo-popup[open] { animation: none; }
+  }
+</style>
+
+<script>
+  const OPEN_AFTER_MS = 15000;
+  const SCROLL_SHARE = 0.5;
+  const SNOOZE_DAYS = 14;
+  const KEY = "mig-demo-popup";
+
+  const dialog = document.getElementById("demo-popup") as HTMLDialogElement | null;
+
+  /* Storage can be blocked (private windows, strict settings); the pop-up then
+     simply behaves as if it has never been seen. */
+  const read = (): { snoozeUntil?: number; done?: boolean } => {
+    try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { return {}; }
+  };
+  const write = (v: object) => {
+    try { localStorage.setItem(KEY, JSON.stringify(v)); } catch { /* ignore */ }
+  };
+  const seenThisVisit = () => {
+    try { return sessionStorage.getItem(KEY) === "1"; } catch { return false; }
+  };
+  const markSeenThisVisit = () => {
+    try { sessionStorage.setItem(KEY, "1"); } catch { /* ignore */ }
+  };
+
+  const state = read();
+  const eligible =
+    dialog &&
+    typeof dialog.showModal === "function" &&
+    !state.done &&
+    !(state.snoozeUntil && Date.now() < state.snoozeUntil) &&
+    !seenThisVisit();
+
+  if (dialog && eligible) {
+    const form = dialog.querySelector("form") as HTMLFormElement;
+    const formView = dialog.querySelector("[data-demo-form-view]") as HTMLElement;
+    const doneView = dialog.querySelector("[data-demo-done-view]") as HTMLElement;
+    const error = dialog.querySelector("[data-demo-error]") as HTMLElement;
+    const name = form.elements.namedItem("name") as HTMLInputElement;
+    const email = form.elements.namedItem("email") as HTMLInputElement;
+    const phone = form.elements.namedItem("phone") as HTMLInputElement;
+    const submit = form.querySelector("button[type=submit]") as HTMLButtonElement;
+
+    let opened = false;
+    let submitted = false;
+    let timer = 0;
+
+    const open = () => {
+      if (opened) return;
+      opened = true;
+      window.clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+      markSeenThisVisit();
+      dialog.showModal();
+    };
+
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= SCROLL_SHARE) open();
+    };
+
+    timer = window.setTimeout(open, OPEN_AFTER_MS);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    /* Closing without signing up snoozes it; signing up retires it for good. */
+    dialog.addEventListener("close", () => {
+      if (!submitted) write({ snoozeUntil: Date.now() + SNOOZE_DAYS * 864e5 });
+    });
+    dialog.querySelectorAll("[data-demo-close]").forEach((b) =>
+      b.addEventListener("click", () => dialog.close()),
+    );
+    /* A click on the dimmed backdrop (the dialog element itself) closes it. */
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+
+    const showError = (msg: string, focus: HTMLElement) => {
+      error.textContent = msg;
+      error.classList.remove("hidden");
+      focus.focus();
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      error.classList.add("hidden");
+
+      if (!name.value.trim()) return showError("Please add your name.", name);
+      if (!email.value.trim() && !phone.value.trim())
+        return showError("Add an email or a phone number so we can reach you.", email);
+      if (email.value.trim() && !email.checkValidity())
+        return showError("That email doesn't look quite right.", email);
+
+      submit.disabled = true;
+      try {
+        const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>);
+        const res = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: body.toString(),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+
+        submitted = true;
+        write({ done: true });
+        formView.classList.add("hidden");
+        doneView.classList.remove("hidden");
+        doneView.focus();
+        const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
+        gtag?.("event", "generate_lead", { form_name: "demo-popup" });
+      } catch {
+        submit.disabled = false;
+        showError("Something went wrong sending that. Please try again, or call or text 423-292-7294.", submit);
+      }
+    });
+  }
+</script>
