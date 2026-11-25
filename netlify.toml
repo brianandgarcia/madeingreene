@@ -30,8 +30,22 @@
   status = 301
   force = true
 
-# The farm-stand offer page was retired; send old links to the small-business packages.
+# The farm-stand offer page was retired; send old links to the packages on the homepage.
 [[redirects]]
   from = "/farm-stands"
-  to = "/small-business"
+  to = "/"
   status = 301
+
+# Nov 2026 redesign: small-business packages moved to the homepage, and
+# Services became a nav dropdown (Custom Websites, Integrations).
+[[redirects]]
+  from = "/small-business"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services"
+  to = "/custom-websites"
+  status = 301
+  force = true
