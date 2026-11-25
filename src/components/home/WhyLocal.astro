@@ -1,8 +1,12 @@
 ---
-/* Why us, the small-business link, and the closing call to action. */
-import { whyUs, smallBusiness, closing } from "../../data/home";
+/* Why us, the integrations link, and the closing call to action. */
+import { whyUs, integrationsNudge, closing } from "../../data/home";
+
+// "Why Made in Greene" is hidden for now. Set to true to bring it back.
+const showWhyUs = false;
 ---
 
+{showWhyUs && (
 <section class="py-24 md:py-36 bg-white overflow-hidden">
   <div class="max-w-6xl mx-auto px-6 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 items-start">
     <div data-reveal>
@@ -30,12 +34,13 @@ import { whyUs, smallBusiness, closing } from "../../data/home";
     </figure>
   </div>
 </section>
+)}
 
 <div class="bg-hay">
   <p class="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-warm-700">
-    {smallBusiness.text}
-    <a href={smallBusiness.link.href} class="sm:ml-auto font-semibold text-primary hover:text-primary-dark whitespace-nowrap underline underline-offset-4">
-      {smallBusiness.link.label} <span aria-hidden="true">→</span>
+    {integrationsNudge.text}
+    <a href={integrationsNudge.link.href} class="sm:ml-auto font-semibold text-primary hover:text-primary-dark whitespace-nowrap underline underline-offset-4">
+      {integrationsNudge.link.label} <span aria-hidden="true">→</span>
     </a>
   </p>
 </div>

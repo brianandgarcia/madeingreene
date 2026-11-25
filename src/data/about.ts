@@ -1,5 +1,5 @@
 /*
-  ABOUT PAGE CONTENT — formal rewrite for the mid-market redesign.
+  ABOUT PAGE CONTENT — small-business focus (Nov 2026 redesign).
   Copy only; layout is in src/pages/about.astro.
   "[PLACEHOLDER: ...]" renders as a visible tag until Brian confirms it.
 */
@@ -7,7 +7,7 @@
 export const seo = {
   title: "About Made in Greene",
   description:
-    "Made in Greene is a web design and development studio in Greeneville, Tennessee, building custom websites, integrations and automation for established businesses.",
+    "Made in Greene is a web design and development studio in Greeneville, Tennessee, building custom websites for small businesses across Greene County and East Tennessee.",
 };
 
 export const header = {
@@ -22,7 +22,7 @@ export const overview = {
   title: "Made in Greene designs and builds websites that do real work for a business.",
   body: [
     "We are a small, senior studio. Every project is led from first conversation to launch by the people who design it and write the code, with no account managers or outsourced development in between.",
-    "Our work covers custom website design and development, integrations with the software a business already runs on, automation of repetitive operational work, and on-location photography. After launch, we host, monitor and maintain what we build.",
+    "We design and build custom websites for local businesses, written for them and photographed on location, and connect them to the software a business already runs on when that helps. After launch, we host, monitor and maintain what we build.",
     "Made in Greene is family-owned and based in Greeneville, and we are members of the Greene County Partnership.",
   ],
   facts: [
@@ -81,8 +81,8 @@ export const approach = {
       text: "Lightweight, standards-based builds that load quickly on real phones and real connections, and meet WCAG 2.1 AA accessibility guidelines.",
     },
     {
-      title: "Integration-ready",
-      text: "Sites are built to connect to CRMs, scheduling, inventory, accounting and payment systems through their APIs.",
+      title: "Built to be found",
+      text: "Clean headings, page titles and descriptions, structured data and a sitemap on every site, so Google understands what you do and where.",
     },
     {
       title: "Maintained after launch",

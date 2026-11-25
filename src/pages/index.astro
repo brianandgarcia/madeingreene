@@ -1,29 +1,26 @@
 ---
 /*
-  Homepage, mid-market redesign: custom websites, integrations and automation
-  for established businesses. All copy is in src/data/home.ts.
-  The previous small-business homepage sections (Hero, WhyWebsite, GreeneQuote,
-  ServicesOverview, PricingPreview, etc.) are untouched in src/components/.
+  Homepage, small-business focus (redesign, Nov 2026). Leads with web design
+  for Greene County businesses; integrations live on /integrations.
+  Copy is in src/data/home.ts and src/data/websites.ts.
 */
 import Layout from "../layouts/Layout.astro";
-import SystemsHero from "../components/home/SystemsHero.astro";
+import Hero from "../components/Hero.astro";
 import FitCheck from "../components/home/FitCheck.astro";
-import Capabilities from "../components/home/Capabilities.astro";
-import Proof from "../components/home/Proof.astro";
+import Packages from "../components/Packages.astro";
+import FeaturedWork from "../components/FeaturedWork.astro";
 import PhotoBand from "../components/home/PhotoBand.astro";
-import Engagement from "../components/home/Engagement.astro";
+import Testimonials from "../components/Testimonials.astro";
 import WhyLocal from "../components/home/WhyLocal.astro";
-import GettingFound from "../components/GettingFound.astro";
 import { seo } from "../data/home";
 ---
 
-<Layout title={seo.title} description={seo.description} headerOverlay="light">
-  <SystemsHero />
+<Layout title={seo.title} description={seo.description} headerOverlay="light" headerWide>
+  <Hero />
   <FitCheck />
-  <Capabilities />
-  <Proof />
+  <Packages />
+  <FeaturedWork />
   <PhotoBand />
-  <Engagement />
-  <GettingFound variant="teaser" id="marketing" />
+  <Testimonials />
   <WhyLocal />
 </Layout>

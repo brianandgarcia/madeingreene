@@ -1,9 +1,9 @@
 ---
 /*
-  The offer structure: three phases on one track. Prices and lengths are
-  placeholders in src/data/home.ts until Brian sets them.
+  How an integration project runs: three phases on one track. No prices are
+  published (Brian, 2026-11-24); copy is in src/data/integrations.ts.
 */
-import { engagement, smallBusinessNudge } from "../../data/home";
+import { engagement, websiteNudge } from "../../data/integrations";
 import { withPlaceholders } from "../../lib/placeholder";
 ---
 
@@ -22,7 +22,6 @@ import { withPlaceholders } from "../../lib/placeholder";
           <h3 class="mt-2 text-2xl md:text-[1.7rem] font-bold text-dark">{phase.name}</h3>
           <dl class="mt-4 space-y-1.5 text-sm">
             <div class="flex gap-2"><dt class="text-warm-500 w-16 shrink-0">Length</dt><dd class="text-warm-800 font-medium" set:html={withPlaceholders(phase.length)} /></div>
-            <div class="flex gap-2"><dt class="text-warm-500 w-16 shrink-0">Price</dt><dd class="text-warm-800 font-medium" set:html={withPlaceholders(phase.price)} /></div>
           </dl>
           <ul class="mt-5 space-y-2.5">
             {phase.items.map((item) => (
@@ -39,9 +38,9 @@ import { withPlaceholders } from "../../lib/placeholder";
     </ol>
 
     <p class="mt-16 md:mt-20 pt-8 border-t border-warm-300 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-lg text-warm-800">
-      <span>{smallBusinessNudge.text}</span>
-      <a href={smallBusinessNudge.link.href} class="sm:ml-auto shrink-0 font-semibold text-primary hover:text-primary-dark underline underline-offset-4 whitespace-nowrap">
-        {smallBusinessNudge.link.label} <span aria-hidden="true">→</span>
+      <span>{websiteNudge.text}</span>
+      <a href={websiteNudge.link.href} class="sm:ml-auto shrink-0 font-semibold text-primary hover:text-primary-dark underline underline-offset-4 whitespace-nowrap">
+        {websiteNudge.link.label} <span aria-hidden="true">→</span>
       </a>
     </p>
   </div>

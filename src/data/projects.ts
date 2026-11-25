@@ -27,6 +27,8 @@ export interface Project {
   highlights: string[];
   images: ProjectImage[];
   featured?: boolean;
+  /** Hidden from /work and the homepage for now. */
+  hidden?: boolean;
   /** Domain shown on the card (display text). */
   url?: string;
   /** Actual link target — falls back to `url` when omitted. Use to point a not-yet-live domain at a temporary URL. */
@@ -60,6 +62,53 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  /*
+    New projects added in the Nov 2026 redesign. Card-only for now (no case
+    study pages). Images are placeholders until Brian supplies photos or
+    screenshots; FeaturedWork skips any project whose first image is a
+    placeholder, so these appear on /work but not the homepage until then.
+    TODO(Brian): add each site's `url`, real images, and a `slug` + case study
+    copy if you want a /work/<slug> page.
+  */
+  {
+    name: "Hydra ThrIVe",
+    hidden: true,
+    category: "Health & Wellness",
+    description:
+      "A new website for an IV hydration business, with a drip finder tool that helps visitors choose the right treatment and photography we shot on location.",
+    highlights: [
+      "Interactive drip finder tool",
+      "On-location photography by Made in Greene",
+      "Custom design, built for phones",
+    ],
+    images: [{ src: "/placeholders/project-photo.svg", alt: "Hydra ThrIVe website, photo coming soon" }],
+  },
+  {
+    name: "Greeneville & Co",
+    hidden: true,
+    category: "Real Estate",
+    description:
+      "A real estate website with MLS listings built natively into the site, with no embedded widgets, so every listing looks and searches like the rest of the site.",
+    highlights: [
+      "MLS listings integrated natively",
+      "Listings match the site's own design",
+      "Custom design for a Greeneville brokerage",
+    ],
+    images: [{ src: "/placeholders/project-photo.svg", alt: "Greeneville & Co website, photo coming soon" }],
+  },
+  {
+    name: "Southeast Polyurea Coatings",
+    hidden: true,
+    category: "Contractor",
+    description:
+      "A focused one-page landing page for a coatings contractor, built to explain the work clearly and turn visitors into quote requests.",
+    highlights: [
+      "One-page landing page",
+      "Clear path to request a quote",
+      "Mobile-friendly for customers on the go",
+    ],
+    images: [{ src: "/placeholders/project-photo.svg", alt: "Southeast Polyurea Coatings website, photo coming soon" }],
+  },
   {
     name: "Echo Station",
     category: "Pour-Your-Own Taproom",

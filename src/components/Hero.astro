@@ -1,29 +1,9 @@
 ---
 /*
-  Small-business landing page hero (/small-business): the original homepage
-  hero with the photo collage, kept for package clients.
-
-  Trust bar under the hero. Icons are single-path stroke icons so a new one is
-  just a `d` string — no extra markup.
+  Homepage hero: the message on the left, the photo collage of real client
+  work on the right. The H1 carries the main search term (web design +
+  Greeneville).
 */
-const heroStats = [
-  {
-    value: "$1,750",
-    label: "Starting price",
-    icon: "M7 7h.01M7 3h5a2 2 0 011.414.586l7 7a2 2 0 010 2.828l-5 5a2 2 0 01-2.828 0l-7-7A2 2 0 013 10V5a2 2 0 012-2z",
-  },
-  {
-    value: "100%",
-    label: "Locally made & owned",
-    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
-  },
-  {
-    value: "4–6 weeks",
-    label: "Typical turnaround",
-    icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
-  },
-];
-
 /*
   COLLAGE IMAGES — swap these placeholders for real photos.
 
@@ -131,40 +111,40 @@ const collage = [
 <section class="relative bg-white text-dark overflow-hidden">
   <div class="pointer-events-none absolute inset-0 hero-glow"></div>
 
-  <div class="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-28 lg:pt-36 pb-16 lg:pb-24">
-    <div class="hero-layout grid grid-cols-3 gap-3 items-start lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-14 xl:gap-20 lg:items-center">
+  <div class="relative max-w-[120rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-28 lg:pt-32 pb-16 lg:pb-12">
+    <div class="hero-layout grid grid-cols-3 gap-3 items-start lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-12 xl:gap-16 lg:items-center">
       <!-- Left: the message -->
       <div class="hero-delayed-fade col-span-full order-2 py-8 max-w-xl lg:col-auto lg:order-none lg:py-0">
-        <h1 class="serif-heading font-black leading-[0.95] tracking-tight text-balance text-[clamp(2.75rem,5.2vw,5.25rem)]">
-          Every business has a <span class="text-primary">story.</span>
+        <h1 class="serif-heading font-black leading-[1.02] tracking-tight text-balance text-[clamp(2.25rem,3.4vw,3.75rem)]">
+          Web Design / Development, & Digital Marketing. <span class="text-primary">Done right here in Greeneville</span>.
         </h1>
 
         <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-lg">
-          We build websites that tell it, for the hard-working people of Greene County, Tennessee.
+          Custom websites and digital marketing services for the hard-working businesses of Greene County, Tennessee.
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
           <a
             href="#packages"
-            class="inline-flex items-center justify-center px-8 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-dark-light transition-all hover:shadow-xl hover:shadow-dark/20 hover:-translate-y-0.5"
+            class="inline-flex items-center justify-center whitespace-nowrap px-6 2xl:px-8 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-dark-light transition-all hover:shadow-xl hover:shadow-dark/20 hover:-translate-y-0.5"
           >
-            View Website Packages
+            View Services
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
           <a
-            href="/contact"
-            class="inline-flex items-center justify-center px-8 py-4 border border-warm-300 bg-warm-50 text-dark font-semibold rounded-xl hover:border-dark hover:bg-warm-100 transition-all"
+            href="/free-demo"
+            class="inline-flex items-center justify-center whitespace-nowrap px-6 2xl:px-8 py-4 border border-warm-300 bg-warm-50 text-dark font-semibold rounded-xl hover:border-dark hover:bg-warm-100 transition-all"
           >
-            Start a Project
+            Get a Free Demo
           </a>
         </div>
       </div>
 
       <!--
-        The collage. At lg+ this is the mosaic grid: `aspect-[712/608]` locks its
-        proportions, and `gap-0` is deliberate — the tiles' spacing comes from the
+        The collage. At lg+ this is the mosaic grid: it fills its column and takes
+        its height from the window (within limits), and `gap-0` is deliberate — the tiles' spacing comes from the
         empty grid units between them.
 
         Below lg the wrapper is `display: contents`, so the tiles become direct
@@ -173,7 +153,7 @@ const collage = [
         no duplicated markup, no image downloaded twice.
       -->
       <div
-        class="hero-collage contents lg:grid lg:gap-0 lg:aspect-[712/608] lg:[grid-template-columns:repeat(100,1fr)] lg:[grid-template-rows:repeat(100,1fr)]"
+        class="hero-collage contents lg:grid lg:gap-0 lg:h-[clamp(32rem,calc(100svh-11rem),52rem)] lg:[grid-template-columns:repeat(100,1fr)] lg:[grid-template-rows:repeat(100,1fr)]"
       >
         {collage.map((tile, index) => (
           <figure
@@ -225,33 +205,6 @@ const collage = [
       </div>
     </div>
 
-    <!--
-      Trust bar: sits on the hero's own white background, so it reads as a
-      panel floating below the collage rather than a new band of colour.
-    -->
-    <div class="mt-14 lg:mt-20 hero-stats">
-      <dl
-        class="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary to-primary-dark ring-1 ring-white/10 shadow-[0_18px_44px_-20px_rgba(61,122,28,0.55)] px-6 sm:px-10 py-7 sm:py-8 flex flex-col items-start sm:flex-row sm:items-center justify-center gap-6 sm:gap-10 lg:gap-20"
-      >
-        {heroStats.map((stat) => (
-          <div class="flex items-center gap-3.5">
-            <svg
-              class="w-8 h-8 shrink-0 text-accent"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d={stat.icon} />
-            </svg>
-            <div class="leading-snug">
-              <dt class="text-base sm:text-lg font-bold text-white">{stat.value}</dt>
-              <dd class="text-sm sm:text-base text-white/85">{stat.label}</dd>
-            </div>
-          </div>
-        ))}
-      </dl>
-    </div>
   </div>
 </section>
 
@@ -313,11 +266,6 @@ const collage = [
     }
   }
 
-  .hero-stats {
-    opacity: 0;
-    transform: translateY(16px);
-    animation: heroDelayedFade 0.5s ease-out 0.7s forwards;
-  }
 
   /* Hover: the tile glows instead of growing, so neighbours never shift. */
   .hero-tile__inner {
@@ -348,8 +296,7 @@ const collage = [
 
   @media (prefers-reduced-motion: reduce) {
     .hero-delayed-fade,
-    .hero-tile,
-    .hero-stats {
+    .hero-tile {
       opacity: 1;
       transform: none;
       animation: none;

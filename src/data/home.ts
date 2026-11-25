@@ -1,211 +1,56 @@
 /*
-  HOMEPAGE CONTENT — mid-market redesign.
+  HOMEPAGE CONTENT: small-business focus (redesign, Nov 2026).
 
-  Every word on the homepage lives here, so copy can change without touching
-  the components in src/components/home/.
+  Every word on the homepage that isn't in a shared component lives here.
+  The package cards come from src/data/websites.ts. The integrations story
+  (systems map, three kinds of work, engagement) moved to src/data/integrations.ts.
 
   Anything wrapped in [PLACEHOLDER: ...] renders as a visible yellow tag and
-  is waiting on Brian: prices, capacity, and anything else that is a business
-  decision rather than a design one. Search this file for "PLACEHOLDER".
+  is waiting on Brian. Search this file for "PLACEHOLDER".
 */
 
 export const bookingUrl = "https://cal.com/made-in-greene/phone-call?overlayCalendar=true";
 
-/* "Book a Free Walkthrough" goes to the contact form, with the walkthrough
-   already picked in its dropdown. The Cal.com link stays on the contact page
-   for anyone who would rather choose a time themselves. */
-export const walkthroughUrl = "/contact?interest=walkthrough#contact-form";
-
 export const seo = {
-  title: "Custom Websites, Integrations & Automation",
+  title: "Web Design in Greeneville, TN | Custom Websites",
   description:
-    "Made in Greene designs custom websites for established East Tennessee companies, connected to the CRM, scheduling, inventory and accounting tools you already run, with automations that take repetitive work off your team.",
-};
-
-export const hero = {
-  eyebrow: "Websites · Integrations · Automation",
-  title: "Your website, wired into the way your business",
-  titleAccent: "actually runs.",
-  body:
-    "We design and build custom websites for established companies, connected to the tools your team already uses, with automations that take the repetitive work off people's desks.",
-  primary: { label: "Book a Free Walkthrough", href: walkthroughUrl },
-  secondary: { label: "See How an Engagement Works", href: "#engagement" },
-  /* The systems map. `x`/`y` are percentages of the map box; the website sits
-     in the middle and every node is wired back to it. */
-  nodes: [
-    { label: "CRM", detail: "Leads land with a source and an owner", x: 15, y: 24 },
-    { label: "Scheduling", detail: "Bookings and crews in one calendar", x: 85, y: 22 },
-    { label: "Inventory / ERP", detail: "What's in stock, shown live", x: 87, y: 56 },
-    { label: "Accounting", detail: "Quotes turn into invoices", x: 70, y: 80 },
-    { label: "Email & SMS", detail: "Follow-ups that send themselves", x: 25, y: 78 },
-    { label: "Reporting", detail: "Monday numbers in your inbox", x: 11, y: 50 },
-  ],
-  proof: {
-    label: "Running now at Echo Station",
-    text: "All 40 taps sync from Untappd. Events sync from Google Calendar.",
-    href: "/work/echo-station",
-  },
+    "Custom web design in Greeneville, TN with real local photography. See a free demo of your new site before you pay. Serving Greene County and the Tri-Cities.",
 };
 
 export const fit = {
   eyebrow: "Who We Build For",
-  title: "For companies that need more than a website builder.",
+  title: "For companies in Greene County that need a website that works as hard as they do.",
   body:
-    "Manufacturers, farms and agricultural operations, distributors, contractors, medical and professional practices, and businesses with more than one location. If the business runs on more systems than the website knows about, we should talk.",
+    "Restaurants, farms, contractors, shops, practices and nonprofits across Greene County and the Tri-Cities. If customers need to find you, trust you and get in touch, your website should make all three easy.",
+  cta: { label: "Get a Free Demo", href: "/free-demo" },
   /* Pictograms are drawn in src/components/art/Pictogram.astro. */
   who: [
-    { icon: "factory", label: "Manufacturers" },
-    { icon: "farm", label: "Farms & agriculture" },
-    { icon: "truck", label: "Distributors" },
-    { icon: "hardhat", label: "Contractors" },
-    { icon: "practice", label: "Medical & professional practices" },
-    { icon: "locations", label: "Multi-location businesses" },
+    { icon: "dish", label: "Restaurants & taprooms" },
+    { icon: "farm", label: "Farms & agritourism" },
+    { icon: "hardhat", label: "Contractors & trades" },
+    { icon: "store", label: "Shops & makers" },
+    { icon: "practice", label: "Health & professional practices" },
+    { icon: "heart", label: "Nonprofits" },
   ],
   signsTitle: "It usually sounds like this:",
   signs: [
-    "Your team retypes the same information into two or three systems.",
-    "Leads come in by form, phone and email, and nobody owns the follow-up.",
-    "Customers call to ask what the website could answer: stock, status, availability, a ballpark quote.",
-    "You have more than one location, crew or product line, and the site shows none of it.",
-    "Part of the business runs on a spreadsheet only one person understands.",
+    "Your website is out of date, or you don't have one yet.",
+    "Customers find you on Facebook but can't find your hours, menu or prices on Google.",
+    "You're paying for a website builder you never have time to update.",
+    "Your site looks fine on a computer and falls apart on a phone.",
+    "People call to ask questions your website should already answer.",
   ],
   aside:
-    "We take on a small number of these projects each year, so each one gets the time it deserves.",
+    "We take on a handful of projects at a time, so the person you meet is the person who builds your site, start to finish.",
 };
 
-export const capabilities = {
-  eyebrow: "What We Build",
-  title: "Three kinds of work, usually in the same project.",
-  lanes: [
-    {
-      number: "01",
-      icon: "gear",
-      name: "Custom features",
-      summary:
-        "The parts of your site that do something specific to your business, built for it rather than bolted on from a plugin.",
-      examples: [
-        "Customer, dealer or vendor portals",
-        "Quote and pricing calculators",
-        "Product finders and configurators",
-        "Order, job or project status lookup",
-        "Booking, dispatch and service requests",
-        "Internal dashboards for your team",
-      ],
-    },
-    {
-      number: "02",
-      icon: "belt",
-      name: "Integrations",
-      summary:
-        "Your website talks to the software you already pay for, so information is entered once and shows up everywhere it should.",
-      examples: [
-        "CRMs such as HubSpot, Pipedrive or Salesforce",
-        "QuickBooks and other accounting tools",
-        "Google Workspace and Microsoft 365 calendars",
-        "Inventory, ERP and point-of-sale systems",
-        "Stripe and other payment processors",
-        "Any tool with an API, and some without one",
-      ],
-    },
-    {
-      number: "03",
-      icon: "arm",
-      name: "Automations",
-      summary:
-        "The small jobs that eat a week, handed to software that never forgets, with a person still in charge of anything that matters.",
-      examples: [
-        "Lead routing and instant first replies",
-        "Quote-to-invoice and onboarding handoffs",
-        "Review requests after a finished job",
-        "Weekly reports delivered to your inbox",
-        "Availability and pricing kept current on the site",
-        "Alerts when something needs a human",
-      ],
-    },
-  ],
-};
-
-export const proof = {
-  eyebrow: "Already Running",
-  title: "A website that updates itself.",
-  client: "Echo Station · Greeneville, Tennessee",
-  body: [
-    "Echo Station is a pour-your-own taproom with forty taps that rotate constantly and something on most nights. Keeping a website current on all of it by hand is a second job.",
-    "So the site keeps itself current. A custom integration pulls what's pouring straight from their Untappd account, with brewery, style, ABV and label art for all forty taps. Events come from the Google Calendar the owners already use. Nobody retypes anything.",
-  ],
-  points: [
-    { value: "40", label: "taps synced live from Untappd" },
-    { value: "0", label: "second systems to keep in step" },
-  ],
-  image: {
-    src: "/echo-station-tap-list.jpg",
-    alt: "Echo Station's Pouring Now page, listing every beer on the wall with brewery, style, ABV and IBU, pulled live from Untappd",
-  },
-  link: { label: "Read the Echo Station case study", href: "/work/echo-station" },
-  note:
-    "The same approach scales to a parts catalog, a service schedule, or a dealer price list.",
-};
-
-/* Full-width photo band between the proof and the engagement. Real client
-   photos; swap in a plant floor or farm operation once Brian has one. */
+/* Full-width photo band. Real client photos. */
 export const photoBand = {
   images: [
     { src: "/the-funny-farm-tile.jpg", alt: "A Scottish Highland calf at The Funny Farm in Chuckey", place: "The Funny Farm · Chuckey" },
     { src: "/echo-station-photo-shoot.jpg", alt: "The bar at Echo Station in Greeneville, under its neon Drinks sign", place: "Echo Station · Greeneville" },
   ],
-  caption: "We come to you. Every build includes on-location photography of your people, your place and your work.",
-};
-
-/* Shown under the phases so a small business isn't lost at the custom-build prices. */
-export const smallBusinessNudge = {
-  text: "Smaller business? Fixed-price websites start at $1,750, with a local photo session included.",
-  link: { label: "See small business packages", href: "/small-business" },
-};
-
-export const engagement = {
-  eyebrow: "How an Engagement Works",
-  title: "One walkthrough, one build, one team that keeps it running.",
-  body:
-    "Every project starts with a free walkthrough of how work actually moves through your business. You get a written proposal and a fixed price before anything is built.",
-  phases: [
-    {
-      number: "01",
-      name: "Systems Walkthrough",
-      length: "60 to 90 minutes, on site",
-      price: "Free",
-      items: [
-        "We walk through how work moves through your business",
-        "We note where information gets retyped or lost",
-        "We tell you plainly what's worth connecting and what isn't",
-        "You get a written, fixed-price proposal, with no obligation",
-      ],
-    },
-    {
-      number: "02",
-      name: "Design & Build",
-      length: "6 to 12 weeks",
-      price: "Connected Website from $8,000, fixed before we start",
-      items: [
-        "A custom-designed website, written and photographed for you",
-        "The integrations and automations from your proposal",
-        "On-location photography by our own team",
-        "Training for your staff, and you own your domain and site files",
-      ],
-    },
-    {
-      number: "03",
-      name: "Run & Improve",
-      length: "Monthly",
-      price: "Run $300/mo · Improve $750/mo, 6-month minimum",
-      items: [
-        "Hosting, monitoring and security updates",
-        "We watch every integration and fix it if a vendor changes theirs",
-        "A standing monthly review of what's working",
-        "New features and automations as the business changes",
-        "On Improve: hours for new work each month, plus Google Business Profile care",
-      ],
-    },
-  ],
+  caption: "We come to you. Every website includes real photos of your people, your place and your work.",
 };
 
 export const whyUs = {
@@ -214,15 +59,15 @@ export const whyUs = {
   points: [
     {
       name: "15+ years building for the web",
-      text: "Our team brings more than fifteen years of experience designing and developing websites for organizations that need dependable, thoughtful digital work.",
+      text: "Our team brings more than fifteen years of experience designing and developing websites for businesses and organizations that need dependable, thoughtful work.",
     },
     {
       name: "The person you meet builds it",
-      text: "No account managers or handoffs to an offshore team. You talk to the people designing and writing the code.",
+      text: "No account managers or handoffs to an offshore team. You talk to the people designing and writing your site.",
     },
     {
-      name: "Local, and in the room",
-      text: "We come to you: to sit with the people who run the process, and to photograph the business ourselves.",
+      name: "Local, and in person",
+      text: "We come to you: to learn how your business works, and to photograph it ourselves.",
     },
   ],
   quote: {
@@ -232,15 +77,16 @@ export const whyUs = {
   },
 };
 
-export const smallBusiness = {
-  text: "Running a smaller business? Our website packages are still here, with the same care and clear pricing.",
-  link: { label: "See website packages", href: "/small-business" },
+/* Thin band under Why Us pointing to the integrations work. */
+export const integrationsNudge = {
+  text: "Need your website connected to your CRM, calendar, inventory or menu?",
+  link: { label: "See website integrations", href: "/integrations" },
 };
 
 export const closing = {
-  title: "Bring us the process that eats your week.",
+  title: "See your new website before you pay a dime.",
   body:
-    "Tell us what your team does by hand that a website or a piece of software should be doing. We'll tell you plainly whether it's worth building.",
-  primary: { label: "Book a Free Walkthrough", href: walkthroughUrl },
+    "Tell us about your business and we'll build a free demo of your new homepage. No obligation, and we'll get back to you within one business day.",
+  primary: { label: "Get a Free Demo", href: "/free-demo" },
   secondary: { label: "Send Us a Note", href: "/contact" },
 };

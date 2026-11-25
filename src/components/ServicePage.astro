@@ -1,0 +1,166 @@
+---
+/*
+  Shared layout for the service pages under Services in the nav (Digital
+  Marketing, Graphic Design). Matches /custom-websites. Copy comes in as
+  `content`; see src/data/marketing.ts and design.ts.
+*/
+import Layout from "../layouts/Layout.astro";
+import type { ServicePageContent } from "../data/types";
+
+interface Props {
+  content: ServicePageContent;
+}
+
+const { seo, header, groups, photos, faqs, closing } = Astro.props.content;
+---
+
+<Layout title={seo.title} description={seo.description} headerOverlay="light">
+  <!-- Hero -->
+  <section class="relative bg-white overflow-hidden">
+    <div class:list={[
+      "max-w-6xl mx-auto px-6 pt-36 md:pt-44 pb-16 md:pb-24",
+      header.image && "grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:items-center",
+    ]}>
+      <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{header.eyebrow}</p>
+      <h1 class="mt-5 font-black leading-[1.02] tracking-tight text-balance text-[clamp(2.4rem,5vw,4.5rem)] text-dark max-w-4xl">{header.title}</h1>
+      <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">{header.subtitle}</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-3">
+        <a href={header.primary.href} class="inline-flex items-center justify-center px-7 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+          {header.primary.label}
+        </a>
+        <a href={header.secondary.href} class="inline-flex items-center justify-center px-7 py-4 border border-warm-300 text-dark font-semibold rounded-xl hover:border-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+          {header.secondary.label}
+        </a>
+      </div>
+      </div>
+      {header.image && (
+        <figure>
+          <img src={header.image.src} alt={header.image.alt} class="w-full rounded-2xl border border-warm-200 shadow-[0_18px_40px_-16px_rgba(12,12,12,0.25)]" loading="eager" decoding="async" />
+          {header.image.caption && <figcaption class="mt-3 text-sm text-warm-600">{header.image.caption}</figcaption>}
+        </figure>
+      )}
+    </div>
+  </section>
+
+  <!-- Service groups, alternating cream and white; the photo band follows the first -->
+  {groups.map((group, i) => (
+    <Fragment>
+    <section id={group.id} class:list={["py-24 md:py-36 scroll-mt-24", i % 2 === 0 ? "bg-cream" : "bg-white"]}>
+      <div class="max-w-6xl mx-auto px-6">
+        <div class:list={[group.image ? "grid gap-10 lg:grid-cols-2 lg:gap-16 lg:items-center" : "max-w-2xl"]} data-reveal>
+          <div>
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider">{group.eyebrow}</span>
+            <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">{group.title}</h2>
+            {group.body && <p class="mt-5 text-lg text-warm-700 leading-relaxed">{group.body}</p>}
+          </div>
+          {group.image && (
+            <figure>
+              <img src={group.image.src} alt={group.image.alt} class="w-full rounded-2xl border border-warm-200" loading="lazy" decoding="async" />
+              {group.image.caption && <figcaption class="mt-3 text-sm text-warm-600">{group.image.caption}</figcaption>}
+            </figure>
+          )}
+        </div>
+        <div class:list={["mt-12 grid gap-6", group.services.length > 1 ? "md:grid-cols-2" : "max-w-2xl"]}>
+          {group.services.map((service) => (
+            <article class="flex flex-col rounded-2xl bg-white border border-warm-200 p-7 md:p-8">
+              <h3 class="text-xl md:text-2xl font-bold text-dark">{service.name}</h3>
+              {service.sub && <p class="text-sm font-semibold text-primary">{service.sub}</p>}
+              <p class="mt-2 text-warm-600 leading-relaxed">{service.bestFor}</p>
+              {service.items && (
+                <ul class="mt-5 space-y-2 text-warm-800">
+                  {service.items.map((item) => (
+                    <li class="flex gap-2.5 leading-snug"><span class="text-primary" aria-hidden="true">✓</span>{item}</li>
+                  ))}
+                </ul>
+              )}
+              <div class="mt-auto pt-6">
+                {service.note && <p class="mb-4 text-sm text-warm-600">{service.note}</p>}
+                <a href={`/contact?interest=${service.interest}#contact-form`} class="font-semibold text-primary hover:text-primary-dark underline underline-offset-4">
+                  Ask about this<span class="sr-only">: {service.name}</span> <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    {i === 0 && photos && (
+      <section class="bg-white">
+        <div class:list={["grid", photos.images.length > 1 && "md:grid-cols-2"]}>
+          {photos.images.map((img) => (
+            <figure class="relative h-[20rem] md:h-[32rem] overflow-hidden">
+              <img src={img.src} alt={img.alt} class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+              {img.caption && <figcaption class="absolute left-5 bottom-5 rounded-full bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-dark">{img.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+        <p class="max-w-3xl mx-auto px-6 py-12 md:py-16 text-center text-balance font-accent text-2xl md:text-[2rem] leading-snug text-dark">{photos.caption}</p>
+      </section>
+    )}
+    </Fragment>
+  ))}
+
+  <!-- FAQ -->
+  <section id="faq" class="py-24 md:py-36 bg-cream border-t border-warm-200 scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Questions</span>
+      <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">What people ask before we start.</h2>
+      <div class="mt-10 border-t border-warm-300">
+        {faqs.map((faq) => (
+          <details class="faq group border-b border-warm-300">
+            <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer list-none font-display text-lg md:text-xl font-bold text-dark hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+              {faq.question}
+              <span class="faq-icon shrink-0 w-7 h-7 rounded-full border border-warm-300 grid place-items-center text-primary" aria-hidden="true">+</span>
+            </summary>
+            <p class="pb-6 pr-12 text-warm-700 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Close -->
+  <section class="py-20 md:py-24 bg-dark text-white border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-16">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-5xl font-bold leading-[1.05]">{closing.title}</h2>
+        <p class="mt-5 text-lg text-warm-300 leading-relaxed">{closing.body}</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 lg:ml-auto shrink-0">
+        <a
+          href={closing.primary.href}
+          class="inline-flex items-center justify-center px-7 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-light hover:text-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {closing.primary.label}
+        </a>
+        <a
+          href={closing.secondary.href}
+          class="inline-flex items-center justify-center px-7 py-4 border border-warm-600 text-warm-200 font-semibold rounded-xl hover:border-white hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {closing.secondary.label}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    transition: transform 200ms ease-out;
+  }
+
+  .faq[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon {
+      transition: none;
+    }
+  }
+</style>

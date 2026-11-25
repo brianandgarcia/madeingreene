@@ -1,0 +1,170 @@
+---
+/*
+  Custom Websites (/custom-websites), under Services in the nav. The main
+  service page: what's included, how it works and add-ons, all without
+  published prices except the package cards on the homepage.
+  Copy is in src/data/websites.ts.
+*/
+import Layout from "../layouts/Layout.astro";
+import { seo, header, included, terms, addons, faqs, closing } from "../data/websites";
+
+// The Questions section is hidden for now. Set to true to bring it back.
+const showFaqs = false;
+---
+
+<Layout title={seo.title} description={seo.description} headerOverlay="light">
+  <!-- Hero -->
+  <section class="relative bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 pt-36 md:pt-44 pb-16 md:pb-24 grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-12 lg:items-center">
+      <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{header.eyebrow}</p>
+      <h1 class="mt-5 font-black leading-[1.02] tracking-tight text-balance text-[clamp(2.4rem,4.4vw,4rem)] text-dark max-w-4xl">{header.title}</h1>
+      <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">{header.subtitle}</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-3">
+        <a href={header.primary.href} class="inline-flex items-center justify-center px-7 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+          {header.primary.label}
+        </a>
+        <a href={header.secondary.href} class="inline-flex items-center justify-center px-7 py-4 border border-warm-300 text-dark font-semibold rounded-xl hover:border-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+          {header.secondary.label}
+        </a>
+      </div>
+      </div>
+
+      <!-- Real client screenshots: desktop in a browser frame, phone overlapping it -->
+      <figure class="relative pb-10 pr-6 sm:pr-14">
+        <div class="rounded-xl overflow-hidden bg-white ring-1 ring-warm-200 shadow-[0_24px_50px_-20px_rgba(12,12,12,0.35)]">
+          <div class="flex items-center gap-1.5 px-3 py-2.5 bg-warm-100 border-b border-warm-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-warm-300"></span>
+            <span class="ml-3 text-[11px] text-warm-600 truncate">{header.showcase.domain}</span>
+          </div>
+          <div class="aspect-[16/11] overflow-hidden bg-dark">
+            <img src={header.showcase.desktop.src} alt={header.showcase.desktop.alt} class="w-full h-full object-cover object-top" loading="eager" decoding="async" />
+          </div>
+        </div>
+        <div class="absolute right-0 bottom-0 w-[30%] max-w-[10.5rem] rounded-[1.4rem] bg-dark p-1.5 shadow-[0_24px_40px_-14px_rgba(12,12,12,0.5)]">
+          <div class="aspect-[9/17] overflow-hidden rounded-[1.05rem] bg-dark">
+            <img src={header.showcase.mobile.src} alt={header.showcase.mobile.alt} class="w-full h-full object-cover object-top" loading="eager" decoding="async" />
+          </div>
+        </div>
+        <figcaption class="mt-4 text-sm text-warm-600">{header.showcase.caption}</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Included in every website -->
+  <section id="included" class="py-24 md:py-36 bg-cream scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">{included.eyebrow}</span>
+      <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05] max-w-2xl">{included.title}</h2>
+      <dl class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {included.items.map((item) => (
+          <div class="p-6 rounded-2xl bg-white border border-warm-200">
+            <dt class="font-display text-lg font-bold text-dark">{item.name}</dt>
+            <dd class="mt-2 text-warm-700 leading-relaxed">{item.text}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- How it works + add-ons -->
+  <section id="how-it-works" class="py-24 md:py-36 bg-white scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6 grid gap-14 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">{terms.eyebrow}</span>
+        <h2 class="mt-3 text-2xl md:text-4xl font-bold text-dark leading-[1.1]">{terms.title}</h2>
+        <dl class="mt-6 border-t border-warm-300">
+          {terms.rows.map((r) => (
+            <div class="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-6 py-4 border-b border-warm-200">
+              <dt class="font-semibold text-dark">{r.label}</dt>
+              <dd class="text-warm-700 leading-relaxed">{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">{addons.eyebrow}</span>
+        <h2 class="mt-3 text-2xl md:text-4xl font-bold text-dark leading-[1.1]">{addons.title}</h2>
+        <p class="mt-4 text-warm-700 leading-relaxed">{addons.body}</p>
+        <ul class="mt-6 border-t border-warm-300">
+          {addons.list.map((a) => (
+            <li class="flex gap-3 py-3 border-b border-warm-200 text-warm-800">
+              <span class="text-primary" aria-hidden="true">✓</span>{a.href
+                ? <a href={a.href} class="underline underline-offset-4 decoration-warm-300 hover:text-primary hover:decoration-primary">{a.label}</a>
+                : a.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ (hidden for now, see showFaqs) -->
+  {showFaqs && (
+  <section id="faq" class="py-24 md:py-36 bg-cream scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Questions</span>
+      <h2 class="mt-3 text-3xl md:text-5xl font-bold text-dark leading-[1.05]">What people ask before we start.</h2>
+      <div class="mt-10 border-t border-warm-300">
+        {faqs.map((faq) => (
+          <details class="faq group border-b border-warm-300">
+            <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer list-none font-display text-lg md:text-xl font-bold text-dark hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+              {faq.question}
+              <span class="faq-icon shrink-0 w-7 h-7 rounded-full border border-warm-300 grid place-items-center text-primary" aria-hidden="true">+</span>
+            </summary>
+            <p class="pb-6 pr-12 text-warm-700 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  )}
+
+  <!-- Close -->
+  <section class="py-20 md:py-24 bg-dark text-white border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-16">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-5xl font-bold leading-[1.05]">{closing.title}</h2>
+        <p class="mt-5 text-lg text-warm-300 leading-relaxed">{closing.body}</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 lg:ml-auto shrink-0">
+        <a
+          href={closing.primary.href}
+          class="inline-flex items-center justify-center px-7 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-light hover:text-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {closing.primary.label}
+        </a>
+        <a
+          href={closing.secondary.href}
+          class="inline-flex items-center justify-center px-7 py-4 border border-warm-600 text-warm-200 font-semibold rounded-xl hover:border-white hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {closing.secondary.label}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    transition: transform 200ms ease-out;
+  }
+
+  .faq[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon {
+      transition: none;
+    }
+  }
+</style>
