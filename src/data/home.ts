@@ -22,6 +22,7 @@ export const fit = {
   title: "For companies in Greene County that need a website that works as hard as they do.",
   body:
     "Restaurants, farms, contractors, shops, practices and nonprofits across Greene County and the Tri-Cities. If customers need to find you, trust you and get in touch, your website should make all three easy.",
+  cta: { label: "Get a Free Demo", href: "/free-demo" },
   /* Pictograms are drawn in src/components/art/Pictogram.astro. */
   who: [
     { icon: "dish", label: "Restaurants & taprooms" },

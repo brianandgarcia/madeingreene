@@ -11,6 +11,8 @@ interface Props {
   /* Transparent header over the page's hero until scroll. "light" for a light
      hero, "dark" for a dark one (PageHero). Omit for the solid white bar. */
   headerOverlay?: "light" | "dark";
+  /* Header stretches to match a full-width hero. */
+  headerWide?: boolean;
   /** Root-relative image for social sharing. Defaults to the site card. */
   ogImage?: string;
   ogImageAlt?: string;
@@ -22,6 +24,7 @@ const {
   description = "Made in Greene is a web design and development studio in Greeneville, Tennessee, building custom websites, integrations and automation for established businesses.",
   noindex = false,
   headerOverlay,
+  headerWide,
   ogImage: ogImageProp,
   ogImageAlt = "Made in Greene — custom websites, integrations and automation.",
   ogType = "website",
@@ -75,9 +78,9 @@ const businessSchema = {
       gtag('config', 'G-7Y5BXJ98ZY');
     </script>
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=3" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -121,7 +124,7 @@ const businessSchema = {
     >
       Skip to content
     </a>
-    <Header overlay={headerOverlay} />
+    <Header overlay={headerOverlay} wide={headerWide} />
     <main id="main-content">
       <slot />
     </main>

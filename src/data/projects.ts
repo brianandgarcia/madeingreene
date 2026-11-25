@@ -27,6 +27,8 @@ export interface Project {
   highlights: string[];
   images: ProjectImage[];
   featured?: boolean;
+  /** Hidden from /work and the homepage for now. */
+  hidden?: boolean;
   /** Domain shown on the card (display text). */
   url?: string;
   /** Actual link target — falls back to `url` when omitted. Use to point a not-yet-live domain at a temporary URL. */
@@ -70,6 +72,7 @@ export const projects: Project[] = [
   */
   {
     name: "Hydra ThrIVe",
+    hidden: true,
     category: "Health & Wellness",
     description:
       "A new website for an IV hydration business, with a drip finder tool that helps visitors choose the right treatment and photography we shot on location.",
@@ -82,6 +85,7 @@ export const projects: Project[] = [
   },
   {
     name: "Greeneville & Co",
+    hidden: true,
     category: "Real Estate",
     description:
       "A real estate website with MLS listings built natively into the site, with no embedded widgets, so every listing looks and searches like the rest of the site.",
@@ -94,6 +98,7 @@ export const projects: Project[] = [
   },
   {
     name: "Southeast Polyurea Coatings",
+    hidden: true,
     category: "Contractor",
     description:
       "A focused one-page landing page for a coatings contractor, built to explain the work clearly and turn visitors into quote requests.",
@@ -103,18 +108,6 @@ export const projects: Project[] = [
       "Mobile-friendly for customers on the go",
     ],
     images: [{ src: "/placeholders/project-photo.svg", alt: "Southeast Polyurea Coatings website, photo coming soon" }],
-  },
-  {
-    name: "Brown's Custom Fencing",
-    category: "Contractor",
-    description:
-      "A website for a local fencing company, including a page for the fence supplies they sell. Launching soon.",
-    highlights: [
-      "Fence installation services, laid out clearly",
-      "Dedicated fence supplies page",
-      "Launching soon",
-    ],
-    images: [{ src: "/placeholders/project-photo.svg", alt: "Brown's Custom Fencing website, photo coming soon" }],
   },
   {
     name: "Echo Station",

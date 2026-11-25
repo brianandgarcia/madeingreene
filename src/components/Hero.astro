@@ -111,31 +111,31 @@ const collage = [
 <section class="relative bg-white text-dark overflow-hidden">
   <div class="pointer-events-none absolute inset-0 hero-glow"></div>
 
-  <div class="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-28 lg:pt-36 pb-16 lg:pb-24">
-    <div class="hero-layout grid grid-cols-3 gap-3 items-start lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-14 xl:gap-20 lg:items-center">
+  <div class="relative max-w-[120rem] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-28 lg:pt-32 pb-16 lg:pb-12">
+    <div class="hero-layout grid grid-cols-3 gap-3 items-start lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-12 xl:gap-16 lg:items-center">
       <!-- Left: the message -->
       <div class="hero-delayed-fade col-span-full order-2 py-8 max-w-xl lg:col-auto lg:order-none lg:py-0">
-        <h1 class="serif-heading font-black leading-[0.95] tracking-tight text-balance text-[clamp(2.75rem,5.2vw,5.25rem)]">
-          Greeneville web design that <span class="text-primary">brings in customers.</span>
+        <h1 class="serif-heading font-black leading-[1.02] tracking-tight text-balance text-[clamp(2.25rem,3.4vw,3.75rem)]">
+          Web Design / Development, & Digital Marketing. <span class="text-primary">Done right here in Greeneville</span>.
         </h1>
 
         <p class="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-lg">
-          Custom websites for the hard-working businesses of Greene County, Tennessee, with real local photos and a free demo before you pay.
+          Custom websites and digital marketing services for the hard-working businesses of Greene County, Tennessee.
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
           <a
             href="#packages"
-            class="inline-flex items-center justify-center px-8 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-dark-light transition-all hover:shadow-xl hover:shadow-dark/20 hover:-translate-y-0.5"
+            class="inline-flex items-center justify-center whitespace-nowrap px-6 2xl:px-8 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-dark-light transition-all hover:shadow-xl hover:shadow-dark/20 hover:-translate-y-0.5"
           >
-            View Website Packages
+            View Services
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
           <a
             href="/free-demo"
-            class="inline-flex items-center justify-center px-8 py-4 border border-warm-300 bg-warm-50 text-dark font-semibold rounded-xl hover:border-dark hover:bg-warm-100 transition-all"
+            class="inline-flex items-center justify-center whitespace-nowrap px-6 2xl:px-8 py-4 border border-warm-300 bg-warm-50 text-dark font-semibold rounded-xl hover:border-dark hover:bg-warm-100 transition-all"
           >
             Get a Free Demo
           </a>
@@ -143,8 +143,8 @@ const collage = [
       </div>
 
       <!--
-        The collage. At lg+ this is the mosaic grid: `aspect-[712/608]` locks its
-        proportions, and `gap-0` is deliberate — the tiles' spacing comes from the
+        The collage. At lg+ this is the mosaic grid: it fills its column and takes
+        its height from the window (within limits), and `gap-0` is deliberate — the tiles' spacing comes from the
         empty grid units between them.
 
         Below lg the wrapper is `display: contents`, so the tiles become direct
@@ -153,7 +153,7 @@ const collage = [
         no duplicated markup, no image downloaded twice.
       -->
       <div
-        class="hero-collage contents lg:grid lg:gap-0 lg:aspect-[712/608] lg:[grid-template-columns:repeat(100,1fr)] lg:[grid-template-rows:repeat(100,1fr)]"
+        class="hero-collage contents lg:grid lg:gap-0 lg:h-[clamp(32rem,calc(100svh-11rem),52rem)] lg:[grid-template-columns:repeat(100,1fr)] lg:[grid-template-rows:repeat(100,1fr)]"
       >
         {collage.map((tile, index) => (
           <figure

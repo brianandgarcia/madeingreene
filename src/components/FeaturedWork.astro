@@ -3,7 +3,7 @@ import { projects } from "../data/projects";
 
 // Show only real, launched projects — skip sample concepts still on placeholder art.
 const showcase = projects
-  .filter((p) => !p.images[0].src.includes("placeholder"))
+  .filter((p) => !p.hidden && !p.images[0].src.includes("placeholder"))
   .slice(0, 4);
 
 function domainFrom(url?: string) {
@@ -11,7 +11,7 @@ function domainFrom(url?: string) {
 }
 ---
 
-<section class="py-20 md:py-28 bg-cream border-t border-warm-200 overflow-hidden">
+<section class="py-20 md:py-28 bg-white border-t border-warm-200 overflow-hidden">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10" data-reveal>
       <div>

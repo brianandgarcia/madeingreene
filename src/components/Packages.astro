@@ -4,6 +4,7 @@
   src/data/websites.ts.
 */
 import { intro, packages } from "../data/websites";
+import { bookingUrl } from "../data/home";
 ---
 
 <section id="packages" class="py-24 md:py-36 bg-cream scroll-mt-24">
@@ -41,9 +42,22 @@ import { intro, packages } from "../data/websites";
         </article>
       ))}
     </div>
-    <p class="mt-10 text-warm-700">
-      Want the details on what's included, add-ons and care plans?
-      <a href="/custom-websites" class="font-semibold text-primary hover:text-primary-dark underline underline-offset-4">See how our custom websites work <span aria-hidden="true">→</span></a>
-    </p>
+    <div class="mt-12 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
+      <a
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center px-8 py-4 bg-dark text-white font-semibold rounded-xl hover:bg-dark-light transition-all hover:shadow-xl hover:shadow-dark/20 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Book a Free Discovery Call
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+      <p class="text-warm-700">
+        Want the details on what's included and add-ons?
+        <a href="/custom-websites" class="font-semibold text-primary hover:text-primary-dark underline underline-offset-4">See how our custom websites work <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
   </div>
 </section>
