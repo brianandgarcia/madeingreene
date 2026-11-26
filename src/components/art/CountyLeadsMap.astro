@@ -1,0 +1,284 @@
+---
+/*
+  Animated Greene County map for the Digital Marketing hero. Same visual
+  language as the Integrations systems map (SystemsHero.astro): dashed
+  wires, a gold signal travelling along them, soft-green dots that rise in.
+
+  Sequence: the county outline draws itself, Greeneville's star pops in
+  with its rings, then the leads appear, rippling outward from town.
+  After that a few signals keep running from town out to leads.
+
+  Shape and dots live in src/data/greene-county.ts.
+*/
+import { countyViewBox, countyOutline, greeneville, leads } from "../../data/greene-county";
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const { x: TX, y: TY } = greeneville;
+
+// Five-point star centred on Greeneville.
+const star = (cx: number, cy: number, outer: number, inner: number) =>
+  Array.from({ length: 10 }, (_, i) => {
+    const r = i % 2 === 0 ? outer : inner;
+    const a = -Math.PI / 2 + (i * Math.PI) / 5;
+    return `${(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`;
+  }).join(" ");
+
+// A gentle bend on every wire, like the integrations map: roads, not spokes.
+const wire = (x: number, y: number, i: number) => {
+  const mx = (TX + x) / 2;
+  const my = (TY + y) / 2;
+  const bend = i % 2 === 0 ? 5 : -5;
+  const dx = y - TY;
+  const dy = -(x - TX);
+  const len = Math.hypot(dx, dy) || 1;
+  return `M${TX} ${TY} Q${(mx + (dx / len) * bend).toFixed(1)} ${(my + (dy / len) * bend).toFixed(1)} ${x} ${y}`;
+};
+
+// Timing (seconds). Leads are stored nearest-first, so a linear stagger ripples outward.
+const LEADS_START = 2.0;
+const LEAD_STEP = 0.055;
+const SIGNALS_START = LEADS_START + leads.length * LEAD_STEP + 0.2;
+const signalLeads = leads.filter((l) => l.signal);
+---
+
+<figure class:list={["county-map relative w-full", className]} aria-labelledby="county-map-caption">
+  <svg class="w-full h-auto overflow-visible" viewBox={countyViewBox} aria-hidden="true">
+    <!-- County: fill fades in under an outline that draws itself -->
+    <path d={countyOutline} class="cm-fill" />
+    <path d={countyOutline} class="cm-outline" pathLength="100" />
+
+    <!-- Reach rings around Greeneville -->
+    <circle cx={TX} cy={TY} r="17" class="cm-ring cm-ring--outer" />
+    <circle cx={TX} cy={TY} r="10" class="cm-ring cm-ring--inner" />
+
+    <!-- Wires from town to a few leads, each carrying a signal -->
+    {signalLeads.map((l, i) => (
+      <g style={`--d:${(SIGNALS_START + i * 0.6).toFixed(2)}s`}>
+        <path d={wire(l.x, l.y, i)} class="cm-wire" />
+        <path d={wire(l.x, l.y, i)} class="cm-signal" pathLength="100" />
+      </g>
+    ))}
+
+    <!-- Leads -->
+    {leads.map((l, i) => (
+      <circle
+        cx={l.x}
+        cy={l.y}
+        r={l.r}
+        class:list={["cm-lead", `cm-lead--${l.tone}`, l.signal && "cm-lead--signal"]}
+        style={`--d:${(LEADS_START + i * LEAD_STEP).toFixed(2)}s`}
+      />
+    ))}
+
+    <!-- Greeneville -->
+    <circle cx={TX} cy={TY} r="2.6" class="cm-pulse" />
+    <polygon points={star(TX, TY, 3.4, 1.45)} class="cm-star" />
+  </svg>
+
+  <!-- Town label, positioned over the SVG in % so it scales with it -->
+  <span
+    class="cm-label absolute"
+    style={`left:${TX}%;top:${(TY / 92) * 100}%`}
+    aria-hidden="true"
+  >
+    Greeneville
+  </span>
+
+  <figcaption id="county-map-caption" class="sr-only">
+    A map of Greene County, Tennessee, with Greeneville marked by a star and new customer leads appearing across the county.
+  </figcaption>
+</figure>
+
+<style>
+  /* ---- County shape ---- */
+  .cm-fill {
+    fill: rgba(142, 175, 62, 0.13);
+    opacity: 0;
+    animation: cmFade 0.9s ease-out 0.9s forwards;
+  }
+
+  .cm-outline {
+    fill: none;
+    stroke: var(--color-primary-dark);
+    stroke-width: 0.45;
+    stroke-linejoin: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: cmDraw 1.6s cubic-bezier(0.45, 0, 0.3, 1) 0.15s forwards;
+  }
+
+  @keyframes cmDraw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes cmFade {
+    to { opacity: 1; }
+  }
+
+  /* ---- Reach rings ---- */
+  .cm-ring {
+    fill: none;
+    stroke: var(--color-primary-dark);
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+  }
+
+  .cm-ring--inner {
+    stroke-opacity: 0.25;
+    stroke-width: 0.3;
+    animation: cmRingIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 1.75s forwards;
+  }
+
+  .cm-ring--outer {
+    stroke-opacity: 0.22;
+    stroke-width: 0.3;
+    stroke-dasharray: 1 1.2;
+    animation:
+      cmRingIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 1.9s forwards,
+      cmSpin 60s linear 2.7s infinite;
+  }
+
+  @keyframes cmRingIn {
+    from { opacity: 0; transform: scale(0.4); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes cmSpin {
+    from { opacity: 1; transform: rotate(0deg); }
+    to { opacity: 1; transform: rotate(360deg); }
+  }
+
+  /* ---- Greeneville star ---- */
+  .cm-star {
+    fill: var(--color-primary-dark);
+    stroke: #fff;
+    stroke-width: 0.6;
+    stroke-linejoin: round;
+    paint-order: stroke;
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: cmStarIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.45s forwards;
+  }
+
+  @keyframes cmStarIn {
+    0% { opacity: 0; transform: scale(0) rotate(-72deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+
+  /* A soft ring that keeps breathing out from town. */
+  .cm-pulse {
+    fill: var(--color-primary-light);
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: cmPulse 2.6s ease-out 2.2s infinite;
+  }
+
+  @keyframes cmPulse {
+    0% { opacity: 0.45; transform: scale(1); }
+    100% { opacity: 0; transform: scale(4.5); }
+  }
+
+  .cm-label {
+    transform: translate(0.85rem, -2rem);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--color-dark);
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    opacity: 0;
+    animation: cmLabelIn 0.5s ease-out 1.85s forwards;
+  }
+
+  @keyframes cmLabelIn {
+    from { opacity: 0; transform: translate(0.85rem, -1.6rem); }
+    to { opacity: 1; transform: translate(0.85rem, -2rem); }
+  }
+
+  /* ---- Leads ---- */
+  .cm-lead {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: cmLeadIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 2s) forwards;
+  }
+
+  .cm-lead--0 { fill: var(--color-primary-dark); }
+  .cm-lead--1 { fill: #3e7a4f; }
+  .cm-lead--2 { fill: #7ea877; }
+
+  /* Leads at the end of a wire get a white ring, like the integrations nodes. */
+  .cm-lead--signal {
+    stroke: #fff;
+    stroke-width: 0.45;
+    paint-order: stroke;
+  }
+
+  @keyframes cmLeadIn {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ---- Wires and signals (same recipe as SystemsHero) ---- */
+  .cm-wire {
+    fill: none;
+    stroke: var(--color-primary-dark);
+    stroke-opacity: 0.22;
+    stroke-width: 0.3;
+    stroke-dasharray: 0.9 0.9;
+    opacity: 0;
+    animation: cmFade 0.6s ease-out var(--d, 4s) forwards;
+  }
+
+  .cm-signal {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 0.7;
+    stroke-linecap: round;
+    stroke-dasharray: 12 200;
+    stroke-dashoffset: 12;
+    opacity: 0;
+    animation: cmSignal 3.6s cubic-bezier(0.45, 0, 0.3, 1) var(--d, 4s) infinite;
+  }
+
+  /* Out from town to the lead. */
+  @keyframes cmSignal {
+    0% { stroke-dashoffset: 12; opacity: 0; }
+    8% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { stroke-dashoffset: -100; opacity: 0; }
+  }
+
+  @media (max-width: 39.99rem) {
+    .cm-label { font-size: 0.8rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cm-fill,
+    .cm-ring,
+    .cm-star,
+    .cm-lead,
+    .cm-wire,
+    .cm-label {
+      opacity: 1;
+      animation: none;
+    }
+    .cm-label { transform: translate(0.85rem, -2rem); }
+    .cm-outline {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+    .cm-signal,
+    .cm-pulse { display: none; }
+  }
+</style>
