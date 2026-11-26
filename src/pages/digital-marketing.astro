@@ -1,6 +1,9 @@
 ---
 import ServicePage from "../components/ServicePage.astro";
+import CountyLeadsMap from "../components/art/CountyLeadsMap.astro";
 import { digitalMarketing } from "../data/marketing";
 ---
 
-<ServicePage content={digitalMarketing} />
+<ServicePage content={digitalMarketing}>
+  <CountyLeadsMap slot="hero-art" class="max-w-[24rem] sm:max-w-[30rem] lg:max-w-none mx-auto" />
+</ServicePage>
