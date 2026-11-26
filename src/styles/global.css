@@ -33,10 +33,11 @@
   /* Warm Field — page background */
   --color-cream: #f7f6f1;
 
-  --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
-  --font-display: "Fraunces", Georgia, serif;
-  --font-serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
-  --font-accent: "Fraunces", Georgia, serif;
+  /* Adobe Fonts kit mvg8dmm, loaded in the layouts. */
+  --font-sans: "warbler-text", Georgia, serif;
+  --font-display: "warbler-deck", Georgia, serif;
+  --font-serif: "warbler-deck", Georgia, serif;
+  --font-accent: "warbler-deck", Georgia, serif;
 
   /* Slightly larger body type scale, sitewide, for readability */
   --text-xs: 0.8125rem;   /* 13px (was 12) */
@@ -59,14 +60,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings: Fraunces, the original serif (Brian, 2026-10-18). */
+/* Headings: Warbler Deck; body is Warbler Text (Brian, 2026-11-25). */
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
   letter-spacing: -0.015em;
 }
 
-/* Serif headline in the original Fraunces style (small-business page). */
+/* Serif headline (small-business page). */
 .serif-heading {
   font-family: var(--font-serif);
   font-stretch: normal;
